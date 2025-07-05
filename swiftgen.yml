@@ -1,0 +1,18 @@
+# ローカリゼーション(多言語対応)用Stringファイル
+strings:
+  inputs:
+      - CapsuleToyApp/Resources/Localizable.strings
+  # テンプレート指定と保存先
+  outputs:
+    - templateName: structured-swift5
+      output: CapsuleToyApp/Generated/Strings.swift
+# 画像やカラーコードなどのAssetsリソース
+xcassets:
+  # 画像やカラーなど
+  inputs:
+    - CapsuleToyApp/Resources/Images.xcassets
+    - CapsuleToyApp/Resources/Colors.xcassets
+  # テンプレート指定と保存先
+  outputs:
+    - templatePath: ./swiftgen_custom_template.stencil
+      output: CapsuleToyApp/Generated/Assets.swift
