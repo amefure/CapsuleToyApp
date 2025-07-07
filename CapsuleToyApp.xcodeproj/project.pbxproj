@@ -19,6 +19,21 @@
 		122FFC032E1C0DBC00FA1A6C /* SeriesRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFC022E1C0DBA00FA1A6C /* SeriesRepositoryProtocol.swift */; };
 		122FFC052E1C0DCB00FA1A6C /* SeriesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFC042E1C0DCA00FA1A6C /* SeriesRepository.swift */; };
 		122FFC092E1C0E4400FA1A6C /* MockSeriesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFC082E1C0E4300FA1A6C /* MockSeriesRepository.swift */; };
+		122FFC0B2E1C11DB00FA1A6C /* SeriesEntryScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFC0A2E1C11DB00FA1A6C /* SeriesEntryScreen.swift */; };
+		122FFC252E1C120D00FA1A6C /* DeviceSizeUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFC1D2E1C120D00FA1A6C /* DeviceSizeUtility.swift */; };
+		122FFC262E1C120D00FA1A6C /* ExFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFC112E1C120D00FA1A6C /* ExFont.swift */; };
+		122FFC272E1C120D00FA1A6C /* ExModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFC0F2E1C120D00FA1A6C /* ExModifier.swift */; };
+		122FFC2A2E1C120D00FA1A6C /* ExString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFC142E1C120D00FA1A6C /* ExString.swift */; };
+		122FFC2B2E1C120D00FA1A6C /* ShareInfoUtillity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFC222E1C120D00FA1A6C /* ShareInfoUtillity.swift */; };
+		122FFC2C2E1C120D00FA1A6C /* DateFormatUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFC202E1C120D00FA1A6C /* DateFormatUtility.swift */; };
+		122FFC2D2E1C120D00FA1A6C /* ExPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFC182E1C120D00FA1A6C /* ExPublisher.swift */; };
+		122FFC2E2E1C120D00FA1A6C /* ExBoingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFC1A2E1C120D00FA1A6C /* ExBoingButton.swift */; };
+		122FFC302E1C120D00FA1A6C /* ExCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFC152E1C120D00FA1A6C /* ExCollection.swift */; };
+		122FFC312E1C120D00FA1A6C /* JsonConvertUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFC212E1C120D00FA1A6C /* JsonConvertUtility.swift */; };
+		122FFC322E1C120D00FA1A6C /* ExUIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFC172E1C120D00FA1A6C /* ExUIApplication.swift */; };
+		122FFC342E1C120D00FA1A6C /* ExModalBaclClear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFC102E1C120D00FA1A6C /* ExModalBaclClear.swift */; };
+		122FFC352E1C120D00FA1A6C /* ExAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFC122E1C120D00FA1A6C /* ExAlert.swift */; };
+		122FFC372E1C120D00FA1A6C /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFC1E2E1C120D00FA1A6C /* Logger.swift */; };
 		126CF5462E19CC6600C14395 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 126CF5452E19CC6600C14395 /* Swinject */; };
 		12B8CE9D2E195BBD00B61EED /* CapsuleToyAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B8CE9A2E195BBD00B61EED /* CapsuleToyAppApp.swift */; };
 		12B8CE9E2E195BBD00B61EED /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B8CE9B2E195BBD00B61EED /* RootView.swift */; };
@@ -55,6 +70,21 @@
 		122FFC022E1C0DBA00FA1A6C /* SeriesRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesRepositoryProtocol.swift; sourceTree = "<group>"; };
 		122FFC042E1C0DCA00FA1A6C /* SeriesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesRepository.swift; sourceTree = "<group>"; };
 		122FFC082E1C0E4300FA1A6C /* MockSeriesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSeriesRepository.swift; sourceTree = "<group>"; };
+		122FFC0A2E1C11DB00FA1A6C /* SeriesEntryScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesEntryScreen.swift; sourceTree = "<group>"; };
+		122FFC0F2E1C120D00FA1A6C /* ExModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExModifier.swift; sourceTree = "<group>"; };
+		122FFC102E1C120D00FA1A6C /* ExModalBaclClear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExModalBaclClear.swift; sourceTree = "<group>"; };
+		122FFC112E1C120D00FA1A6C /* ExFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExFont.swift; sourceTree = "<group>"; };
+		122FFC122E1C120D00FA1A6C /* ExAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExAlert.swift; sourceTree = "<group>"; };
+		122FFC142E1C120D00FA1A6C /* ExString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExString.swift; sourceTree = "<group>"; };
+		122FFC152E1C120D00FA1A6C /* ExCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExCollection.swift; sourceTree = "<group>"; };
+		122FFC172E1C120D00FA1A6C /* ExUIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExUIApplication.swift; sourceTree = "<group>"; };
+		122FFC182E1C120D00FA1A6C /* ExPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExPublisher.swift; sourceTree = "<group>"; };
+		122FFC1A2E1C120D00FA1A6C /* ExBoingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExBoingButton.swift; sourceTree = "<group>"; };
+		122FFC1D2E1C120D00FA1A6C /* DeviceSizeUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceSizeUtility.swift; sourceTree = "<group>"; };
+		122FFC1E2E1C120D00FA1A6C /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		122FFC202E1C120D00FA1A6C /* DateFormatUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatUtility.swift; sourceTree = "<group>"; };
+		122FFC212E1C120D00FA1A6C /* JsonConvertUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonConvertUtility.swift; sourceTree = "<group>"; };
+		122FFC222E1C120D00FA1A6C /* ShareInfoUtillity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareInfoUtillity.swift; sourceTree = "<group>"; };
 		12B8CE8B2E195BAD00B61EED /* CapsuleToyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CapsuleToyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12B8CE992E195BBD00B61EED /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		12B8CE9A2E195BBD00B61EED /* CapsuleToyAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleToyAppApp.swift; sourceTree = "<group>"; };
@@ -124,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				122FFBF42E1C096200FA1A6C /* SeriesListScreen.swift */,
+				122FFC0A2E1C11DB00FA1A6C /* SeriesEntryScreen.swift */,
 			);
 			path = Series;
 			sourceTree = "<group>";
@@ -169,6 +200,59 @@
 			path = Mock;
 			sourceTree = "<group>";
 		};
+		122FFC132E1C120D00FA1A6C /* Modifier */ = {
+			isa = PBXGroup;
+			children = (
+				122FFC0F2E1C120D00FA1A6C /* ExModifier.swift */,
+				122FFC102E1C120D00FA1A6C /* ExModalBaclClear.swift */,
+				122FFC112E1C120D00FA1A6C /* ExFont.swift */,
+				122FFC122E1C120D00FA1A6C /* ExAlert.swift */,
+			);
+			path = Modifier;
+			sourceTree = "<group>";
+		};
+		122FFC162E1C120D00FA1A6C /* Primitive */ = {
+			isa = PBXGroup;
+			children = (
+				122FFC142E1C120D00FA1A6C /* ExString.swift */,
+				122FFC152E1C120D00FA1A6C /* ExCollection.swift */,
+			);
+			path = Primitive;
+			sourceTree = "<group>";
+		};
+		122FFC1B2E1C120D00FA1A6C /* Extenstion */ = {
+			isa = PBXGroup;
+			children = (
+				122FFC132E1C120D00FA1A6C /* Modifier */,
+				122FFC162E1C120D00FA1A6C /* Primitive */,
+				122FFC172E1C120D00FA1A6C /* ExUIApplication.swift */,
+				122FFC182E1C120D00FA1A6C /* ExPublisher.swift */,
+				122FFC1A2E1C120D00FA1A6C /* ExBoingButton.swift */,
+			);
+			path = Extenstion;
+			sourceTree = "<group>";
+		};
+		122FFC232E1C120D00FA1A6C /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				122FFC1D2E1C120D00FA1A6C /* DeviceSizeUtility.swift */,
+				122FFC1E2E1C120D00FA1A6C /* Logger.swift */,
+				122FFC202E1C120D00FA1A6C /* DateFormatUtility.swift */,
+				122FFC212E1C120D00FA1A6C /* JsonConvertUtility.swift */,
+				122FFC222E1C120D00FA1A6C /* ShareInfoUtillity.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		122FFC242E1C120D00FA1A6C /* Extension&Utility */ = {
+			isa = PBXGroup;
+			children = (
+				122FFC1B2E1C120D00FA1A6C /* Extenstion */,
+				122FFC232E1C120D00FA1A6C /* Utility */,
+			);
+			path = "Extension&Utility";
+			sourceTree = "<group>";
+		};
 		12B8CE822E195BAD00B61EED = {
 			isa = PBXGroup;
 			children = (
@@ -190,6 +274,7 @@
 			children = (
 				12B8CEA02E195C3400B61EED /* Resources */,
 				12B8CEA12E195C4A00B61EED /* Generated */,
+				122FFC242E1C120D00FA1A6C /* Extension&Utility */,
 				122FFBEA2E1C069A00FA1A6C /* Model */,
 				12B8CEA62E195C9800B61EED /* View */,
 				122FFBE72E1C063900FA1A6C /* DI */,
@@ -316,6 +401,21 @@
 				122FFBF72E1C099700FA1A6C /* SeriesListViewModel.swift in Sources */,
 				12B8CE9D2E195BBD00B61EED /* CapsuleToyAppApp.swift in Sources */,
 				122FFBF52E1C096200FA1A6C /* SeriesListScreen.swift in Sources */,
+				122FFC0B2E1C11DB00FA1A6C /* SeriesEntryScreen.swift in Sources */,
+				122FFC252E1C120D00FA1A6C /* DeviceSizeUtility.swift in Sources */,
+				122FFC262E1C120D00FA1A6C /* ExFont.swift in Sources */,
+				122FFC272E1C120D00FA1A6C /* ExModifier.swift in Sources */,
+				122FFC2A2E1C120D00FA1A6C /* ExString.swift in Sources */,
+				122FFC2B2E1C120D00FA1A6C /* ShareInfoUtillity.swift in Sources */,
+				122FFC2C2E1C120D00FA1A6C /* DateFormatUtility.swift in Sources */,
+				122FFC2D2E1C120D00FA1A6C /* ExPublisher.swift in Sources */,
+				122FFC2E2E1C120D00FA1A6C /* ExBoingButton.swift in Sources */,
+				122FFC302E1C120D00FA1A6C /* ExCollection.swift in Sources */,
+				122FFC312E1C120D00FA1A6C /* JsonConvertUtility.swift in Sources */,
+				122FFC322E1C120D00FA1A6C /* ExUIApplication.swift in Sources */,
+				122FFC342E1C120D00FA1A6C /* ExModalBaclClear.swift in Sources */,
+				122FFC352E1C120D00FA1A6C /* ExAlert.swift in Sources */,
+				122FFC372E1C120D00FA1A6C /* Logger.swift in Sources */,
 				122FFBE92E1C065000FA1A6C /* DIContainer.swift in Sources */,
 				12B8CE9E2E195BBD00B61EED /* RootView.swift in Sources */,
 				122FFC012E1C0BF400FA1A6C /* RealmRepositoryProtocol.swift in Sources */,
