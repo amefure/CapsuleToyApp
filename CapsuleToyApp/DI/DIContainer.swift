@@ -11,15 +11,22 @@ final class DIContainer: @unchecked Sendable{
     static let shared = DIContainer()
 
     private let container = Container() { c in
-        c.register(SeriesRepositoryProtocol.self) { _ in MockSeriesRepository() }
+        // Add Repository
+        c.register(SeriesRepositoryProtocol.self) { _ in MockSeriesRepository.shared }
         // c.register(SeriesRepositoryProtocol.self) { _ in SeriesRepository() }
+        
+        // Add ViewModel
         c.register(SeriesListViewModel.self) { r in
             SeriesListViewModel(seriesRepository: r.resolve(SeriesRepositoryProtocol.self)!)
+        }
+        
+        c.register(SeriesEntryViewModel.self) { r in
+            SeriesEntryViewModel(seriesRepository: r.resolve(SeriesRepositoryProtocol.self)!)
         }
     }
 
 
-    func resolve<T>(_ type: T.Type) -> T {
+    public func resolve<T>(_ type: T.Type) -> T {
         guard let resolved = container.resolve(type) else {
             fatalError("依存解決に失敗しました: \(type)")
         }

@@ -12,8 +12,19 @@ struct SeriesListScreen: View {
     var body: some View {
         VStack {
             List(viewModel.seriesList) { series in
-                Text(series.name)
+                NavigationLink {
+                    SeriesEntryScreen(series: series)
+                } label: {
+                    Text(series.name)
+                }
             }
+            
+            NavigationLink {
+                SeriesEntryScreen()
+            } label: {
+                Text("ADD")
+            }
+
         }.onAppear { viewModel.onAppear() }
             .onDisappear { viewModel.onDisappear() }
     }

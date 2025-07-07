@@ -7,7 +7,12 @@
 
 import RealmSwift
 
-final class MockSeriesRepository: SeriesRepositoryProtocol {
+/// モックなので`@unchecked Sendable`とする
+/// インメモリで管理
+final class MockSeriesRepository: SeriesRepositoryProtocol, @unchecked Sendable {
+    
+    static let shared = MockSeriesRepository()
+    
     private var seriesList: [Series] = Series.mockList()
 
     func fetchAllSeries() -> [Series] {
