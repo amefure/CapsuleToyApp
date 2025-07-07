@@ -10,6 +10,15 @@
 		122FFBE92E1C065000FA1A6C /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFBE82E1C065000FA1A6C /* DIContainer.swift */; };
 		122FFBEE2E1C071600FA1A6C /* CapsuleToy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFBED2E1C070500FA1A6C /* CapsuleToy.swift */; };
 		122FFBF12E1C078F00FA1A6C /* Series.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFBF02E1C078600FA1A6C /* Series.swift */; };
+		122FFBF52E1C096200FA1A6C /* SeriesListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFBF42E1C096200FA1A6C /* SeriesListScreen.swift */; };
+		122FFBF72E1C099700FA1A6C /* SeriesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFBF62E1C098B00FA1A6C /* SeriesListViewModel.swift */; };
+		122FFBF92E1C0A0700FA1A6C /* RealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFBF82E1C0A0500FA1A6C /* RealmRepository.swift */; };
+		122FFBFC2E1C0A2B00FA1A6C /* RealmConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFBFB2E1C0A2A00FA1A6C /* RealmConfig.swift */; };
+		122FFBFE2E1C0A5600FA1A6C /* UserDefaultsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFBFD2E1C0A5500FA1A6C /* UserDefaultsRepository.swift */; };
+		122FFC012E1C0BF400FA1A6C /* RealmRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFC002E1C0BF400FA1A6C /* RealmRepositoryProtocol.swift */; };
+		122FFC032E1C0DBC00FA1A6C /* SeriesRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFC022E1C0DBA00FA1A6C /* SeriesRepositoryProtocol.swift */; };
+		122FFC052E1C0DCB00FA1A6C /* SeriesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFC042E1C0DCA00FA1A6C /* SeriesRepository.swift */; };
+		122FFC092E1C0E4400FA1A6C /* MockSeriesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFC082E1C0E4300FA1A6C /* MockSeriesRepository.swift */; };
 		126CF5462E19CC6600C14395 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 126CF5452E19CC6600C14395 /* Swinject */; };
 		12B8CE9D2E195BBD00B61EED /* CapsuleToyAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B8CE9A2E195BBD00B61EED /* CapsuleToyAppApp.swift */; };
 		12B8CE9E2E195BBD00B61EED /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B8CE9B2E195BBD00B61EED /* RootView.swift */; };
@@ -37,6 +46,15 @@
 		122FFBE82E1C065000FA1A6C /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		122FFBED2E1C070500FA1A6C /* CapsuleToy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleToy.swift; sourceTree = "<group>"; };
 		122FFBF02E1C078600FA1A6C /* Series.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Series.swift; sourceTree = "<group>"; };
+		122FFBF42E1C096200FA1A6C /* SeriesListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesListScreen.swift; sourceTree = "<group>"; };
+		122FFBF62E1C098B00FA1A6C /* SeriesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesListViewModel.swift; sourceTree = "<group>"; };
+		122FFBF82E1C0A0500FA1A6C /* RealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepository.swift; sourceTree = "<group>"; };
+		122FFBFB2E1C0A2A00FA1A6C /* RealmConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmConfig.swift; sourceTree = "<group>"; };
+		122FFBFD2E1C0A5500FA1A6C /* UserDefaultsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsRepository.swift; sourceTree = "<group>"; };
+		122FFC002E1C0BF400FA1A6C /* RealmRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepositoryProtocol.swift; sourceTree = "<group>"; };
+		122FFC022E1C0DBA00FA1A6C /* SeriesRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesRepositoryProtocol.swift; sourceTree = "<group>"; };
+		122FFC042E1C0DCA00FA1A6C /* SeriesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesRepository.swift; sourceTree = "<group>"; };
+		122FFC082E1C0E4300FA1A6C /* MockSeriesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSeriesRepository.swift; sourceTree = "<group>"; };
 		12B8CE8B2E195BAD00B61EED /* CapsuleToyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CapsuleToyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12B8CE992E195BBD00B61EED /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		12B8CE9A2E195BBD00B61EED /* CapsuleToyAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleToyAppApp.swift; sourceTree = "<group>"; };
@@ -68,6 +86,7 @@
 		122FFBEA2E1C069A00FA1A6C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				122FFBFA2E1C0A2500FA1A6C /* Config */,
 				122FFBEF2E1C074700FA1A6C /* Domain */,
 			);
 			path = Model;
@@ -76,6 +95,10 @@
 		122FFBEB2E1C069E00FA1A6C /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				122FFC072E1C0E3800FA1A6C /* Mock */,
+				122FFC062E1C0E2D00FA1A6C /* Domain */,
+				122FFBFF2E1C0BEB00FA1A6C /* Protocol */,
+				122FFBFD2E1C0A5500FA1A6C /* UserDefaultsRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -83,6 +106,7 @@
 		122FFBEC2E1C06AA00FA1A6C /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				122FFBF62E1C098B00FA1A6C /* SeriesListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -90,10 +114,59 @@
 		122FFBEF2E1C074700FA1A6C /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				122FFBED2E1C070500FA1A6C /* CapsuleToy.swift */,
 				122FFBF02E1C078600FA1A6C /* Series.swift */,
+				122FFBED2E1C070500FA1A6C /* CapsuleToy.swift */,
 			);
 			path = Domain;
+			sourceTree = "<group>";
+		};
+		122FFBF22E1C092B00FA1A6C /* Series */ = {
+			isa = PBXGroup;
+			children = (
+				122FFBF42E1C096200FA1A6C /* SeriesListScreen.swift */,
+			);
+			path = Series;
+			sourceTree = "<group>";
+		};
+		122FFBF32E1C094800FA1A6C /* CapsuleToy */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CapsuleToy;
+			sourceTree = "<group>";
+		};
+		122FFBFA2E1C0A2500FA1A6C /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				122FFBFB2E1C0A2A00FA1A6C /* RealmConfig.swift */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		122FFBFF2E1C0BEB00FA1A6C /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				122FFC002E1C0BF400FA1A6C /* RealmRepositoryProtocol.swift */,
+				122FFC022E1C0DBA00FA1A6C /* SeriesRepositoryProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		122FFC062E1C0E2D00FA1A6C /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				122FFBF82E1C0A0500FA1A6C /* RealmRepository.swift */,
+				122FFC042E1C0DCA00FA1A6C /* SeriesRepository.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		122FFC072E1C0E3800FA1A6C /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				122FFC082E1C0E4300FA1A6C /* MockSeriesRepository.swift */,
+			);
+			path = Mock;
 			sourceTree = "<group>";
 		};
 		12B8CE822E195BAD00B61EED = {
@@ -147,6 +220,8 @@
 			children = (
 				12B8CE9A2E195BBD00B61EED /* CapsuleToyAppApp.swift */,
 				12B8CE9B2E195BBD00B61EED /* RootView.swift */,
+				122FFBF22E1C092B00FA1A6C /* Series */,
+				122FFBF32E1C094800FA1A6C /* CapsuleToy */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -231,10 +306,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				122FFC052E1C0DCB00FA1A6C /* SeriesRepository.swift in Sources */,
 				122FFBEE2E1C071600FA1A6C /* CapsuleToy.swift in Sources */,
+				122FFC092E1C0E4400FA1A6C /* MockSeriesRepository.swift in Sources */,
+				122FFBF92E1C0A0700FA1A6C /* RealmRepository.swift in Sources */,
+				122FFC032E1C0DBC00FA1A6C /* SeriesRepositoryProtocol.swift in Sources */,
+				122FFBFE2E1C0A5600FA1A6C /* UserDefaultsRepository.swift in Sources */,
+				122FFBFC2E1C0A2B00FA1A6C /* RealmConfig.swift in Sources */,
+				122FFBF72E1C099700FA1A6C /* SeriesListViewModel.swift in Sources */,
 				12B8CE9D2E195BBD00B61EED /* CapsuleToyAppApp.swift in Sources */,
+				122FFBF52E1C096200FA1A6C /* SeriesListScreen.swift in Sources */,
 				122FFBE92E1C065000FA1A6C /* DIContainer.swift in Sources */,
 				12B8CE9E2E195BBD00B61EED /* RootView.swift in Sources */,
+				122FFC012E1C0BF400FA1A6C /* RealmRepositoryProtocol.swift in Sources */,
 				122FFBF12E1C078F00FA1A6C /* Series.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

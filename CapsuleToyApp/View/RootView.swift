@@ -11,10 +11,10 @@ struct RootView: View {
 
     var body: some View {
         VStack {
-            Button {
-                
+            NavigationLink {
+                SeriesListScreen()
             } label: {
-                Text("message")
+                Text("SeriesListScreen")
             }
         }
         .padding()

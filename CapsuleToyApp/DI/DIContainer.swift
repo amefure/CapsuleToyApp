@@ -11,6 +11,11 @@ final class DIContainer: @unchecked Sendable{
     static let shared = DIContainer()
 
     private let container = Container() { c in
+        c.register(SeriesRepositoryProtocol.self) { _ in MockSeriesRepository() }
+        // c.register(SeriesRepositoryProtocol.self) { _ in SeriesRepository() }
+        c.register(SeriesListViewModel.self) { r in
+            SeriesListViewModel(seriesRepository: r.resolve(SeriesRepositoryProtocol.self)!)
+        }
     }
 
 

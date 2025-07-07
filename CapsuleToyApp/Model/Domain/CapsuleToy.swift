@@ -23,3 +23,19 @@ final class CapsuleToy: Object, ObjectKeyIdentifiable, Codable {
     /// 更新日
     @Persisted var updatedAt: Date = Date()
 }
+
+extension CapsuleToy {
+    static func mockList(count: Int = 5) -> [CapsuleToy] {
+        return (1...count).map { index in
+            let toy = CapsuleToy()
+            toy.id = ObjectId.generate()
+            toy.name = "カプセルトイ No.\(index)"
+            toy.isOwned = index % 2 == 0
+            toy.memo = index % 3 == 0 ? "これはメモです" : nil
+            toy.imageDataPath = index % 2 == 0 ? "/path/to/image\(index).png" : nil
+            toy.createdAt = Date()
+            toy.updatedAt = Date()
+            return toy
+        }
+    }
+}

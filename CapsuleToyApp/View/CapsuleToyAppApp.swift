@@ -10,8 +10,16 @@ import UIKit
 import Swinject
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    func application(_: UIApplication,
+                     didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool
+    {
+        // AdMob
+        // MobileAds.shared.start(completionHandler: nil)
 
-
+        // Firebase
+        // FirebaseApp.configure()
+        return true
+    }
 }
 
 @main
@@ -20,7 +28,9 @@ struct CapsuleToyAppApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     var body: some Scene {
         WindowGroup {
-            RootView()
+            NavigationStack {
+                RootView()
+            }
         }
     }
 }
