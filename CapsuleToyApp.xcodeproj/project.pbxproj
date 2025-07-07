@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		122FFBE92E1C065000FA1A6C /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFBE82E1C065000FA1A6C /* DIContainer.swift */; };
+		126CF5462E19CC6600C14395 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 126CF5452E19CC6600C14395 /* Swinject */; };
 		12B8CE9D2E195BBD00B61EED /* CapsuleToyAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B8CE9A2E195BBD00B61EED /* CapsuleToyAppApp.swift */; };
 		12B8CE9E2E195BBD00B61EED /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B8CE9B2E195BBD00B61EED /* RootView.swift */; };
 		12B8CE9F2E195BBD00B61EED /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12B8CE992E195BBD00B61EED /* Images.xcassets */; };
@@ -30,6 +32,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		122FFBE82E1C065000FA1A6C /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		12B8CE8B2E195BAD00B61EED /* CapsuleToyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CapsuleToyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12B8CE992E195BBD00B61EED /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		12B8CE9A2E195BBD00B61EED /* CapsuleToyAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleToyAppApp.swift; sourceTree = "<group>"; };
@@ -43,12 +46,42 @@
 			buildActionMask = 2147483647;
 			files = (
 				12B8CEAB2E195E8100B61EED /* RealmSwift in Frameworks */,
+				126CF5462E19CC6600C14395 /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		122FFBE72E1C063900FA1A6C /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				122FFBE82E1C065000FA1A6C /* DIContainer.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
+		122FFBEA2E1C069A00FA1A6C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		122FFBEB2E1C069E00FA1A6C /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		122FFBEC2E1C06AA00FA1A6C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		12B8CE822E195BAD00B61EED = {
 			isa = PBXGroup;
 			children = (
@@ -70,7 +103,11 @@
 			children = (
 				12B8CEA02E195C3400B61EED /* Resources */,
 				12B8CEA12E195C4A00B61EED /* Generated */,
+				122FFBEA2E1C069A00FA1A6C /* Model */,
 				12B8CEA62E195C9800B61EED /* View */,
+				122FFBE72E1C063900FA1A6C /* DI */,
+				122FFBEC2E1C06AA00FA1A6C /* ViewModel */,
+				122FFBEB2E1C069E00FA1A6C /* Repository */,
 			);
 			path = CapsuleToyApp;
 			sourceTree = "<group>";
@@ -119,6 +156,7 @@
 			name = CapsuleToyApp;
 			packageProductDependencies = (
 				12B8CEAA2E195E8100B61EED /* RealmSwift */,
+				126CF5452E19CC6600C14395 /* Swinject */,
 			);
 			productName = CapsuleToyApp;
 			productReference = 12B8CE8B2E195BAD00B61EED /* CapsuleToyApp.app */;
@@ -150,6 +188,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				12B8CEA72E195E8100B61EED /* XCRemoteSwiftPackageReference "realm-swift" */,
+				126CF5442E19CC6600C14395 /* XCRemoteSwiftPackageReference "Swinject" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 12B8CE8C2E195BAD00B61EED /* Products */;
@@ -179,6 +218,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				12B8CE9D2E195BBD00B61EED /* CapsuleToyAppApp.swift in Sources */,
+				122FFBE92E1C065000FA1A6C /* DIContainer.swift in Sources */,
 				12B8CE9E2E195BBD00B61EED /* RootView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -389,6 +429,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		126CF5442E19CC6600C14395 /* XCRemoteSwiftPackageReference "Swinject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Swinject/Swinject.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.9.1;
+			};
+		};
 		12B8CEA72E195E8100B61EED /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift.git";
@@ -400,6 +448,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		126CF5452E19CC6600C14395 /* Swinject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 126CF5442E19CC6600C14395 /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = Swinject;
+		};
 		12B8CEAA2E195E8100B61EED /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 12B8CEA72E195E8100B61EED /* XCRemoteSwiftPackageReference "realm-swift" */;
