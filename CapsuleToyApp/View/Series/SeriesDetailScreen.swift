@@ -13,30 +13,45 @@ struct SeriesDetailScreen: View {
     @StateObject private var viewModel = DIContainer.shared.resolve(SeriesDetailViewModel.self)
     
     public var seriesId: ObjectId
+    
+    @State private var presentEditView: Bool = false
 
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         VStack {
+            HeaderView(
+                leadingIcon: "chevron.backward",
+                trailingIcon: "pencil.circle",
+                leadingAction: {
+                    dismiss()
+                },
+                trailingAction: {
+                    presentEditView = true
+                }
+            )
+            
+            Spacer()
+            
             if let series = viewModel.series {
-                NavigationLink {
-                    SeriesEntryScreen(series: series)
-                } label: {
-                    Text("編集")
-                }
-                
-                BoingButton {
-                    viewModel.showConfirmDeleteAlert = true
-                } label: {
-                    Text(L10n.delete)
-                }
                 
                 Text(series.name)
                 Text("\(series.count)")
                 Text("\(series.createdAt)")
+                    .navigationDestination(isPresented: $presentEditView) {
+                        SeriesEntryScreen(series: series)
+                    }
+                
+                BoingButton {
+                    viewModel.showConfirmDeleteAlert = true
+                } label: {
+                    Image(systemName: "trash")
+                        .exCircleButtonView()
+                }
             }
         }.onAppear { viewModel.onAppear(id: seriesId) }
             .onDisappear { viewModel.onDisappear() }
+            .navigationBarBackButtonHidden()
             .alert(
                 isPresented: $viewModel.showConfirmDeleteAlert,
                 title: L10n.dialogConfirmTitle,

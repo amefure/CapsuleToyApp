@@ -22,21 +22,29 @@ struct SeriesEntryScreen: View {
     
     var body: some View {
         VStack {
+            
+            HeaderView(
+                leadingIcon: "chevron.backward",
+                trailingIcon: "plus",
+                leadingAction: {
+                    dismiss()
+                },
+                trailingAction: {
+                    viewModel.createSeriesOrUpdate(
+                        id: series?.id,
+                        name: name,
+                        count: count.toInt() ?? 0,
+                        memo: memo
+                    )
+                }
+            )
+            
+            Spacer()
+            
             TextField("シリーズ名", text: $name)
             TextField("種類数", text: $count)
                 .keyboardType(.numberPad)
             TextField("MEMO", text: $memo)
-            
-            BoingButton {
-                viewModel.createSeriesOrUpdate(
-                    id: series?.id,
-                    name: name,
-                    count: count.toInt() ?? 0,
-                    memo: memo
-                )
-            } label: {
-                Image(systemName: "plus")
-            }
 
         }.onAppear {
             guard let series else { return }
@@ -45,6 +53,7 @@ struct SeriesEntryScreen: View {
             memo = series.memo ?? ""
         }
         .onDisappear { viewModel.onDisappear() }
+        .navigationBarBackButtonHidden()
         .alert(
             isPresented: $viewModel.showEntrySuccessAlert,
             title: L10n.dialogSuccessTitle,
