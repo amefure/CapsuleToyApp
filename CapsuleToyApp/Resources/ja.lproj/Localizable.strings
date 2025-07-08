@@ -1,0 +1,38 @@
+/* 
+  Localizable.strings
+  CapsuleToyApp
+
+  Created by t&a on 2025/07/08.
+  
+*/
+
+// MARK: - Loacle
+"date_locale" = "ja_JP";
+"date_timezone" = "Asia/Tokyo";
+
+// MARK: - App
+"app_name" = "ガチャガチャ";
+"app_version_%@" = "Ver %@";
+"app_features" = "";
+"app_copyright" = "Created by Shibuya";
+
+
+// MARK: - Common
+"entry" = "登録";
+"unspecified" = "未登録";
+"update" = "更新";
+"delete" = "削除";
+"send" = "送信";
+"ok" = "OK";
+"cancel" = "キャンセル";
+
+// MARK: - Dialog Title
+"dialog_success_title" = "成功";
+"dialog_confirm_title" = "確認";
+"dialog_error_title" = "Error";
+
+"dialog_entry_msg_%@" = "「%@」を登録しました。";
+"dialog_update_msg" = "更新しました。";
+"dialog_delete_msg" = "削除しました。";
+"dialog_delete_failed_msg" = "削除に失敗しました。時間を空けてから再度お試しください。";
+"dialog_delete_confirm_msg" = "削除しますか？";

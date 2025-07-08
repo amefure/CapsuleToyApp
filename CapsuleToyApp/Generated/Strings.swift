@@ -1,0 +1,85 @@
+// swiftlint:disable all
+// Generated using SwiftGen — https://github.com/SwiftGen/SwiftGen
+
+import Foundation
+
+// swiftlint:disable superfluous_disable_command file_length implicit_return prefer_self_in_static_references
+
+// MARK: - Strings
+
+// swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
+// swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
+internal enum L10n {
+  /// Created by Shibuya
+  internal static let appCopyright = L10n.tr("Localizable", "app_copyright", fallback: "Created by Shibuya")
+  /// 
+  internal static let appFeatures = L10n.tr("Localizable", "app_features", fallback: "")
+  /// ガチャガチャ
+  internal static let appName = L10n.tr("Localizable", "app_name", fallback: "ガチャガチャ")
+  /// Ver %@
+  internal static func appVersion(_ p1: Any) -> String {
+    return L10n.tr("Localizable", "app_version_%@", String(describing: p1), fallback: "Ver %@")
+  }
+  /// キャンセル
+  internal static let cancel = L10n.tr("Localizable", "cancel", fallback: "キャンセル")
+  /// Localizable.strings
+  ///   CapsuleToyApp
+  /// 
+  ///   Created by t&a on 2025/07/08.
+  internal static let dateLocale = L10n.tr("Localizable", "date_locale", fallback: "ja_JP")
+  /// Asia/Tokyo
+  internal static let dateTimezone = L10n.tr("Localizable", "date_timezone", fallback: "Asia/Tokyo")
+  /// 削除
+  internal static let delete = L10n.tr("Localizable", "delete", fallback: "削除")
+  /// 確認
+  internal static let dialogConfirmTitle = L10n.tr("Localizable", "dialog_confirm_title", fallback: "確認")
+  /// 削除しますか？
+  internal static let dialogDeleteConfirmMsg = L10n.tr("Localizable", "dialog_delete_confirm_msg", fallback: "削除しますか？")
+  /// 削除に失敗しました。時間を空けてから再度お試しください。
+  internal static let dialogDeleteFailedMsg = L10n.tr("Localizable", "dialog_delete_failed_msg", fallback: "削除に失敗しました。時間を空けてから再度お試しください。")
+  /// 削除しました。
+  internal static let dialogDeleteMsg = L10n.tr("Localizable", "dialog_delete_msg", fallback: "削除しました。")
+  /// 「%@」を登録しました。
+  internal static func dialogEntryMsg(_ p1: Any) -> String {
+    return L10n.tr("Localizable", "dialog_entry_msg_%@", String(describing: p1), fallback: "「%@」を登録しました。")
+  }
+  /// Error
+  internal static let dialogErrorTitle = L10n.tr("Localizable", "dialog_error_title", fallback: "Error")
+  /// 成功
+  internal static let dialogSuccessTitle = L10n.tr("Localizable", "dialog_success_title", fallback: "成功")
+  /// 更新しました。
+  internal static let dialogUpdateMsg = L10n.tr("Localizable", "dialog_update_msg", fallback: "更新しました。")
+  /// 登録
+  internal static let entry = L10n.tr("Localizable", "entry", fallback: "登録")
+  /// OK
+  internal static let ok = L10n.tr("Localizable", "ok", fallback: "OK")
+  /// 送信
+  internal static let send = L10n.tr("Localizable", "send", fallback: "送信")
+  /// 未登録
+  internal static let unspecified = L10n.tr("Localizable", "unspecified", fallback: "未登録")
+  /// 更新
+  internal static let update = L10n.tr("Localizable", "update", fallback: "更新")
+}
+// swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
+// swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces
+
+// MARK: - Implementation Details
+
+extension L10n {
+  private static func tr(_ table: String, _ key: String, _ args: CVarArg..., fallback value: String) -> String {
+    let format = BundleToken.bundle.localizedString(forKey: key, value: value, table: table)
+    return String(format: format, locale: Locale.current, arguments: args)
+  }
+}
+
+// swiftlint:disable convenience_type
+private final class BundleToken {
+  static let bundle: Bundle = {
+    #if SWIFT_PACKAGE
+    return Bundle.module
+    #else
+    return Bundle(for: BundleToken.self)
+    #endif
+  }()
+}
+// swiftlint:enable convenience_type
