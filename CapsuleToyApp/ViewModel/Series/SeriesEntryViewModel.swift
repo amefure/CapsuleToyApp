@@ -12,6 +12,9 @@ final class SeriesEntryViewModel: ObservableObject {
     
     private let seriesRepository: SeriesRepositoryProtocol
     
+    @Published var showEntrySuccessAlert: Bool = false
+    @Published var showUpdateSuccessAlert: Bool = false
+    
     init(seriesRepository: SeriesRepositoryProtocol) {
         self.seriesRepository = seriesRepository
     }
@@ -24,35 +27,33 @@ final class SeriesEntryViewModel: ObservableObject {
         
     }
     
-    /// 新規作成
-    public func createSeries(
+    /// 新規作成 or 更新処理
+    public func createSeriesOrUpdate(
+        id: ObjectId?,
         name: String,
         count: Int,
         memo: String? = nil,
     ) {
-        let series = Series()
-        series.name = name
-        series.count = count
-        series.memo = memo
-        series.createdAt = Date()
-        series.updatedAt = Date()
-        seriesRepository.addSeries(series)
-    }
-
-    /// 更新処理
-    public func updateSeries(
-        id: ObjectId,
-        name: String,
-        count: Int,
-        memo: String? = nil,
-    ) {
-        seriesRepository.updateSeries(id: id) { [weak self] series in
-            guard let self else { return }
+        if let id {
+            seriesRepository.updateSeries(id: id) { [weak self] series in
+                guard let self else { return }
+                series.name = name
+                series.count = count
+                series.memo = memo
+                series.createdAt = Date()
+                series.updatedAt = Date()
+                showUpdateSuccessAlert = true
+            }
+        } else {
+            let series = Series()
             series.name = name
             series.count = count
             series.memo = memo
             series.createdAt = Date()
             series.updatedAt = Date()
+            seriesRepository.addSeries(series)
+            showEntrySuccessAlert = true
         }
+        
     }
 }

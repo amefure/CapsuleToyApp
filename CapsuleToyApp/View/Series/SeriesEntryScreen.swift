@@ -17,8 +17,7 @@ struct SeriesEntryScreen: View {
     @State private var count: String = ""
     @State private var memo: String = ""
     
-    @State private var showEntrySuccessAlert: Bool = false
-    @State private var showUpdateSuccessAlert: Bool = false
+
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
@@ -29,26 +28,12 @@ struct SeriesEntryScreen: View {
             TextField("MEMO", text: $memo)
             
             BoingButton {
-                
-                if let series {
-                    viewModel.updateSeries(
-                        id: series.id,
-                        name: name,
-                        count: count.toInt() ?? 0,
-                        memo: memo
-                    )
-                    showUpdateSuccessAlert = true
-                } else {
-                    viewModel.createSeries(
-                        name: name,
-                        count: count.toInt() ?? 0,
-                        memo: memo
-                    )
-                    showEntrySuccessAlert = true
-                }
-                
-                
-               
+                viewModel.createSeriesOrUpdate(
+                    id: series?.id,
+                    name: name,
+                    count: count.toInt() ?? 0,
+                    memo: memo
+                )
             } label: {
                 Image(systemName: "plus")
             }
@@ -58,19 +43,21 @@ struct SeriesEntryScreen: View {
             name = series.name
             count = String(series.count)
             memo = series.memo ?? ""
-        }.alert(
-            isPresented: $showEntrySuccessAlert,
-            title: "成功",
-            message: "「\(name)」を追加しました。",
-            positiveButtonTitle: "OK",
+        }
+        .onDisappear { viewModel.onDisappear() }
+        .alert(
+            isPresented: $viewModel.showEntrySuccessAlert,
+            title: L10n.dialogSuccessTitle,
+            message: L10n.dialogEntryMsg(name),
+            positiveButtonTitle: L10n.ok,
             positiveAction: {
                 dismiss()
             }
         ).alert(
-            isPresented: $showUpdateSuccessAlert,
-            title: "成功",
-            message: "更新しました。",
-            positiveButtonTitle: "OK",
+            isPresented: $viewModel.showUpdateSuccessAlert,
+            title: L10n.dialogSuccessTitle,
+            message: L10n.dialogUpdateMsg,
+            positiveButtonTitle: L10n.ok,
             positiveAction: {
                 dismiss()
             }

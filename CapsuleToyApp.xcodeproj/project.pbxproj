@@ -35,6 +35,8 @@
 		122FFC352E1C120D00FA1A6C /* ExAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFC122E1C120D00FA1A6C /* ExAlert.swift */; };
 		122FFC372E1C120D00FA1A6C /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFC1E2E1C120D00FA1A6C /* Logger.swift */; };
 		122FFC3A2E1C139300FA1A6C /* SeriesEntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFC392E1C138A00FA1A6C /* SeriesEntryViewModel.swift */; };
+		122FFC3C2E1D0ADF00FA1A6C /* SeriesDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFC3B2E1D0ADF00FA1A6C /* SeriesDetailScreen.swift */; };
+		122FFC3E2E1D0D5100FA1A6C /* SeriesDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFC3D2E1D0D4B00FA1A6C /* SeriesDetailViewModel.swift */; };
 		126CF5462E19CC6600C14395 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 126CF5452E19CC6600C14395 /* Swinject */; };
 		12B8CE9D2E195BBD00B61EED /* CapsuleToyAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B8CE9A2E195BBD00B61EED /* CapsuleToyAppApp.swift */; };
 		12B8CE9E2E195BBD00B61EED /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B8CE9B2E195BBD00B61EED /* RootView.swift */; };
@@ -42,6 +44,9 @@
 		12B8CEA52E195C7900B61EED /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12B8CEA42E195C7900B61EED /* Colors.xcassets */; };
 		12B8CEAB2E195E8100B61EED /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 12B8CEAA2E195E8100B61EED /* RealmSwift */; };
 		12B8CEAC2E195F3C00B61EED /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 12B8CEAA2E195E8100B61EED /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		12DF0C382E1D5D14008D1A57 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 12DF0C362E1D5D14008D1A57 /* Localizable.strings */; };
+		12DF0C3C2E1D5ED1008D1A57 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DF0C3B2E1D5ED1008D1A57 /* Strings.swift */; };
+		12DF0C3D2E1D5ED1008D1A57 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DF0C3A2E1D5ED1008D1A57 /* Assets.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -87,11 +92,17 @@
 		122FFC212E1C120D00FA1A6C /* JsonConvertUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonConvertUtility.swift; sourceTree = "<group>"; };
 		122FFC222E1C120D00FA1A6C /* ShareInfoUtillity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareInfoUtillity.swift; sourceTree = "<group>"; };
 		122FFC392E1C138A00FA1A6C /* SeriesEntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesEntryViewModel.swift; sourceTree = "<group>"; };
+		122FFC3B2E1D0ADF00FA1A6C /* SeriesDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesDetailScreen.swift; sourceTree = "<group>"; };
+		122FFC3D2E1D0D4B00FA1A6C /* SeriesDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesDetailViewModel.swift; sourceTree = "<group>"; };
 		12B8CE8B2E195BAD00B61EED /* CapsuleToyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CapsuleToyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12B8CE992E195BBD00B61EED /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		12B8CE9A2E195BBD00B61EED /* CapsuleToyAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleToyAppApp.swift; sourceTree = "<group>"; };
 		12B8CE9B2E195BBD00B61EED /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		12B8CEA42E195C7900B61EED /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		12DF0C372E1D5D14008D1A57 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		12DF0C392E1D5D23008D1A57 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		12DF0C3A2E1D5ED1008D1A57 /* Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
+		12DF0C3B2E1D5ED1008D1A57 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +168,7 @@
 			children = (
 				122FFBF42E1C096200FA1A6C /* SeriesListScreen.swift */,
 				122FFC0A2E1C11DB00FA1A6C /* SeriesEntryScreen.swift */,
+				122FFC3B2E1D0ADF00FA1A6C /* SeriesDetailScreen.swift */,
 			);
 			path = Series;
 			sourceTree = "<group>";
@@ -260,6 +272,7 @@
 			children = (
 				122FFBF62E1C098B00FA1A6C /* SeriesListViewModel.swift */,
 				122FFC392E1C138A00FA1A6C /* SeriesEntryViewModel.swift */,
+				122FFC3D2E1D0D4B00FA1A6C /* SeriesDetailViewModel.swift */,
 			);
 			path = Series;
 			sourceTree = "<group>";
@@ -407,6 +420,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				122FFC3E2E1D0D5100FA1A6C /* SeriesDetailViewModel.swift in Sources */,
 				122FFC052E1C0DCB00FA1A6C /* SeriesRepository.swift in Sources */,
 				122FFBEE2E1C071600FA1A6C /* CapsuleToy.swift in Sources */,
 				122FFC092E1C0E4400FA1A6C /* MockSeriesRepository.swift in Sources */,
@@ -435,6 +449,7 @@
 				122FFC352E1C120D00FA1A6C /* ExAlert.swift in Sources */,
 				122FFC3A2E1C139300FA1A6C /* SeriesEntryViewModel.swift in Sources */,
 				122FFC372E1C120D00FA1A6C /* Logger.swift in Sources */,
+				122FFC3C2E1D0ADF00FA1A6C /* SeriesDetailScreen.swift in Sources */,
 				122FFBE92E1C065000FA1A6C /* DIContainer.swift in Sources */,
 				12B8CE9E2E195BBD00B61EED /* RootView.swift in Sources */,
 				122FFC012E1C0BF400FA1A6C /* RealmRepositoryProtocol.swift in Sources */,

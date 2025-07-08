@@ -23,6 +23,10 @@ final class DIContainer: @unchecked Sendable{
         c.register(SeriesEntryViewModel.self) { r in
             SeriesEntryViewModel(seriesRepository: r.resolve(SeriesRepositoryProtocol.self)!)
         }
+        
+        c.register(SeriesDetailViewModel.self) { r in
+            SeriesDetailViewModel(seriesRepository: r.resolve(SeriesRepositoryProtocol.self)!)
+        }
     }
 
 

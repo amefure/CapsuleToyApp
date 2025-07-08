@@ -13,7 +13,7 @@ struct SeriesListScreen: View {
         VStack {
             List(viewModel.seriesList) { series in
                 NavigationLink {
-                    SeriesEntryScreen(series: series)
+                    SeriesDetailScreen(seriesId: series.id)
                 } label: {
                     Text(series.name)
                 }
