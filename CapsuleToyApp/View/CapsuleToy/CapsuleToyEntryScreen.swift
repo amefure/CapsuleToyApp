@@ -44,12 +44,19 @@ struct CapsuleToyEntryScreen: View {
             
             Spacer()
             
-            TextField("シリーズ名", text: $name)
+            Text("アイテム名")
+                .exInputLabelView()
+            TextField("アイテム名", text: $name)
+                .exInputBackView()
             
             Toggle(isOn: $isOwned) {
                 Text("GET")
             }
-            TextField("MEMO", text: $memo)
+            Text("MEMO")
+                .exInputLabelView()
+            TextEditor(text: $memo)
+                .frame(height: 100)
+                .exInputBackView()
             
             Spacer()
 
@@ -62,6 +69,10 @@ struct CapsuleToyEntryScreen: View {
         }
         .onDisappear { viewModel.onDisappear() }
         .navigationBarBackButtonHidden()
+        .padding()
+        .fontM()
+        .foregroundStyle(.exText)
+        .background(.exFoundation)
         .alert(
             isPresented: $viewModel.showEntrySuccessAlert,
             title: L10n.dialogSuccessTitle,

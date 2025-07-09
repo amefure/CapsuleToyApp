@@ -12,8 +12,7 @@ struct RootView: View {
     var body: some View {
         VStack {
             SeriesListScreen()
-        }
-        .padding()
+        }.background(.exFoundation)
     }
 }
 

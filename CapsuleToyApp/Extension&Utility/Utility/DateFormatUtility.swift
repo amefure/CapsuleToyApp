@@ -12,8 +12,8 @@ class DateFormatUtility {
     public let df = DateFormatter()
     private let c = Calendar(identifier: .gregorian)
 
-    init() {
-        df.dateFormat = "yyyy/MM/dd"
+    init(dateFormat: String = "yyyy/MM/dd") {
+        df.dateFormat = dateFormat
         df.locale = Locale(identifier: "ja_JP")
         df.calendar = c
         df.timeZone = TimeZone(identifier: "Asia/Tokyo")

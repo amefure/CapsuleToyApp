@@ -41,14 +41,28 @@ struct SeriesEntryScreen: View {
                 }
             )
             
-            Spacer()
+            Text("シリーズ名")
+                .exInputLabelView()
+            TextField("例：△△シリーズ", text: $name)
+                .exInputBackView()
             
-            TextField("シリーズ名", text: $name)
-            TextField("種類数", text: $count)
+            Text("種類数")
+                .exInputLabelView()
+            TextField("例：6種類", text: $count)
                 .keyboardType(.numberPad)
-            TextField("金額", text: $count)
+                .exInputBackView()
+            
+            Text("金額")
+                .exInputLabelView()
+            TextField("例：¥300", text: $count)
                 .keyboardType(.numberPad)
-            TextField("MEMO", text: $memo)
+                .exInputBackView()
+            
+            Text("MEMO")
+                .exInputLabelView()
+            TextEditor(text: $memo)
+                .frame(height: 100)
+                .exInputBackView()
             
             Spacer()
 
@@ -61,6 +75,10 @@ struct SeriesEntryScreen: View {
         }
         .onDisappear { viewModel.onDisappear() }
         .navigationBarBackButtonHidden()
+        .padding()
+        .fontM()
+        .foregroundStyle(.exText)
+        .background(.exFoundation)
         .alert(
             isPresented: $viewModel.showEntrySuccessAlert,
             title: L10n.dialogSuccessTitle,

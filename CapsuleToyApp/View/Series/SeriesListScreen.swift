@@ -27,6 +27,10 @@ struct SeriesListScreen: View {
 
         }.onAppear { viewModel.onAppear() }
             .onDisappear { viewModel.onDisappear() }
+            .padding()
+            .fontM()
+            .foregroundStyle(.exText)
+            .background(.exFoundation)
     }
 }
 

@@ -7,6 +7,30 @@
 
 import SwiftUI
 
+struct InputBackView: ViewModifier {
+    public var width: CGFloat = DeviceSizeUtility.deviceWidth - 30
+    func body(content: Content) -> some View {
+        content
+            .padding()
+            .tint(.exModeText)
+            .foregroundStyle(.exModeText)
+            .frame(width: width)
+            .background(.exModeBase)
+            .fontM(bold: true)
+            .clipShape(RoundedRectangle(cornerRadius: 8))
+    }
+}
+
+struct InputLabelView: ViewModifier {
+    
+    func body(content: Content) -> some View {
+        content
+            .foregroundStyle(.exModeText)
+            .fontS(bold: true)
+            .frame(width: DeviceSizeUtility.deviceWidth - 30, alignment: .leading)
+    }
+}
+
 struct CircleButtonView: ViewModifier {
     
     public let foregroundColor: Color
@@ -23,6 +47,22 @@ struct CircleButtonView: ViewModifier {
 }
 
 extension View {
+    
+    /// Input要素上に配置するラベル
+    func exInputLabelView() -> some View {
+        modifier(InputLabelView())
+    }
+    
+    /// 白枠入力ボックス背景
+    func exInputBackView(
+        width: CGFloat? = nil
+    ) -> some View {
+        if let width = width {
+            modifier(InputBackView(width: width))
+        } else {
+            modifier(InputBackView())
+        }
+    }
     
     /// サークルボタン
     func exCircleButtonView(

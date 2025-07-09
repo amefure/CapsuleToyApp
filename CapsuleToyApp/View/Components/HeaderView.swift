@@ -68,8 +68,7 @@ struct HeaderView<Content: View>: View {
                 Spacer()
                     .frame(width: 40)
             }
-        }.padding()
-            .frame(height: 50)
+        }.frame(height: 50)
             .foregroundStyle(.exThema)
     }
 }

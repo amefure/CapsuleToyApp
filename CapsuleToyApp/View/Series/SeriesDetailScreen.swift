@@ -17,6 +17,8 @@ struct SeriesDetailScreen: View {
     private let grids = Array(repeating: GridItem(.fixed(DeviceSizeUtility.deviceWidth / 2 - 20)), count: 2)
     
     @State private var presentEditView: Bool = false
+    
+    private let df = DateFormatUtility(dateFormat: "yyyy年M月d日")
 
     @Environment(\.dismiss) private var dismiss
     
@@ -45,8 +47,10 @@ struct SeriesDetailScreen: View {
             if let series = viewModel.series {
                 
                 Text(series.name)
-                Text("\(series.count)")
-                Text("\(series.createdAt)")
+                    .fontL(bold: true)
+                    .lineLimit(2)
+                
+                Text(df.getString(date: series.createdAt))
                     .navigationDestination(isPresented: $presentEditView) {
                         SeriesEntryScreen(series: series)
                     }
@@ -72,8 +76,8 @@ struct SeriesDetailScreen: View {
                             } label: {
                                 VStack {
                                     Text(toy.name)
-                                    Text(toy.memo ?? "")
-                                }.frame(height: 80)
+                                    Text(toy.memo)
+                                }.frame(width: 80, height: 80)
                                     .background(.exThema)
                             }
 
@@ -87,6 +91,10 @@ struct SeriesDetailScreen: View {
         }.onAppear { viewModel.onAppear(id: seriesId) }
             .onDisappear { viewModel.onDisappear() }
             .navigationBarBackButtonHidden()
+            .padding()
+            .fontM()
+            .foregroundStyle(.exText)
+            .background(.exFoundation)
             .navigationDestination(isPresented: $viewModel.presentEntryToyScreen, destination: {
                 CapsuleToyEntryScreen(seriesId: seriesId, toy: selectToy)
             })
