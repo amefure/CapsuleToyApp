@@ -15,6 +15,7 @@ struct SeriesEntryScreen: View {
     
     @State private var name: String = ""
     @State private var count: String = ""
+    @State private var amount: String = ""
     @State private var memo: String = ""
     
 
@@ -30,10 +31,11 @@ struct SeriesEntryScreen: View {
                     dismiss()
                 },
                 trailingAction: {
-                    viewModel.createSeriesOrUpdate(
+                    viewModel.createOrUpdateSeries(
                         id: series?.id,
                         name: name,
                         count: count.toInt() ?? 0,
+                        amount: amount.toInt() ?? 0,
                         memo: memo
                     )
                 }
@@ -44,13 +46,18 @@ struct SeriesEntryScreen: View {
             TextField("シリーズ名", text: $name)
             TextField("種類数", text: $count)
                 .keyboardType(.numberPad)
+            TextField("金額", text: $count)
+                .keyboardType(.numberPad)
             TextField("MEMO", text: $memo)
+            
+            Spacer()
 
         }.onAppear {
             guard let series else { return }
             name = series.name
             count = String(series.count)
-            memo = series.memo ?? ""
+            amount = String(series.amount)
+            memo = series.memo
         }
         .onDisappear { viewModel.onDisappear() }
         .navigationBarBackButtonHidden()

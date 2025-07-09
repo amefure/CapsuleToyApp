@@ -7,7 +7,6 @@
 
 import SwiftUI
 import UIKit
-import Swinject
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_: UIApplication,

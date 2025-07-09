@@ -11,11 +11,7 @@ struct RootView: View {
 
     var body: some View {
         VStack {
-            NavigationLink {
-                SeriesListScreen()
-            } label: {
-                Text("SeriesListScreen")
-            }
+            SeriesListScreen()
         }
         .padding()
     }

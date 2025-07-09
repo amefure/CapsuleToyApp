@@ -28,17 +28,19 @@ final class SeriesEntryViewModel: ObservableObject {
     }
     
     /// 新規作成 or 更新処理
-    public func createSeriesOrUpdate(
+    public func createOrUpdateSeries(
         id: ObjectId?,
         name: String,
         count: Int,
-        memo: String? = nil,
+        amount: Int,
+        memo: String,
     ) {
         if let id {
             seriesRepository.updateSeries(id: id) { [weak self] series in
                 guard let self else { return }
                 series.name = name
                 series.count = count
+                series.amount = amount
                 series.memo = memo
                 series.createdAt = Date()
                 series.updatedAt = Date()
@@ -48,6 +50,7 @@ final class SeriesEntryViewModel: ObservableObject {
             let series = Series()
             series.name = name
             series.count = count
+            series.amount = amount
             series.memo = memo
             series.createdAt = Date()
             series.updatedAt = Date()
