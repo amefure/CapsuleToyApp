@@ -34,7 +34,7 @@ final class CapsuleToyEntryViewModel: ObservableObject {
         toyId: ObjectId?,
         name: String,
         isOwned: Bool,
-        memo: String? = nil,
+        memo: String,
         image: Image?
     ) {
         if let toyId {

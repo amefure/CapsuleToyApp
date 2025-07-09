@@ -13,7 +13,7 @@ struct CapsuleToyEntryScreen: View {
     @StateObject private var viewModel = DIContainer.shared.resolve(CapsuleToyEntryViewModel.self)
     
     public var seriesId: ObjectId
-    public var toyId: ObjectId?
+    public var toy: CapsuleToy?
     
     @State private var name: String = "TOYS"
     @State private var isOwned: Bool = false
@@ -33,7 +33,7 @@ struct CapsuleToyEntryScreen: View {
                 trailingAction: {
                     viewModel.createOrUpdateToy(
                         seriesId: seriesId,
-                        toyId: toyId,
+                        toyId: toy?.id,
                         name: name,
                         isOwned: isOwned,
                         memo: memo,
@@ -53,7 +53,13 @@ struct CapsuleToyEntryScreen: View {
             
             Spacer()
 
-        }.onAppear { viewModel.onAppear() }
+        }.onAppear {
+            guard let toy else { return }
+            name = toy.name
+            isOwned = toy.isOwned
+            memo = toy.memo
+            viewModel.onAppear()
+        }
         .onDisappear { viewModel.onDisappear() }
         .navigationBarBackButtonHidden()
         .alert(

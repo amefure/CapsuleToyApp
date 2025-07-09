@@ -13,7 +13,7 @@ struct SeriesDetailScreen: View {
     @StateObject private var viewModel = DIContainer.shared.resolve(SeriesDetailViewModel.self)
     
     public var seriesId: ObjectId
-    @State private var selectToyId: ObjectId? = nil
+    @State private var selectToy: CapsuleToy? = nil
     private let grids = Array(repeating: GridItem(.fixed(DeviceSizeUtility.deviceWidth / 2 - 20)), count: 2)
     
     @State private var presentEditView: Bool = false
@@ -66,11 +66,18 @@ struct SeriesDetailScreen: View {
                 ScrollView {
                     LazyVGrid(columns: grids) {
                         ForEach(series.capsuleToys) { toy in
-                            VStack {
-                                Text(toy.name)
-                                Text(toy.memo ?? "")
-                            }.frame(height: 80)
-                                .background(.exThema)
+                            BoingButton {
+                                selectToy = toy
+                                viewModel.presentEntryToyScreen = true
+                            } label: {
+                                VStack {
+                                    Text(toy.name)
+                                    Text(toy.memo ?? "")
+                                }.frame(height: 80)
+                                    .background(.exThema)
+                            }
+
+                           
                         }.foregroundStyle(.white)
                     }.id(UUID()) // モックの場合のみ必要かも(新規追加後に再描画されないため)
                 }
@@ -81,7 +88,7 @@ struct SeriesDetailScreen: View {
             .onDisappear { viewModel.onDisappear() }
             .navigationBarBackButtonHidden()
             .navigationDestination(isPresented: $viewModel.presentEntryToyScreen, destination: {
-                CapsuleToyEntryScreen(seriesId: seriesId, toyId: nil)
+                CapsuleToyEntryScreen(seriesId: seriesId, toy: selectToy)
             })
             .alert(
                 isPresented: $viewModel.showConfirmDeleteAlert,
