@@ -26,7 +26,7 @@ class RealmRepository: RealmRepositoryProtocol {
     }
     
     /// Update
-    public func updateObject<T: Object>(_ objectType: T.Type, id: String, updateBlock: @escaping (T) -> Void) {
+    public func updateObject<T: Object>(_ objectType: T.Type, id: ObjectId, updateBlock: @escaping (T) -> Void) {
         guard let obj = realm.object(ofType: objectType, forPrimaryKey: id) else { return }
         try? realm.write {
             updateBlock(obj)
@@ -43,7 +43,7 @@ class RealmRepository: RealmRepositoryProtocol {
     }
     
     /// プライマリーキーで取得
-    public func getByPrimaryKey<T: Object>(_ id: String) -> T? {
+    public func getByPrimaryKey<T: Object>(_ id: ObjectId) -> T? {
         let obj = realm.object(ofType: T.self, forPrimaryKey: id)
         return obj?.freeze()
     }
@@ -91,7 +91,7 @@ extension RealmRepository {
     }
     
     /// プライマリーキーで取得 background
-    public func getByPrimaryKeyBG<T: Object>(_ id: String) -> T? {
+    public func getByPrimaryKeyBG<T: Object>(_ id: ObjectId) -> T? {
         guard let realmBG = try? Realm() else { return nil }
         let obj = realmBG.object(ofType: T.self, forPrimaryKey: id)
         return obj?.freeze()
@@ -99,7 +99,7 @@ extension RealmRepository {
     
     
     /// Update background
-    public func updateObjectBG<T: Object>(_ objectType: T.Type, id: String, updateBlock: @escaping (T) -> Void) {
+    public func updateObjectBG<T: Object>(_ objectType: T.Type, id: ObjectId, updateBlock: @escaping (T) -> Void) {
         guard let realmBG = try? Realm() else { return }
         guard let obj = realmBG.object(ofType: objectType, forPrimaryKey: id) else { return }
         try? realmBG.write {

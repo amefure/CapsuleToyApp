@@ -16,12 +16,12 @@ protocol RealmRepositoryProtocol {
     func readAllObjs<T: Object>() -> [T]
     func readAllObjsBG<T: Object>() -> [T]
 
-    func getByPrimaryKey<T: Object>(_ id: String) -> T?
-    func getByPrimaryKeyBG<T: Object>(_ id: String) -> T?
+    func getByPrimaryKey<T: Object>(_ id: ObjectId) -> T?
+    func getByPrimaryKeyBG<T: Object>(_ id: ObjectId) -> T?
 
     // Update
-    func updateObject<T: Object>(_ objectType: T.Type, id: String, updateBlock: @escaping (T) -> Void)
-    func updateObjectBG<T: Object>(_ objectType: T.Type, id: String, updateBlock: @escaping (T) -> Void)
+    func updateObject<T: Object>(_ objectType: T.Type, id: ObjectId, updateBlock: @escaping (T) -> Void)
+    func updateObjectBG<T: Object>(_ objectType: T.Type, id: ObjectId, updateBlock: @escaping (T) -> Void)
 
     // Delete
     func removeObjs<T: Object & Identifiable>(list: [T])

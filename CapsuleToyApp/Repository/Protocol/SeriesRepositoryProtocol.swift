@@ -14,4 +14,9 @@ protocol SeriesRepositoryProtocol {
     func updateSeries(id: ObjectId, updateBlock: @escaping (Series) -> Void)
     func deleteSeries(_ list: [Series])
     func deleteAllSeries()
+    func addCapsuleToy(seriesId id: ObjectId, toy: CapsuleToy)
+    func updateCapsuleToy( id: ObjectId, updateBlock: @escaping (CapsuleToy) -> Void)
+    func removeCapsuleToy(seriesId id: ObjectId, toyId: ObjectId)
+    func removeAllCapsuleToys(seriesId id: ObjectId)
 }
+
