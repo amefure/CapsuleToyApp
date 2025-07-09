@@ -13,6 +13,8 @@ struct SeriesDetailScreen: View {
     @StateObject private var viewModel = DIContainer.shared.resolve(SeriesDetailViewModel.self)
     
     public var seriesId: ObjectId
+    @State private var selectToyId: ObjectId? = nil
+    private let grids = Array(repeating: GridItem(.fixed(DeviceSizeUtility.deviceWidth / 2 - 20)), count: 2)
     
     @State private var presentEditView: Bool = false
 
@@ -31,6 +33,13 @@ struct SeriesDetailScreen: View {
                 }
             )
             
+            BoingButton {
+                viewModel.showConfirmDeleteAlert = true
+            } label: {
+                Image(systemName: "trash")
+                    .exCircleButtonView()
+            }
+            
             Spacer()
             
             if let series = viewModel.series {
@@ -42,16 +51,38 @@ struct SeriesDetailScreen: View {
                         SeriesEntryScreen(series: series)
                     }
                 
-                BoingButton {
-                    viewModel.showConfirmDeleteAlert = true
-                } label: {
-                    Image(systemName: "trash")
-                        .exCircleButtonView()
+                HStack {
+                    Text("コレクション")
+                    Spacer()
+                    
+                    BoingButton {
+                        viewModel.presentEntryToyScreen = true
+                    } label: {
+                        Image(systemName: "plus")
+                            .exCircleButtonView()
+                    }
+                }
+               
+                ScrollView {
+                    LazyVGrid(columns: grids) {
+                        ForEach(series.capsuleToys) { toy in
+                            VStack {
+                                Text(toy.name)
+                                Text(toy.memo ?? "")
+                            }.frame(height: 80)
+                                .background(.exThema)
+                        }.foregroundStyle(.white)
+                    }.id(UUID()) // モックの場合のみ必要かも(新規追加後に再描画されないため)
                 }
             }
+            
+            Spacer()
         }.onAppear { viewModel.onAppear(id: seriesId) }
             .onDisappear { viewModel.onDisappear() }
             .navigationBarBackButtonHidden()
+            .navigationDestination(isPresented: $viewModel.presentEntryToyScreen, destination: {
+                CapsuleToyEntryScreen(seriesId: seriesId, toyId: nil)
+            })
             .alert(
                 isPresented: $viewModel.showConfirmDeleteAlert,
                 title: L10n.dialogConfirmTitle,

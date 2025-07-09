@@ -18,6 +18,9 @@ final class SeriesDetailViewModel: ObservableObject {
     @Published var showSuccessDeleteAlert: Bool = false
     @Published var showFaieldDeleteAlert: Bool = false
     
+    
+    @Published var presentEntryToyScreen: Bool = false
+    
     init(seriesRepository: SeriesRepositoryProtocol) {
         self.seriesRepository = seriesRepository
     }
