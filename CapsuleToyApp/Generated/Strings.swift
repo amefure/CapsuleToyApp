@@ -51,6 +51,22 @@ internal enum L10n {
   internal static let dialogUpdateMsg = L10n.tr("Localizable", "dialog_update_msg", fallback: "更新しました。")
   /// 登録
   internal static let entry = L10n.tr("Localizable", "entry", fallback: "登録")
+  /// 画像トリミング
+  internal static let imageClopTitle = L10n.tr("Localizable", "image_clop_title", fallback: "画像トリミング")
+  /// EI001
+  internal static let imageError1 = L10n.tr("Localizable", "image_error_1", fallback: "EI001")
+  /// EI002
+  internal static let imageError2 = L10n.tr("Localizable", "image_error_2", fallback: "EI002")
+  /// EI003
+  internal static let imageError3 = L10n.tr("Localizable", "image_error_3", fallback: "EI003")
+  /// 予期せぬエラーが発生しました。何度も繰り返される場合はアプリを起動し直して再度実行してみてください。
+  internal static let imageErrorCastFailed = L10n.tr("Localizable", "image_error_cast_failed", fallback: "予期せぬエラーが発生しました。何度も繰り返される場合はアプリを起動し直して再度実行してみてください。")
+  /// 画像の削除に失敗しました。何度も繰り返される場合はアプリを起動し直して再度実行してみてください。
+  internal static let imageErrorDeleteFailed = L10n.tr("Localizable", "image_error_delete_failed", fallback: "画像の削除に失敗しました。何度も繰り返される場合はアプリを起動し直して再度実行してみてください。")
+  /// 画像の保存に失敗しました。何度も繰り返される場合はアプリを起動し直して再度実行してみてください。
+  internal static let imageErrorSaveFailed = L10n.tr("Localizable", "image_error_save_failed", fallback: "画像の保存に失敗しました。何度も繰り返される場合はアプリを起動し直して再度実行してみてください。")
+  /// 画像 Error
+  internal static let imageErrorTitle = L10n.tr("Localizable", "image_error_title", fallback: "画像 Error")
   /// OK
   internal static let ok = L10n.tr("Localizable", "ok", fallback: "OK")
   /// 送信

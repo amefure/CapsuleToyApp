@@ -36,3 +36,17 @@
 "dialog_delete_msg" = "削除しました。";
 "dialog_delete_failed_msg" = "削除に失敗しました。時間を空けてから再度お試しください。";
 "dialog_delete_confirm_msg" = "削除しますか？";
+
+"image_clop_title" = "画像トリミング";
+
+
+// MARK: - ERROR
+// Image Error
+"image_error_save_failed" = "画像の保存に失敗しました。何度も繰り返される場合はアプリを起動し直して再度実行してみてください。";
+"image_error_delete_failed" = "画像の削除に失敗しました。何度も繰り返される場合はアプリを起動し直して再度実行してみてください。";
+"image_error_cast_failed" = "予期せぬエラーが発生しました。何度も繰り返される場合はアプリを起動し直して再度実行してみてください。";
+
+"image_error_title" = "画像 Error";
+"image_error_1" = "EI001";
+"image_error_2" = "EI002";
+"image_error_3" = "EI003";

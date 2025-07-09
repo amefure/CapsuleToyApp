@@ -75,6 +75,12 @@ struct SeriesDetailScreen: View {
                                 viewModel.presentEntryToyScreen = true
                             } label: {
                                 VStack {
+                                    ImagePreView(
+                                        photoPath: toy.imageDataPath,
+                                        width: DeviceSizeUtility.deviceWidth,
+                                        height: 80,
+                                        isNotView: true
+                                    )
                                     Text(toy.name)
                                     Text(toy.memo)
                                 }.frame(width: 80, height: 80)

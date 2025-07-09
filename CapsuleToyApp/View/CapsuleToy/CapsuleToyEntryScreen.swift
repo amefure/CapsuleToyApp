@@ -18,6 +18,7 @@ struct CapsuleToyEntryScreen: View {
     @State private var name: String = "TOYS"
     @State private var isOwned: Bool = false
     @State private var memo: String = ""
+    @State private var image: UIImage? = nil
     
     @Environment(\.dismiss) private var dismiss
     
@@ -37,12 +38,13 @@ struct CapsuleToyEntryScreen: View {
                         name: name,
                         isOwned: isOwned,
                         memo: memo,
-                        image: nil
+                        image: image
                     )
                 }
             )
             
-            Spacer()
+            ImageSelectView(image: $image)
+                .padding(.vertical)
             
             Text("アイテム名")
                 .exInputLabelView()
