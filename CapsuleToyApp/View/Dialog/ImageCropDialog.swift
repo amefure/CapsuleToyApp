@@ -190,7 +190,8 @@ struct ImageCropDialog: View {
            
             Spacer()
            
-        }.background(.ultraThinMaterial)
+        }.padding()
+            .background(.ultraThinMaterial)
             .onAppear {
                 originalImage = uiImage
             }

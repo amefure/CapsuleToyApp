@@ -18,6 +18,7 @@ struct SeriesListScreen: View {
                     Text(series.name)
                 }
             }
+                
             
             NavigationLink {
                 SeriesEntryScreen()
@@ -36,4 +37,24 @@ struct SeriesListScreen: View {
 
 #Preview {
     SeriesListScreen()
+}
+
+
+struct BackColor: View {
+    var body: some View {
+        LinearGradient(
+           gradient: Gradient(
+            colors: [
+            .exFoundation1,
+            .exFoundation2,
+            .exFoundation3,
+            .exFoundation4,
+            .exFoundation5,
+            .exFoundation6,
+            .exFoundation7
+            ]
+           ),
+           startPoint: .bottomTrailing, endPoint: .topLeading
+       ).ignoresSafeArea()
+    }
 }

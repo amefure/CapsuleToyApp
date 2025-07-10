@@ -22,6 +22,8 @@ final class DIContainer: @unchecked Sendable{
             c.register(SeriesRepositoryProtocol.self) { _ in SeriesRepository() }
         }
         
+        c.register(UserDefaultsRepository.self) { _ in UserDefaultsRepository() }
+        
         
         // Add ViewModel
         c.register(SeriesListViewModel.self) { r in
@@ -38,6 +40,10 @@ final class DIContainer: @unchecked Sendable{
         
         c.register(CapsuleToyEntryViewModel.self) { r in
             CapsuleToyEntryViewModel(seriesRepository: r.resolve(SeriesRepositoryProtocol.self)!)
+        }
+        
+        c.register(RootEnvironment.self) { r in
+            RootEnvironment(userDefaultsRepository: r.resolve(UserDefaultsRepository.self)!)
         }
     }
 

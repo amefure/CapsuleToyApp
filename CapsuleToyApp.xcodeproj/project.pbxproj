@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		122ECCC52E1FED24000F757A /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECCC42E1FED24000F757A /* CustomTabBar.swift */; };
+		122ECCC72E1FED41000F757A /* RootEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECCC62E1FED40000F757A /* RootEnvironment.swift */; };
+		122ECCCA2E1FEE8F000F757A /* AppTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECCC92E1FEE8D000F757A /* AppTab.swift */; };
 		122FFBE92E1C065000FA1A6C /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFBE82E1C065000FA1A6C /* DIContainer.swift */; };
 		122FFBEE2E1C071600FA1A6C /* CapsuleToy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFBED2E1C070500FA1A6C /* CapsuleToy.swift */; };
 		122FFBF12E1C078F00FA1A6C /* Series.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFBF02E1C078600FA1A6C /* Series.swift */; };
@@ -74,6 +77,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		122ECCC42E1FED24000F757A /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		122ECCC62E1FED40000F757A /* RootEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootEnvironment.swift; sourceTree = "<group>"; };
+		122ECCC92E1FEE8D000F757A /* AppTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTab.swift; sourceTree = "<group>"; };
 		122FFBE82E1C065000FA1A6C /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		122FFBED2E1C070500FA1A6C /* CapsuleToy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleToy.swift; sourceTree = "<group>"; };
 		122FFBF02E1C078600FA1A6C /* Series.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Series.swift; sourceTree = "<group>"; };
@@ -138,6 +144,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		122ECCC82E1FEE84000F757A /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				122ECCC92E1FEE8D000F757A /* AppTab.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
 		122FFBE72E1C063900FA1A6C /* DI */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +163,7 @@
 		122FFBEA2E1C069A00FA1A6C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				122ECCC82E1FEE84000F757A /* Enum */,
 				122FFBFA2E1C0A2500FA1A6C /* Config */,
 				122FFBEF2E1C074700FA1A6C /* Domain */,
 				12DF0C502E1EB028008D1A57 /* Error */,
@@ -170,6 +185,7 @@
 		122FFBEC2E1C06AA00FA1A6C /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				122ECCC62E1FED40000F757A /* RootEnvironment.swift */,
 				122FFC382E1C138200FA1A6C /* Series */,
 				12DF0C432E1E5AF7008D1A57 /* CapsuleToy */,
 			);
@@ -368,6 +384,7 @@
 			isa = PBXGroup;
 			children = (
 				12DF0C3F2E1D629C008D1A57 /* HeaderView.swift */,
+				122ECCC42E1FED24000F757A /* CustomTabBar.swift */,
 				12DF0C492E1EAE82008D1A57 /* ImageSelectView.swift */,
 				12DF0C552E1EB284008D1A57 /* ImagePreView.swift */,
 			);
@@ -509,10 +526,12 @@
 				122FFC252E1C120D00FA1A6C /* DeviceSizeUtility.swift in Sources */,
 				12DF0C542E1EB047008D1A57 /* AppError.swift in Sources */,
 				122FFC262E1C120D00FA1A6C /* ExFont.swift in Sources */,
+				122ECCC72E1FED41000F757A /* RootEnvironment.swift in Sources */,
 				122FFC272E1C120D00FA1A6C /* ExModifier.swift in Sources */,
 				12DF0C4A2E1EAE83008D1A57 /* ImageSelectView.swift in Sources */,
 				122FFC2A2E1C120D00FA1A6C /* ExString.swift in Sources */,
 				12DF0C562E1EB28B008D1A57 /* ImagePreView.swift in Sources */,
+				122ECCCA2E1FEE8F000F757A /* AppTab.swift in Sources */,
 				122FFC2B2E1C120D00FA1A6C /* ShareInfoUtillity.swift in Sources */,
 				122FFC2C2E1C120D00FA1A6C /* DateFormatUtility.swift in Sources */,
 				12DF0C402E1D629D008D1A57 /* HeaderView.swift in Sources */,
@@ -521,6 +540,7 @@
 				122FFC2E2E1C120D00FA1A6C /* ExBoingButton.swift in Sources */,
 				122FFC302E1C120D00FA1A6C /* ExCollection.swift in Sources */,
 				122FFC312E1C120D00FA1A6C /* JsonConvertUtility.swift in Sources */,
+				122ECCC52E1FED24000F757A /* CustomTabBar.swift in Sources */,
 				12DF0C4F2E1EAFF9008D1A57 /* ImageFileManager.swift in Sources */,
 				122FFC322E1C120D00FA1A6C /* ExUIApplication.swift in Sources */,
 				122FFC342E1C120D00FA1A6C /* ExModalBaclClear.swift in Sources */,

@@ -10,6 +10,8 @@ import UIKit
 class UserDefaultsKey {
     /// アプリ内課金：広告削除
     static let PURCHASED_REMOVE_ADS = "PURCHASE_REMOVE_ADS"
+    /// アクティブにしているタブ
+    static let ACTIVE_TAB = "ACTIVE_TAB"
 }
 
 /// `UserDefaults`の基底クラス
@@ -21,32 +23,45 @@ final class UserDefaultsRepository: @unchecked Sendable {
     private let userDefaults: UserDefaults = UserDefaults.standard
 
     /// Bool：保存
-    public func setBoolData(key: String, isOn: Bool) {
+    private func setBoolData(key: String, isOn: Bool) {
         userDefaults.set(isOn, forKey: key)
     }
 
     /// Bool：取得
-    public func getBoolData(key: String) -> Bool {
+    private func getBoolData(key: String) -> Bool {
         return userDefaults.bool(forKey: key)
     }
 
     /// Int：保存
-    public func setIntData(key: String, value: Int) {
+    private func setIntData(key: String, value: Int) {
         userDefaults.set(value, forKey: key)
     }
 
     /// Int：取得
-    public func getIntData(key: String) -> Int {
+    private func getIntData(key: String) -> Int {
         return userDefaults.integer(forKey: key)
     }
 
     /// String：保存
-    public func setStringData(key: String, value: String) {
+    private func setStringData(key: String, value: String) {
         userDefaults.set(value, forKey: key)
     }
 
     /// String：取得
-    public func getStringData(key: String, initialValue: String = "") -> String {
+    private func getStringData(key: String, initialValue: String = "") -> String {
         return userDefaults.string(forKey: key) ?? initialValue
+    }
+}
+
+extension UserDefaultsRepository {
+    /// `ACTIVE_TAB`
+    public func setActiveTab(_ tab: AppTab) {
+        setIntData(key: UserDefaultsKey.ACTIVE_TAB, value: tab.rawValue)
+    }
+    
+    /// `ACTIVE_TAB`
+    public func getActiveTab() -> AppTab {
+        let tab = getIntData(key: UserDefaultsKey.ACTIVE_TAB)
+        return AppTab(rawValue: tab) ?? .series
     }
 }
