@@ -14,6 +14,8 @@ final class CapsuleToy: Object, ObjectKeyIdentifiable, Codable {
     @Persisted var name: String = ""
     /// 所持フラグ
     @Persisted var isOwned: Bool = false
+    /// シークレットフラグ
+    @Persisted var isSecret: Bool = false
     /// メモ
     @Persisted var memo: String
     /// 画像パス
@@ -31,6 +33,7 @@ extension CapsuleToy {
             toy.id = ObjectId.generate()
             toy.name = "カプセルトイ No.\(index)"
             toy.isOwned = index % 2 == 0
+            toy.isSecret = index % 2 == 0
             toy.memo = index % 3 == 0 ? "これはメモです" : ""
             toy.imageDataPath = index % 2 == 0 ? "/path/to/image\(index).png" : nil
             toy.createdAt = Date()

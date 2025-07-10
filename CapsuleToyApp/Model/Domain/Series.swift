@@ -27,6 +27,26 @@ final class Series: Object, ObjectKeyIdentifiable, Codable {
     @Persisted var updatedAt: Date = Date()
 }
 
+
+extension Series {
+    
+    /// 所有済みのアイテム数を取得
+    public var isOwendToysCount: Int {
+        capsuleToys.filter { $0.isOwned }.count
+    }
+    
+    /// アイテムを全て獲得済みかどうか
+    public var isComplete: Bool {
+        isOwendToysCount >= count
+    }
+    
+    /// 手動で登録している種類数と実際に登録しているアイテム数で大きい方を取得
+    public var highCount: Int {
+        max(capsuleToys.count, count)
+    }
+}
+
+
 extension Series {
     static func mock(
         name: String = "猫フィギュア Vol.1",

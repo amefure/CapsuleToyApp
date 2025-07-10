@@ -34,6 +34,7 @@ final class CapsuleToyEntryViewModel: ObservableObject {
         toyId: ObjectId?,
         name: String,
         isOwned: Bool,
+        isSecret: Bool,
         memo: String,
         image: UIImage?
     ) {
@@ -43,6 +44,7 @@ final class CapsuleToyEntryViewModel: ObservableObject {
             seriesRepository.updateCapsuleToy(id: toyId) { toy in
                 toy.name = name
                 toy.isOwned = isOwned
+                toy.isSecret = isSecret
                 toy.memo = memo
                 toy.imageDataPath = path
                 toy.createdAt = Date()
@@ -56,6 +58,7 @@ final class CapsuleToyEntryViewModel: ObservableObject {
             let path: String? = saveImageForLocal(id: toy.id.stringValue, image: image)
             toy.name = name
             toy.isOwned = isOwned
+            toy.isSecret = isSecret
             toy.memo = memo
             toy.imageDataPath = path
             toy.createdAt = Date()

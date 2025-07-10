@@ -9,52 +9,58 @@ import SwiftUI
 
 struct SeriesListScreen: View {
     @StateObject private var viewModel = DIContainer.shared.resolve(SeriesListViewModel.self)
+    
+    @State private var presentEntryScreen: Bool = false
     var body: some View {
         VStack {
+            
+            HeaderView(
+                trailingIcon: "plus",
+                trailingAction: {
+                    presentEntryScreen = true
+                }
+            ).padding(.horizontal)
+            
             List(viewModel.seriesList) { series in
                 NavigationLink {
                     SeriesDetailScreen(seriesId: series.id)
                 } label: {
-                    Text(series.name)
-                }
+                    HStack(alignment: .bottom) {
+                        Image(systemName: "circle.tophalf.filled")
+                            .foregroundStyle(.accent)
+                        
+                        Text(series.name)
+                            .fontM(bold: true)
+                            .lineLimit(1)
+                        
+                        Spacer()
+                        
+                        HStack(spacing: 5) {
+                            Text("\(series.isOwendToysCount)")
+                                .fontS(bold: true)
+                            
+                            Text("／")
+                                .fontS(bold: true)
+                            
+                            Text("\(series.count)")
+                                .fontS(bold: true)
+                        }.foregroundStyle(series.isComplete ? .accent : .exText)
+                       
+                    }
+                }.frame(height: 60)
             }
                 
-            
-            NavigationLink {
-                SeriesEntryScreen()
-            } label: {
-                Text("ADD")
-            }
-
         }.onAppear { viewModel.onAppear() }
             .onDisappear { viewModel.onDisappear() }
-            .padding()
             .fontM()
             .foregroundStyle(.exText)
             .background(.exFoundation)
+            .fullScreenCover(isPresented: $presentEntryScreen) {
+                SeriesEntryScreen()
+            }
     }
 }
 
 #Preview {
     SeriesListScreen()
-}
-
-
-struct BackColor: View {
-    var body: some View {
-        LinearGradient(
-           gradient: Gradient(
-            colors: [
-            .exFoundation1,
-            .exFoundation2,
-            .exFoundation3,
-            .exFoundation4,
-            .exFoundation5,
-            .exFoundation6,
-            .exFoundation7
-            ]
-           ),
-           startPoint: .bottomTrailing, endPoint: .topLeading
-       ).ignoresSafeArea()
-    }
 }

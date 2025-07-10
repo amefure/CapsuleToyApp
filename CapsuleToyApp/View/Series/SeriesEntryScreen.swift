@@ -75,7 +75,7 @@ struct SeriesEntryScreen: View {
         }
         .onDisappear { viewModel.onDisappear() }
         .navigationBarBackButtonHidden()
-        .padding()
+        .padding(.horizontal)
         .fontM()
         .foregroundStyle(.exText)
         .background(.exFoundation)

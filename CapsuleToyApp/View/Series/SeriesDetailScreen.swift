@@ -35,13 +35,6 @@ struct SeriesDetailScreen: View {
                 }
             )
             
-            BoingButton {
-                viewModel.showConfirmDeleteAlert = true
-            } label: {
-                Image(systemName: "trash")
-                    .exCircleButtonView()
-            }
-            
             Spacer()
             
             if let series = viewModel.series {
@@ -49,11 +42,31 @@ struct SeriesDetailScreen: View {
                 Text(series.name)
                     .fontL(bold: true)
                     .lineLimit(2)
+                    .exInputBackView()
                 
-                Text(df.getString(date: series.createdAt))
-                    .navigationDestination(isPresented: $presentEditView) {
-                        SeriesEntryScreen(series: series)
-                    }
+               
+                ToysRatingListView(
+                    isOwnedCount: series.isOwendToysCount,
+                    maxCount: series.highCount
+                ).padding()
+               
+                HStack {
+                    
+                    Text(df.getString(date: series.updatedAt))
+                        .exInputBackView(width: DeviceSizeUtility.deviceWidth / 2 - 20)
+                    
+                    HStack(spacing: 5) {
+                        Text("\(series.isOwendToysCount)")
+                            .fontS(bold: true)
+                        
+                        Text("／")
+                            .fontS(bold: true)
+                        
+                        Text("\(series.count)")
+                            .fontS(bold: true)
+                    }.foregroundStyle(series.isComplete ? .accent : .exText)
+                        .exInputBackView(width: DeviceSizeUtility.deviceWidth / 2 - 20)
+                }
                 
                 HStack {
                     Text("コレクション")
@@ -90,14 +103,24 @@ struct SeriesDetailScreen: View {
                            
                         }.foregroundStyle(.white)
                     }.id(UUID()) // モックの場合のみ必要かも(新規追加後に再描画されないため)
+                }.navigationDestination(isPresented: $presentEditView) {
+                    SeriesEntryScreen(series: series)
                 }
             }
             
             Spacer()
+            
+            BoingButton {
+                viewModel.showConfirmDeleteAlert = true
+            } label: {
+                Image(systemName: "trash")
+                    .exCircleButtonView()
+            }
+            
         }.onAppear { viewModel.onAppear(id: seriesId) }
             .onDisappear { viewModel.onDisappear() }
             .navigationBarBackButtonHidden()
-            .padding()
+            .padding(.horizontal)
             .fontM()
             .foregroundStyle(.exText)
             .background(.exFoundation)
@@ -135,3 +158,5 @@ struct SeriesDetailScreen: View {
 #Preview {
     SeriesDetailScreen(seriesId: ObjectId())
 }
+
+

@@ -17,6 +17,7 @@ struct CapsuleToyEntryScreen: View {
     
     @State private var name: String = "TOYS"
     @State private var isOwned: Bool = false
+    @State private var isSecret: Bool = false
     @State private var memo: String = ""
     @State private var image: UIImage? = nil
     
@@ -37,6 +38,7 @@ struct CapsuleToyEntryScreen: View {
                         toyId: toy?.id,
                         name: name,
                         isOwned: isOwned,
+                        isSecret: isSecret,
                         memo: memo,
                         image: image
                     )
@@ -66,12 +68,13 @@ struct CapsuleToyEntryScreen: View {
             guard let toy else { return }
             name = toy.name
             isOwned = toy.isOwned
+            isSecret = toy.isSecret
             memo = toy.memo
             viewModel.onAppear()
         }
         .onDisappear { viewModel.onDisappear() }
         .navigationBarBackButtonHidden()
-        .padding()
+        .padding(.horizontal)
         .fontM()
         .foregroundStyle(.exText)
         .background(.exFoundation)

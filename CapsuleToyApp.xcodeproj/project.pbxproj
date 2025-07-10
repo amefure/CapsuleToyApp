@@ -10,6 +10,7 @@
 		122ECCC52E1FED24000F757A /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECCC42E1FED24000F757A /* CustomTabBar.swift */; };
 		122ECCC72E1FED41000F757A /* RootEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECCC62E1FED40000F757A /* RootEnvironment.swift */; };
 		122ECCCA2E1FEE8F000F757A /* AppTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECCC92E1FEE8D000F757A /* AppTab.swift */; };
+		122ECCCE2E1FFBE1000F757A /* ToysRatingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECCCD2E1FFBE1000F757A /* ToysRatingListView.swift */; };
 		122FFBE92E1C065000FA1A6C /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFBE82E1C065000FA1A6C /* DIContainer.swift */; };
 		122FFBEE2E1C071600FA1A6C /* CapsuleToy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFBED2E1C070500FA1A6C /* CapsuleToy.swift */; };
 		122FFBF12E1C078F00FA1A6C /* Series.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFBF02E1C078600FA1A6C /* Series.swift */; };
@@ -80,6 +81,7 @@
 		122ECCC42E1FED24000F757A /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		122ECCC62E1FED40000F757A /* RootEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootEnvironment.swift; sourceTree = "<group>"; };
 		122ECCC92E1FEE8D000F757A /* AppTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTab.swift; sourceTree = "<group>"; };
+		122ECCCD2E1FFBE1000F757A /* ToysRatingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToysRatingListView.swift; sourceTree = "<group>"; };
 		122FFBE82E1C065000FA1A6C /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		122FFBED2E1C070500FA1A6C /* CapsuleToy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleToy.swift; sourceTree = "<group>"; };
 		122FFBF02E1C078600FA1A6C /* Series.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Series.swift; sourceTree = "<group>"; };
@@ -152,6 +154,25 @@
 			path = Enum;
 			sourceTree = "<group>";
 		};
+		122ECCCB2E1FFBC6000F757A /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				12DF0C3F2E1D629C008D1A57 /* HeaderView.swift */,
+				122ECCC42E1FED24000F757A /* CustomTabBar.swift */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		122ECCCC2E1FFBD2000F757A /* UIParts */ = {
+			isa = PBXGroup;
+			children = (
+				12DF0C492E1EAE82008D1A57 /* ImageSelectView.swift */,
+				12DF0C552E1EB284008D1A57 /* ImagePreView.swift */,
+				122ECCCD2E1FFBE1000F757A /* ToysRatingListView.swift */,
+			);
+			path = UIParts;
+			sourceTree = "<group>";
+		};
 		122FFBE72E1C063900FA1A6C /* DI */ = {
 			isa = PBXGroup;
 			children = (
@@ -205,8 +226,8 @@
 			isa = PBXGroup;
 			children = (
 				122FFBF42E1C096200FA1A6C /* SeriesListScreen.swift */,
-				122FFC0A2E1C11DB00FA1A6C /* SeriesEntryScreen.swift */,
 				122FFC3B2E1D0ADF00FA1A6C /* SeriesDetailScreen.swift */,
+				122FFC0A2E1C11DB00FA1A6C /* SeriesEntryScreen.swift */,
 			);
 			path = Series;
 			sourceTree = "<group>";
@@ -383,10 +404,8 @@
 		12DF0C3E2E1D6264008D1A57 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				12DF0C3F2E1D629C008D1A57 /* HeaderView.swift */,
-				122ECCC42E1FED24000F757A /* CustomTabBar.swift */,
-				12DF0C492E1EAE82008D1A57 /* ImageSelectView.swift */,
-				12DF0C552E1EB284008D1A57 /* ImagePreView.swift */,
+				122ECCCB2E1FFBC6000F757A /* Layout */,
+				122ECCCC2E1FFBD2000F757A /* UIParts */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -521,6 +540,7 @@
 				122FFBFC2E1C0A2B00FA1A6C /* RealmConfig.swift in Sources */,
 				122FFBF72E1C099700FA1A6C /* SeriesListViewModel.swift in Sources */,
 				12B8CE9D2E195BBD00B61EED /* CapsuleToyAppApp.swift in Sources */,
+				122ECCCE2E1FFBE1000F757A /* ToysRatingListView.swift in Sources */,
 				122FFBF52E1C096200FA1A6C /* SeriesListScreen.swift in Sources */,
 				122FFC0B2E1C11DB00FA1A6C /* SeriesEntryScreen.swift in Sources */,
 				122FFC252E1C120D00FA1A6C /* DeviceSizeUtility.swift in Sources */,
