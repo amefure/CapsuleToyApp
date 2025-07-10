@@ -13,7 +13,7 @@ struct ToysRatingListView: View {
     public let maxCount: Int
     @State private var animatedLevel: Int = 0
     
-    private func animateStars() {
+    private func startAnimate() {
         for i in 0...isOwnedCount {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3 * Double(i)) {
                 withAnimation {
@@ -24,19 +24,21 @@ struct ToysRatingListView: View {
     }
     
     var body: some View {
-        HStack {
-            ForEach(0..<maxCount, id: \.self) { i in
-                Image(systemName: "circle.tophalf.filled")
-                    .fontLL(bold: true)
-                    .foregroundStyle(
-                        animatedLevel >= i ? (i < isOwnedCount ? .accent : .exText) : .exText
-                    ).animation(
-                        .easeOut(duration: 0.3)
-                        .delay(0.1 * Double(i)),
-                        value: animatedLevel
-                    )
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack {
+                ForEach(0..<maxCount, id: \.self) { i in
+                    Image(systemName: "circle.tophalf.filled")
+                        .fontLL(bold: true)
+                        .foregroundStyle(
+                            animatedLevel >= i ? (i < isOwnedCount ? .exYellow : .exText) : .exText
+                        ).animation(
+                            .easeOut(duration: 0.3)
+                            .delay(0.1 * Double(i)),
+                            value: animatedLevel
+                        )
+                }
             }
-        }.onAppear { animateStars() }
+        }.onAppear { startAnimate() }
     }
 }
 

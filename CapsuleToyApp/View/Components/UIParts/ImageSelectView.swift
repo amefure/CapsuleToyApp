@@ -34,18 +34,18 @@ struct ImageSelectView: View {
                     showImagePicker = true
                 } label: {
                     Image(systemName: "plus")
-                        .font(.system(size: 17))
-                        .foregroundStyle(.orange)
+                        .fontM()
+                        .foregroundStyle(.exThema)
                         .frame(width: DeviceSizeUtility.deviceWidth - 40, height: 140)
                         .overlay(
                             RoundedRectangle(cornerRadius: 8)
-                                .stroke(.orange, lineWidth: 1)
+                                .stroke(.exThema, lineWidth: 1)
                         )
                 }
             }
         }.sheet(isPresented: $showImagePicker) {
             ImagePickerDialog(image: $image)
-        }.onChange(of: image) { _ in
+        }.onChange(of: image) { _,  _ in
             // 1回目の画像の変化で切り取りモーダルを表示していれば2回目は表示しない
             guard !isDisplayedCropView else { return }
             guard image != nil else { return }

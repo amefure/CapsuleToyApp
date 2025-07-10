@@ -26,7 +26,7 @@ struct SeriesEntryScreen: View {
             
             HeaderView(
                 leadingIcon: "chevron.backward",
-                trailingIcon: "plus",
+                trailingIcon: "checkmark",
                 leadingAction: {
                     dismiss()
                 },
@@ -48,15 +48,25 @@ struct SeriesEntryScreen: View {
             
             Text("種類数")
                 .exInputLabelView()
-            TextField("例：6種類", text: $count)
-                .keyboardType(.numberPad)
-                .exInputBackView()
+           
+            HStack(alignment: .bottom) {
+                TextField("例：6種類", text: $count)
+                    .keyboardType(.numberPad)
+                Text("／種類")
+                    .fontS(bold: true)
+                    .opacity(0.5)
+            }.exInputBackView()
             
             Text("金額")
                 .exInputLabelView()
-            TextField("例：¥300", text: $count)
-                .keyboardType(.numberPad)
-                .exInputBackView()
+            
+            HStack(alignment: .bottom) {
+                TextField("例：300円", text: $amount)
+                    .keyboardType(.numberPad)
+                Text("／円")
+                    .fontS(bold: true)
+                    .opacity(0.5)
+            }.exInputBackView()
             
             Text("MEMO")
                 .exInputLabelView()

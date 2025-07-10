@@ -14,11 +14,13 @@ struct SeriesDetailScreen: View {
     
     public var seriesId: ObjectId
     @State private var selectToy: CapsuleToy? = nil
-    private let grids = Array(repeating: GridItem(.fixed(DeviceSizeUtility.deviceWidth / 2 - 20)), count: 2)
+    private let grids = Array(repeating: GridItem(.fixed(itemWidth)), count: 2)
     
     @State private var presentEditView: Bool = false
     
     private let df = DateFormatUtility(dateFormat: "yyyy年M月d日")
+    
+    static private let itemWidth: CGFloat = DeviceSizeUtility.deviceWidth / 2 - 20
 
     @Environment(\.dismiss) private var dismiss
     
@@ -26,7 +28,7 @@ struct SeriesDetailScreen: View {
         VStack {
             HeaderView(
                 leadingIcon: "chevron.backward",
-                trailingIcon: "pencil.circle",
+                trailingIcon: "pencil",
                 leadingAction: {
                     dismiss()
                 },
@@ -39,48 +41,33 @@ struct SeriesDetailScreen: View {
             
             if let series = viewModel.series {
                 
-                Text(series.name)
-                    .fontL(bold: true)
-                    .lineLimit(2)
-                    .exInputBackView()
-                
-               
-                ToysRatingListView(
-                    isOwnedCount: series.isOwendToysCount,
-                    maxCount: series.highCount
-                ).padding()
-               
-                HStack {
+                ScrollView(showsIndicators: false) {
                     
-                    Text(df.getString(date: series.updatedAt))
-                        .exInputBackView(width: DeviceSizeUtility.deviceWidth / 2 - 20)
+                    Text(series.name)
+                        .fontL(bold: true)
+                        .lineLimit(2)
+                        .exInputBackView()
                     
-                    HStack(spacing: 5) {
-                        Text("\(series.isOwendToysCount)")
-                            .fontS(bold: true)
+                   
+                    ToysRatingListView(
+                        isOwnedCount: series.isOwendToysCount,
+                        maxCount: series.highCount
+                    ).padding(.vertical)
+                   
+                    
+                    HStack {
+                        Text("コレクション")
+                        Spacer()
                         
-                        Text("／")
-                            .fontS(bold: true)
-                        
-                        Text("\(series.count)")
-                            .fontS(bold: true)
-                    }.foregroundStyle(series.isComplete ? .accent : .exText)
-                        .exInputBackView(width: DeviceSizeUtility.deviceWidth / 2 - 20)
-                }
-                
-                HStack {
-                    Text("コレクション")
-                    Spacer()
+                        BoingButton {
+                            viewModel.presentEntryToyScreen = true
+                        } label: {
+                            Image(systemName: "plus")
+                                .exCircleButtonView()
+                        }
+                    }.exInputLabelView()
+                        .padding(.vertical)
                     
-                    BoingButton {
-                        viewModel.presentEntryToyScreen = true
-                    } label: {
-                        Image(systemName: "plus")
-                            .exCircleButtonView()
-                    }
-                }
-               
-                ScrollView {
                     LazyVGrid(columns: grids) {
                         ForEach(series.capsuleToys) { toy in
                             BoingButton {
@@ -90,19 +77,19 @@ struct SeriesDetailScreen: View {
                                 VStack {
                                     ImagePreView(
                                         photoPath: toy.imageDataPath,
-                                        width: DeviceSizeUtility.deviceWidth,
-                                        height: 80,
-                                        isNotView: true
+                                        width: SeriesDetailScreen.itemWidth,
+                                        height: SeriesDetailScreen.itemWidth,
+                                        isNotView: true,
+                                        isEnablePopup: false
                                     )
                                     Text(toy.name)
                                     Text(toy.memo)
-                                }.frame(width: 80, height: 80)
+                                }.frame(width: SeriesDetailScreen.itemWidth, height: SeriesDetailScreen.itemWidth)
                                     .background(.exThema)
-                            }
-
-                           
+                            }.clipped()
                         }.foregroundStyle(.white)
                     }.id(UUID()) // モックの場合のみ必要かも(新規追加後に再描画されないため)
+                    
                 }.navigationDestination(isPresented: $presentEditView) {
                     SeriesEntryScreen(series: series)
                 }
@@ -117,8 +104,10 @@ struct SeriesDetailScreen: View {
                     .exCircleButtonView()
             }
             
-        }.onAppear { viewModel.onAppear(id: seriesId) }
-            .onDisappear { viewModel.onDisappear() }
+        }.onAppear {
+            selectToy = nil
+            viewModel.onAppear(id: seriesId)
+        }.onDisappear { viewModel.onDisappear() }
             .navigationBarBackButtonHidden()
             .padding(.horizontal)
             .fontM()
