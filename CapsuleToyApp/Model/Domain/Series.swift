@@ -21,6 +21,8 @@ final class Series: Object, ObjectKeyIdentifiable, Codable {
     @Persisted var capsuleToys: RealmSwift.List<CapsuleToy>
     /// メモ
     @Persisted var memo: String
+    /// 位置情報
+    @Persisted var locations: RealmSwift.List<Location>
     /// 生成日
     @Persisted var createdAt: Date = Date()
     /// 更新日

@@ -23,6 +23,7 @@ final class DIContainer: @unchecked Sendable{
         }
         
         c.register(UserDefaultsRepository.self) { _ in UserDefaultsRepository() }
+        c.register(LocationRepositoryProtocol.self) { _ in LocationRepository() }
         
         
         // Add ViewModel

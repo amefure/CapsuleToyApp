@@ -11,6 +11,9 @@
 		122ECCC72E1FED41000F757A /* RootEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECCC62E1FED40000F757A /* RootEnvironment.swift */; };
 		122ECCCA2E1FEE8F000F757A /* AppTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECCC92E1FEE8D000F757A /* AppTab.swift */; };
 		122ECCCE2E1FFBE1000F757A /* ToysRatingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECCCD2E1FFBE1000F757A /* ToysRatingListView.swift */; };
+		122ECCD02E20E8F9000F757A /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECCCF2E20E8F6000F757A /* Location.swift */; };
+		122ECCD22E20F49C000F757A /* LocationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECCD12E20F49B000F757A /* LocationRepository.swift */; };
+		122ECCD42E20FA4B000F757A /* LocationRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECCD32E20FA4A000F757A /* LocationRepositoryProtocol.swift */; };
 		122FFBE92E1C065000FA1A6C /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFBE82E1C065000FA1A6C /* DIContainer.swift */; };
 		122FFBEE2E1C071600FA1A6C /* CapsuleToy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFBED2E1C070500FA1A6C /* CapsuleToy.swift */; };
 		122FFBF12E1C078F00FA1A6C /* Series.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFBF02E1C078600FA1A6C /* Series.swift */; };
@@ -82,6 +85,9 @@
 		122ECCC62E1FED40000F757A /* RootEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootEnvironment.swift; sourceTree = "<group>"; };
 		122ECCC92E1FEE8D000F757A /* AppTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTab.swift; sourceTree = "<group>"; };
 		122ECCCD2E1FFBE1000F757A /* ToysRatingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToysRatingListView.swift; sourceTree = "<group>"; };
+		122ECCCF2E20E8F6000F757A /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		122ECCD12E20F49B000F757A /* LocationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepository.swift; sourceTree = "<group>"; };
+		122ECCD32E20FA4A000F757A /* LocationRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepositoryProtocol.swift; sourceTree = "<group>"; };
 		122FFBE82E1C065000FA1A6C /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		122FFBED2E1C070500FA1A6C /* CapsuleToy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleToy.swift; sourceTree = "<group>"; };
 		122FFBF02E1C078600FA1A6C /* Series.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Series.swift; sourceTree = "<group>"; };
@@ -199,6 +205,7 @@
 				122FFC062E1C0E2D00FA1A6C /* Domain */,
 				122FFBFF2E1C0BEB00FA1A6C /* Protocol */,
 				122FFBFD2E1C0A5500FA1A6C /* UserDefaultsRepository.swift */,
+				122ECCD12E20F49B000F757A /* LocationRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -218,6 +225,7 @@
 			children = (
 				122FFBF02E1C078600FA1A6C /* Series.swift */,
 				122FFBED2E1C070500FA1A6C /* CapsuleToy.swift */,
+				122ECCCF2E20E8F6000F757A /* Location.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -253,6 +261,7 @@
 			children = (
 				122FFC002E1C0BF400FA1A6C /* RealmRepositoryProtocol.swift */,
 				122FFC022E1C0DBA00FA1A6C /* SeriesRepositoryProtocol.swift */,
+				122ECCD32E20FA4A000F757A /* LocationRepositoryProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -532,6 +541,7 @@
 				122FFBEE2E1C071600FA1A6C /* CapsuleToy.swift in Sources */,
 				122FFC092E1C0E4400FA1A6C /* MockSeriesRepository.swift in Sources */,
 				122FFBF92E1C0A0700FA1A6C /* RealmRepository.swift in Sources */,
+				122ECCD22E20F49C000F757A /* LocationRepository.swift in Sources */,
 				12DF0C422E1E5AA7008D1A57 /* CapsuleToyEntryScreen.swift in Sources */,
 				122FFC032E1C0DBC00FA1A6C /* SeriesRepositoryProtocol.swift in Sources */,
 				12DF0C3C2E1D5ED1008D1A57 /* Strings.swift in Sources */,
@@ -562,6 +572,7 @@
 				122FFC312E1C120D00FA1A6C /* JsonConvertUtility.swift in Sources */,
 				122ECCC52E1FED24000F757A /* CustomTabBar.swift in Sources */,
 				12DF0C4F2E1EAFF9008D1A57 /* ImageFileManager.swift in Sources */,
+				122ECCD42E20FA4B000F757A /* LocationRepositoryProtocol.swift in Sources */,
 				122FFC322E1C120D00FA1A6C /* ExUIApplication.swift in Sources */,
 				122FFC342E1C120D00FA1A6C /* ExModalBaclClear.swift in Sources */,
 				12DF0C522E1EB033008D1A57 /* ImageError.swift in Sources */,
@@ -574,6 +585,7 @@
 				122FFC012E1C0BF400FA1A6C /* RealmRepositoryProtocol.swift in Sources */,
 				122FFBF12E1C078F00FA1A6C /* Series.swift in Sources */,
 				12DF0C4C2E1EAE8F008D1A57 /* ImageCropDialog.swift in Sources */,
+				122ECCD02E20E8F9000F757A /* Location.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -725,6 +737,7 @@
 				DEVELOPMENT_TEAM = CGD79LB65H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "ガチャガチャの位置情報登録のために取得します。";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -754,6 +767,7 @@
 				DEVELOPMENT_TEAM = CGD79LB65H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "ガチャガチャの位置情報登録のために取得します。";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

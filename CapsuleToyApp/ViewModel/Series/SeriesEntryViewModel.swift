@@ -7,24 +7,49 @@
 
 import SwiftUI
 import RealmSwift
+import MapKit
+import Combine
 
 final class SeriesEntryViewModel: ObservableObject {
     
     private let seriesRepository: SeriesRepositoryProtocol
+    private let locationRepository: LocationRepositoryProtocol
+    
+    @Published var region: MKCoordinateRegion = LocationRepository.defultRegion
+    @Published var adress: String = ""
+    // ユーザートラッキングモードを追従モードにするための変数を定義
+    @Published var trackingMode = MapUserTrackingMode.follow
     
     @Published var showEntrySuccessAlert: Bool = false
     @Published var showUpdateSuccessAlert: Bool = false
     
-    init(seriesRepository: SeriesRepositoryProtocol) {
+    private var cancellables: Set<AnyCancellable> = []
+    
+    init(
+        seriesRepository: SeriesRepositoryProtocol,
+        locationRepository: LocationRepositoryProtocol
+    ) {
         self.seriesRepository = seriesRepository
+        self.locationRepository = locationRepository
     }
     
     
     public func onAppear() {
+        locationRepository.region
+            .sink { [weak self] region in
+                guard let self else { return }
+                self.region = region
+            }.store(in: &cancellables)
+        
+        locationRepository.address
+            .sink { [weak self] address in
+                guard let self else { return }
+                self.adress = adress
+            }.store(in: &cancellables)
     }
     
     public func onDisappear() {
-        
+        cancellables.forEach { $0.cancel() }
     }
     
     /// 新規作成 or 更新処理
