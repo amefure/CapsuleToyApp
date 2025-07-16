@@ -29,13 +29,16 @@
 // MARK: - Dialog Title
 "dialog_success_title" = "成功";
 "dialog_confirm_title" = "確認";
+"dialog_notice_title" = "お知らせ";
 "dialog_error_title" = "Error";
+"dialog_open_setting_title" = "設定を開く";
 
 "dialog_entry_msg_%@" = "「%@」を登録しました。";
 "dialog_update_msg" = "更新しました。";
 "dialog_delete_msg" = "削除しました。";
 "dialog_delete_failed_msg" = "削除に失敗しました。時間を空けてから再度お試しください。";
 "dialog_delete_confirm_msg" = "削除しますか？";
+"dialog_denied_location_msg" = "位置情報が有効にされていないため一部機能が使用できません。";
 
 "image_clop_title" = "画像トリミング";
 

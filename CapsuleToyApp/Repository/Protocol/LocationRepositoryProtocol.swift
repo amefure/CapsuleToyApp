@@ -11,6 +11,11 @@ import Combine
 protocol LocationRepositoryProtocol {
     var region: AnyPublisher<MKCoordinateRegion, Never> { get }
     var address: AnyPublisher<String, Never> { get }
-    func reloadRegion() async
-    func geocode(addressKey: String) async -> CLLocationCoordinate2D?
+    var authorizationStatus: AnyPublisher<CLAuthorizationStatus?, Never> { get }
+    @MainActor
+    func geocode(addressKey: String) async throws
+    @MainActor
+    func requestWhenInUseAuthorization()
+    @MainActor
+    func observeUserLocation() async
 }

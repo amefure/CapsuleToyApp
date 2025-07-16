@@ -45,6 +45,7 @@
 		122FFC3C2E1D0ADF00FA1A6C /* SeriesDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFC3B2E1D0ADF00FA1A6C /* SeriesDetailScreen.swift */; };
 		122FFC3E2E1D0D5100FA1A6C /* SeriesDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFC3D2E1D0D4B00FA1A6C /* SeriesDetailViewModel.swift */; };
 		126CF5462E19CC6600C14395 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 126CF5452E19CC6600C14395 /* Swinject */; };
+		12A6E0532E26405E00E72E20 /* LocationInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A6E0522E26405E00E72E20 /* LocationInputView.swift */; };
 		12A6E0552E26415B00E72E20 /* ErrorViewDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A6E0542E26415A00E72E20 /* ErrorViewDialog.swift */; };
 		12B8CE9D2E195BBD00B61EED /* CapsuleToyAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B8CE9A2E195BBD00B61EED /* CapsuleToyAppApp.swift */; };
 		12B8CE9E2E195BBD00B61EED /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B8CE9B2E195BBD00B61EED /* RootView.swift */; };
@@ -119,6 +120,7 @@
 		122FFC392E1C138A00FA1A6C /* SeriesEntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesEntryViewModel.swift; sourceTree = "<group>"; };
 		122FFC3B2E1D0ADF00FA1A6C /* SeriesDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesDetailScreen.swift; sourceTree = "<group>"; };
 		122FFC3D2E1D0D4B00FA1A6C /* SeriesDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesDetailViewModel.swift; sourceTree = "<group>"; };
+		12A6E0522E26405E00E72E20 /* LocationInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInputView.swift; sourceTree = "<group>"; };
 		12A6E0542E26415A00E72E20 /* ErrorViewDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewDialog.swift; sourceTree = "<group>"; };
 		12B8CE8B2E195BAD00B61EED /* CapsuleToyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CapsuleToyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12B8CE992E195BBD00B61EED /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 				122FFBF42E1C096200FA1A6C /* SeriesListScreen.swift */,
 				122FFC3B2E1D0ADF00FA1A6C /* SeriesDetailScreen.swift */,
 				122FFC0A2E1C11DB00FA1A6C /* SeriesEntryScreen.swift */,
+				12A6E0522E26405E00E72E20 /* LocationInputView.swift */,
 			);
 			path = Series;
 			sourceTree = "<group>";
@@ -342,8 +345,8 @@
 			isa = PBXGroup;
 			children = (
 				122FFBF62E1C098B00FA1A6C /* SeriesListViewModel.swift */,
-				122FFC392E1C138A00FA1A6C /* SeriesEntryViewModel.swift */,
 				122FFC3D2E1D0D4B00FA1A6C /* SeriesDetailViewModel.swift */,
+				122FFC392E1C138A00FA1A6C /* SeriesEntryViewModel.swift */,
 			);
 			path = Series;
 			sourceTree = "<group>";
@@ -548,6 +551,7 @@
 				12DF0C422E1E5AA7008D1A57 /* CapsuleToyEntryScreen.swift in Sources */,
 				122FFC032E1C0DBC00FA1A6C /* SeriesRepositoryProtocol.swift in Sources */,
 				12DF0C3C2E1D5ED1008D1A57 /* Strings.swift in Sources */,
+				12A6E0532E26405E00E72E20 /* LocationInputView.swift in Sources */,
 				12DF0C3D2E1D5ED1008D1A57 /* Assets.swift in Sources */,
 				122FFBFE2E1C0A5600FA1A6C /* UserDefaultsRepository.swift in Sources */,
 				12A6E0552E26415B00E72E20 /* ErrorViewDialog.swift in Sources */,

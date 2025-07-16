@@ -15,10 +15,8 @@ final class SeriesEntryViewModel: ObservableObject {
     private let seriesRepository: SeriesRepositoryProtocol
     private let locationRepository: LocationRepositoryProtocol
     
-    @Published var region: MKCoordinateRegion = LocationRepository.defultRegion
+    @Published var region: MapCameraPosition = .region(LocationRepository.defultRegion)
     @Published var adress: String = ""
-    // ユーザートラッキングモードを追従モードにするための変数を定義
-    @Published var trackingMode = MapUserTrackingMode.follow
     
     @Published var showEntrySuccessAlert: Bool = false
     @Published var showUpdateSuccessAlert: Bool = false
@@ -33,12 +31,20 @@ final class SeriesEntryViewModel: ObservableObject {
         self.locationRepository = locationRepository
     }
     
-    
+    @MainActor
     public func onAppear() {
+        
+        Task {
+            await locationRepository.observeUserLocation()
+        }
+        
         locationRepository.region
-            .sink { [weak self] region in
+            .removeDuplicates { old, new in
+                // 緯度 / 経度に変化がないならストリームに流さない
+                old.center.latitude == new.center.latitude && old.center.longitude == new.center.longitude
+            }.sink { [weak self] region in
                 guard let self else { return }
-                self.region = region
+                self.region = .region(region)
             }.store(in: &cancellables)
         
         locationRepository.address
@@ -59,7 +65,10 @@ final class SeriesEntryViewModel: ObservableObject {
         count: Int,
         amount: Int,
         memo: String,
+        locations: [Location]
     ) {
+        let realmLocations = RealmSwift.List<Location>()
+        realmLocations.append(objectsIn: locations)
         if let id {
             seriesRepository.updateSeries(id: id) { [weak self] series in
                 guard let self else { return }
@@ -67,6 +76,7 @@ final class SeriesEntryViewModel: ObservableObject {
                 series.count = count
                 series.amount = amount
                 series.memo = memo
+                series.locations = realmLocations
                 series.createdAt = Date()
                 series.updatedAt = Date()
                 showUpdateSuccessAlert = true
@@ -77,6 +87,7 @@ final class SeriesEntryViewModel: ObservableObject {
             series.count = count
             series.amount = amount
             series.memo = memo
+            series.locations = realmLocations
             series.createdAt = Date()
             series.updatedAt = Date()
             seriesRepository.addSeries(series)

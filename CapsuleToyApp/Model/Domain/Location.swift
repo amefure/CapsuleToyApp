@@ -11,6 +11,7 @@ import MapKit
 
 /// ロケーション情報
 final class Location: Object, ObjectKeyIdentifiable, Codable {
+    @Persisted(primaryKey: true) var id: ObjectId
     /// 名称
     @Persisted var name: String
     /// 緯度
@@ -22,7 +23,7 @@ final class Location: Object, ObjectKeyIdentifiable, Codable {
 }
 
 extension Location {
-    /// 
+    /// 緯度 / 経度から位置情報を生成
     public var coordinate: CLLocationCoordinate2D? {
         guard let latitude,
               let longitude else { return nil }

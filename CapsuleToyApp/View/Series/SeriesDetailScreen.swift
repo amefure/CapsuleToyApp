@@ -7,6 +7,7 @@
 
 import SwiftUI
 import RealmSwift
+import MapKit
 
 struct SeriesDetailScreen: View {
     
@@ -37,8 +38,6 @@ struct SeriesDetailScreen: View {
                 }
             )
             
-            Spacer()
-            
             if let series = viewModel.series {
                 
                 ScrollView(showsIndicators: false) {
@@ -54,6 +53,27 @@ struct SeriesDetailScreen: View {
                         maxCount: series.highCount
                     ).padding(.vertical)
                    
+                    
+                    Map(position: $viewModel.region) {
+                        // ユーザー現在位置にアノテーション表示
+                        UserAnnotation(anchor: .center) { userLocation in
+                            Image(systemName: "figure.wave.circle.fill")
+                                .fontL(bold: true)
+                                .foregroundStyle(.exThema)
+                        }
+                        
+                        ForEach(series.locations) { location in
+                            if let coordinate = location.coordinate {
+                                Marker(coordinate: coordinate) {
+                                    Text(location.name)
+                                }
+                            }
+                        }
+                        
+                    }.mapControls {
+                        // 現在位置に戻るボタン
+                        MapUserLocationButton()
+                    }.frame(height: 250)
                     
                     HStack {
                         Text("コレクション")
@@ -90,6 +110,13 @@ struct SeriesDetailScreen: View {
                         }.foregroundStyle(.white)
                     }.id(UUID()) // モックの場合のみ必要かも(新規追加後に再描画されないため)
                     
+                    BoingButton {
+                        viewModel.showConfirmDeleteAlert = true
+                    } label: {
+                        Image(systemName: "trash")
+                            .exCircleButtonView()
+                    }
+                    
                 }.navigationDestination(isPresented: $presentEditView) {
                     SeriesEntryScreen(series: series)
                 }
@@ -97,12 +124,6 @@ struct SeriesDetailScreen: View {
             
             Spacer()
             
-            BoingButton {
-                viewModel.showConfirmDeleteAlert = true
-            } label: {
-                Image(systemName: "trash")
-                    .exCircleButtonView()
-            }
             
         }.onAppear {
             selectToy = nil

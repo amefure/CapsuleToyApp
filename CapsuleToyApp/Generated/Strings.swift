@@ -39,12 +39,18 @@ internal enum L10n {
   internal static let dialogDeleteFailedMsg = L10n.tr("Localizable", "dialog_delete_failed_msg", fallback: "削除に失敗しました。時間を空けてから再度お試しください。")
   /// 削除しました。
   internal static let dialogDeleteMsg = L10n.tr("Localizable", "dialog_delete_msg", fallback: "削除しました。")
+  /// 位置情報が有効にされていないため一部機能が使用できません。
+  internal static let dialogDeniedLocationMsg = L10n.tr("Localizable", "dialog_denied_location_msg", fallback: "位置情報が有効にされていないため一部機能が使用できません。")
   /// 「%@」を登録しました。
   internal static func dialogEntryMsg(_ p1: Any) -> String {
     return L10n.tr("Localizable", "dialog_entry_msg_%@", String(describing: p1), fallback: "「%@」を登録しました。")
   }
   /// Error
   internal static let dialogErrorTitle = L10n.tr("Localizable", "dialog_error_title", fallback: "Error")
+  /// お知らせ
+  internal static let dialogNoticeTitle = L10n.tr("Localizable", "dialog_notice_title", fallback: "お知らせ")
+  /// 設定を開く
+  internal static let dialogOpenSettingTitle = L10n.tr("Localizable", "dialog_open_setting_title", fallback: "設定を開く")
   /// 成功
   internal static let dialogSuccessTitle = L10n.tr("Localizable", "dialog_success_title", fallback: "成功")
   /// 更新しました。

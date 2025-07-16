@@ -7,7 +7,7 @@
 
 import Swinject
 
-final class DIContainer: @unchecked Sendable{
+final class DIContainer: @unchecked Sendable {
     static let shared = DIContainer()
     
     // FIXME: モック切り替えフラグ
@@ -32,11 +32,17 @@ final class DIContainer: @unchecked Sendable{
         }
         
         c.register(SeriesEntryViewModel.self) { r in
-            SeriesEntryViewModel(seriesRepository: r.resolve(SeriesRepositoryProtocol.self)!)
+            SeriesEntryViewModel(
+                seriesRepository: r.resolve(SeriesRepositoryProtocol.self)!,
+                locationRepository: r.resolve(LocationRepositoryProtocol.self)!
+            )
         }
         
         c.register(SeriesDetailViewModel.self) { r in
-            SeriesDetailViewModel(seriesRepository: r.resolve(SeriesRepositoryProtocol.self)!)
+            SeriesDetailViewModel(
+                seriesRepository: r.resolve(SeriesRepositoryProtocol.self)!,
+                locationRepository: r.resolve(LocationRepositoryProtocol.self)!
+            )
         }
         
         c.register(CapsuleToyEntryViewModel.self) { r in
@@ -44,7 +50,10 @@ final class DIContainer: @unchecked Sendable{
         }
         
         c.register(RootEnvironment.self) { r in
-            RootEnvironment(userDefaultsRepository: r.resolve(UserDefaultsRepository.self)!)
+            RootEnvironment(
+                userDefaultsRepository: r.resolve(UserDefaultsRepository.self)!,
+                locationRepository: r.resolve(LocationRepositoryProtocol.self)!
+            )
         }
     }
 

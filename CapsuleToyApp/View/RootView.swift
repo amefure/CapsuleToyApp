@@ -36,8 +36,19 @@ struct RootView: View {
             
             }
             
-        }.background(.exFoundation)
+        }.onAppear { rootEnvironment.onAppear() }
+            .background(.exFoundation)
             .ignoresSafeArea(edges: [.bottom])
+            .alert(
+                isPresented: $rootEnvironment.showLocationDeniedAlert,
+                title: L10n.dialogNoticeTitle,
+                message: L10n.dialogDeniedLocationMsg,
+                positiveButtonTitle: L10n.dialogOpenSettingTitle,
+                negativeButtonTitle: L10n.cancel,
+                positiveAction: {
+                    rootEnvironment.openSetiing()
+                }
+            )
     }
 }
 
