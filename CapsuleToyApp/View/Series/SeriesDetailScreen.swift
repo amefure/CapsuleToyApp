@@ -130,6 +130,7 @@ struct SeriesDetailScreen: View {
             viewModel.onAppear(id: seriesId)
         }.onDisappear { viewModel.onDisappear() }
             .navigationBarBackButtonHidden()
+            .navigationBarHidden(true) // Mapがある場合これを明示的に指定する必要がある
             .padding(.horizontal)
             .fontM()
             .foregroundStyle(.exText)

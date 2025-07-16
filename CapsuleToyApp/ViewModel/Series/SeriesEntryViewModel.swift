@@ -34,6 +34,10 @@ final class SeriesEntryViewModel: ObservableObject {
     @MainActor
     public func onAppear() {
         
+    }
+    
+    @MainActor
+    public func observeUserLocation() {
         Task {
             await locationRepository.observeUserLocation()
         }
@@ -54,8 +58,13 @@ final class SeriesEntryViewModel: ObservableObject {
             }.store(in: &cancellables)
     }
     
-    public func onDisappear() {
+    @MainActor
+    public func clearObserveUserLocation() {
         cancellables.forEach { $0.cancel() }
+    }
+    
+    public func onDisappear() {
+
     }
     
     /// 新規作成 or 更新処理

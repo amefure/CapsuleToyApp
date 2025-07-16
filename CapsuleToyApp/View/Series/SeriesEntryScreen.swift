@@ -94,6 +94,7 @@ struct SeriesEntryScreen: View {
             }
 
         }.onAppear {
+            viewModel.onAppear()
             guard let series else { return }
             name = series.name
             count = String(series.count)

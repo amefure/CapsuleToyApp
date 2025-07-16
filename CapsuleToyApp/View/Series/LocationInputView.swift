@@ -49,9 +49,11 @@ struct LocationInputView: View {
             Spacer()
             
             Text("場所名")
-                .exInputBackView()
+                .exInputLabelView()
+               
             
             TextField("例：イオンモール〇〇店 3F", text: $name)
+                .exInputBackView()
             
             MapReader { proxy in
                 Map(position: $viewModel.region) {
@@ -81,7 +83,9 @@ struct LocationInputView: View {
         }.onAppear {
             location = Location()
             name = location.name
-        }.navigationBarBackButtonHidden()
+            viewModel.observeUserLocation()
+        }.onDisappear { viewModel.clearObserveUserLocation() }
+        .navigationBarBackButtonHidden()
             .padding(.horizontal)
             .fontM()
             .foregroundStyle(.exText)
