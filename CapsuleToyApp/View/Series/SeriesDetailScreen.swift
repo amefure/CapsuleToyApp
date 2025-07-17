@@ -16,8 +16,8 @@ struct SeriesDetailScreen: View {
     public var seriesId: ObjectId
     @State private var selectToy: CapsuleToy? = nil
     private let grids = Array(repeating: GridItem(.fixed(itemWidth)), count: 2)
-    
     @State private var presentEditView: Bool = false
+    @State private var selectTab: LocationTab = .map
     
     private let df = DateFormatUtility(dateFormat: "yyyy年M月d日")
     
@@ -46,7 +46,7 @@ struct SeriesDetailScreen: View {
                         .fontL(bold: true)
                         .lineLimit(2)
                         .exInputBackView()
-                    
+                       
                    
                     ToysRatingListView(
                         isOwnedCount: series.isOwendToysCount,
@@ -54,26 +54,53 @@ struct SeriesDetailScreen: View {
                     ).padding(.vertical)
                    
                     
-                    Map(position: $viewModel.region) {
-                        // ユーザー現在位置にアノテーション表示
-                        UserAnnotation(anchor: .center) { userLocation in
-                            Image(systemName: "figure.wave.circle.fill")
-                                .fontL(bold: true)
-                                .foregroundStyle(.exThema)
-                        }
-                        
-                        ForEach(series.locations) { location in
-                            if let coordinate = location.coordinate {
-                                Marker(coordinate: coordinate) {
-                                    Text(location.name)
+                    SelectTabPickerView(selectTab: $selectTab)
+                    
+                    switch selectTab {
+                    case .map:
+                        Map(position: $viewModel.region) {
+                            // ユーザー現在位置にアノテーション表示
+                            UserAnnotation(anchor: .center) { userLocation in
+                                Image(systemName: "figure.wave.circle.fill")
+                                    .fontL(bold: true)
+                                    .foregroundStyle(.exThema)
+                            }
+                            
+                            ForEach(series.locations) { location in
+                                if let coordinate = location.coordinate {
+                                    Marker(coordinate: coordinate) {
+                                        Text(location.name)
+                                    }
                                 }
                             }
+                            
+                        }.mapControls {
+                            // 現在位置に戻るボタン
+                            MapUserLocationButton()
+                        }.frame(height: 250)
+                            .id(UUID()) // モックの場合のみ必要かも(新規追加後に再描画されないため)
+                    case .list:
+                        if series.locations.isEmpty {
+                            Text("登録されている情報がありません。")
+                                .padding(.vertical)
+                        } else {
+                            ForEach(series.locations) { location in
+                                HStack {
+                                    Image(systemName: location.coordinate == nil ? "map" : "map.fill")
+                                        .foregroundStyle(location.coordinate == nil ? .exText : .exThema)
+                                        .fontM(bold: true)
+                                    Text(location.name)
+                                        .fontL(bold: true)
+                                    Spacer()
+                                }.frame(width: DeviceSizeUtility.deviceWidth - 40, height: 35)
+                                    .background(.white)
+                                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                                        .shadow(color: .black.opacity(0.2), radius: 5, x: 3, y: 3)
+                            }
                         }
-                        
-                    }.mapControls {
-                        // 現在位置に戻るボタン
-                        MapUserLocationButton()
-                    }.frame(height: 250)
+                    }
+                    
+                   
                     
                     HStack {
                         Text("コレクション")
@@ -127,6 +154,7 @@ struct SeriesDetailScreen: View {
             
         }.onAppear {
             selectToy = nil
+            print("-----onAppear")
             viewModel.onAppear(id: seriesId)
         }.onDisappear { viewModel.onDisappear() }
             .navigationBarBackButtonHidden()
@@ -169,5 +197,58 @@ struct SeriesDetailScreen: View {
 #Preview {
     SeriesDetailScreen(seriesId: ObjectId())
 }
+
+private enum LocationTab: CaseIterable {
+    case map
+    case list
+     var imageName: String {
+         return switch self {
+         case .map:
+             "map"
+         case .list:
+             "list.bullet"
+         }
+     }
+}
+
+
+private struct SelectTabPickerView: View {
+    
+    @Namespace private var tabAnimation
+    @Binding var selectTab: LocationTab
+    var body: some View {
+        HStack {
+            
+            ForEach(LocationTab.allCases, id: \.self) { tab in
+                Button {
+                    selectTab = tab
+                } label: {
+
+                    ZStack {
+                        if selectTab == tab {
+                            RoundedRectangle(cornerRadius: 10)
+                                .frame(width: (DeviceSizeUtility.deviceWidth / 2) - 20, height: 30)
+                                .foregroundStyle(.exThema)
+                                .matchedGeometryEffect(id: "block", in: tabAnimation)
+                        } else {
+                            RoundedRectangle(cornerRadius: 10)
+                                .frame(width: (DeviceSizeUtility.deviceWidth / 2) - 20, height: 30)
+                                .foregroundStyle(.clear)
+                        }
+
+                        Image(systemName: tab.imageName)
+                            .frame(width: (DeviceSizeUtility.deviceWidth / 2) - 20, height: 30)
+                            .foregroundStyle(selectTab == tab ? .white : .exThema)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                    }
+                }
+            }
+        }.background(.white)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+            .shadow(color: .black.opacity(0.2), radius: 5, x: 3, y: 3)
+            .animation(.easeInOut(duration: 0.5), value: selectTab)
+    }
+}
+
 
 

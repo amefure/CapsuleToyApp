@@ -14,9 +14,9 @@ final class Location: Object, ObjectKeyIdentifiable, Codable {
     @Persisted(primaryKey: true) var id: ObjectId
     /// 名称
     @Persisted var name: String
-    /// 緯度
+    /// 緯度 (オプション)
     @Persisted var latitude: Double?
-    /// 経度
+    /// 経度 (オプション)
     @Persisted var longitude: Double?
     /// MEMO
     @Persisted var memo: String

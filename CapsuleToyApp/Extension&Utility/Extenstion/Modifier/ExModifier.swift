@@ -18,6 +18,8 @@ struct InputBackView: ViewModifier {
             .background(.exModeBase)
             .fontM(bold: true)
             .clipShape(RoundedRectangle(cornerRadius: 8))
+            .padding(.bottom, 5)
+            .shadow(color: .black.opacity(0.2), radius: 5, x: 3, y: 3)
     }
 }
 
@@ -28,6 +30,7 @@ struct InputLabelView: ViewModifier {
             .foregroundStyle(.exModeText)
             .fontS(bold: true)
             .frame(width: DeviceSizeUtility.deviceWidth - 30, alignment: .leading)
+            .padding(.top, 5)
     }
 }
 

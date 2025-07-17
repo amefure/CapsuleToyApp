@@ -15,11 +15,17 @@ final class SeriesEntryViewModel: ObservableObject {
     private let seriesRepository: SeriesRepositoryProtocol
     private let locationRepository: LocationRepositoryProtocol
     
+    @Published private(set) var locationDic: [String: Location] = [:]
+    
     @Published var region: MapCameraPosition = .region(LocationRepository.defultRegion)
     @Published var adress: String = ""
     
     @Published var showEntrySuccessAlert: Bool = false
     @Published var showUpdateSuccessAlert: Bool = false
+    @Published var showValidationErrorAlert: Bool = false
+    
+    @Published private(set) var errorMsg: String = ""
+    private var messages: [String] = []
     
     private var cancellables: Set<AnyCancellable> = []
     
@@ -31,10 +37,13 @@ final class SeriesEntryViewModel: ObservableObject {
         self.locationRepository = locationRepository
     }
     
-    @MainActor
-    public func onAppear() {
-        
-    }
+    public func onAppear() { }
+    
+    public func onDisappear() { }
+}
+
+// MARK: - Public Method
+extension SeriesEntryViewModel {
     
     @MainActor
     public func observeUserLocation() {
@@ -58,13 +67,17 @@ final class SeriesEntryViewModel: ObservableObject {
             }.store(in: &cancellables)
     }
     
-    @MainActor
     public func clearObserveUserLocation() {
         cancellables.forEach { $0.cancel() }
     }
     
-    public func onDisappear() {
-
+    
+    public func updateLocationDic(locations: RealmSwift.List<Location>) {
+        locationDic = Dictionary(uniqueKeysWithValues: locations.map { ($0.id.stringValue, $0) })
+    }
+    
+    public func deleteLocationDic(_ location: Location) {
+        locationDic.removeValue(forKey: location.id.stringValue)
     }
     
     /// 新規作成 or 更新処理
@@ -102,6 +115,44 @@ final class SeriesEntryViewModel: ObservableObject {
             seriesRepository.addSeries(series)
             showEntrySuccessAlert = true
         }
+    }
+    
+    
+    public func addLocation(
+        coordinate: CLLocationCoordinate2D?,
+        name: String,
+        location: Location
+    ) -> Bool {
+       
+        clearErrorMsg()
         
+        if name.isEmpty {
+            messages.append("・場所名を入力してください。")
+        }
+        guard messages.isEmpty else {
+            showValidationAlert()
+            return false
+        }
+       
+        location.name = name
+        location.latitude = coordinate?.latitude
+        location.longitude = coordinate?.longitude
+        locationDic.updateValue(location, forKey: location.id.stringValue)
+        return true
+    }
+    
+}
+
+// MARK: - Private Method
+extension SeriesEntryViewModel {
+    
+    private func clearErrorMsg() {
+        messages = []
+        errorMsg = ""
+    }
+    
+    private func showValidationAlert() {
+        errorMsg = messages.joined(separator: "\n")
+        showValidationErrorAlert = true
     }
 }

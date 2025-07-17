@@ -18,14 +18,14 @@ struct SeriesEntryScreen: View {
     @State private var count: String = ""
     @State private var amount: String = ""
     @State private var memo: String = ""
-    @State private var show: Bool = false
-    @State private var locationDic: [String: Location] = [:]
+    @State private var showAddLocationView: Bool = false
 
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         VStack {
             
+
             HeaderView(
                 leadingIcon: "chevron.backward",
                 trailingIcon: "checkmark",
@@ -39,12 +39,12 @@ struct SeriesEntryScreen: View {
                         count: count.toInt() ?? 0,
                         amount: amount.toInt() ?? 0,
                         memo: memo,
-                        locations: locationDic.map { $0.value }
+                        locations: viewModel.locationDic.map { $0.value }
                     )
                 }
             )
             
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 Text("シリーズ名")
                     .exInputLabelView()
                 TextField("例：△△シリーズ", text: $name)
@@ -75,16 +75,37 @@ struct SeriesEntryScreen: View {
                 Text("ガチャガチャ設置場所")
                     .exInputLabelView()
                 
+                let dicList = viewModel.locationDic.sorted(by: { $0.key < $1.key }).map { $0.value }
+                ForEach(dicList, id: \.id) { location in
+                    HStack {
+                        Image(systemName: location.coordinate == nil ? "map" : "map.fill")
+                            .foregroundStyle(location.coordinate == nil ? .exText : .exThema)
+                            .fontM(bold: true)
+                        Text(location.name)
+                            .fontL(bold: true)
+                        Spacer()
+                        
+                        Button {
+                            viewModel.deleteLocationDic(location)
+                        } label: {
+                            Image(systemName: "trash")
+                                .foregroundStyle(.exNegative)
+                                .fontM()
+                        }
+                    }.frame(width: DeviceSizeUtility.deviceWidth - 40, height: 35)
+                }
                 Button {
-                    show = true
+                    showAddLocationView = true
                 } label: {
-                   Text("ADD")
+                    Image(systemName: "plus")
+                        .foregroundStyle(.exThema)
+                        .frame(width: DeviceSizeUtility.deviceWidth - 40, height: 50)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(.exThema, lineWidth: 1)
+                        )
                 }
-
-                ForEach(locationDic.map { $0.value }) { location in
-                    Text(location.name)
-                }
-
+                
                 
                 Text("MEMO")
                     .exInputLabelView()
@@ -100,7 +121,7 @@ struct SeriesEntryScreen: View {
             count = String(series.count)
             amount = String(series.amount)
             memo = series.memo
-            locationDic = Dictionary(uniqueKeysWithValues: series.locations.map { ($0.id.stringValue, $0) })
+            viewModel.updateLocationDic(locations: series.locations)
         }
         .onDisappear { viewModel.onDisappear() }
         .navigationBarBackButtonHidden()
@@ -108,8 +129,8 @@ struct SeriesEntryScreen: View {
         .fontM()
         .foregroundStyle(.exText)
         .background(.exFoundation)
-        .fullScreenCover(isPresented: $show, content: {
-            LocationInputView(isPresented: $show, locationDic: $locationDic)
+        .fullScreenCover(isPresented: $showAddLocationView, content: {
+            LocationInputView()
                 .environmentObject(viewModel)
         })
         .alert(

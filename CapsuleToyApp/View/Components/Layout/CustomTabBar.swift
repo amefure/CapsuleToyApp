@@ -36,7 +36,7 @@ struct CustomTabBar: View {
                         if selectedTab == tab {
                             RoundedRectangle(cornerRadius: 2)
                                 .frame(width: 100, height: 3)
-                                .foregroundColor(.accent)
+                                .foregroundStyle(.accent)
                                 .matchedGeometryEffect(id: "underline", in: tabAnimation)
                         } else {
                             Color.clear.frame(height: 3)
