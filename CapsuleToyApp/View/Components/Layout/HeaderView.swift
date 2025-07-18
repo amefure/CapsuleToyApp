@@ -70,6 +70,7 @@ struct HeaderView<Content: View>: View {
             }
         }.frame(height: 50)
             .foregroundStyle(.exThema)
+            .padding(.horizontal)
     }
 }
 

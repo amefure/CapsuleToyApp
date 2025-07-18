@@ -18,6 +18,7 @@ struct SeriesEntryScreen: View {
     @State private var count: String = ""
     @State private var amount: String = ""
     @State private var memo: String = ""
+    @State private var image: UIImage? = nil
     @State private var showAddLocationView: Bool = false
 
     @Environment(\.dismiss) private var dismiss
@@ -39,12 +40,17 @@ struct SeriesEntryScreen: View {
                         count: count.toInt() ?? 0,
                         amount: amount.toInt() ?? 0,
                         memo: memo,
-                        locations: viewModel.locationDic.map { $0.value }
+                        locations: viewModel.locationDic.map { $0.value },
+                        image: image
                     )
                 }
             )
             
             ScrollView(showsIndicators: false) {
+                
+                ImageSelectView(image: $image, isDisplayedCropView: true)
+                    .padding(.vertical)
+                
                 Text("シリーズ名")
                     .exInputLabelView()
                 TextField("例：△△シリーズ", text: $name)
@@ -122,10 +128,11 @@ struct SeriesEntryScreen: View {
             amount = String(series.amount)
             memo = series.memo
             viewModel.updateLocationDic(locations: series.locations)
+            image = viewModel.fecthImage(id: series.id.stringValue)
+            
         }
         .onDisappear { viewModel.onDisappear() }
         .navigationBarBackButtonHidden()
-        .padding(.horizontal)
         .fontM()
         .foregroundStyle(.exText)
         .background(.exFoundation)

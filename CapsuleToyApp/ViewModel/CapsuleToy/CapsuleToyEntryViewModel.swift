@@ -46,7 +46,7 @@ final class CapsuleToyEntryViewModel: ObservableObject {
                 toy.isOwned = isOwned
                 toy.isSecret = isSecret
                 toy.memo = memo
-                toy.imageDataPath = path
+                toy.imagePath = path
                 toy.createdAt = Date()
                 toy.updatedAt = Date()
             }
@@ -60,7 +60,7 @@ final class CapsuleToyEntryViewModel: ObservableObject {
             toy.isOwned = isOwned
             toy.isSecret = isSecret
             toy.memo = memo
-            toy.imageDataPath = path
+            toy.imagePath = path
             toy.createdAt = Date()
             toy.updatedAt = Date()
             seriesRepository.addCapsuleToy(
@@ -70,6 +70,12 @@ final class CapsuleToyEntryViewModel: ObservableObject {
             showEntrySuccessAlert = true
         }
         
+    }
+    
+    /// 画像を取得する
+    public func fecthImage(id: String) -> UIImage? {
+        let imageFileManager = ImageFileManager()
+        return imageFileManager.loadImage(id)
     }
     
     /// 画像をローカルへ保存する処理

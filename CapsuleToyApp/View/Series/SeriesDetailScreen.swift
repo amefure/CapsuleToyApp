@@ -27,32 +27,70 @@ struct SeriesDetailScreen: View {
     
     var body: some View {
         VStack {
-            HeaderView(
-                leadingIcon: "chevron.backward",
-                trailingIcon: "pencil",
-                leadingAction: {
-                    dismiss()
-                },
-                trailingAction: {
-                    presentEditView = true
-                }
-            )
-            
             if let series = viewModel.series {
+                HeaderView(
+                    leadingIcon: "chevron.backward",
+                    trailingIcon: "pencil",
+                    leadingAction: {
+                        dismiss()
+                    },
+                    trailingAction: {
+                        presentEditView = true
+                    },
+                    content: {
+                        Text(series.name)
+                            .fontM(bold: true)
+                            .lineLimit(2)
+                            .foregroundStyle(.exText)
+                    }
+                )
                 
                 ScrollView(showsIndicators: false) {
                     
-                    Text(series.name)
-                        .fontL(bold: true)
-                        .lineLimit(2)
-                        .exInputBackView()
-                       
-                   
+                    HStack(alignment: .top) {
+                        ImagePreView(
+                            photoPath: series.imagePath,
+                            width: DeviceSizeUtility.deviceWidth / 2 - 20,
+                            height: DeviceSizeUtility.deviceWidth / 2 - 20,
+                            isNotView: true,
+                            isEnablePopup: true
+                        )
+                        
+                        VStack {
+                            Text("\(series.amount)円")
+                                .frame(alignment: .leading)
+                                .fontS()
+                                .exInputBackView(width: DeviceSizeUtility.deviceWidth / 2 - 20)
+                            
+                            Text("全\(series.count)種")
+                                .frame(alignment: .leading)
+                                .fontS()
+                                .exInputBackView(width: DeviceSizeUtility.deviceWidth / 2 - 20)
+                        }
+                      
+                    }
+                  
+                    
+                    if !series.memo.isEmpty {
+                        Text("MEMO")
+                            .exInputLabelView()
+                        
+                        Text("\(series.memo)")
+                            .frame(alignment: .leading)
+                            .fontS()
+                            .exInputBackView()
+                    }
+                  
+                    
+                    Text("所持数")
+                        .exInputLabelView()
+                    
                     ToysRatingListView(
                         isOwnedCount: series.isOwendToysCount,
                         maxCount: series.highCount
-                    ).padding(.vertical)
-                   
+                    ).exInputBackView()
+                        .padding(.vertical)
+
                     
                     SelectTabPickerView(selectTab: $selectTab)
                     
@@ -81,7 +119,7 @@ struct SeriesDetailScreen: View {
                             .id(UUID()) // モックの場合のみ必要かも(新規追加後に再描画されないため)
                     case .list:
                         if series.locations.isEmpty {
-                            Text("登録されている情報がありません。")
+                            Text("登録されている場所情報がありません。")
                                 .padding(.vertical)
                         } else {
                             ForEach(series.locations) { location in
@@ -116,25 +154,35 @@ struct SeriesDetailScreen: View {
                         .padding(.vertical)
                     
                     LazyVGrid(columns: grids) {
-                        ForEach(series.capsuleToys) { toy in
+                        ForEach(series.capsuleToys.sorted(by: { $0.isOwned != $1.isOwned})) { toy in
                             BoingButton {
                                 selectToy = toy
                                 viewModel.presentEntryToyScreen = true
                             } label: {
                                 VStack {
                                     ImagePreView(
-                                        photoPath: toy.imageDataPath,
+                                        photoPath: toy.imagePath,
                                         width: SeriesDetailScreen.itemWidth,
-                                        height: SeriesDetailScreen.itemWidth,
+                                        height: SeriesDetailScreen.itemWidth - 30,
                                         isNotView: true,
                                         isEnablePopup: false
                                     )
-                                    Text(toy.name)
-                                    Text(toy.memo)
+                                    HStack {
+                                        Image(systemName: toy.isOwned ? "checkmark.circle.fill" : "circle.dashed")
+                                            .foregroundStyle(toy.isOwned ? .exThema : .exThema.opacity(0.2))
+                                            .padding(.leading, 5)
+                                        Spacer()
+                                        Text(toy.name)
+                                        
+                                        Spacer()
+                                        
+                                    }
+                                   
                                 }.frame(width: SeriesDetailScreen.itemWidth, height: SeriesDetailScreen.itemWidth)
-                                    .background(.exThema)
+                                    .background(.white)
                             }.clipped()
-                        }.foregroundStyle(.white)
+                        }.clipShape(RoundedRectangle(cornerRadius: 10))
+                            .shadow(color: .black.opacity(0.2), radius: 5, x: 3, y: 3)
                     }.id(UUID()) // モックの場合のみ必要かも(新規追加後に再描画されないため)
                     
                     BoingButton {
@@ -154,12 +202,10 @@ struct SeriesDetailScreen: View {
             
         }.onAppear {
             selectToy = nil
-            print("-----onAppear")
             viewModel.onAppear(id: seriesId)
         }.onDisappear { viewModel.onDisappear() }
             .navigationBarBackButtonHidden()
             .navigationBarHidden(true) // Mapがある場合これを明示的に指定する必要がある
-            .padding(.horizontal)
             .fontM()
             .foregroundStyle(.exText)
             .background(.exFoundation)

@@ -19,35 +19,45 @@ struct SeriesListScreen: View {
                 trailingAction: {
                     presentEntryScreen = true
                 }
-            ).padding(.horizontal)
+            )
             
             List(viewModel.seriesList) { series in
-                NavigationLink {
-                    SeriesDetailScreen(seriesId: series.id)
-                } label: {
-                    HStack(alignment: .bottom) {
-                        Image(systemName: "circle.tophalf.filled")
-                            .foregroundStyle(.accent)
+                
+                ZStack {
+                    NavigationLink {
+                        SeriesDetailScreen(seriesId: series.id)
+                    } label: {
+                        // > アクセサリを非表示にするためZStack + opacity
+                    }.opacity(0)
+                        .frame(width: 0, height: 0)
+                    
+                    HStack {
                         
-                        Text(series.name)
-                            .fontM(bold: true)
-                            .lineLimit(1)
+                        ImagePreView(
+                            photoPath: series.imagePath,
+                            width: 60,
+                            height: 60,
+                            isNotView: false,
+                            isEnablePopup: false
+                        )
                         
-                        Spacer()
-                        
-                        HStack(spacing: 5) {
-                            Text("\(series.isOwendToysCount)")
-                                .fontS(bold: true)
+                        VStack {
+                            HStack(alignment: .bottom) {
+                                Text(series.name)
+                                    .fontM(bold: true)
+                                    .lineLimit(1)
+                                
+                                Spacer()
+                            }
                             
-                            Text("／")
-                                .fontS(bold: true)
-                            
-                            Text("\(series.count)")
-                                .fontS(bold: true)
-                        }.foregroundStyle(series.isComplete ? .accent : .exText)
-                       
+                            ToysRatingListView(
+                                isOwnedCount: series.isOwendToysCount,
+                                maxCount: series.highCount,
+                                isAnimation: false
+                            )
+                        }
                     }
-                }.frame(height: 60)
+                }
             }
                 
         }.onAppear { viewModel.onAppear() }

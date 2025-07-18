@@ -11,6 +11,7 @@ struct ToysRatingListView: View {
     
     public let isOwnedCount: Int
     public let maxCount: Int
+    public var isAnimation: Bool = true
     @State private var animatedLevel: Int = 0
     
     private func startAnimate() {
@@ -28,9 +29,15 @@ struct ToysRatingListView: View {
             HStack {
                 ForEach(0..<maxCount, id: \.self) { i in
                     Image(systemName: "circle.tophalf.filled")
-                        .fontLL(bold: true)
+                        .if(!isAnimation) { view in
+                            view
+                                .fontM(bold: true)
+                        }.if(isAnimation) { view in
+                            view
+                                .fontLL(bold: true)
+                        }
                         .foregroundStyle(
-                            animatedLevel >= i ? (i < isOwnedCount ? .exYellow : .exText) : .exText
+                            animatedLevel >= i ? (i < isOwnedCount ? .exThema : .exThema.opacity(0.2)) : .exThema.opacity(0.2)
                         ).animation(
                             .easeOut(duration: 0.3)
                             .delay(0.1 * Double(i)),
@@ -38,7 +45,13 @@ struct ToysRatingListView: View {
                         )
                 }
             }
-        }.onAppear { startAnimate() }
+        }.onAppear {
+            if isAnimation {
+                startAnimate()
+            } else {
+                animatedLevel = isOwnedCount
+            }
+        }
     }
 }
 

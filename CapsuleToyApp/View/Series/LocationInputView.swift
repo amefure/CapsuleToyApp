@@ -78,7 +78,6 @@ struct LocationInputView: View {
             viewModel.observeUserLocation()
         }.onDisappear { viewModel.clearObserveUserLocation() }
         .navigationBarBackButtonHidden()
-            .padding(.horizontal)
             .fontM()
             .foregroundStyle(.exText)
             .background(.exFoundation)

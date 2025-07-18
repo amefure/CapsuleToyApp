@@ -23,6 +23,8 @@ final class Series: Object, ObjectKeyIdentifiable, Codable {
     @Persisted var memo: String
     /// 位置情報
     @Persisted var locations: RealmSwift.List<Location>
+    /// 画像パス
+    @Persisted var imagePath: String?
     /// 生成日
     @Persisted var createdAt: Date = Date()
     /// 更新日

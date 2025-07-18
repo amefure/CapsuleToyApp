@@ -28,7 +28,7 @@ struct CapsuleToyEntryScreen: View {
             
             HeaderView(
                 leadingIcon: "chevron.backward",
-                trailingIcon: "plus",
+                trailingIcon: "checkmark",
                 leadingAction: {
                     dismiss()
                 },
@@ -45,7 +45,7 @@ struct CapsuleToyEntryScreen: View {
                 }
             )
             
-            ImageSelectView(image: $image)
+            ImageSelectView(image: $image, isDisplayedCropView: true)
                 .padding(.vertical)
             
             Text("アイテム名")
@@ -70,11 +70,11 @@ struct CapsuleToyEntryScreen: View {
             isOwned = toy.isOwned
             isSecret = toy.isSecret
             memo = toy.memo
+            image = viewModel.fecthImage(id: toy.id.stringValue)
             viewModel.onAppear()
         }
         .onDisappear { viewModel.onDisappear() }
         .navigationBarBackButtonHidden()
-        .padding(.horizontal)
         .fontM()
         .foregroundStyle(.exText)
         .background(.exFoundation)

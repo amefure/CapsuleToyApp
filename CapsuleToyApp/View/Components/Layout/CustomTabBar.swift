@@ -18,36 +18,40 @@ struct CustomTabBar: View {
     var body: some View {
         HStack {
             ForEach(AppTab.allCases, id: \.self) { tab in
-                BoingButton {
+                Button {
                     withAnimation {
                         selectedTab = tab
                     }
                     rootEnvironment.setActiveTab(tab)
                 } label: {
-                    VStack {
+                    VStack(spacing: 0) {
+                        
+                        if selectedTab == tab {
+                            Circle()
+                                .frame(width: 25, height: 25)
+                                .foregroundStyle(.exThema)
+                                .matchedGeometryEffect(id: "underline", in: tabAnimation)
+                                .offset(y: -15)
+                        } else {
+                            Circle()
+                                .frame(width: 25, height: 25)
+                                .foregroundStyle(.clear)
+                                .offset(y: -15)
+                        }
+                        
                         Image(systemName: tab.icon)
-                            .fontL(bold: true)
-                            .foregroundColor(selectedTab == tab ? .accent : .gray)
+                            .fontM(bold: true)
+                            .foregroundStyle(selectedTab == tab ? .accent : .gray)
                         
                         Text(tab.title)
                             .font(.caption)
-                            .foregroundColor(selectedTab == tab ? .accent : .gray)
-
-                        if selectedTab == tab {
-                            RoundedRectangle(cornerRadius: 2)
-                                .frame(width: 100, height: 3)
-                                .foregroundStyle(.accent)
-                                .matchedGeometryEffect(id: "underline", in: tabAnimation)
-                        } else {
-                            Color.clear.frame(height: 3)
-                        }
-                    }
-                    .frame(maxWidth: .infinity)
+                            .foregroundStyle(selectedTab == tab ? .accent : .gray)
+                       
+                    }.frame(maxWidth: .infinity)
                 }
             }
         }
-        .padding(.top, 10)
-        .padding(.bottom, DeviceSizeUtility.isSESize ? 5 :  40)
+        .padding(.bottom, DeviceSizeUtility.isSESize ? 0 :  20)
         .background(.exModeBase)
         .clipped()
         .shadow(color: .black.opacity(0.2), radius: 5, x: -3, y: -3)
