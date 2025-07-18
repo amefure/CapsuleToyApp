@@ -53,3 +53,26 @@
 "image_error_1" = "EI001";
 "image_error_2" = "EI002";
 "image_error_3" = "EI003";
+
+
+// MARK: - Setting
+"setting_section_app" = "アプリ設定";
+"setting_section_app_mode" = "ダークモード";
+"setting_section_app_faq" = "よくある質問";
+"setting_section_app_purchase" = "広告削除";
+"setting_section_link_title" = "Link";
+"setting_section_link_review" = "アプリをレビューする";
+"setting_section_link_recommend" = "「アプリ」をオススメする";
+"setting_section_link_share_text" = "???????????";
+"setting_section_link_contact" = "アプリの不具合はこちら";
+"setting_section_link_terms" = "利用規約とプライバシーポリシー";
+"setting_section_link_desc" = "・アプリに不具合がございましたら「アプリの不具合はこちら」よりお問い合わせください。";
+
+// MARK: In App Purchase
+"in_app_purchase" = "購入する";
+"in_app_purchased" = "購入済み";
+"in_app_purchase_restore" = "復元する";
+"in_app_purchase_restore_title" = "購入アイテムを復元する";
+"in_app_purchase_restore_msg" = "・一度ご購入いただけますと、\nアプリ再インストール時に「復元する」ボタンから\n復元が可能となっています。";
+"in_app_purchase_msg" = "購入後のキャンセルは致しかねますのでご了承ください。";
+"in_app_purchase_fetch_error_msg" = "課金アイテムの取得に失敗しました。\nネットワークの接続を確認してください。";

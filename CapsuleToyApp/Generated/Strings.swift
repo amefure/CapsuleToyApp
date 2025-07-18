@@ -73,10 +73,49 @@ internal enum L10n {
   internal static let imageErrorSaveFailed = L10n.tr("Localizable", "image_error_save_failed", fallback: "画像の保存に失敗しました。何度も繰り返される場合はアプリを起動し直して再度実行してみてください。")
   /// 画像 Error
   internal static let imageErrorTitle = L10n.tr("Localizable", "image_error_title", fallback: "画像 Error")
+  /// 購入する
+  internal static let inAppPurchase = L10n.tr("Localizable", "in_app_purchase", fallback: "購入する")
+  /// 課金アイテムの取得に失敗しました。
+  /// ネットワークの接続を確認してください。
+  internal static let inAppPurchaseFetchErrorMsg = L10n.tr("Localizable", "in_app_purchase_fetch_error_msg", fallback: "課金アイテムの取得に失敗しました。\nネットワークの接続を確認してください。")
+  /// 購入後のキャンセルは致しかねますのでご了承ください。
+  internal static let inAppPurchaseMsg = L10n.tr("Localizable", "in_app_purchase_msg", fallback: "購入後のキャンセルは致しかねますのでご了承ください。")
+  /// 復元する
+  internal static let inAppPurchaseRestore = L10n.tr("Localizable", "in_app_purchase_restore", fallback: "復元する")
+  /// ・一度ご購入いただけますと、
+  /// アプリ再インストール時に「復元する」ボタンから
+  /// 復元が可能となっています。
+  internal static let inAppPurchaseRestoreMsg = L10n.tr("Localizable", "in_app_purchase_restore_msg", fallback: "・一度ご購入いただけますと、\nアプリ再インストール時に「復元する」ボタンから\n復元が可能となっています。")
+  /// 購入アイテムを復元する
+  internal static let inAppPurchaseRestoreTitle = L10n.tr("Localizable", "in_app_purchase_restore_title", fallback: "購入アイテムを復元する")
+  /// 購入済み
+  internal static let inAppPurchased = L10n.tr("Localizable", "in_app_purchased", fallback: "購入済み")
   /// OK
   internal static let ok = L10n.tr("Localizable", "ok", fallback: "OK")
   /// 送信
   internal static let send = L10n.tr("Localizable", "send", fallback: "送信")
+  /// アプリ設定
+  internal static let settingSectionApp = L10n.tr("Localizable", "setting_section_app", fallback: "アプリ設定")
+  /// よくある質問
+  internal static let settingSectionAppFaq = L10n.tr("Localizable", "setting_section_app_faq", fallback: "よくある質問")
+  /// ダークモード
+  internal static let settingSectionAppMode = L10n.tr("Localizable", "setting_section_app_mode", fallback: "ダークモード")
+  /// 広告削除
+  internal static let settingSectionAppPurchase = L10n.tr("Localizable", "setting_section_app_purchase", fallback: "広告削除")
+  /// アプリの不具合はこちら
+  internal static let settingSectionLinkContact = L10n.tr("Localizable", "setting_section_link_contact", fallback: "アプリの不具合はこちら")
+  /// ・アプリに不具合がございましたら「アプリの不具合はこちら」よりお問い合わせください。
+  internal static let settingSectionLinkDesc = L10n.tr("Localizable", "setting_section_link_desc", fallback: "・アプリに不具合がございましたら「アプリの不具合はこちら」よりお問い合わせください。")
+  /// 「アプリ」をオススメする
+  internal static let settingSectionLinkRecommend = L10n.tr("Localizable", "setting_section_link_recommend", fallback: "「アプリ」をオススメする")
+  /// アプリをレビューする
+  internal static let settingSectionLinkReview = L10n.tr("Localizable", "setting_section_link_review", fallback: "アプリをレビューする")
+  /// ???????????
+  internal static let settingSectionLinkShareText = L10n.tr("Localizable", "setting_section_link_share_text", fallback: "???????????")
+  /// 利用規約とプライバシーポリシー
+  internal static let settingSectionLinkTerms = L10n.tr("Localizable", "setting_section_link_terms", fallback: "利用規約とプライバシーポリシー")
+  /// Link
+  internal static let settingSectionLinkTitle = L10n.tr("Localizable", "setting_section_link_title", fallback: "Link")
   /// 未登録
   internal static let unspecified = L10n.tr("Localizable", "unspecified", fallback: "未登録")
   /// 更新

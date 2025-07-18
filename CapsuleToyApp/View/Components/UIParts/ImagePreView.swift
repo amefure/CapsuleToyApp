@@ -60,7 +60,7 @@ struct ImagePreView: View {
                         .foregroundStyle(.exText.opacity(0.8))
                         .frame(width: width - 5, height: height)
                 } else {
-                    Image(systemName: "iphone")
+                    Image(systemName: "noimage")
                         .resizable()
                         .scaledToFill()
                         .scaleEffect(1.1)

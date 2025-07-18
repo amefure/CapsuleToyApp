@@ -22,7 +22,7 @@ struct RootView: View {
                     .environmentObject(rootEnvironment)
                     .padding(.bottom, DeviceSizeUtility.isSESize ? 70 : 110) // TabBar Space
             case .settings:
-                SeriesListScreen()
+                SettingView()
                     .environmentObject(rootEnvironment)
                     .padding(.bottom, DeviceSizeUtility.isSESize ? 70 : 110) // TabBar Space
             }

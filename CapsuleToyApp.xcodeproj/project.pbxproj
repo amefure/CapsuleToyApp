@@ -47,6 +47,11 @@
 		126CF5462E19CC6600C14395 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 126CF5452E19CC6600C14395 /* Swinject */; };
 		12A6E0532E26405E00E72E20 /* LocationInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A6E0522E26405E00E72E20 /* LocationInputView.swift */; };
 		12A6E0552E26415B00E72E20 /* ErrorViewDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A6E0542E26415A00E72E20 /* ErrorViewDialog.swift */; };
+		12A6E0792E2A1D1000E72E20 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A6E0782E2A1D1000E72E20 /* SettingView.swift */; };
+		12A6E07B2E2A1D5100E72E20 /* StaticUrls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A6E07A2E2A1D5000E72E20 /* StaticUrls.swift */; };
+		12A6E07F2E2A1DCF00E72E20 /* ControlWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A6E07E2E2A1DCF00E72E20 /* ControlWebView.swift */; };
+		12A6E0802E2A1DCF00E72E20 /* UICustomWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A6E07D2E2A1DCF00E72E20 /* UICustomWebView.swift */; };
+		12A6E0832E2A1E3900E72E20 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A6E0822E2A1E3900E72E20 /* SettingViewModel.swift */; };
 		12B8CE9D2E195BBD00B61EED /* CapsuleToyAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B8CE9A2E195BBD00B61EED /* CapsuleToyAppApp.swift */; };
 		12B8CE9E2E195BBD00B61EED /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B8CE9B2E195BBD00B61EED /* RootView.swift */; };
 		12B8CE9F2E195BBD00B61EED /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12B8CE992E195BBD00B61EED /* Images.xcassets */; };
@@ -122,6 +127,11 @@
 		122FFC3D2E1D0D4B00FA1A6C /* SeriesDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesDetailViewModel.swift; sourceTree = "<group>"; };
 		12A6E0522E26405E00E72E20 /* LocationInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInputView.swift; sourceTree = "<group>"; };
 		12A6E0542E26415A00E72E20 /* ErrorViewDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewDialog.swift; sourceTree = "<group>"; };
+		12A6E0782E2A1D1000E72E20 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		12A6E07A2E2A1D5000E72E20 /* StaticUrls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticUrls.swift; sourceTree = "<group>"; };
+		12A6E07D2E2A1DCF00E72E20 /* UICustomWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICustomWebView.swift; sourceTree = "<group>"; };
+		12A6E07E2E2A1DCF00E72E20 /* ControlWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlWebView.swift; sourceTree = "<group>"; };
+		12A6E0822E2A1E3900E72E20 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		12B8CE8B2E195BAD00B61EED /* CapsuleToyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CapsuleToyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12B8CE992E195BBD00B61EED /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		12B8CE9A2E195BBD00B61EED /* CapsuleToyAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleToyAppApp.swift; sourceTree = "<group>"; };
@@ -220,6 +230,7 @@
 				122ECCC62E1FED40000F757A /* RootEnvironment.swift */,
 				122FFC382E1C138200FA1A6C /* Series */,
 				12DF0C432E1E5AF7008D1A57 /* CapsuleToy */,
+				12A6E0812E2A1E2B00E72E20 /* Setting */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -257,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				122FFBFB2E1C0A2A00FA1A6C /* RealmConfig.swift */,
+				12A6E07A2E2A1D5000E72E20 /* StaticUrls.swift */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -351,6 +363,31 @@
 			path = Series;
 			sourceTree = "<group>";
 		};
+		12A6E0772E2A1CFD00E72E20 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				12A6E0782E2A1D1000E72E20 /* SettingView.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		12A6E07C2E2A1DC000E72E20 /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				12A6E07D2E2A1DCF00E72E20 /* UICustomWebView.swift */,
+				12A6E07E2E2A1DCF00E72E20 /* ControlWebView.swift */,
+			);
+			path = WebView;
+			sourceTree = "<group>";
+		};
+		12A6E0812E2A1E2B00E72E20 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				12A6E0822E2A1E3900E72E20 /* SettingViewModel.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
 		12B8CE822E195BAD00B61EED = {
 			isa = PBXGroup;
 			children = (
@@ -410,6 +447,8 @@
 				122FFBF22E1C092B00FA1A6C /* Series */,
 				122FFBF32E1C094800FA1A6C /* CapsuleToy */,
 				12DF0C462E1EAE42008D1A57 /* Dialog */,
+				12A6E07C2E2A1DC000E72E20 /* WebView */,
+				12A6E0772E2A1CFD00E72E20 /* Setting */,
 				12DF0C3E2E1D6264008D1A57 /* Components */,
 			);
 			path = View;
@@ -544,6 +583,8 @@
 				122FFC3E2E1D0D5100FA1A6C /* SeriesDetailViewModel.swift in Sources */,
 				12DF0C482E1EAE4E008D1A57 /* ImagePickerDialog.swift in Sources */,
 				122FFC052E1C0DCB00FA1A6C /* SeriesRepository.swift in Sources */,
+				12A6E07F2E2A1DCF00E72E20 /* ControlWebView.swift in Sources */,
+				12A6E0802E2A1DCF00E72E20 /* UICustomWebView.swift in Sources */,
 				122FFBEE2E1C071600FA1A6C /* CapsuleToy.swift in Sources */,
 				122FFC092E1C0E4400FA1A6C /* MockSeriesRepository.swift in Sources */,
 				122FFBF92E1C0A0700FA1A6C /* RealmRepository.swift in Sources */,
@@ -562,6 +603,7 @@
 				122FFBF52E1C096200FA1A6C /* SeriesListScreen.swift in Sources */,
 				122FFC0B2E1C11DB00FA1A6C /* SeriesEntryScreen.swift in Sources */,
 				122FFC252E1C120D00FA1A6C /* DeviceSizeUtility.swift in Sources */,
+				12A6E0792E2A1D1000E72E20 /* SettingView.swift in Sources */,
 				12DF0C542E1EB047008D1A57 /* AppError.swift in Sources */,
 				122FFC262E1C120D00FA1A6C /* ExFont.swift in Sources */,
 				122ECCC72E1FED41000F757A /* RootEnvironment.swift in Sources */,
@@ -579,6 +621,7 @@
 				122FFC302E1C120D00FA1A6C /* ExCollection.swift in Sources */,
 				122FFC312E1C120D00FA1A6C /* JsonConvertUtility.swift in Sources */,
 				122ECCC52E1FED24000F757A /* CustomTabBar.swift in Sources */,
+				12A6E0832E2A1E3900E72E20 /* SettingViewModel.swift in Sources */,
 				12DF0C4F2E1EAFF9008D1A57 /* ImageFileManager.swift in Sources */,
 				122ECCD42E20FA4B000F757A /* LocationRepositoryProtocol.swift in Sources */,
 				122FFC322E1C120D00FA1A6C /* ExUIApplication.swift in Sources */,
@@ -593,6 +636,7 @@
 				122FFC012E1C0BF400FA1A6C /* RealmRepositoryProtocol.swift in Sources */,
 				122FFBF12E1C078F00FA1A6C /* Series.swift in Sources */,
 				12DF0C4C2E1EAE8F008D1A57 /* ImageCropDialog.swift in Sources */,
+				12A6E07B2E2A1D5100E72E20 /* StaticUrls.swift in Sources */,
 				122ECCD02E20E8F9000F757A /* Location.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
