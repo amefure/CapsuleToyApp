@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ImageSelectView: View {
     @Binding var image: UIImage?
+    public let width: CGFloat = DeviceSizeUtility.deviceWidth / 2 - 20
+    public let height: CGFloat = DeviceSizeUtility.deviceWidth / 2 - 20
    
     /// 外部からも表示させたくない場合に`true`に操作
     @State var isDisplayedCropView: Bool = false
@@ -25,7 +27,7 @@ struct ImageSelectView: View {
                     Image(uiImage: image)
                         .resizable()
                         .scaledToFill()
-                        .frame(width: DeviceSizeUtility.deviceWidth - 40, height: 140)
+                        .frame(width: width, height: height)
                         .clipped()
                 }
             } else {
@@ -36,7 +38,7 @@ struct ImageSelectView: View {
                     Image(systemName: "plus")
                         .fontM()
                         .foregroundStyle(.exThema)
-                        .frame(width: DeviceSizeUtility.deviceWidth - 40, height: 140)
+                        .frame(width: width, height: height)
                         .overlay(
                             RoundedRectangle(cornerRadius: 8)
                                 .stroke(.exThema, lineWidth: 1)

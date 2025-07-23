@@ -57,15 +57,20 @@ struct SeriesDetailScreen: View {
                         )
                         
                         VStack {
+                            Spacer()
+                            
                             Text("\(series.amount)円")
                                 .frame(alignment: .leading)
                                 .fontS()
                                 .exInputBackView(width: DeviceSizeUtility.deviceWidth / 2 - 20)
                             
+                            Spacer()
+                            
                             Text("全\(series.count)種")
                                 .frame(alignment: .leading)
                                 .fontS()
                                 .exInputBackView(width: DeviceSizeUtility.deviceWidth / 2 - 20)
+                            Spacer()
                         }
                       
                     }
@@ -159,25 +164,23 @@ struct SeriesDetailScreen: View {
                                 selectToy = toy
                                 viewModel.presentEntryToyScreen = true
                             } label: {
-                                VStack {
-                                    ImagePreView(
-                                        photoPath: toy.imagePath,
-                                        width: SeriesDetailScreen.itemWidth,
-                                        height: SeriesDetailScreen.itemWidth - 30,
-                                        isNotView: true,
-                                        isEnablePopup: false
-                                    )
-                                    HStack {
-                                        Image(systemName: toy.isOwned ? "checkmark.circle.fill" : "circle.dashed")
-                                            .foregroundStyle(toy.isOwned ? .exThema : .exThema.opacity(0.2))
-                                            .padding(.leading, 5)
-                                        Spacer()
+                                ZStack(alignment: .topLeading) {
+                                    AnimationCheckButton(
+                                        isEnable: Binding.constant(toy.isOwned),
+                                        isAppearAnimate: true
+                                    ).zIndex(2)
+                                    
+                                    VStack {
+                                        ImagePreView(
+                                            photoPath: toy.imagePath,
+                                            width: SeriesDetailScreen.itemWidth,
+                                            height: SeriesDetailScreen.itemWidth - 30,
+                                            isNotView: true,
+                                            isEnablePopup: false
+                                        )
                                         Text(toy.name)
-                                        
-                                        Spacer()
-                                        
-                                    }
-                                   
+                                    }.zIndex(1)
+                                    
                                 }.frame(width: SeriesDetailScreen.itemWidth, height: SeriesDetailScreen.itemWidth)
                                     .background(.white)
                             }.clipped()

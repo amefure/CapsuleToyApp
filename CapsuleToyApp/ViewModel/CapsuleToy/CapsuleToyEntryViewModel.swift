@@ -14,6 +14,10 @@ final class CapsuleToyEntryViewModel: ObservableObject {
 
     @Published var showEntrySuccessAlert: Bool = false
     @Published var showUpdateSuccessAlert: Bool = false
+    @Published var showValidationErrorAlert: Bool = false
+    
+    @Published private(set) var errorMsg: String = ""
+    private var messages: [String] = []
     
     init(seriesRepository: SeriesRepositoryProtocol) {
         self.seriesRepository = seriesRepository
@@ -38,6 +42,8 @@ final class CapsuleToyEntryViewModel: ObservableObject {
         memo: String,
         image: UIImage?
     ) {
+        
+        
         if let toyId {
             // 画像が存在すれば保存してパスを渡す
             let path: String? = saveImageForLocal(id: toyId.stringValue, image: image)
@@ -77,6 +83,19 @@ final class CapsuleToyEntryViewModel: ObservableObject {
         let imageFileManager = ImageFileManager()
         return imageFileManager.loadImage(id)
     }
+}
+
+
+extension CapsuleToyEntryViewModel {
+    private func clearErrorMsg() {
+        messages = []
+        errorMsg = ""
+    }
+    
+    private func showValidationAlert() {
+        errorMsg = messages.joined(separator: "\n")
+        showValidationErrorAlert = true
+    }
     
     /// 画像をローカルへ保存する処理
     private func saveImageForLocal(id: String, image: UIImage?) -> String? {
@@ -87,4 +106,3 @@ final class CapsuleToyEntryViewModel: ObservableObject {
         return path
     }
 }
-

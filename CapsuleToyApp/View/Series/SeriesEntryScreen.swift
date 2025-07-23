@@ -48,35 +48,48 @@ struct SeriesEntryScreen: View {
             
             ScrollView(showsIndicators: false) {
                 
-                ImageSelectView(image: $image, isDisplayedCropView: true)
-                    .padding(.vertical)
+                HStack(alignment: .top) {
+                    ImageSelectView(image: $image, isDisplayedCropView: true)
+                        .padding(.vertical)
+                    
+                    VStack {
+                        Spacer()
+                        
+                        Text("金額")
+                            .exInputLabelView(width: DeviceSizeUtility.deviceWidth / 2 - 20)
+                        
+                        HStack(alignment: .bottom) {
+                            TextField("例：300円", text: $amount)
+                                .keyboardType(.numberPad)
+                            Text("／円")
+                                .fontS(bold: true)
+                                .opacity(0.5)
+                        }.exInputBackView(width: DeviceSizeUtility.deviceWidth / 2 - 20)
+                        
+                        Spacer()
+                        
+                        Text("種類数")
+                            .exInputLabelView(width: DeviceSizeUtility.deviceWidth / 2 - 20)
+                       
+                        HStack(alignment: .bottom) {
+                            TextField("例：6種類", text: $count)
+                                .keyboardType(.numberPad)
+                            Text("／種類")
+                                .fontS(bold: true)
+                                .opacity(0.5)
+                        }.exInputBackView(width: DeviceSizeUtility.deviceWidth / 2 - 20)
+                        Spacer()
+                    }
+                   
+                }
                 
                 Text("シリーズ名")
                     .exInputLabelView()
                 TextField("例：△△シリーズ", text: $name)
                     .exInputBackView()
+   
                 
-                Text("種類数")
-                    .exInputLabelView()
                
-                HStack(alignment: .bottom) {
-                    TextField("例：6種類", text: $count)
-                        .keyboardType(.numberPad)
-                    Text("／種類")
-                        .fontS(bold: true)
-                        .opacity(0.5)
-                }.exInputBackView()
-                
-                Text("金額")
-                    .exInputLabelView()
-                
-                HStack(alignment: .bottom) {
-                    TextField("例：300円", text: $amount)
-                        .keyboardType(.numberPad)
-                    Text("／円")
-                        .fontS(bold: true)
-                        .opacity(0.5)
-                }.exInputBackView()
                 
                 Text("ガチャガチャ設置場所")
                     .exInputLabelView()
@@ -156,6 +169,10 @@ struct SeriesEntryScreen: View {
             positiveAction: {
                 dismiss()
             }
+        ).overlayErrorViewDialog(
+            isPresented: $viewModel.showValidationErrorAlert,
+            title: L10n.dialogErrorTitle,
+            message: viewModel.errorMsg
         )
     }
 }

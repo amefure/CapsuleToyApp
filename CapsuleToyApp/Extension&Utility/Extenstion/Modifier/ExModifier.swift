@@ -24,12 +24,12 @@ struct InputBackView: ViewModifier {
 }
 
 struct InputLabelView: ViewModifier {
-    
+    public var width: CGFloat = DeviceSizeUtility.deviceWidth - 30
     func body(content: Content) -> some View {
         content
             .foregroundStyle(.exModeText)
             .fontS(bold: true)
-            .frame(width: DeviceSizeUtility.deviceWidth - 30, alignment: .leading)
+            .frame(width: width, alignment: .leading)
             .padding(.top, 5)
     }
 }
@@ -52,8 +52,14 @@ struct CircleButtonView: ViewModifier {
 extension View {
     
     /// Input要素上に配置するラベル
-    func exInputLabelView() -> some View {
-        modifier(InputLabelView())
+    func exInputLabelView(
+        width: CGFloat? = nil
+    ) -> some View {
+        if let width = width {
+            modifier(InputLabelView(width: width))
+        } else {
+            modifier(InputLabelView())
+        }
     }
     
     /// 白枠入力ボックス背景

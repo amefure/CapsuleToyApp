@@ -45,17 +45,22 @@ struct CapsuleToyEntryScreen: View {
                 }
             )
             
-            ImageSelectView(image: $image, isDisplayedCropView: true)
-                .padding(.vertical)
+            HStack(alignment: .top) {
+                ImageSelectView(image: $image, isDisplayedCropView: true)
+                    .padding(.vertical)
+                
+                VStack {
+                    Text("所持ずみ")
+                        .exInputLabelView(width: DeviceSizeUtility.deviceWidth / 2 - 20)
+                    AnimationCheckButton(isEnable: $isOwned) 
+                }
+            }
             
             Text("アイテム名")
                 .exInputLabelView()
             TextField("アイテム名", text: $name)
                 .exInputBackView()
             
-            Toggle(isOn: $isOwned) {
-                Text("GET")
-            }
             Text("MEMO")
                 .exInputLabelView()
             TextEditor(text: $memo)
@@ -94,6 +99,10 @@ struct CapsuleToyEntryScreen: View {
             positiveAction: {
                 dismiss()
             }
+        ).overlayErrorViewDialog(
+            isPresented: $viewModel.showValidationErrorAlert,
+            title: L10n.dialogErrorTitle,
+            message: viewModel.errorMsg
         )
     }
 }
