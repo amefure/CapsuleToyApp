@@ -60,7 +60,7 @@ struct ImagePreView: View {
                         .foregroundStyle(.exText.opacity(0.8))
                         .frame(width: width - 5, height: height)
                 } else {
-                    Image(systemName: "noimage")
+                    Asset.Images.noimage.swiftUIImage
                         .resizable()
                         .scaledToFill()
                         .scaleEffect(1.1)

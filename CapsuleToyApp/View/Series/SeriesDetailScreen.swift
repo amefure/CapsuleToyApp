@@ -52,7 +52,7 @@ struct SeriesDetailScreen: View {
                             photoPath: series.imagePath,
                             width: DeviceSizeUtility.deviceWidth / 2 - 20,
                             height: DeviceSizeUtility.deviceWidth / 2 - 20,
-                            isNotView: true,
+                            isNotView: false,
                             isEnablePopup: true
                         )
                         
@@ -193,7 +193,7 @@ struct SeriesDetailScreen: View {
                                             photoPath: toy.imagePath,
                                             width: SeriesDetailScreen.itemWidth,
                                             height: SeriesDetailScreen.itemWidth - 30,
-                                            isNotView: true,
+                                            isNotView: false,
                                             isEnablePopup: false
                                         )
                                         Text(toy.name)
