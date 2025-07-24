@@ -59,17 +59,31 @@ struct SeriesDetailScreen: View {
                         VStack {
                             Spacer()
                             
-                            Text("\(series.amount)円")
-                                .frame(alignment: .leading)
-                                .fontS()
+                            HStack(alignment: .firstTextBaseline, spacing: 3) {
+                                
+                                Text("\(series.amount)")
+                                    .fontL(bold: true)
+                                    .foregroundStyle(.exThema)
+                                Text("円")
+            
+                                   
+                            }.fontS()
                                 .exInputBackView(width: DeviceSizeUtility.deviceWidth / 2 - 20)
                             
                             Spacer()
                             
-                            Text("全\(series.count)種")
-                                .frame(alignment: .leading)
-                                .fontS()
+                            HStack(alignment: .firstTextBaseline, spacing: 3) {
+                                Text("全")
+                          
+                                Text("\(series.count)")
+                                    .fontL(bold: true)
+                                    .foregroundStyle(.exThema)
+                                Text("種")
+                            
+                                   
+                            }.fontS()
                                 .exInputBackView(width: DeviceSizeUtility.deviceWidth / 2 - 20)
+                            
                             Spacer()
                         }
                       
@@ -96,6 +110,9 @@ struct SeriesDetailScreen: View {
                     ).exInputBackView()
                         .padding(.vertical)
 
+                    
+                    Text("設置場所")
+                        .exInputLabelView()
                     
                     SelectTabPickerView(selectTab: $selectTab)
                     
@@ -159,17 +176,18 @@ struct SeriesDetailScreen: View {
                         .padding(.vertical)
                     
                     LazyVGrid(columns: grids) {
-                        ForEach(series.capsuleToys.sorted(by: { $0.isOwned != $1.isOwned})) { toy in
-                            BoingButton {
-                                selectToy = toy
-                                viewModel.presentEntryToyScreen = true
-                            } label: {
-                                ZStack(alignment: .topLeading) {
-                                    AnimationCheckButton(
-                                        isEnable: Binding.constant(toy.isOwned),
-                                        isAppearAnimate: true
-                                    ).zIndex(2)
-                                    
+                        ForEach(series.capsuleToys.sorted(by: { $0.isOwned != $1.isOwned })) { toy in
+                            ZStack(alignment: .topLeading) {
+                                AnimationCheckButton(
+                                    isEnable: Binding.constant(toy.isOwned),
+                                    isAppearAnimate: true
+                                ).zIndex(2)
+                                    .offset(x: -10, y: -10)
+                             
+                                BoingButton {
+                                    selectToy = toy
+                                    viewModel.presentEntryToyScreen = true
+                                } label: {
                                     VStack {
                                         ImagePreView(
                                             photoPath: toy.imagePath,
@@ -179,13 +197,13 @@ struct SeriesDetailScreen: View {
                                             isEnablePopup: false
                                         )
                                         Text(toy.name)
-                                    }.zIndex(1)
-                                    
-                                }.frame(width: SeriesDetailScreen.itemWidth, height: SeriesDetailScreen.itemWidth)
-                                    .background(.white)
-                            }.clipped()
-                        }.clipShape(RoundedRectangle(cornerRadius: 10))
-                            .shadow(color: .black.opacity(0.2), radius: 5, x: 3, y: 3)
+                                    }.frame(width: SeriesDetailScreen.itemWidth, height: SeriesDetailScreen.itemWidth)
+                                        .background(.white)
+                                }.zIndex(1)
+                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                                    .shadow(color: .black.opacity(0.2), radius: 5, x: 3, y: 3)
+                            }
+                        }
                     }.id(UUID()) // モックの場合のみ必要かも(新規追加後に再描画されないため)
                     
                     BoingButton {
