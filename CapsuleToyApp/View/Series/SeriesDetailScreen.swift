@@ -130,7 +130,7 @@ struct SeriesDetailScreen: View {
                                 if let coordinate = location.coordinate {
                                     Marker(coordinate: coordinate) {
                                         Text(location.name)
-                                    }
+                                    }.tint(.exThema)
                                 }
                             }
                             
@@ -153,9 +153,6 @@ struct SeriesDetailScreen: View {
                                         .fontL(bold: true)
                                     Spacer()
                                 }.frame(width: DeviceSizeUtility.deviceWidth - 40, height: 35)
-                                    .background(.white)
-                                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                                        .shadow(color: .black.opacity(0.2), radius: 5, x: 3, y: 3)
                             }
                         }
                     }

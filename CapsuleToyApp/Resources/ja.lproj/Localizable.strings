@@ -54,6 +54,13 @@
 "image_error_2" = "EI002";
 "image_error_3" = "EI003";
 
+"validation_error_title" = "バリデーション Error";
+"validation_error_1" = "EV001";
+"validation_error_2" = "EV002";
+
+"validation_error_1_msg" = "シリーズ名を入力してください。";
+"validation_error_2_msg" = "アイテム名を入力してください。";
+
 
 // MARK: - Setting
 "setting_section_app" = "アプリ設定";

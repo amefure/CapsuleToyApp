@@ -89,8 +89,6 @@ struct SeriesEntryScreen: View {
                     .exInputBackView()
    
                 
-               
-                
                 Text("ガチャガチャ設置場所")
                     .exInputLabelView()
                 
@@ -116,7 +114,7 @@ struct SeriesEntryScreen: View {
                 Button {
                     showAddLocationView = true
                 } label: {
-                    Image(systemName: "plus")
+                    Image(systemName: "mappin.and.ellipse")
                         .foregroundStyle(.exThema)
                         .frame(width: DeviceSizeUtility.deviceWidth - 40, height: 50)
                         .overlay(

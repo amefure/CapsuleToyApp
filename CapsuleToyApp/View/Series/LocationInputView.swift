@@ -13,7 +13,7 @@ struct LocationInputView: View {
     @EnvironmentObject var viewModel: SeriesEntryViewModel
     
     @State private var location: Location = Location()
-    @State private var name: String = "Test"
+    @State private var name: String = ""
     @State private var coordinate: CLLocationCoordinate2D?
     
     @Environment(\.dismiss) private var dismiss
@@ -60,7 +60,7 @@ struct LocationInputView: View {
                     if let coordinate = coordinate {
                         Marker(coordinate: coordinate) {
                             Text("選択中")
-                        }
+                        }.tint(.exThema)
                     }
                 }.onTapGesture { position in
                     guard let selectedCoordinate = proxy.convert(position, from: .local) else { return }

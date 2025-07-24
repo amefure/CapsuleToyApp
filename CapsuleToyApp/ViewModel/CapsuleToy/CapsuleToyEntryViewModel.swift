@@ -17,7 +17,7 @@ final class CapsuleToyEntryViewModel: ObservableObject {
     @Published var showValidationErrorAlert: Bool = false
     
     @Published private(set) var errorMsg: String = ""
-    private var messages: [String] = []
+    private var errors: [ValidationError] = []
     
     init(seriesRepository: SeriesRepositoryProtocol) {
         self.seriesRepository = seriesRepository
@@ -42,6 +42,16 @@ final class CapsuleToyEntryViewModel: ObservableObject {
         memo: String,
         image: UIImage?
     ) {
+        
+        clearErrorMsg()
+        
+        if name.isEmpty {
+            errors.append(.emptyItemName)
+        }
+        guard errors.isEmpty else {
+            showValidationAlert()
+            return
+        }
         
         
         if let toyId {
@@ -88,12 +98,13 @@ final class CapsuleToyEntryViewModel: ObservableObject {
 
 extension CapsuleToyEntryViewModel {
     private func clearErrorMsg() {
-        messages = []
+        errors = []
         errorMsg = ""
+        showValidationErrorAlert = false
     }
     
     private func showValidationAlert() {
-        errorMsg = messages.joined(separator: "\n")
+        errorMsg = errors.map { $0.message }.joined(separator: "\n")
         showValidationErrorAlert = true
     }
     

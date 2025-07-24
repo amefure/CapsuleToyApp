@@ -7,25 +7,30 @@
 
 /// 入力値のバリデーションエラー
 enum ValidationError: AppError {
-    /// EV001: 名称が未入力です
-    case emptyName
+    /// EV001: シリーズ名が未入力です
+    case emptySeriesName
 
-    /// EV002: 
+    /// EV002: アイテム名が未入力です
+    case emptyItemName
 
 
-    public var title: String { L10n.imageErrorTitle }
+    public var title: String { L10n.validationErrorTitle }
     
     public var code: String {
         return switch self {
-        case .emptyName:
-            L10n.imageError1
+        case .emptySeriesName:
+            L10n.validationError1
+        case .emptyItemName:
+            L10n.validationError2
         }
     }
 
     public var message: String {
         return switch self {
-        case .emptyName:
-            L10n.imageErrorSaveFailed
+        case .emptySeriesName:
+            L10n.validationError1Msg
+        case .emptyItemName:
+            L10n.validationError2Msg
         }
     }
 }

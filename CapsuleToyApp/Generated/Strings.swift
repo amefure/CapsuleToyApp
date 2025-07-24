@@ -120,6 +120,16 @@ internal enum L10n {
   internal static let unspecified = L10n.tr("Localizable", "unspecified", fallback: "未登録")
   /// 更新
   internal static let update = L10n.tr("Localizable", "update", fallback: "更新")
+  /// EV001
+  internal static let validationError1 = L10n.tr("Localizable", "validation_error_1", fallback: "EV001")
+  /// シリーズ名を入力してください。
+  internal static let validationError1Msg = L10n.tr("Localizable", "validation_error_1_msg", fallback: "シリーズ名を入力してください。")
+  /// EV002
+  internal static let validationError2 = L10n.tr("Localizable", "validation_error_2", fallback: "EV002")
+  /// アイテム名を入力してください。
+  internal static let validationError2Msg = L10n.tr("Localizable", "validation_error_2_msg", fallback: "アイテム名を入力してください。")
+  /// バリデーション Error
+  internal static let validationErrorTitle = L10n.tr("Localizable", "validation_error_title", fallback: "バリデーション Error")
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces

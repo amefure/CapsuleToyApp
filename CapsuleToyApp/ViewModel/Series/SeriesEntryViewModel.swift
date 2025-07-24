@@ -25,7 +25,7 @@ final class SeriesEntryViewModel: ObservableObject {
     @Published var showValidationErrorAlert: Bool = false
     
     @Published private(set) var errorMsg: String = ""
-    private var messages: [String] = []
+    private var errors: [ValidationError] = []
     
     private var cancellables: Set<AnyCancellable> = []
     
@@ -134,9 +134,9 @@ extension SeriesEntryViewModel {
         clearErrorMsg()
         
         if name.isEmpty {
-            messages.append("・場所名を入力してください。")
+            errors.append(.emptySeriesName)
         }
-        guard messages.isEmpty else {
+        guard errors.isEmpty else {
             showValidationAlert()
             return false
         }
@@ -160,12 +160,13 @@ extension SeriesEntryViewModel {
 extension SeriesEntryViewModel {
     
     private func clearErrorMsg() {
-        messages = []
+        errors = []
         errorMsg = ""
+        showValidationErrorAlert = false
     }
     
     private func showValidationAlert() {
-        errorMsg = messages.joined(separator: "\n")
+        errorMsg = errors.map { $0.message }.joined(separator: "\n")
         showValidationErrorAlert = true
     }
     

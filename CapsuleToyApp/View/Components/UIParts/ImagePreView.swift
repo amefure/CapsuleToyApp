@@ -66,6 +66,7 @@ struct ImagePreView: View {
                         .scaleEffect(1.1)
                         .frame(width: width, height: height)
                         .clipped()
+                        .clipShape(RoundedRectangle(cornerRadius: 3))
                 }
             }
         }.fullScreenCover(isPresented: $isImagePopupVisible) {

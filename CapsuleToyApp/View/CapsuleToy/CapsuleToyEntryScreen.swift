@@ -52,7 +52,11 @@ struct CapsuleToyEntryScreen: View {
                 VStack {
                     Text("所持ずみ")
                         .exInputLabelView(width: DeviceSizeUtility.deviceWidth / 2 - 20)
-                    AnimationCheckButton(isEnable: $isOwned) 
+                    AnimationCheckButton(isEnable: $isOwned)
+                    
+                    Text("シークレット")
+                        .exInputLabelView(width: DeviceSizeUtility.deviceWidth / 2 - 20)
+                    AnimationCheckButton(isEnable: $isSecret)
                 }
             }
             
