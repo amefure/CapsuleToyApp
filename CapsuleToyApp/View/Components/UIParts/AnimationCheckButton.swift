@@ -12,10 +12,13 @@ struct AnimationCheckButton: View {
     @Binding var isEnable: Bool
     /// ボタン機能ではなくView表示時にアニメーションを実行するかどうか
     public var isAppearAnimate: Bool = false
+    /// シークレットかどうか
+    public var isSecret: Bool = false
     public var action: (() -> Void)? = nil
     
     @State private var drawProgress: CGFloat = 0.0
     
+   
     var body: some View {
         BoingButton {
             action?()
@@ -36,22 +39,25 @@ struct AnimationCheckButton: View {
                 // プレースホルダー用
                 AnimatedCheckMarkView(drawProgress: Binding.constant(1), color: .white.opacity(0.2))
             }
-        }.exCircleButtonView(backgroundColor: isEnable ? .exThema : .exText)
-            .onAppear {
-                if isEnable {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-                        withAnimation(.easeInOut) {
-                            drawProgress = 1.0
-                        }
+        }.exCircleButtonView(
+            backgroundColor: isSecret ? isEnable ? nil : .exText : isEnable ? .exThema : .exText,
+            backgroundView: isSecret ? isEnable ? AnyView(Color.gold) : nil : nil
+        ).onAppear {
+            if isEnable {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+                    withAnimation(.easeInOut) {
+                        drawProgress = 1.0
                     }
                 }
-            }.onDisappear {
-                if isAppearAnimate && isEnable {
-                    drawProgress = 0.0
-                }
             }
+        }.onDisappear {
+            if isAppearAnimate && isEnable {
+                drawProgress = 0.0
+            }
+        }
     }
 }
+
 
 
 struct AnimatedCheckMarkView: View {

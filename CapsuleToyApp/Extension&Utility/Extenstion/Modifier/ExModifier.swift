@@ -37,13 +37,15 @@ struct InputLabelView: ViewModifier {
 struct CircleButtonView: ViewModifier {
     
     public let foregroundColor: Color
-    public let backgroundColor: Color
+    public let backgroundColor: Color?
+    public let backgroundView: AnyView?
     
     func body(content: Content) -> some View {
         content
             .foregroundStyle(foregroundColor)
             .frame(width: 40, height: 40)
             .background(backgroundColor)
+            .background(backgroundView)
             .clipShape(RoundedRectangle(cornerRadius: 40))
             .shadow(color: .black.opacity(0.2), radius: 5, x: 3, y: 3)
     }
@@ -76,9 +78,16 @@ extension View {
     /// サークルボタン
     func exCircleButtonView(
         foregroundColor: Color = .white,
-        backgroundColor: Color = .exThema
+        backgroundColor: Color? = .exThema,
+        backgroundView: AnyView? = nil
     ) -> some View {
-        modifier(CircleButtonView(foregroundColor: foregroundColor, backgroundColor: backgroundColor))
+        modifier(
+            CircleButtonView(
+                foregroundColor: foregroundColor,
+                backgroundColor: backgroundColor,
+                backgroundView: backgroundView
+            )
+        )
     }
 
 }

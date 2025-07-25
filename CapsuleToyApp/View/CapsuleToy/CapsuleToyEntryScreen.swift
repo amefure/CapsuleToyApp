@@ -56,7 +56,7 @@ struct CapsuleToyEntryScreen: View {
                     
                     Text("シークレット")
                         .exInputLabelView(width: DeviceSizeUtility.deviceWidth / 2 - 20)
-                    AnimationCheckButton(isEnable: $isSecret)
+                    AnimationCheckButton(isEnable: $isSecret, isSecret: true)
                 }
             }
             
