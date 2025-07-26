@@ -15,7 +15,7 @@ enum AppTab: Int, CaseIterable {
         case .series:
             return "ガチャガチャ"
         case .toys:
-            return "ガチャガチャ"
+            return "MyData"
         case .settings:
             return "Setting"
         }
@@ -24,9 +24,9 @@ enum AppTab: Int, CaseIterable {
     var icon: String {
         switch self {
         case .series:
-            return "circle.tophalf.filled"
+            return "circle.bottomhalf.filled"
         case .toys:
-            return "circle.tophalf.filled"
+            return "circle.hexagongrid"
         case .settings:
             return "gearshape.2.fill"
         }

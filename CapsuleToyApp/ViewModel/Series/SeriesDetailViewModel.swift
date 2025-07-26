@@ -21,8 +21,6 @@ final class SeriesDetailViewModel: ObservableObject {
     @Published var showConfirmDeleteAlert: Bool = false
     @Published var showSuccessDeleteAlert: Bool = false
     @Published var showFaieldDeleteAlert: Bool = false
-    
-    
     @Published var presentEntryToyScreen: Bool = false
     
     private var cancellables: Set<AnyCancellable> = []
@@ -69,6 +67,13 @@ final class SeriesDetailViewModel: ObservableObject {
             showFaieldDeleteAlert = true
             return
         }
+        let imageFileManager = ImageFileManager()
+        series.capsuleToys.forEach { toy in
+            // 登録してあるコレクションの画像を明示的に削除する
+            try? imageFileManager.deleteImage(name: toy.id.stringValue)
+        }
+        // 登録してあるシリーズの画像を明示的に削除する
+        try? imageFileManager.deleteImage(name: series.id.stringValue)
         seriesRepository.deleteSeries([series])
         showSuccessDeleteAlert = true
     }

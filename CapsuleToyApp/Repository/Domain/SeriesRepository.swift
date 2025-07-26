@@ -31,8 +31,12 @@ final class SeriesRepository: SeriesRepositoryProtocol {
 
     /// シリーズ削除
     public func deleteSeries(_ list: [Series]) {
+        // RealmではSeries(親)を削除しても子は削除されないので明示的に削除する
+        list.forEach { series in
+            removeAllCapsuleToys(seriesId: series.id)
+        }
+        
         realmRepo.removeObjs(list: list)
-        // TODO: RealmではSeries(親)を削除しても子は削除されない？
     }
 
     /// カプセルトイも一緒に削除する

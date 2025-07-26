@@ -54,10 +54,12 @@ struct SeriesDetailScreen: View {
                             height: DeviceSizeUtility.deviceWidth / 2 - 20,
                             isNotView: false,
                             isEnablePopup: true
-                        )
+                        ).shadow(color: .black.opacity(0.2), radius: 5, x: 3, y: 3)
                         
                         VStack {
-                            Spacer()
+                            
+                            Text("金額")
+                                .exInputLabelView(width: DeviceSizeUtility.deviceWidth / 2 - 20)
                             
                             HStack(alignment: .firstTextBaseline, spacing: 3) {
                                 
@@ -71,6 +73,9 @@ struct SeriesDetailScreen: View {
                                 .exInputBackView(width: DeviceSizeUtility.deviceWidth / 2 - 20)
                             
                             Spacer()
+                            
+                            Text("種類数")
+                                .exInputLabelView(width: DeviceSizeUtility.deviceWidth / 2 - 20)
                             
                             HStack(alignment: .firstTextBaseline, spacing: 3) {
                                 Text("全")
@@ -138,7 +143,9 @@ struct SeriesDetailScreen: View {
                             // 現在位置に戻るボタン
                             MapUserLocationButton()
                         }.frame(height: 250)
-                            .id(UUID()) // モックの場合のみ必要かも(新規追加後に再描画されないため)
+                        // モックの場合のみ必要かも(新規追加後に再描画されないため)
+                        // これがあると再描画されるせいで地図タップで日本全体表示スケールになってしまう
+                            .id(UUID())
                     case .list:
                         if series.locations.isEmpty {
                             Text("登録されている場所情報がありません。")
@@ -185,15 +192,39 @@ struct SeriesDetailScreen: View {
                                     selectToy = toy
                                     viewModel.presentEntryToyScreen = true
                                 } label: {
-                                    VStack {
+                                    ZStack(alignment: .bottom) {
                                         ImagePreView(
                                             photoPath: toy.imagePath,
                                             width: SeriesDetailScreen.itemWidth,
-                                            height: SeriesDetailScreen.itemWidth - 30,
+                                            height: SeriesDetailScreen.itemWidth,
                                             isNotView: false,
                                             isEnablePopup: false
                                         )
-                                        Text(toy.name)
+                                        
+                                        HStack {
+                                            if toy.isSecret  {
+                                                Image(systemName: "medal.star.fill")
+                                                    .frame(width: 30)
+                                                    .foregroundStyle(.exGold)
+                                            } else {
+                                                Spacer()
+                                                    .frame(width: 30)
+                                            }
+                                            
+                                            Spacer()
+                                           
+                                            
+                                            Text(toy.name)
+                                                .fontM(bold: true)
+                                            
+                                            Spacer()
+                                            
+                                            Spacer()
+                                                .frame(width: 30)
+                                        } .frame(width: SeriesDetailScreen.itemWidth, height: 40)
+                                            .background(.white.opacity(0.6))
+                                       
+                                           
                                     }.frame(width: SeriesDetailScreen.itemWidth, height: SeriesDetailScreen.itemWidth)
                                         .background(.white)
                                 }.zIndex(1)
@@ -203,12 +234,23 @@ struct SeriesDetailScreen: View {
                         }
                     }.id(UUID()) // モックの場合のみ必要かも(新規追加後に再描画されないため)
                     
-                    BoingButton {
+                    Spacer()
+                        .frame(height: 40)
+                    
+                    Button {
                         viewModel.showConfirmDeleteAlert = true
                     } label: {
-                        Image(systemName: "trash")
-                            .exCircleButtonView()
-                    }
+                        Text("削除する")
+                    }.frame(width: 200, height: 50)
+                        .fontM(bold: true)
+                        .foregroundStyle(.exThema)
+                        .background(.white)
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke()
+                                .fill(.exThema)
+                        }.clipShape(RoundedRectangle(cornerRadius: 10))
+                    
                     
                 }.navigationDestination(isPresented: $presentEditView) {
                     SeriesEntryScreen(series: series)

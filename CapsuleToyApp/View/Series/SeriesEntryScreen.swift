@@ -53,8 +53,7 @@ struct SeriesEntryScreen: View {
                         .padding(.vertical)
                     
                     VStack {
-                        Spacer()
-                        
+    
                         Text("金額")
                             .exInputLabelView(width: DeviceSizeUtility.deviceWidth / 2 - 20)
                         
