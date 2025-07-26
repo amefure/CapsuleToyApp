@@ -37,7 +37,7 @@
 "dialog_update_msg" = "更新しました。";
 "dialog_delete_msg" = "削除しました。";
 "dialog_delete_failed_msg" = "削除に失敗しました。時間を空けてから再度お試しください。";
-"dialog_delete_confirm_msg" = "このシリーズを削除しますか？\n削除すると登録した画像なども削除されます。";
+"dialog_delete_confirm_msg" = "このデータを削除しますか？\n削除すると登録した画像なども削除されます。";
 "dialog_denied_location_msg" = "位置情報が有効にされていないため一部機能が使用できません。";
 
 "image_clop_title" = "画像トリミング";

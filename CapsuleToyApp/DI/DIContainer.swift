@@ -49,6 +49,10 @@ final class DIContainer: @unchecked Sendable {
             CapsuleToyEntryViewModel(seriesRepository: r.resolve(SeriesRepositoryProtocol.self)!)
         }
         
+        c.register(CapsuleToyDetailViewModel.self) { r in
+            CapsuleToyDetailViewModel(seriesRepository: r.resolve(SeriesRepositoryProtocol.self)!)
+        }
+        
         c.register(RootEnvironment.self) { r in
             RootEnvironment(
                 userDefaultsRepository: r.resolve(UserDefaultsRepository.self)!,

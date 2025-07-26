@@ -30,7 +30,7 @@ struct SeriesDetailScreen: View {
             if let series = viewModel.series {
                 HeaderView(
                     leadingIcon: "chevron.backward",
-                    trailingIcon: "pencil",
+                    trailingIcon: "square.and.pencil",
                     leadingAction: {
                         dismiss()
                     },
@@ -100,7 +100,6 @@ struct SeriesDetailScreen: View {
                             .exInputLabelView()
                         
                         Text("\(series.memo)")
-                            .frame(alignment: .leading)
                             .fontS()
                             .exInputBackView()
                     }
@@ -180,7 +179,9 @@ struct SeriesDetailScreen: View {
                         .padding(.vertical)
                     
                     LazyVGrid(columns: grids) {
-                        ForEach(series.capsuleToys.sorted(by: { $0.isOwned != $1.isOwned })) { toy in
+                        let list = series.capsuleToys
+                            .sorted(by: { $0.name < $1.name })
+                        ForEach(list) { toy in
                             ZStack(alignment: .topLeading) {
                                 AnimationCheckButton(
                                     isEnable: Binding.constant(toy.isOwned),
@@ -247,7 +248,7 @@ struct SeriesDetailScreen: View {
                         .background(.white)
                         .overlay {
                             RoundedRectangle(cornerRadius: 10)
-                                .stroke()
+                                .stroke(lineWidth: 3)
                                 .fill(.exThema)
                         }.clipShape(RoundedRectangle(cornerRadius: 10))
                     
@@ -269,9 +270,11 @@ struct SeriesDetailScreen: View {
             .fontM()
             .foregroundStyle(.exText)
             .background(.exFoundation)
-            .navigationDestination(isPresented: $viewModel.presentEntryToyScreen, destination: {
-                CapsuleToyEntryScreen(seriesId: seriesId, toy: selectToy)
-            })
+            .navigationDestination(isPresented: $viewModel.presentEntryToyScreen) {
+                if let selectToy {
+                    CapsuleToyDetailScreen(seriesId: seriesId, toy: selectToy)
+                }
+            }
             .alert(
                 isPresented: $viewModel.showConfirmDeleteAlert,
                 title: L10n.dialogConfirmTitle,
