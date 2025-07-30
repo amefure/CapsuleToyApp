@@ -46,4 +46,21 @@ extension DateFormatUtility {
     public func convertDateComponents(date: Date, components: Set<Calendar.Component> = [.year, .month, .day, .hour, .minute, .second]) -> DateComponents {
         Self.CALENDAR.dateComponents(components, from: date)
     }
+    
+    /// `Date`型を受け取りその日の属する月の最初の`Date`型を返す
+    public func startOfMonth(_ date: Date) -> Date {
+        let components = Self.CALENDAR.dateComponents([.year, .month], from: date)
+        let startOfMonth = Self.CALENDAR.date(from: components) ?? Date()
+        return startOfMonth
+    }
+    
+    /// Date型の加算/減算
+    /// - Parameters:
+    ///   - date: 対象の日付
+    ///   - by: 対象コンポーネント
+    ///   - value: 値
+    /// - Returns: 結果
+    public func dateByAdding(_ date: Date, by: Calendar.Component, value: Int) -> Date {
+        return Self.CALENDAR.date(byAdding: by, value: value, to: date) ?? Date()
+    }
 }

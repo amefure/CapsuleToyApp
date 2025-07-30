@@ -27,26 +27,15 @@ internal typealias AssetImageTypeAlias = ImageAsset.Image
 internal enum Asset {
   internal enum Colors {
     internal static let accentColor = ColorAsset(name: "AccentColor")
-    internal static let exAccent = ColorAsset(name: "ex_accent")
-    internal static let exBlue = ColorAsset(name: "ex_blue")
     internal static let exFoundation = ColorAsset(name: "ex_foundation")
-    internal static let exFoundation1 = ColorAsset(name: "ex_foundation_1")
-    internal static let exFoundation2 = ColorAsset(name: "ex_foundation_2")
-    internal static let exFoundation3 = ColorAsset(name: "ex_foundation_3")
-    internal static let exFoundation4 = ColorAsset(name: "ex_foundation_4")
-    internal static let exFoundation5 = ColorAsset(name: "ex_foundation_5")
-    internal static let exFoundation6 = ColorAsset(name: "ex_foundation_6")
-    internal static let exFoundation7 = ColorAsset(name: "ex_foundation_7")
-    internal static let exFoundation8 = ColorAsset(name: "ex_foundation_8")
-    internal static let exGray = ColorAsset(name: "ex_gray")
-    internal static let exGreen = ColorAsset(name: "ex_green")
+    internal static let exGold = ColorAsset(name: "ex_gold")
+    internal static let exGoldLight = ColorAsset(name: "ex_gold_light")
     internal static let exModeBase = ColorAsset(name: "ex_mode_base")
     internal static let exModeText = ColorAsset(name: "ex_mode_text")
     internal static let exNegative = ColorAsset(name: "ex_negative")
     internal static let exText = ColorAsset(name: "ex_text")
     internal static let exThema = ColorAsset(name: "ex_thema")
     internal static let exThemaLight = ColorAsset(name: "ex_thema_light")
-    internal static let exYellow = ColorAsset(name: "ex_yellow")
   }
   internal enum Images {
     internal static let appicon = ImageAsset(name: "appicon")

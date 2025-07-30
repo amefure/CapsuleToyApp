@@ -62,6 +62,13 @@
 "validation_error_2_msg" = "アイテム名を入力してください。";
 
 
+"mydata_sum_count" = "月別合計回数";
+"mydata_charts_x" = "年月";
+"mydata_charts_y" = "回数";
+"mydata_no_data" = "直近6ヶ月のデータがありません。";
+"mydata_continuous_day" = "連続日数";
+
+
 // MARK: - Setting
 "setting_section_app" = "アプリ設定";
 "setting_section_app_mode" = "ダークモード";

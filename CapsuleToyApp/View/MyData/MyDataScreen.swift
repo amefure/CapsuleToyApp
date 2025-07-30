@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import Charts
 
 struct MyDataScreen: View {
     
     @StateObject private var viewModel = DIContainer.shared.resolve(MyDataViewModel.self)
+    private let df = DateFormatUtility(dateFormat: "M月")
     
     var body: some View {
         VStack {
@@ -23,19 +25,80 @@ struct MyDataScreen: View {
             } else {
                 ScrollView {
                     
+                    Text("直近6ヶ月の月別購入数")
+                        .exInputLabelView()
+                    
+                    if let dic = viewModel.dayCapsuleToyDictionary() {
+                        Chart {
+                            ForEach(dic.keys.sorted(by: { $0 < $1 }), id: \.self) { date in
+                                
+                                BarMark(
+                                    x: .value(L10n.mydataChartsX, df.getString(date: date)),
+                                    y: .value(L10n.mydataChartsY, dic[date]?.count ?? 0)
+                                ).foregroundStyle(.exThema)
+                                    .annotation {
+                                        Text("\(dic[date]?.count ?? 0)")
+                                            .fontSS(bold: true)
+                                            .foregroundStyle(.exText)
+                                    }
+                            }
+                        }.frame(width: DeviceSizeUtility.deviceWidth - 60 , height: 110)
+                            .exInputBackView()
+                    } else {
+                        Text(L10n.mydataNoData)
+                            .fontS(bold: true)
+                            .foregroundStyle(.exGold)
+                            .exInputBackView()
+                    }
+                    
+                    HStack {
+                        
+                        VStack {
+                            Text("累計購入金額")
+                                .exInputLabelView(width: DeviceSizeUtility.deviceWidth / 2 - 20)
+                            
+                            HStack(alignment: .firstTextBaseline, spacing: 3) {
+                                
+                                Text("\(viewModel.sumAmount)")
+                                    .fontL(bold: true)
+                                    .foregroundStyle(.exThema)
+                                Text("円")
+            
+                                   
+                            }.fontS()
+                                .exInputBackView(width: DeviceSizeUtility.deviceWidth / 2 - 20)
+                        }
+                       
+                        VStack {
+                            Text("累計獲得種類数")
+                                .exInputLabelView(width: DeviceSizeUtility.deviceWidth / 2 - 20)
+                            
+                            HStack(alignment: .firstTextBaseline, spacing: 3) {
+                                
+                                Text("\(viewModel.sumGetCount)")
+                                    .fontL(bold: true)
+                                    .foregroundStyle(.exThema)
+                                Text("種")
+                                
+                                
+                            }.fontS()
+                                .exInputBackView(width: DeviceSizeUtility.deviceWidth / 2 - 20)
+                        }
+                    }
+                    
                     Text("コンプリート率")
                         .exInputLabelView()
                     
                     ParametersView(now: viewModel.completePercent)
+                        .exInputBackView()
                     
                     Text("シークレットゲット率")
                         .exInputLabelView()
                     
                     ParametersView(now: viewModel.getSecretPercent)
+                        .exInputBackView()
                     
-                    Text("場所名")
-                        .exInputLabelView()
-                    ParametersView(now: 80)
+    
                     
                 }
             }

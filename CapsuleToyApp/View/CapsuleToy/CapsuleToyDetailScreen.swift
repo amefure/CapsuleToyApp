@@ -48,21 +48,26 @@ struct CapsuleToyDetailScreen: View {
                         isNotView: false,
                         isEnablePopup: true
                     ).shadow(color: .black.opacity(0.2), radius: 5, x: 3, y: 3)
+                        .padding(.vertical)
                     
                    
                     VStack {
                         Text("GET")
                             .exInputLabelView(width: DeviceSizeUtility.deviceWidth / 2 - 20)
                         
-                        HStack {
-                            AnimationCheckButton(
-                                isEnable: Binding.constant(toy.isOwned),
-                                isAppearAnimate: true
-                            )
+                        AnimationCheckButton(
+                            isEnable: Binding.constant(toy.isOwned),
+                            isAppearAnimate: true
+                        )
                             
-                            if let date = toy.isGetAt {
-                                Text(df.getString(date: date))
-                            }
+                        if let date = toy.isGetAt {
+                            
+                            Text("GET DATE")
+                                .exInputLabelView(width: DeviceSizeUtility.deviceWidth / 2 - 20)
+                            
+                            Text(df.getString(date: date))
+                                .fontM(bold: true)
+                                .padding(.top, 8)
                         }
                        
                         

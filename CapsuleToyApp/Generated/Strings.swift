@@ -33,8 +33,9 @@ internal enum L10n {
   internal static let delete = L10n.tr("Localizable", "delete", fallback: "削除")
   /// 確認
   internal static let dialogConfirmTitle = L10n.tr("Localizable", "dialog_confirm_title", fallback: "確認")
-  /// 削除しますか？
-  internal static let dialogDeleteConfirmMsg = L10n.tr("Localizable", "dialog_delete_confirm_msg", fallback: "削除しますか？")
+  /// このデータを削除しますか？
+  /// 削除すると登録した画像なども削除されます。
+  internal static let dialogDeleteConfirmMsg = L10n.tr("Localizable", "dialog_delete_confirm_msg", fallback: "このデータを削除しますか？\n削除すると登録した画像なども削除されます。")
   /// 削除に失敗しました。時間を空けてから再度お試しください。
   internal static let dialogDeleteFailedMsg = L10n.tr("Localizable", "dialog_delete_failed_msg", fallback: "削除に失敗しました。時間を空けてから再度お試しください。")
   /// 削除しました。
@@ -90,6 +91,16 @@ internal enum L10n {
   internal static let inAppPurchaseRestoreTitle = L10n.tr("Localizable", "in_app_purchase_restore_title", fallback: "購入アイテムを復元する")
   /// 購入済み
   internal static let inAppPurchased = L10n.tr("Localizable", "in_app_purchased", fallback: "購入済み")
+  /// 年月
+  internal static let mydataChartsX = L10n.tr("Localizable", "mydata_charts_x", fallback: "年月")
+  /// 回数
+  internal static let mydataChartsY = L10n.tr("Localizable", "mydata_charts_y", fallback: "回数")
+  /// 連続日数
+  internal static let mydataContinuousDay = L10n.tr("Localizable", "mydata_continuous_day", fallback: "連続日数")
+  /// 直近6ヶ月のデータがありません。
+  internal static let mydataNoData = L10n.tr("Localizable", "mydata_no_data", fallback: "直近6ヶ月のデータがありません。")
+  /// 月別合計回数
+  internal static let mydataSumCount = L10n.tr("Localizable", "mydata_sum_count", fallback: "月別合計回数")
   /// OK
   internal static let ok = L10n.tr("Localizable", "ok", fallback: "OK")
   /// 送信
