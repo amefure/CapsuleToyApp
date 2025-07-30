@@ -14,10 +14,11 @@ final class CapsuleToyDetailViewModel: ObservableObject {
     
     @Published private(set) var series: Series?
     
+    @Published var presentEntryToyScreen: Bool = false
+    
     @Published var showConfirmDeleteAlert: Bool = false
     @Published var showSuccessDeleteAlert: Bool = false
     @Published var showFaieldDeleteAlert: Bool = false
-    @Published var presentEntryToyScreen: Bool = false
     
     
     init(seriesRepository: SeriesRepositoryProtocol) {

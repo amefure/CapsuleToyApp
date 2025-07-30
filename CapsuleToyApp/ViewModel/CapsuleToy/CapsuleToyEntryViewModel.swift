@@ -40,7 +40,8 @@ final class CapsuleToyEntryViewModel: ObservableObject {
         isOwned: Bool,
         isSecret: Bool,
         memo: String,
-        image: UIImage?
+        image: UIImage?,
+        isGetAt: Date?
     ) {
         
         clearErrorMsg()
@@ -63,8 +64,7 @@ final class CapsuleToyEntryViewModel: ObservableObject {
                 toy.isSecret = isSecret
                 toy.memo = memo
                 toy.imagePath = path
-                toy.createdAt = Date()
-                toy.updatedAt = Date()
+                toy.isGetAt = isGetAt
             }
             showUpdateSuccessAlert = true
         } else {
@@ -77,8 +77,7 @@ final class CapsuleToyEntryViewModel: ObservableObject {
             toy.isSecret = isSecret
             toy.memo = memo
             toy.imagePath = path
-            toy.createdAt = Date()
-            toy.updatedAt = Date()
+            toy.isGetAt = isGetAt
             seriesRepository.addCapsuleToy(
                 seriesId: seriesId,
                 toy: toy

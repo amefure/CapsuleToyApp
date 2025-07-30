@@ -17,11 +17,13 @@ final class SeriesDetailViewModel: ObservableObject {
     
     @Published private(set) var series: Series?
     
+    @Published var presentDetailToyScreen: Bool = false
+    @Published var presentEntryToyScreen: Bool = false
+    
     @Published var region: MapCameraPosition = .region(LocationRepository.defultRegion)
     @Published var showConfirmDeleteAlert: Bool = false
     @Published var showSuccessDeleteAlert: Bool = false
     @Published var showFaieldDeleteAlert: Bool = false
-    @Published var presentEntryToyScreen: Bool = false
     
     private var cancellables: Set<AnyCancellable> = []
     

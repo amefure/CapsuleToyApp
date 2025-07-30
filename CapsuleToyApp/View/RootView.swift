@@ -18,7 +18,7 @@ struct RootView: View {
                     .environmentObject(rootEnvironment)
                     .padding(.bottom, DeviceSizeUtility.isSESize ? 70 : 110) // TabBar Space
             case .toys:
-                SeriesListScreen()
+                MyDataScreen()
                     .environmentObject(rootEnvironment)
                     .padding(.bottom, DeviceSizeUtility.isSESize ? 70 : 110) // TabBar Space
             case .settings:

@@ -20,6 +20,7 @@ struct CapsuleToyEntryScreen: View {
     @State private var isSecret: Bool = false
     @State private var memo: String = ""
     @State private var image: UIImage? = nil
+    @State private var selectedDate: Date = Date()
     
     @Environment(\.dismiss) private var dismiss
     
@@ -40,7 +41,9 @@ struct CapsuleToyEntryScreen: View {
                         isOwned: isOwned,
                         isSecret: isSecret,
                         memo: memo,
-                        image: image
+                        image: image,
+                        // 所有フラグがONなら日付を登録
+                        isGetAt: isOwned ? selectedDate : nil
                     )
                 }
             )
@@ -50,13 +53,31 @@ struct CapsuleToyEntryScreen: View {
                     .padding(.vertical)
                 
                 VStack {
-                    Text("所持ずみ")
+                    Text("GET")
                         .exInputLabelView(width: DeviceSizeUtility.deviceWidth / 2 - 20)
-                    AnimationCheckButton(isEnable: $isOwned)
                     
-                    Text("シークレット")
-                        .exInputLabelView(width: DeviceSizeUtility.deviceWidth / 2 - 20)
-                    AnimationCheckButton(isEnable: $isSecret, isSecret: true)
+                    AnimationCheckButton(isEnable: $isOwned)
+                       
+                    VStack {
+                        if isOwned {
+                            Text("GET DATE")
+                                .exInputLabelView(width: DeviceSizeUtility.deviceWidth / 2 - 20)
+                            
+                            DatePicker(
+                                "取得日",
+                                selection: $selectedDate,
+                                displayedComponents: [.date]
+                           ).environment(\.locale, DateFormatUtility.LOCALE)
+                                .environment(\.calendar, DateFormatUtility.CALENDAR)
+                                .datePickerStyle(.compact)
+                                .labelsHidden()
+                        }
+                        
+                        Text("SECRET")
+                            .exInputLabelView(width: DeviceSizeUtility.deviceWidth / 2 - 20)
+                        AnimationCheckButton(isEnable: $isSecret, isSecret: true)
+                        
+                    }.animation(.easeInOut(duration: 0.3), value: isOwned)
                 }
             }
             
@@ -80,6 +101,7 @@ struct CapsuleToyEntryScreen: View {
             isSecret = toy.isSecret
             memo = toy.memo
             image = viewModel.fecthImage(id: toy.id.stringValue)
+            selectedDate = toy.isGetAt ?? Date()
             viewModel.onAppear()
         }
         .onDisappear { viewModel.onDisappear() }

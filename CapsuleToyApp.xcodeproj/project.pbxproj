@@ -57,6 +57,8 @@
 		12A6E0C02E33C76B00E72E20 /* ExColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A6E0BF2E33C76600E72E20 /* ExColor.swift */; };
 		12A6E0C22E34BAE400E72E20 /* CapsuleToyDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A6E0C12E34BAE300E72E20 /* CapsuleToyDetailScreen.swift */; };
 		12A6E0C42E34BB7900E72E20 /* CapsuleToyDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A6E0C32E34BB7400E72E20 /* CapsuleToyDetailViewModel.swift */; };
+		12A6E0C72E35040E00E72E20 /* MyDataScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A6E0C62E35040E00E72E20 /* MyDataScreen.swift */; };
+		12A6E0CA2E35042900E72E20 /* MyDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A6E0C92E35042400E72E20 /* MyDataViewModel.swift */; };
 		12B8CE9D2E195BBD00B61EED /* CapsuleToyAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B8CE9A2E195BBD00B61EED /* CapsuleToyAppApp.swift */; };
 		12B8CE9E2E195BBD00B61EED /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B8CE9B2E195BBD00B61EED /* RootView.swift */; };
 		12B8CE9F2E195BBD00B61EED /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12B8CE992E195BBD00B61EED /* Images.xcassets */; };
@@ -142,6 +144,8 @@
 		12A6E0BF2E33C76600E72E20 /* ExColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExColor.swift; sourceTree = "<group>"; };
 		12A6E0C12E34BAE300E72E20 /* CapsuleToyDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleToyDetailScreen.swift; sourceTree = "<group>"; };
 		12A6E0C32E34BB7400E72E20 /* CapsuleToyDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleToyDetailViewModel.swift; sourceTree = "<group>"; };
+		12A6E0C62E35040E00E72E20 /* MyDataScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDataScreen.swift; sourceTree = "<group>"; };
+		12A6E0C92E35042400E72E20 /* MyDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDataViewModel.swift; sourceTree = "<group>"; };
 		12B8CE8B2E195BAD00B61EED /* CapsuleToyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CapsuleToyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12B8CE992E195BBD00B61EED /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		12B8CE9A2E195BBD00B61EED /* CapsuleToyAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleToyAppApp.swift; sourceTree = "<group>"; };
@@ -241,6 +245,7 @@
 				122ECCC62E1FED40000F757A /* RootEnvironment.swift */,
 				122FFC382E1C138200FA1A6C /* Series */,
 				12DF0C432E1E5AF7008D1A57 /* CapsuleToy */,
+				12A6E0C82E35041C00E72E20 /* MyData */,
 				12A6E0812E2A1E2B00E72E20 /* Setting */,
 			);
 			path = ViewModel;
@@ -270,8 +275,8 @@
 		122FFBF32E1C094800FA1A6C /* CapsuleToy */ = {
 			isa = PBXGroup;
 			children = (
-				12DF0C412E1E5AA0008D1A57 /* CapsuleToyEntryScreen.swift */,
 				12A6E0C12E34BAE300E72E20 /* CapsuleToyDetailScreen.swift */,
+				12DF0C412E1E5AA0008D1A57 /* CapsuleToyEntryScreen.swift */,
 			);
 			path = CapsuleToy;
 			sourceTree = "<group>";
@@ -401,6 +406,22 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
+		12A6E0C52E3503F500E72E20 /* MyData */ = {
+			isa = PBXGroup;
+			children = (
+				12A6E0C62E35040E00E72E20 /* MyDataScreen.swift */,
+			);
+			path = MyData;
+			sourceTree = "<group>";
+		};
+		12A6E0C82E35041C00E72E20 /* MyData */ = {
+			isa = PBXGroup;
+			children = (
+				12A6E0C92E35042400E72E20 /* MyDataViewModel.swift */,
+			);
+			path = MyData;
+			sourceTree = "<group>";
+		};
 		12B8CE822E195BAD00B61EED = {
 			isa = PBXGroup;
 			children = (
@@ -459,6 +480,7 @@
 				12B8CE9B2E195BBD00B61EED /* RootView.swift */,
 				122FFBF22E1C092B00FA1A6C /* Series */,
 				122FFBF32E1C094800FA1A6C /* CapsuleToy */,
+				12A6E0C52E3503F500E72E20 /* MyData */,
 				12DF0C462E1EAE42008D1A57 /* Dialog */,
 				12A6E07C2E2A1DC000E72E20 /* WebView */,
 				12A6E0772E2A1CFD00E72E20 /* Setting */,
@@ -597,6 +619,7 @@
 			files = (
 				122FFC3E2E1D0D5100FA1A6C /* SeriesDetailViewModel.swift in Sources */,
 				12DF0C482E1EAE4E008D1A57 /* ImagePickerDialog.swift in Sources */,
+				12A6E0CA2E35042900E72E20 /* MyDataViewModel.swift in Sources */,
 				122FFC052E1C0DCB00FA1A6C /* SeriesRepository.swift in Sources */,
 				12A6E07F2E2A1DCF00E72E20 /* ControlWebView.swift in Sources */,
 				12A6E0802E2A1DCF00E72E20 /* UICustomWebView.swift in Sources */,
@@ -608,6 +631,7 @@
 				122ECCD22E20F49C000F757A /* LocationRepository.swift in Sources */,
 				12DF0C422E1E5AA7008D1A57 /* CapsuleToyEntryScreen.swift in Sources */,
 				122FFC032E1C0DBC00FA1A6C /* SeriesRepositoryProtocol.swift in Sources */,
+				12A6E0C72E35040E00E72E20 /* MyDataScreen.swift in Sources */,
 				12DF0C3C2E1D5ED1008D1A57 /* Strings.swift in Sources */,
 				12A6E0532E26405E00E72E20 /* LocationInputView.swift in Sources */,
 				12DF0C3D2E1D5ED1008D1A57 /* Assets.swift in Sources */,

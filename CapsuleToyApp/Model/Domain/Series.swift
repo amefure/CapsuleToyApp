@@ -44,6 +44,11 @@ extension Series {
         isOwendToysCount >= count
     }
     
+    /// アイテムのシークレットを獲得しているかどうか
+    public var isGetSecret: Bool {
+        capsuleToys.contains { $0.isSecret == true && $0.isOwned == true }
+    }
+    
     /// 手動で登録している種類数と実際に登録しているアイテム数で大きい方を取得
     public var highCount: Int {
         max(capsuleToys.count, count)
@@ -73,8 +78,8 @@ extension Series {
             toy.id = ObjectId.generate()
             toy.name = name
             toy.isOwned = Bool.random()
-            toy.createdAt = Date()
-            toy.updatedAt = Date()
+            toy.isSecret = Bool.random()
+            toy.isGetAt = toy.isOwned ? Date() : nil
             series.capsuleToys.append(toy)
         }
 

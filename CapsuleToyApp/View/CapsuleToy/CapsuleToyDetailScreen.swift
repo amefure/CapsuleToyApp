@@ -12,6 +12,8 @@ struct CapsuleToyDetailScreen: View {
     
     @StateObject private var viewModel = DIContainer.shared.resolve(CapsuleToyDetailViewModel.self)
     
+    private let df = DateFormatUtility()
+    
     public var seriesId: ObjectId
     public var toy: CapsuleToy
 
@@ -49,14 +51,22 @@ struct CapsuleToyDetailScreen: View {
                     
                    
                     VStack {
-                        Text("所持ずみ")
+                        Text("GET")
                             .exInputLabelView(width: DeviceSizeUtility.deviceWidth / 2 - 20)
-                        AnimationCheckButton(
-                            isEnable: Binding.constant(toy.isOwned),
-                            isAppearAnimate: true
-                        )
                         
-                        Text("シークレット")
+                        HStack {
+                            AnimationCheckButton(
+                                isEnable: Binding.constant(toy.isOwned),
+                                isAppearAnimate: true
+                            )
+                            
+                            if let date = toy.isGetAt {
+                                Text(df.getString(date: date))
+                            }
+                        }
+                       
+                        
+                        Text("SECRET")
                             .exInputLabelView(width: DeviceSizeUtility.deviceWidth / 2 - 20)
                         AnimationCheckButton(
                             isEnable: Binding.constant(toy.isSecret),

@@ -16,6 +16,9 @@ struct SettingView: View {
     var body: some View {
         VStack {
             
+            Text("設定")
+                .fontM(bold: true)
+            
             List {
                 // MARK: アプリ設定
                 Section(

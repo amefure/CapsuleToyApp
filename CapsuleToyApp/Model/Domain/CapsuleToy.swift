@@ -20,10 +20,8 @@ final class CapsuleToy: Object, ObjectKeyIdentifiable, Codable {
     @Persisted var memo: String
     /// 画像パス
     @Persisted var imagePath: String?
-    /// 生成日
-    @Persisted var createdAt: Date = Date()
-    /// 更新日
-    @Persisted var updatedAt: Date = Date()
+    /// 取得日
+    @Persisted var isGetAt: Date? = Date()
 }
 
 extension CapsuleToy {
@@ -36,8 +34,7 @@ extension CapsuleToy {
             toy.isSecret = index % 2 == 0
             toy.memo = index % 3 == 0 ? "これはメモです" : ""
             toy.imagePath = nil
-            toy.createdAt = Date()
-            toy.updatedAt = Date()
+            toy.isGetAt = Date()
             return toy
         }
     }

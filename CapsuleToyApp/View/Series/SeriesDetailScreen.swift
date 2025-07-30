@@ -191,7 +191,7 @@ struct SeriesDetailScreen: View {
                              
                                 BoingButton {
                                     selectToy = toy
-                                    viewModel.presentEntryToyScreen = true
+                                    viewModel.presentDetailToyScreen = true
                                 } label: {
                                     ZStack(alignment: .bottom) {
                                         ImagePreView(
@@ -270,10 +270,12 @@ struct SeriesDetailScreen: View {
             .fontM()
             .foregroundStyle(.exText)
             .background(.exFoundation)
-            .navigationDestination(isPresented: $viewModel.presentEntryToyScreen) {
+            .navigationDestination(isPresented: $viewModel.presentDetailToyScreen) {
                 if let selectToy {
                     CapsuleToyDetailScreen(seriesId: seriesId, toy: selectToy)
                 }
+            }.navigationDestination(isPresented: $viewModel.presentEntryToyScreen) {
+                CapsuleToyEntryScreen(seriesId: seriesId)
             }
             .alert(
                 isPresented: $viewModel.showConfirmDeleteAlert,
