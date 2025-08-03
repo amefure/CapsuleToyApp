@@ -147,7 +147,7 @@ struct SeriesEntryScreen: View {
         .foregroundStyle(.exText)
         .background(.exFoundation)
         .fullScreenCover(isPresented: $showAddLocationView, content: {
-            LocationInputView()
+            LocationInputScreen()
                 .environmentObject(viewModel)
         })
         .alert(

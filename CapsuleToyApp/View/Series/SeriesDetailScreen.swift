@@ -92,19 +92,23 @@ struct SeriesDetailScreen: View {
                             
                             Spacer()
                         }
-                      
                     }
-                  
                     
-                    if !series.memo.isEmpty {
-                        Text("MEMO")
-                            .exInputLabelView()
-                        
-                        Text("\(series.memo)")
-                            .fontS()
-                            .exInputBackView()
-                    }
-                  
+                    ScrollView(.horizontal) {
+                        HStack(spacing: 10) {
+                            ForEach(series.categories) { category in
+                                Text(category.name)
+                                    .fontS(bold: true)
+                                    .padding(5)
+                                    .foregroundStyle(.white)
+                                    .background(.exGold)
+                                    .clipShape(RoundedRectangle(cornerRadius: 3))
+                                    .lineLimit(1)
+                                    .clipped()
+                                    .shadow(color: .black.opacity(0.2), radius: 5, x: 3, y: 3)
+                            }
+                        }
+                    }.padding()
                     
                     Text("所持数")
                         .exInputLabelView()
@@ -115,6 +119,15 @@ struct SeriesDetailScreen: View {
                     ).exInputBackView()
                         .padding(.vertical)
 
+                    
+                    if !series.memo.isEmpty {
+                        Text("MEMO")
+                            .exInputLabelView()
+                        
+                        Text("\(series.memo)")
+                            .fontS()
+                            .exInputBackView()
+                    }
                     
                     Text("設置場所")
                         .exInputLabelView()

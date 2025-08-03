@@ -102,6 +102,7 @@ struct MyDataScreen: View {
                     if !rootEnvironment.removeAds {
                         AdMobBannerView()
                             .frame(height: 100)
+                            .padding(.top, 30)
                     }
 
                 }

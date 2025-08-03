@@ -19,6 +19,8 @@ final class Series: Object, ObjectKeyIdentifiable, Codable {
     @Persisted var amount: Int
     /// 紐づいているカプセルトイ情報
     @Persisted var capsuleToys: RealmSwift.List<CapsuleToy>
+    /// カテゴリ(複数登録可能)
+    @Persisted var categories: RealmSwift.List<Category>
     /// メモ
     @Persisted var memo: String
     /// 位置情報
@@ -33,6 +35,11 @@ final class Series: Object, ObjectKeyIdentifiable, Codable {
 
 
 extension Series {
+    
+    /// カテゴリリストの一番最初の名前を取得
+    public var getFirstCategoryName: String? {
+        categories.first?.name
+    }
     
     /// 所有済みのアイテム数を取得
     public var isOwendToysCount: Int {
@@ -62,6 +69,7 @@ extension Series {
         count: Int = 5,
         amount: Int = 300,
         capsuleToyNames: [String] = ["黒猫", "白猫", "トラ猫", "三毛猫", "キジトラ"],
+        categoryNames: [String] = ["鬼滅の刃"],
         memo: String = "お気に入りシリーズ"
     ) -> Series {
         let series = Series()
@@ -82,6 +90,13 @@ extension Series {
             toy.isGetAt = toy.isOwned ? Date() : nil
             series.capsuleToys.append(toy)
         }
+        
+        for name in categoryNames {
+            let category = Category()
+            category.id = ObjectId.generate()
+            category.name = name
+            series.categories.append(category)
+        }
 
         return series
     }
@@ -93,6 +108,7 @@ extension Series {
                 count: 5,
                 amount: 300,
                 capsuleToyNames: ["黒猫", "白猫", "三毛猫", "キジトラ", "シャム"],
+                categoryNames: ["なめ猫", "黒猫", "白猫"],
                 memo: "猫好き向け"
             ),
             Series.mock(
@@ -100,6 +116,7 @@ extension Series {
                 count: 4,
                 amount: 500,
                 capsuleToyNames: ["ティラノ", "トリケラ", "ステゴ", "プテラ"],
+                categoryNames: ["ダイナソー"],
                 memo: ""
             ),
             Series.mock(
@@ -107,6 +124,7 @@ extension Series {
                 count: 3,
                 amount: 300,
                 capsuleToyNames: ["文鳥", "オカメ", "インコ"],
+                categoryNames: ["鳥鳥鳥"],
                 memo: "小鳥好きにおすすめ"
             )
         ]

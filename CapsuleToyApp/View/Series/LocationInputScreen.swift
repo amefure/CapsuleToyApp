@@ -1,5 +1,5 @@
 //
-//  LocationInputView.swift
+//  LocationInputScreen.swift
 //  CapsuleToyApp
 //
 //  Created by t&a on 2025/07/15.
@@ -8,7 +8,7 @@
 import SwiftUI
 import MapKit
 
-struct LocationInputView: View {
+struct LocationInputScreen: View {
 
     @EnvironmentObject var viewModel: SeriesEntryViewModel
     
@@ -90,5 +90,5 @@ struct LocationInputView: View {
 }
 
 #Preview {
-    LocationInputView()
+    LocationInputScreen()
 }
