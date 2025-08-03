@@ -21,7 +21,7 @@ struct InAppPurchaseScreen: View {
                     dismiss()
                 },
                 content: {
-                    Text("広告削除 & 容量解放")
+                    Text("広告削除 & 機能解放")
                         .fontL(bold: true)
                         .foregroundStyle(.exText)
                         .padding(.vertical)

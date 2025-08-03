@@ -55,10 +55,10 @@ final class InAppPurchaseViewModel: ObservableObject {
                 guard let self else { return }
                 // 購入済みアイテム配列が変化した際に購入済みかどうか確認
                 let removeAds = inAppPurchaseRepository.isPurchased(ProductItem.removeAds.id)
-                let unlockStorage = inAppPurchaseRepository.isPurchased(ProductItem.unlockStorage.id)
+                let unlockFeature = inAppPurchaseRepository.isPurchased(ProductItem.unlockFeature.id)
                 // ローカルフラグを更新(購入済み or 未購入)
                 userDefaultsRepository.setPurchasedRemoveAds(removeAds)
-                userDefaultsRepository.setPurchasedUnlockStorage(unlockStorage)
+                userDefaultsRepository.setPurchasedUnlockFeature(unlockFeature)
             }.store(in: &cancellables)
 
         // 購入中

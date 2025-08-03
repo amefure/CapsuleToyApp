@@ -13,7 +13,7 @@ import SwiftUI
 actor InAppPurchaseRepository {
     /// `課金アイテムID`
     static let REMOVE_ADS_ID = ProductItem.removeAds.id
-    static let UNLOCK_STORAGE_ID = ProductItem.unlockStorage.id
+    static let UNLOCK_FEATURE_ID = ProductItem.unlockFeature.id
 
     /// 課金アイテム配列
     @MainActor
@@ -86,7 +86,7 @@ actor InAppPurchaseRepository {
     /// 課金アイテムを取得する
     private func requestProducts() async {
         do {
-            let productIdentifiers = [Self.REMOVE_ADS_ID, Self.UNLOCK_STORAGE_ID]
+            let productIdentifiers = [Self.REMOVE_ADS_ID, Self.UNLOCK_FEATURE_ID]
             let products = try await Product.products(for: productIdentifiers)
             let sorted = products.sorted { $0.price < $1.price }
             await MainActor.run {

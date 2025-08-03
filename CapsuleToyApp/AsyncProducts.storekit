@@ -45,13 +45,13 @@
           "locale" : "en_US"
         },
         {
-          "description" : "誕生日情報の登録上限数が解放され、制限なく誕生日情報を登録できるようになります。",
-          "displayName" : "TEST_容量解放",
+          "description" : "MyDataタブで表示される情報が閲覧できるようになります。",
+          "displayName" : "TEST_機能解放",
           "locale" : "ja"
         }
       ],
-      "productID" : "com.test.unlock_storage",
-      "referenceName" : "Unlock Storage",
+      "productID" : "com.test.unlock_feature",
+      "referenceName" : "Unlock Feature",
       "type" : "NonConsumable"
     }
   ],

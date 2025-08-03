@@ -7,7 +7,7 @@
 
 enum ProductItem {
     case removeAds
-    case unlockStorage
+    case unlockFeature
 
     public var id: String {
         return switch self {
@@ -19,13 +19,13 @@ enum ProductItem {
                 // 本番
                 SecretProductIdKey.REMOVE_ADS
             #endif
-        case .unlockStorage:
+        case .unlockFeature:
             #if DEBUG
                 // テスト
-                SecretProductIdKey.TEST_UNLOCK_STORAGE
+                SecretProductIdKey.TEST_UNLOCK_FEATURE
             #else
                 // 本番
-                SecretProductIdKey.UNLOCK_STORAGE
+                SecretProductIdKey.UNLOCK_FEATURE
             #endif
         }
     }
@@ -34,8 +34,8 @@ enum ProductItem {
         switch id {
         case ProductItem.removeAds.id:
             return .removeAds
-        case ProductItem.unlockStorage.id:
-            return .unlockStorage
+        case ProductItem.unlockFeature.id:
+            return .unlockFeature
         default:
             return nil
         }

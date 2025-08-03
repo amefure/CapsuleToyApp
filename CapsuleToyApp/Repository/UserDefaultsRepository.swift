@@ -10,8 +10,8 @@ import UIKit
 class UserDefaultsKey {
     /// アプリ内課金：広告削除
     static let PURCHASED_REMOVE_ADS = "PURCHASE_REMOVE_ADS"
-    /// アプリ内課金：容量解放
-    static let PURCHASED_UNLOCK_STORAGE = "PURCHASED_UNLOCK_STORAGE"
+    /// アプリ内課金：機能解放
+    static let PURCHASED_UNLOCK_FEATURE = "PURCHASED_UNLOCK_FEATURE"
     /// アクティブにしているタブ
     static let ACTIVE_TAB = "ACTIVE_TAB"
 }
@@ -78,14 +78,14 @@ extension UserDefaultsRepository {
         setBoolData(key: UserDefaultsKey.PURCHASED_REMOVE_ADS, isOn: flag)
     }
 
-    /// `PURCHASED_UNLOCK_STORAGE`
+    /// `PURCHASED_UNLOCK_FEATURE`
     /// 取得：アプリ内課金 / 容量解放
-    public func getPurchasedUnlockStorage() -> Bool {
-        getBoolData(key: UserDefaultsKey.PURCHASED_UNLOCK_STORAGE)
+    public func getPurchasedUnlockFeature() -> Bool {
+        getBoolData(key: UserDefaultsKey.PURCHASED_UNLOCK_FEATURE)
     }
 
     /// 登録：アプリ内課金 / 容量解放
-    public func setPurchasedUnlockStorage(_ flag: Bool) {
-        setBoolData(key: UserDefaultsKey.PURCHASED_UNLOCK_STORAGE, isOn: flag)
+    public func setPurchasedUnlockFeature(_ flag: Bool) {
+        setBoolData(key: UserDefaultsKey.PURCHASED_UNLOCK_FEATURE, isOn: flag)
     }
 }

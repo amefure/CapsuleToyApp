@@ -19,8 +19,8 @@ class RootEnvironment: ObservableObject {
     @Published var isDarkMode: Bool = false
     /// 広告削除購入フラグ
     @Published var removeAds: Bool = false
-    /// 容量解放購入フラグ
-    @Published var unlockStorage: Bool = false
+    /// 機能解放購入フラグ
+    @Published var unlockFeature: Bool = false
     
     /// 位置情報許可否認状態アラート
     @Published var showLocationDeniedAlert: Bool = false
@@ -71,7 +71,7 @@ extension RootEnvironment {
     /// アプリ内課金情報を取得&反映
     private func setPurchasedFlag() {
         removeAds = userDefaultsRepository.getPurchasedRemoveAds()
-        unlockStorage = userDefaultsRepository.getPurchasedUnlockStorage()
+        unlockFeature = userDefaultsRepository.getPurchasedUnlockFeature()
     }
     
     /// 位置情報承認状況観測
@@ -115,10 +115,10 @@ extension RootEnvironment {
                 guard let self else { return }
                 // 購入済みアイテム配列が変化した際に購入済みかどうか確認
                 let removeAds = inAppPurchaseRepository.isPurchased(ProductItem.removeAds.id)
-                let unlockStorage = inAppPurchaseRepository.isPurchased(ProductItem.unlockStorage.id)
+                let unlockFeature = inAppPurchaseRepository.isPurchased(ProductItem.unlockFeature.id)
                 // 両者trueなら更新
                 if removeAds { self.removeAds = true }
-                if unlockStorage { self.unlockStorage = true }
+                if unlockFeature { self.unlockFeature = true }
             }.store(in: &cancellables)
     }
     
