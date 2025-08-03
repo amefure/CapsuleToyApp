@@ -48,7 +48,7 @@ struct SettingView: View {
                     
                     // アプリ内課金
                     NavigationLink {
-                        //InAppPurchaseView()
+                        InAppPurchaseScreen()
                            // .environmentObject(rootEnvironment)
                     } label: {
                         HStack {

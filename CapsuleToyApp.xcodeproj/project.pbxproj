@@ -59,6 +59,12 @@
 		12A6E0C42E34BB7900E72E20 /* CapsuleToyDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A6E0C32E34BB7400E72E20 /* CapsuleToyDetailViewModel.swift */; };
 		12A6E0C72E35040E00E72E20 /* MyDataScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A6E0C62E35040E00E72E20 /* MyDataScreen.swift */; };
 		12A6E0CA2E35042900E72E20 /* MyDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A6E0C92E35042400E72E20 /* MyDataViewModel.swift */; };
+		12B20FD72E3D86FB003D60F5 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 12B20FD62E3D86FB003D60F5 /* GoogleMobileAds */; };
+		12B20FD92E3E3408003D60F5 /* InAppPurchaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B20FD82E3E3407003D60F5 /* InAppPurchaseRepository.swift */; };
+		12B20FDD2E3E3427003D60F5 /* ProductItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B20FDA2E3E3427003D60F5 /* ProductItem.swift */; };
+		12B20FDE2E3E3427003D60F5 /* SecretProductIdKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B20FDB2E3E3427003D60F5 /* SecretProductIdKey.swift */; };
+		12B20FE02E3E346C003D60F5 /* InAppPurchaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B20FDF2E3E346B003D60F5 /* InAppPurchaseViewModel.swift */; };
+		12B20FE22E3E34C9003D60F5 /* InAppPurchaseScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B20FE12E3E34C4003D60F5 /* InAppPurchaseScreen.swift */; };
 		12B8CE9D2E195BBD00B61EED /* CapsuleToyAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B8CE9A2E195BBD00B61EED /* CapsuleToyAppApp.swift */; };
 		12B8CE9E2E195BBD00B61EED /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B8CE9B2E195BBD00B61EED /* RootView.swift */; };
 		12B8CE9F2E195BBD00B61EED /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12B8CE992E195BBD00B61EED /* Images.xcassets */; };
@@ -146,6 +152,13 @@
 		12A6E0C32E34BB7400E72E20 /* CapsuleToyDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleToyDetailViewModel.swift; sourceTree = "<group>"; };
 		12A6E0C62E35040E00E72E20 /* MyDataScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDataScreen.swift; sourceTree = "<group>"; };
 		12A6E0C92E35042400E72E20 /* MyDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDataViewModel.swift; sourceTree = "<group>"; };
+		12B20FD82E3E3407003D60F5 /* InAppPurchaseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchaseRepository.swift; sourceTree = "<group>"; };
+		12B20FDA2E3E3427003D60F5 /* ProductItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItem.swift; sourceTree = "<group>"; };
+		12B20FDB2E3E3427003D60F5 /* SecretProductIdKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretProductIdKey.swift; sourceTree = "<group>"; };
+		12B20FDF2E3E346B003D60F5 /* InAppPurchaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchaseViewModel.swift; sourceTree = "<group>"; };
+		12B20FE12E3E34C4003D60F5 /* InAppPurchaseScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchaseScreen.swift; sourceTree = "<group>"; };
+		12B20FE42E3F9554003D60F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		12B20FE52E3F978C003D60F5 /* AsyncProducts.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = AsyncProducts.storekit; sourceTree = "<group>"; };
 		12B8CE8B2E195BAD00B61EED /* CapsuleToyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CapsuleToyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12B8CE992E195BBD00B61EED /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		12B8CE9A2E195BBD00B61EED /* CapsuleToyAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleToyAppApp.swift; sourceTree = "<group>"; };
@@ -172,6 +185,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12B20FD72E3D86FB003D60F5 /* GoogleMobileAds in Frameworks */,
 				12B8CEAB2E195E8100B61EED /* RealmSwift in Frameworks */,
 				126CF5462E19CC6600C14395 /* Swinject in Frameworks */,
 			);
@@ -223,6 +237,7 @@
 				122FFBFA2E1C0A2500FA1A6C /* Config */,
 				122FFBEF2E1C074700FA1A6C /* Domain */,
 				12DF0C502E1EB028008D1A57 /* Error */,
+				12B20FDC2E3E3427003D60F5 /* InAppPurchase */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -235,6 +250,7 @@
 				122FFBFF2E1C0BEB00FA1A6C /* Protocol */,
 				122FFBFD2E1C0A5500FA1A6C /* UserDefaultsRepository.swift */,
 				122ECCD12E20F49B000F757A /* LocationRepository.swift */,
+				12B20FD82E3E3407003D60F5 /* InAppPurchaseRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -385,6 +401,7 @@
 			isa = PBXGroup;
 			children = (
 				12A6E0782E2A1D1000E72E20 /* SettingView.swift */,
+				12B20FE12E3E34C4003D60F5 /* InAppPurchaseScreen.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -402,6 +419,7 @@
 			isa = PBXGroup;
 			children = (
 				12A6E0822E2A1E3900E72E20 /* SettingViewModel.swift */,
+				12B20FDF2E3E346B003D60F5 /* InAppPurchaseViewModel.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -422,10 +440,27 @@
 			path = MyData;
 			sourceTree = "<group>";
 		};
+		12B20FDC2E3E3427003D60F5 /* InAppPurchase */ = {
+			isa = PBXGroup;
+			children = (
+				12B20FDA2E3E3427003D60F5 /* ProductItem.swift */,
+				12B20FDB2E3E3427003D60F5 /* SecretProductIdKey.swift */,
+			);
+			path = InAppPurchase;
+			sourceTree = "<group>";
+		};
+		12B20FE32E3F9490003D60F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		12B8CE822E195BAD00B61EED = {
 			isa = PBXGroup;
 			children = (
 				12B8CE9C2E195BBD00B61EED /* CapsuleToyApp */,
+				12B20FE32E3F9490003D60F5 /* Frameworks */,
 				12B8CE8C2E195BAD00B61EED /* Products */,
 			);
 			sourceTree = "<group>";
@@ -441,6 +476,8 @@
 		12B8CE9C2E195BBD00B61EED /* CapsuleToyApp */ = {
 			isa = PBXGroup;
 			children = (
+				12B20FE42E3F9554003D60F5 /* Info.plist */,
+				12B20FE52E3F978C003D60F5 /* AsyncProducts.storekit */,
 				12B8CEA12E195C4A00B61EED /* Generated */,
 				12B8CEA02E195C3400B61EED /* Resources */,
 				122FFC242E1C120D00FA1A6C /* Extension&Utility */,
@@ -555,6 +592,7 @@
 			packageProductDependencies = (
 				12B8CEAA2E195E8100B61EED /* RealmSwift */,
 				126CF5452E19CC6600C14395 /* Swinject */,
+				12B20FD62E3D86FB003D60F5 /* GoogleMobileAds */,
 			);
 			productName = CapsuleToyApp;
 			productReference = 12B8CE8B2E195BAD00B61EED /* CapsuleToyApp.app */;
@@ -588,6 +626,7 @@
 			packageReferences = (
 				12B8CEA72E195E8100B61EED /* XCRemoteSwiftPackageReference "realm-swift" */,
 				126CF5442E19CC6600C14395 /* XCRemoteSwiftPackageReference "Swinject" */,
+				12B20FD52E3D86FB003D60F5 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 12B8CE8C2E195BAD00B61EED /* Products */;
@@ -629,6 +668,8 @@
 				122FFC092E1C0E4400FA1A6C /* MockSeriesRepository.swift in Sources */,
 				122FFBF92E1C0A0700FA1A6C /* RealmRepository.swift in Sources */,
 				122ECCD22E20F49C000F757A /* LocationRepository.swift in Sources */,
+				12B20FDD2E3E3427003D60F5 /* ProductItem.swift in Sources */,
+				12B20FDE2E3E3427003D60F5 /* SecretProductIdKey.swift in Sources */,
 				12DF0C422E1E5AA7008D1A57 /* CapsuleToyEntryScreen.swift in Sources */,
 				122FFC032E1C0DBC00FA1A6C /* SeriesRepositoryProtocol.swift in Sources */,
 				12A6E0C72E35040E00E72E20 /* MyDataScreen.swift in Sources */,
@@ -652,6 +693,7 @@
 				12A6E0C02E33C76B00E72E20 /* ExColor.swift in Sources */,
 				12DF0C4A2E1EAE83008D1A57 /* ImageSelectView.swift in Sources */,
 				122FFC2A2E1C120D00FA1A6C /* ExString.swift in Sources */,
+				12B20FE22E3E34C9003D60F5 /* InAppPurchaseScreen.swift in Sources */,
 				12DF0C562E1EB28B008D1A57 /* ImagePreView.swift in Sources */,
 				122ECCCA2E1FEE8F000F757A /* AppTab.swift in Sources */,
 				122FFC2B2E1C120D00FA1A6C /* ShareInfoUtillity.swift in Sources */,
@@ -665,6 +707,7 @@
 				122FFC312E1C120D00FA1A6C /* JsonConvertUtility.swift in Sources */,
 				122ECCC52E1FED24000F757A /* CustomTabBar.swift in Sources */,
 				12A6E0832E2A1E3900E72E20 /* SettingViewModel.swift in Sources */,
+				12B20FE02E3E346C003D60F5 /* InAppPurchaseViewModel.swift in Sources */,
 				12DF0C4F2E1EAFF9008D1A57 /* ImageFileManager.swift in Sources */,
 				122ECCD42E20FA4B000F757A /* LocationRepositoryProtocol.swift in Sources */,
 				122FFC322E1C120D00FA1A6C /* ExUIApplication.swift in Sources */,
@@ -678,6 +721,7 @@
 				122FFBE92E1C065000FA1A6C /* DIContainer.swift in Sources */,
 				12B8CE9E2E195BBD00B61EED /* RootView.swift in Sources */,
 				122FFC012E1C0BF400FA1A6C /* RealmRepositoryProtocol.swift in Sources */,
+				12B20FD92E3E3408003D60F5 /* InAppPurchaseRepository.swift in Sources */,
 				122FFBF12E1C078F00FA1A6C /* Series.swift in Sources */,
 				12DF0C4C2E1EAE8F008D1A57 /* ImageCropDialog.swift in Sources */,
 				12A6E07B2E2A1D5100E72E20 /* StaticUrls.swift in Sources */,
@@ -833,6 +877,7 @@
 				DEVELOPMENT_TEAM = CGD79LB65H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CapsuleToyApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "ガチャコレ";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "ガチャガチャの位置情報登録のために取得します。";
@@ -867,6 +912,7 @@
 				DEVELOPMENT_TEAM = CGD79LB65H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CapsuleToyApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "ガチャコレ";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "ガチャガチャの位置情報登録のために取得します。";
@@ -923,6 +969,14 @@
 				minimumVersion = 2.9.1;
 			};
 		};
+		12B20FD52E3D86FB003D60F5 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.8.0;
+			};
+		};
 		12B8CEA72E195E8100B61EED /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift.git";
@@ -938,6 +992,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 126CF5442E19CC6600C14395 /* XCRemoteSwiftPackageReference "Swinject" */;
 			productName = Swinject;
+		};
+		12B20FD62E3D86FB003D60F5 /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 12B20FD52E3D86FB003D60F5 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
 		};
 		12B8CEAA2E195E8100B61EED /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;
