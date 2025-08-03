@@ -44,7 +44,9 @@ Pods
 GoogleService-Info.plist
 CapsuleToyApp/View/Components/AdMobViewModels.swift
 CapsuleToyApp/Model/InAppPurchase/SecretProductIdKey.swift
+CapsuleToyApp/Model/Config/SecretAdMobConfig.swift
 CapsuleToyApp/Model/Common/SecretCryptoKey.swift
+
 
 
 # Carthage

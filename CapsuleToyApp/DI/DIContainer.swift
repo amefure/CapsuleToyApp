@@ -13,10 +13,6 @@ final class DIContainer: @unchecked Sendable {
     
     // FIXME: モック切り替えフラグ
     static private let isTest: Bool = true
-    
-    init() {
-        registerMainActorDependencies()
-    }
 
     private let container = Container() { c in
         
@@ -64,26 +60,21 @@ final class DIContainer: @unchecked Sendable {
             MyDataViewModel(seriesRepository: r.resolve(SeriesRepositoryProtocol.self)!)
         }
         
+        c.register(InAppPurchaseViewModel.self) { r in
+            InAppPurchaseViewModel(
+                userDefaultsRepository: r.resolve(UserDefaultsRepository.self)!,
+                inAppPurchaseRepository: r.resolve(InAppPurchaseRepository.self)!
+            )
+        }
             
         c.register(RootEnvironment.self) { r in
             RootEnvironment(
                 userDefaultsRepository: r.resolve(UserDefaultsRepository.self)!,
-                locationRepository: r.resolve(LocationRepositoryProtocol.self)!
+                locationRepository: r.resolve(LocationRepositoryProtocol.self)!,
+                inAppPurchaseRepository: r.resolve(InAppPurchaseRepository.self)!                
             )
         }
     }
-    
-    /// `@MainActor`で隔離している依存性Reopsitoryの導入は以下のようにメソッドを切り出してイニシャライザで呼び出して行う
-    private func registerMainActorDependencies() {
-        Task { @MainActor in
-            _ = container.register(InAppPurchaseViewModel.self) { r in
-                InAppPurchaseViewModel(
-                    inAppPurchaseRepository: r.resolve(InAppPurchaseRepository.self)!
-                )
-            }
-        }
-    }
-
 
     public func resolve<T>(_ type: T.Type) -> T {
         guard let resolved = container.resolve(type) else {

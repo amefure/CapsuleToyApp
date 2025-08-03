@@ -7,13 +7,14 @@
 
 import SwiftUI
 import UIKit
+import GoogleMobileAds
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_: UIApplication,
                      didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool
     {
         // AdMob
-        // MobileAds.shared.start(completionHandler: nil)
+        MobileAds.shared.start(completionHandler: nil)
 
         // Firebase
         // FirebaseApp.configure()

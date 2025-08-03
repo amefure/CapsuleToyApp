@@ -9,8 +9,7 @@ import Combine
 import StoreKit
 import SwiftUI
 
-@MainActor
-class InAppPurchaseViewModel: ObservableObject {
+final class InAppPurchaseViewModel: ObservableObject {
     /// 取得エラー
     @Published var fetchError: Bool = false
     /// 購入エラー
@@ -21,15 +20,21 @@ class InAppPurchaseViewModel: ObservableObject {
     @Published private(set) var products: [Product] = []
 
     private var cancellables: Set<AnyCancellable> = []
-
+    
+    private let userDefaultsRepository: UserDefaultsRepository
     private let inAppPurchaseRepository: InAppPurchaseRepository
 
     private var purchaseTask: Task<Void, Never>?
 
-    init(inAppPurchaseRepository: InAppPurchaseRepository) {
+    init(
+        userDefaultsRepository: UserDefaultsRepository,
+        inAppPurchaseRepository: InAppPurchaseRepository
+    ) {
+        self.userDefaultsRepository = userDefaultsRepository
         self.inAppPurchaseRepository = inAppPurchaseRepository
     }
 
+    @MainActor
     public func onAppear() {
         //FBAnalyticsManager.loggingScreen(screen: .InAppPurchaseScreen)
 
@@ -52,8 +57,8 @@ class InAppPurchaseViewModel: ObservableObject {
                 let removeAds = inAppPurchaseRepository.isPurchased(ProductItem.removeAds.id)
                 let unlockStorage = inAppPurchaseRepository.isPurchased(ProductItem.unlockStorage.id)
                 // ローカルフラグを更新(購入済み or 未購入)
-                //AppManager.sharedUserDefaultManager.setPurchasedRemoveAds(removeAds)
-                //AppManager.sharedUserDefaultManager.setPurchasedUnlockStorage(unlockStorage)
+                userDefaultsRepository.setPurchasedRemoveAds(removeAds)
+                userDefaultsRepository.setPurchasedUnlockStorage(unlockStorage)
             }.store(in: &cancellables)
 
         // 購入中
@@ -85,11 +90,13 @@ class InAppPurchaseViewModel: ObservableObject {
     }
 
     /// 購入済みプロダクトかどうか
+    @MainActor
     public func isPurchased(_ productId: String) -> Bool {
         inAppPurchaseRepository.isPurchased(productId)
     }
 
     /// 購入開始
+    @MainActor
     public func purchase(product: Product) {
         isPurchasingId = product.id
         purchaseTask = Task {
@@ -98,6 +105,7 @@ class InAppPurchaseViewModel: ObservableObject {
     }
 
     /// 復帰処理
+    @MainActor
     public func restore() {
         inAppPurchaseRepository.restore()
     }

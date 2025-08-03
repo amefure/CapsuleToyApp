@@ -10,6 +10,8 @@ import UIKit
 class UserDefaultsKey {
     /// アプリ内課金：広告削除
     static let PURCHASED_REMOVE_ADS = "PURCHASE_REMOVE_ADS"
+    /// アプリ内課金：容量解放
+    static let PURCHASED_UNLOCK_STORAGE = "PURCHASED_UNLOCK_STORAGE"
     /// アクティブにしているタブ
     static let ACTIVE_TAB = "ACTIVE_TAB"
 }
@@ -63,5 +65,27 @@ extension UserDefaultsRepository {
     public func getActiveTab() -> AppTab {
         let tab = getIntData(key: UserDefaultsKey.ACTIVE_TAB)
         return AppTab(rawValue: tab) ?? .series
+    }
+    
+    /// `PURCHASED_REMOVE_ADS`
+    /// 取得：アプリ内課金 / 広告削除
+    public func getPurchasedRemoveAds() -> Bool {
+        getBoolData(key: UserDefaultsKey.PURCHASED_REMOVE_ADS)
+    }
+
+    /// 登録：アプリ内課金 / 広告削除
+    public func setPurchasedRemoveAds(_ flag: Bool) {
+        setBoolData(key: UserDefaultsKey.PURCHASED_REMOVE_ADS, isOn: flag)
+    }
+
+    /// `PURCHASED_UNLOCK_STORAGE`
+    /// 取得：アプリ内課金 / 容量解放
+    public func getPurchasedUnlockStorage() -> Bool {
+        getBoolData(key: UserDefaultsKey.PURCHASED_UNLOCK_STORAGE)
+    }
+
+    /// 登録：アプリ内課金 / 容量解放
+    public func setPurchasedUnlockStorage(_ flag: Bool) {
+        setBoolData(key: UserDefaultsKey.PURCHASED_UNLOCK_STORAGE, isOn: flag)
     }
 }

@@ -14,11 +14,20 @@ struct InAppPurchaseScreen: View {
 
     var body: some View {
         VStack {
+            
+            HeaderView(
+                leadingIcon: "chevron.backward",
+                leadingAction: {
+                    dismiss()
+                },
+                content: {
+                    Text("広告削除 & 容量解放")
+                        .fontL(bold: true)
+                        .foregroundStyle(.exText)
+                        .padding(.vertical)
+                }
+            )
 
-            Text("広告削除 & 容量解放")
-                .fontL(bold: true)
-                .foregroundStyle(.exText)
-                .padding(.vertical)
 
             Text("購入後のキャンセルは致しかねますのでご了承ください。")
                 .fontS()
@@ -109,8 +118,7 @@ struct InAppPurchaseScreen: View {
                                 .shadow(color: .gray, radius: 3, x: 4, y: 4)
                         }.buttonStyle(.plain)
                     }
-                }.scrollContentBackground(.hidden)
-                    .foregroundStyle(.exText)
+                }.foregroundStyle(.exText)
             }
 
         }.onAppear { viewModel.onAppear() }

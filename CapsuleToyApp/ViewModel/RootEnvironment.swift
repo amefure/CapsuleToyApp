@@ -19,26 +19,63 @@ class RootEnvironment: ObservableObject {
     @Published var isDarkMode: Bool = false
     /// 広告削除購入フラグ
     @Published var removeAds: Bool = false
+    /// 容量解放購入フラグ
+    @Published var unlockStorage: Bool = false
     
     /// 位置情報許可否認状態アラート
     @Published var showLocationDeniedAlert: Bool = false
     
     private let userDefaultsRepository: UserDefaultsRepository
     private let locationRepository: LocationRepositoryProtocol
+    private let inAppPurchaseRepository: InAppPurchaseRepository
     
     /// `Combine`
     private var cancellables: Set<AnyCancellable> = []
 
     init(
         userDefaultsRepository: UserDefaultsRepository,
-        locationRepository: LocationRepositoryProtocol
+        locationRepository: LocationRepositoryProtocol,
+        inAppPurchaseRepository: InAppPurchaseRepository
     ) {
         self.userDefaultsRepository = userDefaultsRepository
         self.locationRepository = locationRepository
+        self.inAppPurchaseRepository = inAppPurchaseRepository
         
-        // アクティブにしていたタブを反映
+        // フッタータブセットアップ
+        setUpTab()
+        // アプリ内課金情報を取得&反映
+        setPurchasedFlag()
+    }
+    
+    @MainActor
+    public func onAppear() {
+        // 位置情報取得許可申請
+        locationRepository.requestWhenInUseAuthorization()
+        
+        // アプリ内課金購入状況観測
+        sinkPurchasedProducts()
+        
+        // 位置情報承認状況観測
+        sinkLocationAuthorizationStatus()
+    }
+}
+
+extension RootEnvironment {
+    
+    /// アクティブにしていたタブを反映
+    private func setUpTab() {
         selectedTag = userDefaultsRepository.getActiveTab()
-        
+    }
+    
+    
+    /// アプリ内課金情報を取得&反映
+    private func setPurchasedFlag() {
+        removeAds = userDefaultsRepository.getPurchasedRemoveAds()
+        unlockStorage = userDefaultsRepository.getPurchasedUnlockStorage()
+    }
+    
+    /// 位置情報承認状況観測
+    private func sinkLocationAuthorizationStatus() {
         locationRepository.authorizationStatus
             .sink { [weak self] status in
                 guard let self else { return }
@@ -67,22 +104,24 @@ class RootEnvironment: ObservableObject {
                     break
                 }
             }.store(in: &cancellables)
-        
     }
     
+    /// アプリ内課金購入状況観測
     @MainActor
-    public func onAppear() {
-        // 位置情報取得許可申請
-        locationRepository.requestWhenInUseAuthorization()
+    private func sinkPurchasedProducts() {
+        inAppPurchaseRepository.purchasedProducts
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+                guard let self else { return }
+                // 購入済みアイテム配列が変化した際に購入済みかどうか確認
+                let removeAds = inAppPurchaseRepository.isPurchased(ProductItem.removeAds.id)
+                let unlockStorage = inAppPurchaseRepository.isPurchased(ProductItem.unlockStorage.id)
+                // 両者trueなら更新
+                if removeAds { self.removeAds = true }
+                if unlockStorage { self.unlockStorage = true }
+            }.store(in: &cancellables)
     }
     
-    /// アプリの設定画面を開く
-    @MainActor
-    public func openSetiing() {
-        guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else { return }
-        guard UIApplication.shared.canOpenURL(settingsURL) else { return }
-        UIApplication.shared.open(settingsURL)
-    }
 }
 
 // MARK: Public Method
@@ -93,4 +132,11 @@ extension RootEnvironment {
         userDefaultsRepository.setActiveTab(tab)
     }
     
+    /// アプリの設定画面を開く
+    @MainActor
+    public func openSetiing() {
+        guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else { return }
+        guard UIApplication.shared.canOpenURL(settingsURL) else { return }
+        UIApplication.shared.open(settingsURL)
+    }
 }

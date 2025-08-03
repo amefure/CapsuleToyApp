@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct SeriesListScreen: View {
+    
     @StateObject private var viewModel = DIContainer.shared.resolve(SeriesListViewModel.self)
+    @EnvironmentObject private var rootEnvironment: RootEnvironment
     
     @State private var presentEntryScreen: Bool = false
     var body: some View {
@@ -59,6 +61,12 @@ struct SeriesListScreen: View {
                     }
                 }
             }
+            
+            if !rootEnvironment.removeAds {
+                AdMobBannerView()
+                    .frame(height: 60)
+            }
+            
                 
         }.onAppear { viewModel.onAppear() }
             .onDisappear { viewModel.onDisappear() }

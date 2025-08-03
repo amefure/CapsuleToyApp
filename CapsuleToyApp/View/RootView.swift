@@ -17,7 +17,7 @@ struct RootView: View {
                 SeriesListScreen()
                     .environmentObject(rootEnvironment)
                     .padding(.bottom, DeviceSizeUtility.isSESize ? 70 : 110) // TabBar Space
-            case .toys:
+            case .mydata:
                 MyDataScreen()
                     .environmentObject(rootEnvironment)
                     .padding(.bottom, DeviceSizeUtility.isSESize ? 70 : 110) // TabBar Space
@@ -26,7 +26,7 @@ struct RootView: View {
                     .environmentObject(rootEnvironment)
                     .padding(.bottom, DeviceSizeUtility.isSESize ? 70 : 110) // TabBar Space
             }
-            
+                        
             CustomTabBar(
                 selectedTab: $rootEnvironment.selectedTag,
                 tabAnimation: tabAnimation

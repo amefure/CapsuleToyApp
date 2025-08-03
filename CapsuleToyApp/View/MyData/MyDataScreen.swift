@@ -11,6 +11,7 @@ import Charts
 struct MyDataScreen: View {
     
     @StateObject private var viewModel = DIContainer.shared.resolve(MyDataViewModel.self)
+    @EnvironmentObject private var rootEnvironment: RootEnvironment
     private let df = DateFormatUtility(dateFormat: "M月")
     
     var body: some View {
@@ -98,8 +99,11 @@ struct MyDataScreen: View {
                     ParametersView(now: viewModel.getSecretPercent)
                         .exInputBackView()
                     
-    
-                    
+                    if !rootEnvironment.removeAds {
+                        AdMobBannerView()
+                            .frame(height: 100)
+                    }
+
                 }
             }
         }.onAppear { viewModel.onAppear() }
