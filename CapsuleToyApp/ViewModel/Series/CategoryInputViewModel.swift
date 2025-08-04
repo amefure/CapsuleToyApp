@@ -23,7 +23,8 @@ final class CategoryInputViewModel: ObservableObject {
 extension CategoryInputViewModel {
     
     public func createCategory(
-        name: String
+        name: String,
+        color: Color
     ) -> Category? {
        
         clearErrorMsg()
@@ -37,8 +38,8 @@ extension CategoryInputViewModel {
         }
        
         let category = Category()
-        
         category.name = name
+        category.colorHex = color.toHexString()
         return category
     }
 }

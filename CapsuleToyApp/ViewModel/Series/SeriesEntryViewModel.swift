@@ -21,6 +21,9 @@ final class SeriesEntryViewModel: ObservableObject {
     @Published var showUpdateSuccessAlert: Bool = false
     @Published var showValidationErrorAlert: Bool = false
     
+    @Published var showAddLocationScreen: Bool = false
+    @Published var showAddCategoryScreen: Bool = false
+    
     @Published private(set) var errorMsg: String = ""
     private var errors: [ValidationError] = []
     
@@ -39,6 +42,11 @@ extension SeriesEntryViewModel {
     public func updateCategoryDic(categories: RealmSwift.List<Category>) {
         categoryDic = Dictionary(uniqueKeysWithValues: categories.map { ($0.id.stringValue, $0) })
     }
+    
+    public func deleteCategoryDic(_ category: Category) {
+        categoryDic.removeValue(forKey: category.id.stringValue)
+    }
+    
     
     public func updateLocationDic(locations: RealmSwift.List<Location>) {
         locationDic = Dictionary(uniqueKeysWithValues: locations.map { ($0.id.stringValue, $0) })

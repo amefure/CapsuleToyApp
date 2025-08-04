@@ -49,13 +49,14 @@ struct SeriesListScreen: View {
                                         .fontM(bold: true)
                                         .lineLimit(1)
                                     
-                                    Text(series.getFirstCategoryName ?? "未設定")
-                                        .fontS(bold: true)
-                                        .padding(5)
-                                        .foregroundStyle(.white)
-                                        .background(.exGold)
-                                        .clipShape(RoundedRectangle(cornerRadius: 3))
-                                        .lineLimit(1)
+                                    ScrollView(.horizontal) {
+                                        HStack(spacing: 10) {
+                                            ForEach(series.categories) { category in
+                                                Text(category.name)
+                                                    .exThemaLabelView(isSmall: true, backgroundColor: category.color)
+                                            }
+                                        }
+                                    }.padding()
                                     
                                     ToysRatingListView(
                                         isOwnedCount: series.isOwendToysCount,

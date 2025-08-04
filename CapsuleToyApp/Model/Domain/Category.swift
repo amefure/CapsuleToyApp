@@ -6,11 +6,19 @@
 //
 import Foundation
 import RealmSwift
+import SwiftUI
 
 final class Category: Object, ObjectKeyIdentifiable, Codable {
     @Persisted(primaryKey: true) var id: ObjectId
     /// シリーズ名
     @Persisted var name: String
     /// 色
-    @Persisted var color: String
+    @Persisted var colorHex: String = Color.exGold.toHexString()
+}
+
+extension Category {
+    
+    public var color: Color {
+        Color(hexString: colorHex)
+    }
 }

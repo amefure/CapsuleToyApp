@@ -98,14 +98,7 @@ struct SeriesDetailScreen: View {
                         HStack(spacing: 10) {
                             ForEach(series.categories) { category in
                                 Text(category.name)
-                                    .fontS(bold: true)
-                                    .padding(5)
-                                    .foregroundStyle(.white)
-                                    .background(.exGold)
-                                    .clipShape(RoundedRectangle(cornerRadius: 3))
-                                    .lineLimit(1)
-                                    .clipped()
-                                    .shadow(color: .black.opacity(0.2), radius: 5, x: 3, y: 3)
+                                    .exThemaLabelView(backgroundColor: category.color)
                             }
                         }
                     }.padding()

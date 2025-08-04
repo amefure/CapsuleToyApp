@@ -19,7 +19,6 @@ struct SeriesEntryScreen: View {
     @State private var amount: String = ""
     @State private var memo: String = ""
     @State private var image: UIImage? = nil
-    @State private var showAddLocationView: Bool = false
 
     @Environment(\.dismiss) private var dismiss
     
@@ -87,6 +86,45 @@ struct SeriesEntryScreen: View {
                     .exInputLabelView()
                 TextField("例：△△シリーズ", text: $name)
                     .exInputBackView()
+                
+                Text("カテゴリラベル")
+                    .exInputLabelView()
+                
+                let categoryDic = viewModel.categoryDic.sorted(by: { $0.key < $1.key }).map { $0.value }
+                ScrollView(.horizontal) {
+                    HStack(spacing: 30) {
+                        ForEach(categoryDic, id: \.id) { category in
+                            ZStack(alignment: .topTrailing) {
+                                Text(category.name)
+                                    .exThemaLabelView(backgroundColor: category.color)
+                                
+                                Button {
+                                    viewModel.deleteCategoryDic(category)
+                                } label: {
+                                    Image(systemName: "trash")
+                                        .fontSS(bold: true)
+                                        .frame(width: 30, height: 30)
+                                        .foregroundStyle(.white)
+                                        .background(.exNegative)
+                                        .clipShape(RoundedRectangle(cornerRadius: 30))
+                                }.offset(x: 15, y: -15)
+                            }
+                        }
+                        
+                        Button {
+                            viewModel.showAddCategoryScreen = true
+                        } label: {
+                            Image(systemName: "plus")
+                                .foregroundStyle(.exGold)
+                                .frame(width: 70, height: 40)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .stroke(.exGold, lineWidth: 2)
+                                ).padding(.vertical, 20)
+                        }
+                    }
+                }.padding()
+                
    
                 
                 Text("ガチャガチャ設置場所")
@@ -112,14 +150,14 @@ struct SeriesEntryScreen: View {
                     }.frame(width: DeviceSizeUtility.deviceWidth - 40, height: 35)
                 }
                 Button {
-                    showAddLocationView = true
+                    viewModel.showAddLocationScreen = true
                 } label: {
                     Image(systemName: "mappin.and.ellipse")
-                        .foregroundStyle(.exThema)
+                        .foregroundStyle(.exGold)
                         .frame(width: DeviceSizeUtility.deviceWidth - 40, height: 50)
                         .overlay(
                             RoundedRectangle(cornerRadius: 8)
-                                .stroke(.exThema, lineWidth: 1)
+                                .stroke(.exGold, lineWidth: 2)
                         )
                 }
                 
@@ -139,17 +177,20 @@ struct SeriesEntryScreen: View {
             amount = String(series.amount)
             memo = series.memo
             viewModel.updateLocationDic(locations: series.locations)
+            viewModel.updateCategoryDic(categories: series.categories)
             image = viewModel.fecthImage(id: series.id.stringValue)
-            
         }
         .onDisappear { viewModel.onDisappear() }
         .navigationBarBackButtonHidden()
         .fontM()
         .foregroundStyle(.exText)
         .background(.exFoundation)
-        .fullScreenCover(isPresented: $showAddLocationView, content: {
+        .fullScreenCover(isPresented: $viewModel.showAddLocationScreen) {
             LocationInputScreen(locationDic: $viewModel.locationDic)
-        })
+        }
+        .fullScreenCover(isPresented: $viewModel.showAddCategoryScreen) {
+            CategoryInputScreen(categoryDic: $viewModel.categoryDic)
+        }
         .alert(
             isPresented: $viewModel.showEntrySuccessAlert,
             title: L10n.dialogSuccessTitle,

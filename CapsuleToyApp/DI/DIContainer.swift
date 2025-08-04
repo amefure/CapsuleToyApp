@@ -49,6 +49,8 @@ final class DIContainer: @unchecked Sendable {
             LocationInputViewModel(locationRepository: r.resolve(LocationRepositoryProtocol.self)!)
         }
         
+        c.register(CategoryInputViewModel.self) { r in CategoryInputViewModel()}
+        
         c.register(CapsuleToyEntryViewModel.self) { r in
             CapsuleToyEntryViewModel(seriesRepository: r.resolve(SeriesRepositoryProtocol.self)!)
         }

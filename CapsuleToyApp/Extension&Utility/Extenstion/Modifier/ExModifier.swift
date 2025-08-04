@@ -51,6 +51,33 @@ struct CircleButtonView: ViewModifier {
     }
 }
 
+struct LabelView: ViewModifier {
+    
+    public let isSmall: Bool
+    public let backgroundColor: Color
+    
+    func body(content: Content) -> some View {
+        content
+            .if(isSmall) { view in
+                view
+                    .fontS(bold: true)
+                    .padding(5)
+            }
+            .if(!isSmall) { view in
+                view
+                    .fontM(bold: true)
+                    .padding(8)
+            }
+            .foregroundStyle(.white)
+            .background(backgroundColor)
+            .clipShape(RoundedRectangle(cornerRadius: 3))
+            .lineLimit(1)
+            .clipped()
+            .shadow(color: .black.opacity(0.2), radius: 3, x: 3, y: 3)
+            .padding(.vertical, 5)
+    }
+}
+
 extension View {
     
     /// Input要素上に配置するラベル
@@ -86,6 +113,19 @@ extension View {
                 foregroundColor: foregroundColor,
                 backgroundColor: backgroundColor,
                 backgroundView: backgroundView
+            )
+        )
+    }
+    
+    /// テーマラベルビュー
+    func exThemaLabelView(
+        isSmall: Bool = false,
+        backgroundColor: Color
+    ) -> some View {
+        modifier(
+            LabelView(
+                isSmall: isSmall,
+                backgroundColor: backgroundColor
             )
         )
     }

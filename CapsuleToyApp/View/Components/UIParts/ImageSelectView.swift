@@ -37,11 +37,11 @@ struct ImageSelectView: View {
                 } label: {
                     Image(systemName: "plus")
                         .fontM()
-                        .foregroundStyle(.exThema)
+                        .foregroundStyle(.exGold)
                         .frame(width: width, height: height)
                         .overlay(
                             RoundedRectangle(cornerRadius: 8)
-                                .stroke(.exThema, lineWidth: 1)
+                                .stroke(.exGold, lineWidth: 2)
                         )
                 }
             }
