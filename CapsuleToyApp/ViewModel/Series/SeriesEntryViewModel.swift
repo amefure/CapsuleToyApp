@@ -13,12 +13,8 @@ import Combine
 final class SeriesEntryViewModel: ObservableObject {
     
     private let seriesRepository: SeriesRepositoryProtocol
-    private let locationRepository: LocationRepositoryProtocol
     
-    @Published private(set) var locationDic: [String: Location] = [:]
-    
-    @Published var region: MapCameraPosition = .region(LocationRepository.defultRegion)
-    @Published var adress: String = ""
+    @Published var locationDic: [String: Location] = [:]
     
     @Published var showEntrySuccessAlert: Bool = false
     @Published var showUpdateSuccessAlert: Bool = false
@@ -27,14 +23,8 @@ final class SeriesEntryViewModel: ObservableObject {
     @Published private(set) var errorMsg: String = ""
     private var errors: [ValidationError] = []
     
-    private var cancellables: Set<AnyCancellable> = []
-    
-    init(
-        seriesRepository: SeriesRepositoryProtocol,
-        locationRepository: LocationRepositoryProtocol
-    ) {
+    init(seriesRepository: SeriesRepositoryProtocol) {
         self.seriesRepository = seriesRepository
-        self.locationRepository = locationRepository
     }
     
     public func onAppear() { }
@@ -44,33 +34,6 @@ final class SeriesEntryViewModel: ObservableObject {
 
 // MARK: - Public Method
 extension SeriesEntryViewModel {
-    
-    @MainActor
-    public func observeUserLocation() {
-        Task {
-            await locationRepository.observeUserLocation()
-        }
-        
-        locationRepository.region
-            .removeDuplicates { old, new in
-                // 緯度 / 経度に変化がないならストリームに流さない
-                old.center.latitude == new.center.latitude && old.center.longitude == new.center.longitude
-            }.sink { [weak self] region in
-                guard let self else { return }
-                self.region = .region(region)
-            }.store(in: &cancellables)
-        
-        locationRepository.address
-            .sink { [weak self] address in
-                guard let self else { return }
-                self.adress = adress
-            }.store(in: &cancellables)
-    }
-    
-    public func clearObserveUserLocation() {
-        cancellables.forEach { $0.cancel() }
-    }
-    
     
     public func updateLocationDic(locations: RealmSwift.List<Location>) {
         locationDic = Dictionary(uniqueKeysWithValues: locations.map { ($0.id.stringValue, $0) })
@@ -122,30 +85,6 @@ extension SeriesEntryViewModel {
             seriesRepository.addSeries(series)
             showEntrySuccessAlert = true
         }
-    }
-    
-    
-    public func addLocation(
-        coordinate: CLLocationCoordinate2D?,
-        name: String,
-        location: Location
-    ) -> Bool {
-       
-        clearErrorMsg()
-        
-        if name.isEmpty {
-            errors.append(.emptySeriesName)
-        }
-        guard errors.isEmpty else {
-            showValidationAlert()
-            return false
-        }
-       
-        location.name = name
-        location.latitude = coordinate?.latitude
-        location.longitude = coordinate?.longitude
-        locationDic.updateValue(location, forKey: location.id.stringValue)
-        return true
     }
     
     /// 画像を取得する

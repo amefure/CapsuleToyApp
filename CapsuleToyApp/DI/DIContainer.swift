@@ -35,10 +35,7 @@ final class DIContainer: @unchecked Sendable {
         }
         
         c.register(SeriesEntryViewModel.self) { r in
-            SeriesEntryViewModel(
-                seriesRepository: r.resolve(SeriesRepositoryProtocol.self)!,
-                locationRepository: r.resolve(LocationRepositoryProtocol.self)!
-            )
+            SeriesEntryViewModel(seriesRepository: r.resolve(SeriesRepositoryProtocol.self)!)
         }
         
         c.register(SeriesDetailViewModel.self) { r in
@@ -46,6 +43,10 @@ final class DIContainer: @unchecked Sendable {
                 seriesRepository: r.resolve(SeriesRepositoryProtocol.self)!,
                 locationRepository: r.resolve(LocationRepositoryProtocol.self)!
             )
+        }
+        
+        c.register(LocationInputViewModel.self) { r in
+            LocationInputViewModel(locationRepository: r.resolve(LocationRepositoryProtocol.self)!)
         }
         
         c.register(CapsuleToyEntryViewModel.self) { r in

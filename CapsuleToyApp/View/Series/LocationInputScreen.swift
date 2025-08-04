@@ -10,8 +10,9 @@ import MapKit
 
 struct LocationInputScreen: View {
 
-    @EnvironmentObject var viewModel: SeriesEntryViewModel
+    @StateObject private var viewModel = DIContainer.shared.resolve(LocationInputViewModel.self)
     
+    @Binding public var locationDic: [String: Location]
     @State private var location: Location = Location()
     @State private var name: String = ""
     @State private var coordinate: CLLocationCoordinate2D?
@@ -28,12 +29,12 @@ struct LocationInputScreen: View {
                     dismiss()
                 },
                 trailingAction: {
-                    let result = viewModel.addLocation(
+                    if let location = viewModel.createLocation(
                         coordinate: coordinate,
                         name: name,
                         location: location
-                    )
-                    if result {
+                    ) {
+                        locationDic.updateValue(location, forKey: location.id.stringValue)
                         dismiss()
                     }
                 }
@@ -90,5 +91,5 @@ struct LocationInputScreen: View {
 }
 
 #Preview {
-    LocationInputScreen()
+    LocationInputScreen(locationDic: Binding.constant([:]))
 }
