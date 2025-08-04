@@ -65,20 +65,20 @@ extension LocationInputViewModel {
     
     public func createLocation(
         coordinate: CLLocationCoordinate2D?,
-        name: String,
-        location: Location
+        name: String
     ) -> Location? {
        
         clearErrorMsg()
         
         if name.isEmpty {
-            errors.append(.emptySeriesName)
+            errors.append(.emptyLocationName)
         }
         guard errors.isEmpty else {
             showValidationAlert()
             return nil
         }
-       
+        
+        let location = Location()
         location.name = name
         location.latitude = coordinate?.latitude
         location.longitude = coordinate?.longitude

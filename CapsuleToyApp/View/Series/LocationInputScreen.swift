@@ -13,7 +13,6 @@ struct LocationInputScreen: View {
     @StateObject private var viewModel = DIContainer.shared.resolve(LocationInputViewModel.self)
     
     @Binding public var locationDic: [String: Location]
-    @State private var location: Location = Location()
     @State private var name: String = ""
     @State private var coordinate: CLLocationCoordinate2D?
     
@@ -29,14 +28,12 @@ struct LocationInputScreen: View {
                     dismiss()
                 },
                 trailingAction: {
-                    if let location = viewModel.createLocation(
+                    guard let location = viewModel.createLocation(
                         coordinate: coordinate,
-                        name: name,
-                        location: location
-                    ) {
-                        locationDic.updateValue(location, forKey: location.id.stringValue)
-                        dismiss()
-                    }
+                        name: name
+                    ) else { return }
+                    locationDic.updateValue(location, forKey: location.id.stringValue)
+                    dismiss()
                 }
             )
             
@@ -75,7 +72,6 @@ struct LocationInputScreen: View {
 
             Spacer()
         }.onAppear {
-            location = Location()
             viewModel.observeUserLocation()
         }.onDisappear { viewModel.clearObserveUserLocation() }
         .navigationBarBackButtonHidden()

@@ -139,6 +139,14 @@ internal enum L10n {
   internal static let validationError2 = L10n.tr("Localizable", "validation_error_2", fallback: "EV002")
   /// アイテム名を入力してください。
   internal static let validationError2Msg = L10n.tr("Localizable", "validation_error_2_msg", fallback: "アイテム名を入力してください。")
+  /// EV003
+  internal static let validationError3 = L10n.tr("Localizable", "validation_error_3", fallback: "EV003")
+  /// カテゴリ名を入力してください。
+  internal static let validationError3Msg = L10n.tr("Localizable", "validation_error_3_msg", fallback: "カテゴリ名を入力してください。")
+  /// EV004
+  internal static let validationError4 = L10n.tr("Localizable", "validation_error_4", fallback: "EV004")
+  /// 場所名を入力してください。
+  internal static let validationError4Msg = L10n.tr("Localizable", "validation_error_4_msg", fallback: "場所名を入力してください。")
   /// バリデーション Error
   internal static let validationErrorTitle = L10n.tr("Localizable", "validation_error_title", fallback: "バリデーション Error")
 }

@@ -15,6 +15,7 @@ final class SeriesEntryViewModel: ObservableObject {
     private let seriesRepository: SeriesRepositoryProtocol
     
     @Published var locationDic: [String: Location] = [:]
+    @Published var categoryDic: [String: Category] = [:]
     
     @Published var showEntrySuccessAlert: Bool = false
     @Published var showUpdateSuccessAlert: Bool = false
@@ -35,6 +36,10 @@ final class SeriesEntryViewModel: ObservableObject {
 // MARK: - Public Method
 extension SeriesEntryViewModel {
     
+    public func updateCategoryDic(categories: RealmSwift.List<Category>) {
+        categoryDic = Dictionary(uniqueKeysWithValues: categories.map { ($0.id.stringValue, $0) })
+    }
+    
     public func updateLocationDic(locations: RealmSwift.List<Location>) {
         locationDic = Dictionary(uniqueKeysWithValues: locations.map { ($0.id.stringValue, $0) })
     }
@@ -51,10 +56,13 @@ extension SeriesEntryViewModel {
         amount: Int,
         memo: String,
         locations: [Location],
+        categories: [Category],
         image: UIImage?
     ) {
-        let realmLocations = RealmSwift.List<Location>()
-        realmLocations.append(objectsIn: locations)
+        let realmLocations = locations.toRealmList()
+        
+        let realmCategories = categories.toRealmList()
+        
         if let id {
             // 画像が存在すれば保存してパスを渡す
             let path: String? = saveImageForLocal(id: id.stringValue, image: image)
@@ -65,6 +73,7 @@ extension SeriesEntryViewModel {
                 series.amount = amount
                 series.memo = memo
                 series.locations = realmLocations
+                series.categories = realmCategories
                 series.imagePath = path
                 series.createdAt = Date()
                 series.updatedAt = Date()
@@ -79,6 +88,7 @@ extension SeriesEntryViewModel {
             series.amount = amount
             series.memo = memo
             series.locations = realmLocations
+            series.categories = realmCategories
             series.imagePath = path
             series.createdAt = Date()
             series.updatedAt = Date()

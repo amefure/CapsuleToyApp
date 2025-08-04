@@ -9,9 +9,9 @@ import SwiftUI
 
 struct CategoryInputScreen: View {
 
-    @EnvironmentObject var viewModel: SeriesEntryViewModel
+    @StateObject private var viewModel = DIContainer.shared.resolve(CategoryInputViewModel.self)
     
-    @State private var category: Category = Category()
+    @Binding public var categoryDic: [String: Category]
     @State private var name: String = ""
     
     @Environment(\.dismiss) private var dismiss
@@ -26,6 +26,8 @@ struct CategoryInputScreen: View {
                     dismiss()
                 },
                 trailingAction: {
+                    guard let category = viewModel.createCategory(name: name) else { return }
+                    categoryDic.updateValue(category, forKey: category.id.stringValue)
                     dismiss()
                 }
             )
@@ -38,13 +40,11 @@ struct CategoryInputScreen: View {
             
             TextField("例：〇〇", text: $name)
                 .exInputBackView()
-            
            
             
 
             Spacer()
         }.onAppear {
-            category = Category()
         }.onDisappear {  }
         .navigationBarBackButtonHidden()
             .fontM()
@@ -59,5 +59,5 @@ struct CategoryInputScreen: View {
 }
 
 #Preview {
-    CategoryInputScreen()
+    CategoryInputScreen(categoryDic: Binding.constant([:]))
 }

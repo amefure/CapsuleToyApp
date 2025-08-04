@@ -12,6 +12,12 @@ enum ValidationError: AppError {
 
     /// EV002: アイテム名が未入力です
     case emptyItemName
+    
+    /// EV003: カテゴリ名が未入力です
+    case emptyCategoryName
+    
+    /// EV004: 場所名が未入力です
+    case emptyLocationName
 
 
     public var title: String { L10n.validationErrorTitle }
@@ -22,6 +28,10 @@ enum ValidationError: AppError {
             L10n.validationError1
         case .emptyItemName:
             L10n.validationError2
+        case .emptyCategoryName:
+            L10n.validationError3
+        case .emptyLocationName:
+            L10n.validationError4
         }
     }
 
@@ -31,6 +41,10 @@ enum ValidationError: AppError {
             L10n.validationError1Msg
         case .emptyItemName:
             L10n.validationError2Msg
+        case .emptyCategoryName:
+            L10n.validationError3Msg
+        case .emptyLocationName:
+            L10n.validationError4Msg
         }
     }
 }

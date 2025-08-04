@@ -41,6 +41,7 @@ struct SeriesEntryScreen: View {
                         amount: amount.toInt() ?? 0,
                         memo: memo,
                         locations: viewModel.locationDic.map { $0.value },
+                        categories: viewModel.categoryDic.map { $0.value },
                         image: image
                     )
                 }
