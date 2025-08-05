@@ -12,6 +12,7 @@ import MapKit
 struct SeriesDetailScreen: View {
     
     @StateObject private var viewModel = DIContainer.shared.resolve(SeriesDetailViewModel.self)
+    @EnvironmentObject private var rootEnvironment: RootEnvironment
     
     public var seriesId: ObjectId
     @State private var selectToy: CapsuleToy? = nil
@@ -259,6 +260,11 @@ struct SeriesDetailScreen: View {
                                 .fill(.exThema)
                         }.clipShape(RoundedRectangle(cornerRadius: 10))
                     
+                    if !rootEnvironment.removeAds {
+                        AdMobBannerView()
+                            .frame(height: 60)
+                            .padding(.vertical)
+                    }
                     
                 }.navigationDestination(isPresented: $presentEditView) {
                     SeriesEntryScreen(series: series)

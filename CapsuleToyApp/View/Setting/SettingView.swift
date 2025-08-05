@@ -16,8 +16,13 @@ struct SettingView: View {
     var body: some View {
         VStack {
             
-            Text("設定")
-                .fontM(bold: true)
+            HeaderView(
+                content: {
+                    Text("設定")
+                        .fontM(bold: true)
+                        .foregroundStyle(.exText)
+                }
+            )
             
             List {
                 // MARK: アプリ設定

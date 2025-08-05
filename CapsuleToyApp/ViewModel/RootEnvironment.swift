@@ -10,7 +10,7 @@ import Combine
 import RealmSwift
 
 /// アプリ内で共通で利用される状態や環境値を保持する
-class RootEnvironment: ObservableObject {
+final class RootEnvironment: ObservableObject {
     
     /// フッタータブ
     @Published var selectedTag: AppTab = .series
@@ -24,6 +24,9 @@ class RootEnvironment: ObservableObject {
     
     /// 位置情報許可否認状態アラート
     @Published var showLocationDeniedAlert: Bool = false
+    
+    /// 位置情報否認アラート表示フラグ(アプリ起動後一回しか表示させない)
+    private var isShowDeniedAlert: Bool = false
     
     private let userDefaultsRepository: UserDefaultsRepository
     private let locationRepository: LocationRepositoryProtocol
@@ -49,6 +52,10 @@ class RootEnvironment: ObservableObject {
     
     @MainActor
     public func onAppear() {
+        // 最初に初期化する
+        cancellables.forEach { $0.cancel() }
+        cancellables.removeAll()
+        
         // 位置情報取得許可申請
         locationRepository.requestWhenInUseAuthorization()
         
@@ -80,18 +87,23 @@ extension RootEnvironment {
             .sink { [weak self] status in
                 guard let self else { return }
                 guard let status else { return }
-                print("status", status.rawValue)
                 switch status {
                 case .notDetermined:
                     // 位置情報利用の許可がまだユーザーに求められていない状態
                     break
                 case .restricted:
+                    // すでに表示ずみなら表示しない
+                    guard !isShowDeniedAlert else { return }
                     // 位置情報利用が制限されている状態（ペアレンタルコントロール等による制限）
                     // ユーザー自身で許可できないので設定誘導や代替案を提示する場合がある
                     showLocationDeniedAlert = true
+                    isShowDeniedAlert = true
                 case .denied:
+                    // すでに表示ずみなら表示しない
+                    guard !isShowDeniedAlert else { return }
                     // ユーザーが明示的に位置情報の利用を拒否している状態
                     showLocationDeniedAlert = true
+                    isShowDeniedAlert = true
                 case .authorizedAlways:
                     // 位置情報の利用が常に許可されている状態（バックグラウンド含む）
                     break

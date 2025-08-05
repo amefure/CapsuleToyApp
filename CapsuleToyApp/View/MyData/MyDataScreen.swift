@@ -16,13 +16,17 @@ struct MyDataScreen: View {
     
     var body: some View {
         VStack {
-            Text("MyData")
-                .fontM(bold: true)
+            HeaderView(
+                content: {
+                    Text("MyData")
+                        .fontM(bold: true)
+                        .foregroundStyle(.exText)
+                }
+            )
+           
             
             if viewModel.allCount == 0 {
-                Spacer()
-                Text("データが存在しません。")
-                Spacer()
+                DataEmptyView()
             } else {
                 ScrollView {
                     

@@ -23,57 +23,62 @@ struct SeriesListScreen: View {
                 }
             )
             
-            List {
-                Section {
-                    ForEach(viewModel.seriesList) { series in
-                        ZStack {
-                            NavigationLink {
-                                SeriesDetailScreen(seriesId: series.id)
-                            } label: {
-                                // > アクセサリを非表示にするためZStack + opacity
-                            }.opacity(0)
-                                .frame(width: 0, height: 0)
-                            
-                            HStack {
+            if viewModel.seriesList.isEmpty {
+                DataEmptyView()
+            } else {
+                List {
+                    Section {
+                        ForEach(viewModel.seriesList) { series in
+                            ZStack {
+                                NavigationLink {
+                                    SeriesDetailScreen(seriesId: series.id)
+                                        .environmentObject(rootEnvironment)
+                                } label: {
+                                    // > アクセサリを非表示にするためZStack + opacity
+                                }.opacity(0)
+                                    .frame(width: 0, height: 0)
                                 
-                                ImagePreView(
-                                    photoPath: series.imagePath,
-                                    width: 60,
-                                    height: 60,
-                                    isNotView: false,
-                                    isEnablePopup: false
-                                )
-                                
-                                VStack(alignment: .leading, spacing: 5) {
-                                    Text(series.name)
-                                        .fontM(bold: true)
-                                        .lineLimit(1)
+                                HStack {
                                     
-                                    ScrollView(.horizontal) {
-                                        HStack(spacing: 10) {
-                                            ForEach(series.categories) { category in
-                                                Text(category.name)
-                                                    .exThemaLabelView(isSmall: true, backgroundColor: category.color)
+                                    ImagePreView(
+                                        photoPath: series.imagePath,
+                                        width: 60,
+                                        height: 60,
+                                        isNotView: false,
+                                        isEnablePopup: false
+                                    )
+                                    
+                                    VStack(alignment: .leading, spacing: 5) {
+                                        Text(series.name)
+                                            .fontM(bold: true)
+                                            .lineLimit(1)
+                                        
+                                        ScrollView(.horizontal) {
+                                            HStack(spacing: 10) {
+                                                ForEach(series.categories) { category in
+                                                    Text(category.name)
+                                                        .exThemaLabelView(isSmall: true, backgroundColor: category.color)
+                                                }
                                             }
                                         }
-                                    }.padding()
-                                    
-                                    ToysRatingListView(
-                                        isOwnedCount: series.isOwendToysCount,
-                                        maxCount: series.highCount,
-                                        isAnimation: false
-                                    )
+                                        
+                                        ToysRatingListView(
+                                            isOwnedCount: series.isOwendToysCount,
+                                            maxCount: series.highCount,
+                                            isAnimation: false
+                                        )
+                                    }
                                 }
                             }
                         }
                     }
-                }
-                
-                if !rootEnvironment.removeAds {
-                    Section {
-                        AdMobBannerView()
-                            .frame(height: 100)
-                            .listRowBackground(Color.clear)
+                    
+                    if !rootEnvironment.removeAds {
+                        Section {
+                            AdMobBannerView()
+                                .frame(height: 100)
+                                .listRowBackground(Color.clear)
+                        }
                     }
                 }
             }

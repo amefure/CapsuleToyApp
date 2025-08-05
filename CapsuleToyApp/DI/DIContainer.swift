@@ -12,7 +12,7 @@ final class DIContainer: @unchecked Sendable {
     static let shared = DIContainer()
     
     // FIXME: モック切り替えフラグ
-    static private let isTest: Bool = true
+    static private let isTest: Bool = false
 
     private let container = Container() { c in
         

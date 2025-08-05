@@ -18,6 +18,9 @@ enum ValidationError: AppError {
     
     /// EV004: 場所名が未入力です
     case emptyLocationName
+    
+    /// EV005: 種類数が未入力です
+    case emptySeriesCount
 
 
     public var title: String { L10n.validationErrorTitle }
@@ -32,6 +35,8 @@ enum ValidationError: AppError {
             L10n.validationError3
         case .emptyLocationName:
             L10n.validationError4
+        case .emptySeriesCount:
+            L10n.validationError5
         }
     }
 
@@ -45,6 +50,8 @@ enum ValidationError: AppError {
             L10n.validationError3Msg
         case .emptyLocationName:
             L10n.validationError4Msg
+        case .emptySeriesCount:
+            L10n.validationError5Msg
         }
     }
 }

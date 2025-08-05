@@ -133,20 +133,24 @@ internal enum L10n {
   internal static let update = L10n.tr("Localizable", "update", fallback: "更新")
   /// EV001
   internal static let validationError1 = L10n.tr("Localizable", "validation_error_1", fallback: "EV001")
-  /// シリーズ名を入力してください。
-  internal static let validationError1Msg = L10n.tr("Localizable", "validation_error_1_msg", fallback: "シリーズ名を入力してください。")
+  /// ・シリーズ名を入力してください。
+  internal static let validationError1Msg = L10n.tr("Localizable", "validation_error_1_msg", fallback: "・シリーズ名を入力してください。")
   /// EV002
   internal static let validationError2 = L10n.tr("Localizable", "validation_error_2", fallback: "EV002")
-  /// アイテム名を入力してください。
-  internal static let validationError2Msg = L10n.tr("Localizable", "validation_error_2_msg", fallback: "アイテム名を入力してください。")
+  /// ・アイテム名を入力してください。
+  internal static let validationError2Msg = L10n.tr("Localizable", "validation_error_2_msg", fallback: "・アイテム名を入力してください。")
   /// EV003
   internal static let validationError3 = L10n.tr("Localizable", "validation_error_3", fallback: "EV003")
-  /// カテゴリ名を入力してください。
-  internal static let validationError3Msg = L10n.tr("Localizable", "validation_error_3_msg", fallback: "カテゴリ名を入力してください。")
+  /// ・カテゴリ名を入力してください。
+  internal static let validationError3Msg = L10n.tr("Localizable", "validation_error_3_msg", fallback: "・カテゴリ名を入力してください。")
   /// EV004
   internal static let validationError4 = L10n.tr("Localizable", "validation_error_4", fallback: "EV004")
-  /// 場所名を入力してください。
-  internal static let validationError4Msg = L10n.tr("Localizable", "validation_error_4_msg", fallback: "場所名を入力してください。")
+  /// ・場所名を入力してください。
+  internal static let validationError4Msg = L10n.tr("Localizable", "validation_error_4_msg", fallback: "・場所名を入力してください。")
+  /// EV004
+  internal static let validationError5 = L10n.tr("Localizable", "validation_error_5", fallback: "EV004")
+  /// ・種類数を入力してください。
+  internal static let validationError5Msg = L10n.tr("Localizable", "validation_error_5_msg", fallback: "・種類数を入力してください。")
   /// バリデーション Error
   internal static let validationErrorTitle = L10n.tr("Localizable", "validation_error_title", fallback: "バリデーション Error")
 }

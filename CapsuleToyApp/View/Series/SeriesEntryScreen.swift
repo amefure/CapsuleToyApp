@@ -198,6 +198,7 @@ struct SeriesEntryScreen: View {
             positiveButtonTitle: L10n.ok,
             positiveAction: {
                 dismiss()
+                NotificationCenter.default.post(name: .refresh, object: nil)
             }
         ).alert(
             isPresented: $viewModel.showUpdateSuccessAlert,
@@ -206,6 +207,7 @@ struct SeriesEntryScreen: View {
             positiveButtonTitle: L10n.ok,
             positiveAction: {
                 dismiss()
+                NotificationCenter.default.post(name: .refresh, object: nil)
             }
         ).overlayErrorViewDialog(
             isPresented: $viewModel.showValidationErrorAlert,

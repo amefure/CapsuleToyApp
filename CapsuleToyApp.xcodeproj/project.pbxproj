@@ -38,7 +38,7 @@
 		122FFC302E1C120D00FA1A6C /* ExCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFC152E1C120D00FA1A6C /* ExCollection.swift */; };
 		122FFC312E1C120D00FA1A6C /* JsonConvertUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFC212E1C120D00FA1A6C /* JsonConvertUtility.swift */; };
 		122FFC322E1C120D00FA1A6C /* ExUIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFC172E1C120D00FA1A6C /* ExUIApplication.swift */; };
-		122FFC342E1C120D00FA1A6C /* ExModalBaclClear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFC102E1C120D00FA1A6C /* ExModalBaclClear.swift */; };
+		122FFC342E1C120D00FA1A6C /* ExModalBackClearSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFC102E1C120D00FA1A6C /* ExModalBackClearSheet.swift */; };
 		122FFC352E1C120D00FA1A6C /* ExAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFC122E1C120D00FA1A6C /* ExAlert.swift */; };
 		122FFC372E1C120D00FA1A6C /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFC1E2E1C120D00FA1A6C /* Logger.swift */; };
 		122FFC3A2E1C139300FA1A6C /* SeriesEntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122FFC392E1C138A00FA1A6C /* SeriesEntryViewModel.swift */; };
@@ -71,6 +71,8 @@
 		12B20FED2E3FA885003D60F5 /* CategoryInputScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B20FEC2E3FA87F003D60F5 /* CategoryInputScreen.swift */; };
 		12B20FEF2E3FA997003D60F5 /* LocationInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B20FEE2E3FA98F003D60F5 /* LocationInputViewModel.swift */; };
 		12B20FF12E40E6F4003D60F5 /* CategoryInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B20FF02E40E6F2003D60F5 /* CategoryInputViewModel.swift */; };
+		12B20FF32E40FEDC003D60F5 /* DataEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B20FF22E40FEDC003D60F5 /* DataEmptyView.swift */; };
+		12B20FF62E422DB6003D60F5 /* ExRefreshNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B20FF52E422DAB003D60F5 /* ExRefreshNotification.swift */; };
 		12B8CE9D2E195BBD00B61EED /* CapsuleToyAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B8CE9A2E195BBD00B61EED /* CapsuleToyAppApp.swift */; };
 		12B8CE9E2E195BBD00B61EED /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B8CE9B2E195BBD00B61EED /* RootView.swift */; };
 		12B8CE9F2E195BBD00B61EED /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12B8CE992E195BBD00B61EED /* Images.xcassets */; };
@@ -128,7 +130,7 @@
 		122FFC082E1C0E4300FA1A6C /* MockSeriesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSeriesRepository.swift; sourceTree = "<group>"; };
 		122FFC0A2E1C11DB00FA1A6C /* SeriesEntryScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesEntryScreen.swift; sourceTree = "<group>"; };
 		122FFC0F2E1C120D00FA1A6C /* ExModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExModifier.swift; sourceTree = "<group>"; };
-		122FFC102E1C120D00FA1A6C /* ExModalBaclClear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExModalBaclClear.swift; sourceTree = "<group>"; };
+		122FFC102E1C120D00FA1A6C /* ExModalBackClearSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExModalBackClearSheet.swift; sourceTree = "<group>"; };
 		122FFC112E1C120D00FA1A6C /* ExFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExFont.swift; sourceTree = "<group>"; };
 		122FFC122E1C120D00FA1A6C /* ExAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExAlert.swift; sourceTree = "<group>"; };
 		122FFC142E1C120D00FA1A6C /* ExString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExString.swift; sourceTree = "<group>"; };
@@ -171,6 +173,8 @@
 		12B20FEC2E3FA87F003D60F5 /* CategoryInputScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryInputScreen.swift; sourceTree = "<group>"; };
 		12B20FEE2E3FA98F003D60F5 /* LocationInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInputViewModel.swift; sourceTree = "<group>"; };
 		12B20FF02E40E6F2003D60F5 /* CategoryInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryInputViewModel.swift; sourceTree = "<group>"; };
+		12B20FF22E40FEDC003D60F5 /* DataEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataEmptyView.swift; sourceTree = "<group>"; };
+		12B20FF52E422DAB003D60F5 /* ExRefreshNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExRefreshNotification.swift; sourceTree = "<group>"; };
 		12B8CE8B2E195BAD00B61EED /* CapsuleToyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CapsuleToyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12B8CE992E195BBD00B61EED /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		12B8CE9A2E195BBD00B61EED /* CapsuleToyAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleToyAppApp.swift; sourceTree = "<group>"; };
@@ -231,6 +235,7 @@
 				12A6E0A12E2AEFDF00E72E20 /* AnimationCheckButton.swift */,
 				12DF0C552E1EB284008D1A57 /* ImagePreView.swift */,
 				122ECCCD2E1FFBE1000F757A /* ToysRatingListView.swift */,
+				12B20FF22E40FEDC003D60F5 /* DataEmptyView.swift */,
 			);
 			path = UIParts;
 			sourceTree = "<group>";
@@ -353,7 +358,7 @@
 			isa = PBXGroup;
 			children = (
 				122FFC0F2E1C120D00FA1A6C /* ExModifier.swift */,
-				122FFC102E1C120D00FA1A6C /* ExModalBaclClear.swift */,
+				122FFC102E1C120D00FA1A6C /* ExModalBackClearSheet.swift */,
 				122FFC112E1C120D00FA1A6C /* ExFont.swift */,
 				122FFC122E1C120D00FA1A6C /* ExAlert.swift */,
 			);
@@ -375,6 +380,7 @@
 			children = (
 				122FFC132E1C120D00FA1A6C /* Modifier */,
 				122FFC162E1C120D00FA1A6C /* Primitive */,
+				12B20FF42E422D9C003D60F5 /* Notification */,
 				122FFC172E1C120D00FA1A6C /* ExUIApplication.swift */,
 				122FFC182E1C120D00FA1A6C /* ExPublisher.swift */,
 				122FFC1A2E1C120D00FA1A6C /* ExBoingButton.swift */,
@@ -472,6 +478,14 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		12B20FF42E422D9C003D60F5 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				12B20FF52E422DAB003D60F5 /* ExRefreshNotification.swift */,
+			);
+			path = Notification;
 			sourceTree = "<group>";
 		};
 		12B8CE822E195BAD00B61EED = {
@@ -704,6 +718,8 @@
 				122FFC0B2E1C11DB00FA1A6C /* SeriesEntryScreen.swift in Sources */,
 				122FFC252E1C120D00FA1A6C /* DeviceSizeUtility.swift in Sources */,
 				12A6E0792E2A1D1000E72E20 /* SettingView.swift in Sources */,
+				12B20FF62E422DB6003D60F5 /* ExRefreshNotification.swift in Sources */,
+				12B20FF32E40FEDC003D60F5 /* DataEmptyView.swift in Sources */,
 				12DF0C542E1EB047008D1A57 /* AppError.swift in Sources */,
 				122FFC262E1C120D00FA1A6C /* ExFont.swift in Sources */,
 				122ECCC72E1FED41000F757A /* RootEnvironment.swift in Sources */,
@@ -732,7 +748,7 @@
 				12DF0C4F2E1EAFF9008D1A57 /* ImageFileManager.swift in Sources */,
 				122ECCD42E20FA4B000F757A /* LocationRepositoryProtocol.swift in Sources */,
 				122FFC322E1C120D00FA1A6C /* ExUIApplication.swift in Sources */,
-				122FFC342E1C120D00FA1A6C /* ExModalBaclClear.swift in Sources */,
+				122FFC342E1C120D00FA1A6C /* ExModalBackClearSheet.swift in Sources */,
 				12DF0C522E1EB033008D1A57 /* ImageError.swift in Sources */,
 				12A6E0A42E2DB58000E72E20 /* ValidationError.swift in Sources */,
 				12B20FF12E40E6F4003D60F5 /* CategoryInputViewModel.swift in Sources */,

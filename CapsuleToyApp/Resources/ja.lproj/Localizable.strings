@@ -59,11 +59,13 @@
 "validation_error_2" = "EV002";
 "validation_error_3" = "EV003";
 "validation_error_4" = "EV004";
+"validation_error_5" = "EV004";
 
-"validation_error_1_msg" = "シリーズ名を入力してください。";
-"validation_error_2_msg" = "アイテム名を入力してください。";
-"validation_error_3_msg" = "カテゴリ名を入力してください。";
-"validation_error_4_msg" = "場所名を入力してください。";
+"validation_error_1_msg" = "・シリーズ名を入力してください。";
+"validation_error_2_msg" = "・アイテム名を入力してください。";
+"validation_error_3_msg" = "・カテゴリ名を入力してください。";
+"validation_error_4_msg" = "・場所名を入力してください。";
+"validation_error_5_msg" = "・種類数を入力してください。";
 
 "mydata_sum_count" = "月別合計回数";
 "mydata_charts_x" = "年月";

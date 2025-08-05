@@ -67,6 +67,22 @@ extension SeriesEntryViewModel {
         categories: [Category],
         image: UIImage?
     ) {
+        
+        clearErrorMsg()
+        
+        if name.isEmpty {
+            errors.append(.emptySeriesName)
+        }
+        
+        if count <= 0 {
+            errors.append(.emptySeriesCount)
+        }
+        
+        guard errors.isEmpty else {
+            showValidationAlert()
+            return
+        }
+        
         let realmLocations = locations.toRealmList()
         
         let realmCategories = categories.toRealmList()
