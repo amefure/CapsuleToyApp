@@ -132,7 +132,7 @@ struct CapsuleToyDetailScreen: View {
                 positiveButtonRole: .destructive,
                 negativeButtonRole: .cancel,
                 positiveAction: {
-                    viewModel.deleteSeries()
+                    viewModel.deleteCapsuleToy(toy)
                 }
             ).alert(
                 isPresented: $viewModel.showSuccessDeleteAlert,

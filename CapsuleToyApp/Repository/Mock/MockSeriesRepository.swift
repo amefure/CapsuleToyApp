@@ -45,11 +45,6 @@ final class MockSeriesRepository: SeriesRepositoryProtocol, @unchecked Sendable 
         seriesList.removeAll { ids.contains($0.id) }
     }
 
-    /// 登録されているすべてのシリーズを削除する
-    public func deleteAllSeries() {
-        seriesList.removeAll()
-    }
-
     /// 指定されたシリーズにカプセルトイを追加する
     public func addCapsuleToy(seriesId id: ObjectId, toy: CapsuleToy) {
         guard let index = seriesList.firstIndex(where: { $0.id == id }) else { return }
@@ -59,32 +54,25 @@ final class MockSeriesRepository: SeriesRepositoryProtocol, @unchecked Sendable 
     
     /// 指定されたIDのカプセルトイを更新する
     public func updateCapsuleToy(
-        id: ObjectId,
+        toyId: ObjectId,
         updateBlock: (CapsuleToy) -> Void
     ) {
         guard let series = seriesList.first(where: {
-            $0.capsuleToys.contains(where: { $0.id == id })
+            $0.capsuleToys.contains(where: { $0.id == toyId })
         }) else { return }
 
-        guard let toyIndex = series.capsuleToys.firstIndex(where: { $0.id == id }) else { return }
+        guard let toyIndex = series.capsuleToys.firstIndex(where: { $0.id == toyId }) else { return }
 
         updateBlock(series.capsuleToys[toyIndex])
         series.updatedAt = Date()
     }
+    
+    public func deleteCapsuleToy(_ toy: CapsuleToy) {
+        guard let series = seriesList.first(where: {
+            $0.capsuleToys.contains(where: { $0.id == toy.id })
+        }) else { return }
 
-
-    /// 指定されたシリーズから特定のカプセルトイを削除する
-    public func removeCapsuleToy(seriesId id: ObjectId, toyId: ObjectId) {
-        guard let index = seriesList.firstIndex(where: { $0.id == id }) else { return }
-        let capsuleToys = seriesList[index].capsuleToys
-        guard let toyIndex = capsuleToys.firstIndex(where: { $0.id == toyId }) else { return }
-        seriesList[index].capsuleToys.remove(at: toyIndex)
-        seriesList[index].updatedAt = Date()
-    }
-
-    /// 指定されたシリーズからすべてのカプセルトイを削除する
-    public func removeAllCapsuleToys(seriesId id: ObjectId) {
-        guard let index = seriesList.firstIndex(where: { $0.id == id }) else { return }
-        seriesList[index].capsuleToys.removeAll()
+        guard let toyIndex = series.capsuleToys.firstIndex(where: { $0.id == toy.id }) else { return }
+        series.capsuleToys.remove(at: toyIndex)
     }
 }

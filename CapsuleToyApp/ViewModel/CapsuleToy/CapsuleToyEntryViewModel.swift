@@ -58,7 +58,7 @@ final class CapsuleToyEntryViewModel: ObservableObject {
         if let toyId {
             // 画像が存在すれば保存してパスを渡す
             let path: String? = saveImageForLocal(id: toyId.stringValue, image: image)
-            seriesRepository.updateCapsuleToy(id: toyId) { toy in
+            seriesRepository.updateCapsuleToy(toyId: toyId) { toy in
                 toy.name = name
                 toy.isOwned = isOwned
                 toy.isSecret = isSecret

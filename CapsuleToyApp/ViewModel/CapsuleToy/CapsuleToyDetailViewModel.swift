@@ -40,19 +40,15 @@ final class CapsuleToyDetailViewModel: ObservableObject {
     }
     
     /// 削除処理
-    public func deleteSeries() {
-        guard let series else {
+    public func deleteCapsuleToy(_ toy: CapsuleToy) {
+        guard series != nil else {
             showFaieldDeleteAlert = true
             return
         }
         let imageFileManager = ImageFileManager()
-        series.capsuleToys.forEach { toy in
-            // 登録してあるコレクションの画像を明示的に削除する
-            try? imageFileManager.deleteImage(name: toy.id.stringValue)
-        }
-        // 登録してあるシリーズの画像を明示的に削除する
-        try? imageFileManager.deleteImage(name: series.id.stringValue)
-        seriesRepository.deleteSeries([series])
+        // 登録してあるコレクションの画像を明示的に削除する
+        try? imageFileManager.deleteImage(name: toy.id.stringValue)
+        seriesRepository.deleteCapsuleToy(toy)
         showSuccessDeleteAlert = true
     }
 }

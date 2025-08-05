@@ -152,7 +152,7 @@ struct SeriesDetailScreen: View {
                         }.frame(height: 250)
                         // モックの場合のみ必要かも(新規追加後に再描画されないため)
                         // これがあると再描画されるせいで地図タップで日本全体表示スケールになってしまう
-                            .id(UUID())
+                           // .id(UUID())
                     case .list:
                         if series.locations.isEmpty {
                             Text("登録されている場所情報がありません。")
@@ -241,7 +241,7 @@ struct SeriesDetailScreen: View {
                                     .shadow(color: .black.opacity(0.2), radius: 5, x: 3, y: 3)
                             }
                         }
-                    }.id(UUID()) // モックの場合のみ必要かも(新規追加後に再描画されないため)
+                    }//.id(UUID()) // モックの場合のみ必要かも(新規追加後に再描画されないため)
                     
                     Spacer()
                         .frame(height: 40)

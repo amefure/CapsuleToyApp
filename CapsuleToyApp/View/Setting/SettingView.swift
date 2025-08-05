@@ -30,26 +30,26 @@ struct SettingView: View {
                     header: Text(L10n.settingSectionApp)
                 ) {
                     
-                    HStack {
-                        Image(systemName: "questionmark.app")
-                            .settingIcon()
-                        
-                        Toggle(isOn: $rootEnvironment.isDarkMode) {
-                            Text(L10n.settingSectionAppMode)
-                        }.tint(.exThema)
-                    }.listRowHeight()
+//                    HStack {
+//                        Image(systemName: "questionmark.app")
+//                            .settingIcon()
+//                        
+//                        Toggle(isOn: $rootEnvironment.isDarkMode) {
+//                            Text(L10n.settingSectionAppMode)
+//                        }.tint(.exThema)
+//                    }.listRowHeight()
                     
-                    // よくある質問
-                    NavigationLink {
-                        //FaqListView()
-                          //  .environmentObject(rootEnvironment)
-                    } label: {
-                        HStack {
-                            Image(systemName: "questionmark.app")
-                                .settingIcon()
-                            Text(L10n.settingSectionAppFaq)
-                        }
-                    }.listRowHeight()
+//                    // よくある質問
+//                    NavigationLink {
+//                        //FaqListView()
+//                          //  .environmentObject(rootEnvironment)
+//                    } label: {
+//                        HStack {
+//                            Image(systemName: "questionmark.app")
+//                                .settingIcon()
+//                            Text(L10n.settingSectionAppFaq)
+//                        }
+//                    }.listRowHeight()
                     
                     // アプリ内課金
                     NavigationLink {
