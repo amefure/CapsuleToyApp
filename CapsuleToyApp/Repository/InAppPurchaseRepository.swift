@@ -60,7 +60,7 @@ actor InAppPurchaseRepository {
     @MainActor
     private let _purchaseError = PassthroughSubject<Bool, Never>()
 
-    ///
+    /// アップデートリスナータスク
     private var updateListenerTask: Task<Void, Error>?
 
     public func startListen() {

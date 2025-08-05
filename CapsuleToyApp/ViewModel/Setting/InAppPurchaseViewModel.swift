@@ -18,6 +18,8 @@ final class InAppPurchaseViewModel: ObservableObject {
     @Published private(set) var isPurchasingId: String = ""
     /// 課金アイテム
     @Published private(set) var products: [Product] = []
+    /// 課金アイテム(キャッシュ用)
+    private var poolProducts: [Product] = []
 
     private var cancellables: Set<AnyCancellable> = []
     
@@ -45,7 +47,9 @@ final class InAppPurchaseViewModel: ObservableObject {
         // 課金アイテム取得
         inAppPurchaseRepository.products.sink { [weak self] products in
             guard let self else { return }
-            self.products = products
+            // 即座にViewに反映せずに一旦キャッシュする
+            // 購入済み課金アイテムを取得してから更新する(購入済み判定が動作しないため)
+            self.poolProducts = products
         }.store(in: &cancellables)
 
         // 購入済み課金アイテム観測
@@ -59,6 +63,8 @@ final class InAppPurchaseViewModel: ObservableObject {
                 // ローカルフラグを更新(購入済み or 未購入)
                 userDefaultsRepository.setPurchasedRemoveAds(removeAds)
                 userDefaultsRepository.setPurchasedUnlockFeature(unlockFeature)
+                // 購入済みアイテムを取得してからViewを更新する
+                self.products = self.poolProducts
             }.store(in: &cancellables)
 
         // 購入中
