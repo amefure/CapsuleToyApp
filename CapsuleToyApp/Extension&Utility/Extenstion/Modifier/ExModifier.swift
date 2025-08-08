@@ -7,6 +7,21 @@
 
 import SwiftUI
 
+struct ThemaButtonView: ViewModifier {
+    public let width: CGFloat
+    public let foregroundColor: Color
+    public let backgroundColor: Color
+    
+    func body(content: Content) -> some View {
+        content
+            .foregroundStyle(foregroundColor)
+            .frame(width: width, height: 50)
+            .background(backgroundColor)
+            .clipShape(RoundedRectangle(cornerRadius: 8))
+            .shadow(color: .gray, radius: 3, x: 4, y: 4)
+    }
+}
+
 struct InputBackView: ViewModifier {
     public var width: CGFloat = DeviceSizeUtility.deviceWidth - 30
     func body(content: Content) -> some View {
@@ -79,6 +94,21 @@ struct LabelView: ViewModifier {
 }
 
 extension View {
+    
+    /// テーマボタン
+    func exThemaButtonView(
+        width: CGFloat = DeviceSizeUtility.deviceWidth - 60,
+        foregroundColor: Color = .white,
+        backgroundColor: Color = .exThema,
+    ) -> some View {
+        modifier(
+            ThemaButtonView(
+                width: width,
+                foregroundColor: foregroundColor,
+                backgroundColor: backgroundColor
+            )
+        )
+    }
     
     /// Input要素上に配置するラベル
     func exInputLabelView(

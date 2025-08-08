@@ -15,105 +15,259 @@ struct MyDataScreen: View {
     private let df = DateFormatUtility(dateFormat: "M月")
     
     var body: some View {
-        VStack {
-            HeaderView(
-                content: {
-                    Text("MyData")
-                        .fontM(bold: true)
-                        .foregroundStyle(.exText)
-                }
-            )
-           
+        ZStack {
+            if !rootEnvironment.unlockFeature {
+                overLockView()
+                    .zIndex(1)
+            }
             
-            if viewModel.allCount == 0 {
-                DataEmptyView()
-            } else {
-                ScrollView {
-                    
-                    Text("直近6ヶ月の月別購入数")
-                        .exInputLabelView()
-                    
-                    if let dic = viewModel.dayCapsuleToyDictionary() {
-                        Chart {
-                            ForEach(dic.keys.sorted(by: { $0 < $1 }), id: \.self) { date in
-                                
-                                BarMark(
-                                    x: .value(L10n.mydataChartsX, df.getString(date: date)),
-                                    y: .value(L10n.mydataChartsY, dic[date]?.count ?? 0)
-                                ).foregroundStyle(.exThema)
-                                    .annotation {
-                                        Text("\(dic[date]?.count ?? 0)")
-                                            .fontSS(bold: true)
-                                            .foregroundStyle(.exText)
-                                    }
-                            }
-                        }.frame(width: DeviceSizeUtility.deviceWidth - 60 , height: 110)
-                            .exInputBackView()
-                    } else {
-                        Text(L10n.mydataNoData)
-                            .fontS(bold: true)
-                            .foregroundStyle(.exGold)
-                            .exInputBackView()
+            VStack {
+                HeaderView(
+                    content: {
+                        Text("MyData")
+                            .fontM(bold: true)
+                            .foregroundStyle(.exText)
                     }
-                    
-                    HStack {
-                        
-                        VStack {
-                            Text("累計購入金額")
-                                .exInputLabelView(width: DeviceSizeUtility.deviceWidth / 2 - 20)
-                            
-                            HStack(alignment: .firstTextBaseline, spacing: 3) {
-                                
-                                Text("\(viewModel.sumAmount)")
-                                    .fontL(bold: true)
-                                    .foregroundStyle(.exThema)
-                                Text("円")
-            
-                                   
-                            }.fontS()
-                                .exInputBackView(width: DeviceSizeUtility.deviceWidth / 2 - 20)
-                        }
-                       
-                        VStack {
-                            Text("累計獲得種類数")
-                                .exInputLabelView(width: DeviceSizeUtility.deviceWidth / 2 - 20)
-                            
-                            HStack(alignment: .firstTextBaseline, spacing: 3) {
-                                
-                                Text("\(viewModel.sumGetCount)")
-                                    .fontL(bold: true)
-                                    .foregroundStyle(.exThema)
-                                Text("種")
-                                
-                                
-                            }.fontS()
-                                .exInputBackView(width: DeviceSizeUtility.deviceWidth / 2 - 20)
-                        }
-                    }
-                    
-                    Text("コンプリート率")
-                        .exInputLabelView()
-                    
-                    ParametersView(now: viewModel.completePercent)
-                        .exInputBackView()
-                    
-                    Text("シークレットゲット率")
-                        .exInputLabelView()
-                    
-                    ParametersView(now: viewModel.getSecretPercent)
-                        .exInputBackView()
-                    
-                    if !rootEnvironment.removeAds {
-                        AdMobBannerView()
-                            .frame(height: 100)
-                            .padding(.top, 30)
-                    }
-
+                )
+                
+                if viewModel.allCount == 0 {
+                    DataEmptyView()
+                } else {
+                    scrollMyDataView()
                 }
             }
         }.onAppear { viewModel.onAppear() }
-        
     }
+}
+
+extension MyDataScreen {
+    
+    private func lockDotLineView() -> some View {
+        HStack {
+           
+            DotLineView()
+            
+            Spacer()
+            
+            Image(systemName: "lock.fill")
+                .foregroundStyle(.exGold)
+                .fontL(bold: true)
+            
+            Spacer()
+            
+            DotLineView()
+                .rotationEffect(Angle(degrees: 180))
+        }.frame(height: 50)
+    }
+    
+    
+    private func overLockView() -> some View {
+        // 機能解放
+        VStack {
+            
+            lockDotLineView()
+                .rotationEffect(Angle(degrees: 20))
+            
+            Spacer()
+            
+            lockDotLineView()
+                .rotationEffect(Angle(degrees: -15))
+            
+            Spacer()
+            
+            ZStack {
+                lockDotLineView()
+                    .rotationEffect(Angle(degrees: 30))
+                
+                lockDotLineView()
+                    .rotationEffect(Angle(degrees: -30))
+                
+                VStack {
+                    
+                    Spacer()
+                    
+                    Text("MyData機能はロックされています")
+                        .fontM(bold: true)
+                    
+                    Spacer()
+                    
+                    Text("お試し無料閲覧回数")
+                        .fontM()
+                        .foregroundStyle(.exText.opacity(0.8))
+                        .padding(.bottom)
+                    HStack(alignment: .lastTextBaseline) {
+                        Text("あと")
+                        Text("\(viewModel.limitCount)")
+                            .foregroundStyle(.exThema)
+                            .fontLL(bold: true)
+                        Text("回")
+                    }.fontM(bold: true)
+                    
+                    Spacer()
+                    
+                    Button {
+                        
+                    } label: {
+                        Text("見てみる")
+                            .exThemaButtonView(width: 300 - 30)
+                    }
+                    
+                }.padding()
+                    .frame(width: 300, height: 300)
+                    .background(.white)
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                    .shadow(color: .black.opacity(0.2), radius: 3, x: 3, y: 3)
+                
+            }
+            
+            Spacer()
+            
+            lockDotLineView()
+                .rotationEffect(Angle(degrees: 20))
+                
+            Spacer()
+            
+            lockDotLineView()
+                .rotationEffect(Angle(degrees: -15))
+            
+            Spacer()
+            
+        }.frame(width: DeviceSizeUtility.deviceWidth)
+            .foregroundStyle(.exText)
+            .background(.ultraThinMaterial)
+    }
+    
+    
+    private func scrollMyDataView() -> some View {
+        ScrollView {
+            
+            Text("直近6ヶ月の月別購入数")
+                .exInputLabelView()
+            
+            if let dic = viewModel.dayCapsuleToyDictionary() {
+                charts(dic: dic)
+            } else {
+                Text(L10n.mydataNoData)
+                    .fontS(bold: true)
+                    .foregroundStyle(.exGold)
+                    .exInputBackView()
+            }
+            
+            HStack {
+                
+                sumAmountView()
+               
+                sumGetCountView()
+            }
+            
+            parametersView(title: "シークレットゲット率", now: viewModel.getSecretPercent)
+            
+            parametersView(title: "コンプリート率", now: viewModel.completePercent)
+            
+            
+            if !rootEnvironment.removeAds {
+                AdMobBannerView()
+                    .frame(height: 100)
+                    .padding(.top, 30)
+            }
+
+        }
+    }
+    
+    private func charts(dic: [Date: [CapsuleToy]]) -> some View {
+        Chart {
+            ForEach(dic.keys.sorted(by: { $0 < $1 }), id: \.self) { date in
+                
+                BarMark(
+                    x: .value(L10n.mydataChartsX, df.getString(date: date)),
+                    y: .value(L10n.mydataChartsY, dic[date]?.count ?? 0)
+                ).foregroundStyle(.exThema)
+                    .annotation {
+                        Text("\(dic[date]?.count ?? 0)")
+                            .fontSS(bold: true)
+                            .foregroundStyle(.exText)
+                    }
+            }
+        }.frame(width: DeviceSizeUtility.deviceWidth - 60 , height: 110)
+            .exInputBackView()
+    }
+    
+    private func sumAmountView() -> some View {
+        VStack {
+            Text("累計購入金額")
+                .exInputLabelView(width: DeviceSizeUtility.deviceWidth / 2 - 20)
+            
+            HStack(alignment: .firstTextBaseline, spacing: 3) {
+                
+                Text("\(viewModel.sumAmount)")
+                    .fontL(bold: true)
+                    .foregroundStyle(.exThema)
+                Text("円")
+
+                   
+            }.fontS()
+                .exInputBackView(width: DeviceSizeUtility.deviceWidth / 2 - 20)
+        }
+    }
+    
+    private func sumGetCountView() -> some View {
+        VStack {
+            Text("累計獲得種類数")
+                .exInputLabelView(width: DeviceSizeUtility.deviceWidth / 2 - 20)
+            
+            HStack(alignment: .firstTextBaseline, spacing: 3) {
+                
+                Text("\(viewModel.sumGetCount)")
+                    .fontL(bold: true)
+                    .foregroundStyle(.exThema)
+                Text("種")
+                
+                
+            }.fontS()
+                .exInputBackView(width: DeviceSizeUtility.deviceWidth / 2 - 20)
+        }
+    }
+    
+    private func parametersView(
+        title: String,
+        now: Double
+    ) -> some View {
+        VStack {
+            Text(title)
+                .exInputLabelView()
+            
+            ParametersView(now: now)
+                .exInputBackView()
+        }
+    }
+}
+
+
+
+private struct DotLineView: View {
+    
+    private struct StrokeLine: Shape {
+        func path(in rect: CGRect) -> Path {
+            var path = Path()
+            path.move(to: CGPoint(x: 0, y: rect.midY))
+            path.addLine(to: CGPoint(x: rect.width, y: rect.midY))
+            return path
+        }
+    }
+    
+    var body: some View {
+        StrokeLine()
+            .stroke(
+                style: StrokeStyle(
+                    lineWidth: 7,       // ドットの太さ
+                    lineCap: .round,    // ドットを丸くする
+                    dash: [0, 15]       // 0=点の長さ、12=間隔
+                )
+            )
+            .frame(width: DeviceSizeUtility.deviceWidth / 2)
+            .foregroundStyle(.exGold)
+    }
+    
 }
 
 

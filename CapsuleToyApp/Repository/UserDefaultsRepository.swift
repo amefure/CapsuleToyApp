@@ -14,6 +14,8 @@ class UserDefaultsKey {
     static let PURCHASED_UNLOCK_FEATURE = "PURCHASED_UNLOCK_FEATURE"
     /// アクティブにしているタブ
     static let ACTIVE_TAB = "ACTIVE_TAB"
+    /// 機能解放ロックリミット
+    static let SHOW_LOCK_LIMIT = "SHOW_LOCK_LIMIT"
 }
 
 /// `UserDefaults`の基底クラス
@@ -87,5 +89,18 @@ extension UserDefaultsRepository {
     /// 登録：アプリ内課金 / 容量解放
     public func setPurchasedUnlockFeature(_ flag: Bool) {
         setBoolData(key: UserDefaultsKey.PURCHASED_UNLOCK_FEATURE, isOn: flag)
+    }
+    
+    /// `SHOW_LOCK_LIMIT`
+    /// 取得：機能解放ロックリミット
+    public func getShowLockLimit() -> Int {
+        getIntData(key: UserDefaultsKey.SHOW_LOCK_LIMIT)
+    }
+
+    /// 登録：機能解放ロックリミット
+    public func incrementShowLockLimit() {
+        var current = getShowLockLimit()
+        current += 1
+        setIntData(key: UserDefaultsKey.SHOW_LOCK_LIMIT, value: current)
     }
 }

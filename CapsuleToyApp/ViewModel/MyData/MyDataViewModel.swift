@@ -12,15 +12,26 @@ final class MyDataViewModel: ObservableObject {
     
     @Published private(set) var seriesList: [Series] = []
     
+    @Published private(set) var limitCount: Int = 5
+    
     private let dateFormatUtility = DateFormatUtility()
+    private let userDefaultsRepository: UserDefaultsRepository
     private let seriesRepository: SeriesRepositoryProtocol
     
-    init(seriesRepository: SeriesRepositoryProtocol) {
+    private let LOCK_LIMIT: Int = 5
+    
+    init(
+        userDefaultsRepository: UserDefaultsRepository,
+        seriesRepository: SeriesRepositoryProtocol
+    ) {
+        self.userDefaultsRepository = userDefaultsRepository
         self.seriesRepository = seriesRepository
     }
     
     public func onAppear() {
         seriesList = seriesRepository.fetchAllSeries()
+        userDefaultsRepository.getShowLockLimit()
+        userDefaultsRepository.incrementShowLockLimit()
     }
     
     public func onDisappear() {

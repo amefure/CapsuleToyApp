@@ -60,7 +60,10 @@ final class DIContainer: @unchecked Sendable {
         }
         
         c.register(MyDataViewModel.self) { r in
-            MyDataViewModel(seriesRepository: r.resolve(SeriesRepositoryProtocol.self)!)
+            MyDataViewModel(
+                userDefaultsRepository: r.resolve(UserDefaultsRepository.self)!,
+                seriesRepository: r.resolve(SeriesRepositoryProtocol.self)!
+            )
         }
         
         c.register(InAppPurchaseViewModel.self) { r in
