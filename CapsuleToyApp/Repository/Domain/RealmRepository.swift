@@ -59,6 +59,16 @@ class RealmRepository: RealmRepositoryProtocol {
         }
     }
     
+    /// Remove・削除対象指定
+    /// 既にWriteトランザクションの中で削除処理を呼び出したい場合
+    public func removeObjsInWrite<T: Object & Identifiable>(list: [T]) {
+        let ids = list.map(\.id)
+        let predicate = NSPredicate(format: "id IN %@", ids)
+        let objectsToDelete = realm.objects(T.self).filter(predicate)
+
+        realm.delete(objectsToDelete)
+    }
+    
     /// Remove：All削除
     public func removeAllObjs<T: Object & Identifiable>(_ objectType: T.Type) {
         let allObjs = realm.objects(T.self)

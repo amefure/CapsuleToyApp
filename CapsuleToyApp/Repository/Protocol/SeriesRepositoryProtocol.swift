@@ -19,5 +19,12 @@ protocol SeriesRepositoryProtocol {
     func addCapsuleToy(seriesId id: ObjectId, toy: CapsuleToy)
     func updateCapsuleToy(toyId: ObjectId, updateBlock: @escaping (CapsuleToy) -> Void)
     func deleteCapsuleToy(_ toy: CapsuleToy)
+    
+    /// `CRUD Category`
+    func fetchAllCategory() -> [Category]
+    func deleteCategories(_ list: [Category])
+    
+    /// `CRUD Location`
+    func deleteLocations(_ list: [Location])
 }
 

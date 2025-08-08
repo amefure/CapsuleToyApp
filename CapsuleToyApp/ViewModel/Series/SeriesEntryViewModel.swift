@@ -14,7 +14,12 @@ final class SeriesEntryViewModel: ObservableObject {
     
     private let seriesRepository: SeriesRepositoryProtocol
     
+    /// 登録ずみのカテゴリリスト
+    private var allCategories: [Category] = []
+    
+    /// 位置情報登録用辞書
     @Published var locationDic: [String: Location] = [:]
+    /// カテゴリ登録用辞書
     @Published var categoryDic: [String: Category] = [:]
     
     @Published var showEntrySuccessAlert: Bool = false
@@ -31,13 +36,32 @@ final class SeriesEntryViewModel: ObservableObject {
         self.seriesRepository = seriesRepository
     }
     
-    public func onAppear() { }
+    public func onAppear() {
+        allCategories = seriesRepository.fetchAllCategory()
+    }
     
     public func onDisappear() { }
 }
 
 // MARK: - Public Method
 extension SeriesEntryViewModel {
+    
+    public var filteredCategories: [Category] {
+        return allCategories.filter { category in
+            guard !categoryDic.isEmpty else { return true }
+            return categoryDic.values.map({ $0.name }).contains(category.name) == false
+        }.sorted(by: { $0.name < $1.name })
+    }
+    
+    public func addCategoryDic(_ category: Category) {
+        // 同じものをコピーする形で追加する
+        let new = Category()
+        new.name = category.name
+        new.colorHex = category.colorHex
+        // 既に同一名のカテゴリが付与済みなら追加しない
+        guard categoryDic.values.map({ $0.name }).contains(new.name) == false else { return }
+        categoryDic.updateValue(new, forKey: new.id.stringValue)
+    }
     
     public func updateCategoryDic(categories: RealmSwift.List<Category>) {
         categoryDic = Dictionary(uniqueKeysWithValues: categories.map { ($0.id.stringValue, $0) })
@@ -109,12 +133,16 @@ extension SeriesEntryViewModel {
                     let toRemove = series.locations.filter { location in
                         // Realmの比較は参照比較なので同じRelamインスタンスに属した同じものでないと一致しない
                         // そのためidなどで明示的に比較する必要がある
-                        !categories.contains(where: { $0.id == location.id })
+                        !locations.contains(where: { $0.id == location.id })
                     }
                     toRemove.forEach { location in
                         guard let index = series.locations.firstIndex(where: { $0.id == location.id }) else { return }
+                        // 辞書から削除
                         series.locations.remove(at: index)
                     }
+                    
+                    // ローカルからも削除する
+                    seriesRepository.deleteLocations(Array(toRemove))
                     
                     
                     locations.forEach { newLocation in
@@ -147,8 +175,12 @@ extension SeriesEntryViewModel {
                     }
                     toRemove.forEach { category in
                         guard let index = series.categories.firstIndex(where: { $0.id == category.id }) else { return }
+                        // 辞書から削除
                         series.categories.remove(at: index)
                     }
+                    
+                    // ローカルからも削除する
+                    seriesRepository.deleteCategories(Array(toRemove))
 
                     
                     categories.forEach { newCategory in

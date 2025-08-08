@@ -87,8 +87,27 @@ struct SeriesEntryScreen: View {
                 TextField("例：△△シリーズ", text: $name)
                     .exInputBackView()
                 
-                Text("カテゴリラベル")
-                    .exInputLabelView()
+                HStack {
+                    Text("カテゴリラベル")
+                    
+                    Spacer()
+                    
+                    if !viewModel.filteredCategories.isEmpty {
+                        Menu {
+                            ForEach(viewModel.filteredCategories) { category in
+                                Button {
+                                    viewModel.addCategoryDic(category)
+                                } label: {
+                                    Text(category.name)
+                                }
+                            }
+                        } label: {
+                            Image(systemName: "list.bullet")
+                                .exCircleButtonView()
+                        }
+                    }
+            
+                }.exInputLabelView()
                 
                 let categoryDic = viewModel.categoryDic.sorted(by: { $0.key < $1.key }).map { $0.value }
                 ScrollView(.horizontal) {

@@ -67,6 +67,7 @@ final class MockSeriesRepository: SeriesRepositoryProtocol, @unchecked Sendable 
         series.updatedAt = Date()
     }
     
+    /// カプセルトイ単体削除
     public func deleteCapsuleToy(_ toy: CapsuleToy) {
         guard let series = seriesList.first(where: {
             $0.capsuleToys.contains(where: { $0.id == toy.id })
@@ -74,5 +75,24 @@ final class MockSeriesRepository: SeriesRepositoryProtocol, @unchecked Sendable 
 
         guard let toyIndex = series.capsuleToys.firstIndex(where: { $0.id == toy.id }) else { return }
         series.capsuleToys.remove(at: toyIndex)
+    }
+    
+    /// カテゴリ全取得
+    public func fetchAllCategory() -> [Category] {
+        // カテゴリ名が重複していないものを全て取得する
+        Dictionary(
+            grouping: seriesList.flatMap { $0.categories },
+            by: { $0.name }
+        ).compactMap { $0.value.first }
+    }
+    
+    /// カテゴリ物理削除
+    public func deleteCategories(_ list: [Category]) {
+        // モックでは不要
+    }
+    
+    /// ロケーション物理削除
+    public func deleteLocations(_ list: [Location]) {
+        // モックでは不要
     }
 }

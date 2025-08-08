@@ -31,14 +31,13 @@ final class SeriesRepository: SeriesRepositoryProtocol {
 
     /// シリーズ削除
     public func deleteSeries(_ list: [Series]) {
+        realmRepo.removeObjs(list: list)
         // RealmではSeries(親)を削除しても子は削除されないので明示的に削除する
         list.forEach { series in
             realmRepo.removeObjs(list: Array(series.capsuleToys))
             realmRepo.removeObjs(list: Array(series.locations))
             realmRepo.removeObjs(list: Array(series.categories))
         }
-        
-        realmRepo.removeObjs(list: list)
     }
     
     /// カプセルトイをシリーズに追加
@@ -57,7 +56,28 @@ final class SeriesRepository: SeriesRepositoryProtocol {
         realmRepo.updateObject(CapsuleToy.self, id: toyId, updateBlock: updateBlock)
     }
     
+    /// カプセルトイ単体削除
     public func deleteCapsuleToy(_ toy: CapsuleToy) {
         realmRepo.removeObjs(list: [toy])
+    }
+    
+    /// カテゴリ全取得
+    public func fetchAllCategory() -> [Category] {
+        let list: [Category] = realmRepo.readAllObjs()
+        // カテゴリ名が重複していないものを全て取得する
+        return Dictionary(
+            grouping: list,
+            by: { $0.name }
+        ).compactMap { $0.value.first }
+    }
+    
+    /// カテゴリ物理削除
+    public func deleteCategories(_ list: [Category]) {
+        realmRepo.removeObjsInWrite(list: list)
+    }
+    
+    /// ロケーション物理削除
+    public func deleteLocations(_ list: [Location]) {
+        realmRepo.removeObjsInWrite(list: list)
     }
 }
