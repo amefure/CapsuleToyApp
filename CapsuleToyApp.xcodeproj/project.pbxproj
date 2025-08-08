@@ -59,6 +59,7 @@
 		12A6E0C42E34BB7900E72E20 /* CapsuleToyDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A6E0C32E34BB7400E72E20 /* CapsuleToyDetailViewModel.swift */; };
 		12A6E0C72E35040E00E72E20 /* MyDataScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A6E0C62E35040E00E72E20 /* MyDataScreen.swift */; };
 		12A6E0CA2E35042900E72E20 /* MyDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A6E0C92E35042400E72E20 /* MyDataViewModel.swift */; };
+		12A8CE642E4632D20068CCBF /* UnlockFeatureConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A8CE632E4632C70068CCBF /* UnlockFeatureConfig.swift */; };
 		12B20FD72E3D86FB003D60F5 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 12B20FD62E3D86FB003D60F5 /* GoogleMobileAds */; };
 		12B20FD92E3E3408003D60F5 /* InAppPurchaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B20FD82E3E3407003D60F5 /* InAppPurchaseRepository.swift */; };
 		12B20FDD2E3E3427003D60F5 /* ProductItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B20FDA2E3E3427003D60F5 /* ProductItem.swift */; };
@@ -160,6 +161,7 @@
 		12A6E0C32E34BB7400E72E20 /* CapsuleToyDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleToyDetailViewModel.swift; sourceTree = "<group>"; };
 		12A6E0C62E35040E00E72E20 /* MyDataScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDataScreen.swift; sourceTree = "<group>"; };
 		12A6E0C92E35042400E72E20 /* MyDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDataViewModel.swift; sourceTree = "<group>"; };
+		12A8CE632E4632C70068CCBF /* UnlockFeatureConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockFeatureConfig.swift; sourceTree = "<group>"; };
 		12B20FD82E3E3407003D60F5 /* InAppPurchaseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchaseRepository.swift; sourceTree = "<group>"; };
 		12B20FDA2E3E3427003D60F5 /* ProductItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItem.swift; sourceTree = "<group>"; };
 		12B20FDB2E3E3427003D60F5 /* SecretProductIdKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretProductIdKey.swift; sourceTree = "<group>"; };
@@ -323,6 +325,7 @@
 				122FFBFB2E1C0A2A00FA1A6C /* RealmConfig.swift */,
 				12B20FE82E3F9E75003D60F5 /* SecretAdMobConfig.swift */,
 				12A6E07A2E2A1D5000E72E20 /* StaticUrls.swift */,
+				12A8CE632E4632C70068CCBF /* UnlockFeatureConfig.swift */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -721,6 +724,7 @@
 				12B20FF62E422DB6003D60F5 /* ExRefreshNotification.swift in Sources */,
 				12B20FF32E40FEDC003D60F5 /* DataEmptyView.swift in Sources */,
 				12DF0C542E1EB047008D1A57 /* AppError.swift in Sources */,
+				12A8CE642E4632D20068CCBF /* UnlockFeatureConfig.swift in Sources */,
 				122FFC262E1C120D00FA1A6C /* ExFont.swift in Sources */,
 				122ECCC72E1FED41000F757A /* RootEnvironment.swift in Sources */,
 				122FFC272E1C120D00FA1A6C /* ExModifier.swift in Sources */,

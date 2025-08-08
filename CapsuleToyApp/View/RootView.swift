@@ -12,7 +12,7 @@ struct RootView: View {
     @Namespace private var tabAnimation
     var body: some View {
         ZStack(alignment: .bottom) {
-            switch rootEnvironment.selectedTag {
+            switch rootEnvironment.selectedTab {
             case .series:
                 SeriesListScreen()
                     .environmentObject(rootEnvironment)
@@ -28,7 +28,6 @@ struct RootView: View {
             }
                         
             CustomTabBar(
-                selectedTab: $rootEnvironment.selectedTag,
                 tabAnimation: tabAnimation
             ).environmentObject(rootEnvironment)
         

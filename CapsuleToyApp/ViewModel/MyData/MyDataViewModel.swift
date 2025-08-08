@@ -12,13 +12,12 @@ final class MyDataViewModel: ObservableObject {
     
     @Published private(set) var seriesList: [Series] = []
     
+    /// 残り無料お試し機能解放数
     @Published private(set) var limitCount: Int = 5
     
     private let dateFormatUtility = DateFormatUtility()
     private let userDefaultsRepository: UserDefaultsRepository
     private let seriesRepository: SeriesRepositoryProtocol
-    
-    private let LOCK_LIMIT: Int = 5
     
     init(
         userDefaultsRepository: UserDefaultsRepository,
@@ -30,8 +29,10 @@ final class MyDataViewModel: ObservableObject {
     
     public func onAppear() {
         seriesList = seriesRepository.fetchAllSeries()
-        userDefaultsRepository.getShowLockLimit()
-        userDefaultsRepository.incrementShowLockLimit()
+        // 現在のカウント数を取得
+        let current = userDefaultsRepository.getShowLockLimit()
+        // 最大数から現在のカウントを引いて残りを格納
+        limitCount = UnlockFeatureConfig.MAX_LIMIT - current
     }
     
     public func onDisappear() {

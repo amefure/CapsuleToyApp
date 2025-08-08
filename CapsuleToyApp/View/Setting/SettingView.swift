@@ -12,7 +12,6 @@ struct SettingView: View {
     private var viewModel = SettingViewModel()
     @EnvironmentObject private var rootEnvironment: RootEnvironment
     
-    
     var body: some View {
         VStack {
             
@@ -54,7 +53,7 @@ struct SettingView: View {
                     // アプリ内課金
                     NavigationLink {
                         InAppPurchaseScreen()
-                           // .environmentObject(rootEnvironment)
+                            .environmentObject(rootEnvironment)
                     } label: {
                         HStack {
                             Image(systemName: "app.gift.fill")

@@ -13,14 +13,15 @@ import RealmSwift
 final class RootEnvironment: ObservableObject {
     
     /// フッタータブ
-    @Published var selectedTag: AppTab = .series
+    @Published private(set) var selectedTab: AppTab = .series
     
     /// ダークモードフラグ
-    @Published var isDarkMode: Bool = false
+    @Published private(set) var isDarkMode: Bool = false
     /// 広告削除購入フラグ
-    @Published var removeAds: Bool = false
+    @Published private(set) var removeAds: Bool = false
     /// 機能解放購入フラグ
-    @Published var unlockFeature: Bool = false
+    /// 機能が購入済み or お試し無料解放で変化する
+    @Published private(set) var unlockFeature: Bool = false
     
     /// 位置情報許可否認状態アラート
     @Published var showLocationDeniedAlert: Bool = false
@@ -69,14 +70,24 @@ final class RootEnvironment: ObservableObject {
 
 extension RootEnvironment {
     
+    /// ロックを解除する
+    public func showUnLockMyData() {
+        let current = userDefaultsRepository.getShowLockLimit()
+        // 無料アンロック制限回数に達していなければ解放してあげる
+        guard current <= UnlockFeatureConfig.MAX_LIMIT else { return }
+        // 回数インクリメント
+        userDefaultsRepository.incrementShowLockLimit()
+        unlockFeature = true
+    }
+    
     /// アクティブにしていたタブを反映
     private func setUpTab() {
-        selectedTag = userDefaultsRepository.getActiveTab()
+        selectedTab = userDefaultsRepository.getActiveTab()
     }
     
     
     /// アプリ内課金情報を取得&反映
-    private func setPurchasedFlag() {
+    public func setPurchasedFlag() {
         removeAds = userDefaultsRepository.getPurchasedRemoveAds()
         unlockFeature = userDefaultsRepository.getPurchasedUnlockFeature()
     }
@@ -141,6 +152,7 @@ extension RootEnvironment {
   
     /// アクティブにしたタブを保存
     public func setActiveTab(_ tab: AppTab) {
+        selectedTab = tab
         userDefaultsRepository.setActiveTab(tab)
     }
     

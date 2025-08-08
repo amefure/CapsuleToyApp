@@ -18,6 +18,7 @@ struct DataEmptyView: View {
             
             Text("データが存在しません")
                 .fontM(bold: true)
+                .foregroundStyle(.exText)
             Spacer()
         }
     }

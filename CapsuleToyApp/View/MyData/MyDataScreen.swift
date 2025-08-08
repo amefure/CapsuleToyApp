@@ -16,7 +16,8 @@ struct MyDataScreen: View {
     
     var body: some View {
         ZStack {
-            if !rootEnvironment.unlockFeature {
+            // 機能が購入済みでアンロックされていない && お試し無料閲覧していない
+            if rootEnvironment.unlockFeature == false  {
                 overLockView()
                     .zIndex(1)
             }
@@ -105,11 +106,22 @@ extension MyDataScreen {
                     
                     Spacer()
                     
-                    Button {
-                        
-                    } label: {
-                        Text("見てみる")
-                            .exThemaButtonView(width: 300 - 30)
+                    if viewModel.limitCount <= 0 {
+                        Button {
+                            withAnimation {
+                                rootEnvironment.setActiveTab(.settings)
+                            }
+                        } label: {
+                            Text("購入画面へ")
+                                .exThemaButtonView(width: 300 - 30)
+                        }.buttonStyle(.plain)
+                    } else {
+                        Button {
+                            rootEnvironment.showUnLockMyData()
+                        } label: {
+                            Text("見てみる")
+                                .exThemaButtonView(width: 300 - 30)
+                        }.buttonStyle(.plain)
                     }
                     
                 }.padding()

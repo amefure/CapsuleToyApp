@@ -11,8 +11,6 @@ import SwiftUI
 struct CustomTabBar: View {
     
     @EnvironmentObject private var rootEnvironment: RootEnvironment
-    
-    @Binding var selectedTab: AppTab
     var tabAnimation: Namespace.ID
 
     var body: some View {
@@ -20,13 +18,12 @@ struct CustomTabBar: View {
             ForEach(AppTab.allCases, id: \.self) { tab in
                 Button {
                     withAnimation {
-                        selectedTab = tab
+                        rootEnvironment.setActiveTab(tab)
                     }
-                    rootEnvironment.setActiveTab(tab)
                 } label: {
                     VStack(spacing: 0) {
                         
-                        if selectedTab == tab {
+                        if rootEnvironment.selectedTab == tab {
                             Circle()
                                 .frame(width: 25, height: 25)
                                 .foregroundStyle(.exThema)
@@ -41,11 +38,11 @@ struct CustomTabBar: View {
                         
                         Image(systemName: tab.icon)
                             .fontM(bold: true)
-                            .foregroundStyle(selectedTab == tab ? .accent : .gray)
+                            .foregroundStyle(rootEnvironment.selectedTab == tab ? .accent : .gray)
                         
                         Text(tab.title)
                             .font(.caption)
-                            .foregroundStyle(selectedTab == tab ? .accent : .gray)
+                            .foregroundStyle(rootEnvironment.selectedTab == tab ? .accent : .gray)
                        
                     }.frame(maxWidth: .infinity)
                 }

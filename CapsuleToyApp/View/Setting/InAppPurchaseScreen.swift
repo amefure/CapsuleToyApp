@@ -9,6 +9,7 @@ import SwiftUI
 
 struct InAppPurchaseScreen: View {
     @StateObject private var viewModel = DIContainer.shared.resolve(InAppPurchaseViewModel.self)
+    @EnvironmentObject private var rootEnvironment: RootEnvironment
     
     @Environment(\.dismiss) private var dismiss
 
@@ -110,7 +111,10 @@ struct InAppPurchaseScreen: View {
             }
 
         }.onAppear { viewModel.onAppear() }
-            .onDisappear { viewModel.onDisappear() }
+            .onDisappear {
+                viewModel.onDisappear()
+                rootEnvironment.setPurchasedFlag()
+            }
             .ignoresSafeArea(.keyboard)
             .fontM()
             .navigationBarBackButtonHidden()
