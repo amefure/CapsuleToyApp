@@ -8,6 +8,7 @@
 import SwiftUI
 import UIKit
 import GoogleMobileAds
+import FirebaseCore
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_: UIApplication,
@@ -17,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         MobileAds.shared.start(completionHandler: nil)
 
         // Firebase
-        // FirebaseApp.configure()
+        FirebaseApp.configure()
         return true
     }
 }
