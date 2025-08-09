@@ -15,7 +15,7 @@ struct CapsuleToyEntryScreen: View {
     public var seriesId: ObjectId
     public var toy: CapsuleToy?
     
-    @State private var name: String = "TOYS"
+    @State private var name: String = ""
     @State private var isOwned: Bool = false
     @State private var isSecret: Bool = false
     @State private var memo: String = ""
@@ -52,50 +52,52 @@ struct CapsuleToyEntryScreen: View {
                 }
             )
             
-            HStack(alignment: .top) {
-                ImageSelectView(image: $image, isDisplayedCropView: true)
-                    .environmentObject(rootEnvironment)
-                    .padding(.vertical)
-                
-                VStack {
-                    Text("GET")
-                        .exInputLabelView(width: DeviceSizeUtility.deviceWidth / 2 - 20)
+            ScrollView {
+                HStack(alignment: .top) {
+                    ImageSelectView(image: $image, isDisplayedCropView: true)
+                        .environmentObject(rootEnvironment)
+                        .padding(.vertical)
                     
-                    AnimationCheckButton(isEnable: $isOwned)
-                       
                     VStack {
-                        if isOwned {
-                            Text("GET DATE")
-                                .exInputLabelView(width: DeviceSizeUtility.deviceWidth / 2 - 20)
-                            
-                            DatePicker(
-                                "取得日",
-                                selection: $selectedDate,
-                                displayedComponents: [.date]
-                           ).environment(\.locale, DateFormatUtility.LOCALE)
-                                .environment(\.calendar, DateFormatUtility.CALENDAR)
-                                .datePickerStyle(.compact)
-                                .labelsHidden()
-                        }
-                        
-                        Text("SECRET")
+                        Text("GET")
                             .exInputLabelView(width: DeviceSizeUtility.deviceWidth / 2 - 20)
-                        AnimationCheckButton(isEnable: $isSecret, isSecret: true)
                         
-                    }.animation(.easeInOut(duration: 0.3), value: isOwned)
+                        AnimationCheckButton(isEnable: $isOwned)
+                           
+                        VStack {
+                            if isOwned {
+                                Text("GET DATE")
+                                    .exInputLabelView(width: DeviceSizeUtility.deviceWidth / 2 - 20)
+                                
+                                DatePicker(
+                                    "取得日",
+                                    selection: $selectedDate,
+                                    displayedComponents: [.date]
+                               ).environment(\.locale, DateFormatUtility.LOCALE)
+                                    .environment(\.calendar, DateFormatUtility.CALENDAR)
+                                    .datePickerStyle(.compact)
+                                    .labelsHidden()
+                            }
+                            
+                            Text("SECRET")
+                                .exInputLabelView(width: DeviceSizeUtility.deviceWidth / 2 - 20)
+                            AnimationCheckButton(isEnable: $isSecret, isSecret: true)
+                            
+                        }.animation(.easeInOut(duration: 0.3), value: isOwned)
+                    }
                 }
+                
+                Text("アイテム名")
+                    .exInputLabelView()
+                TextField("アイテム名", text: $name)
+                    .exInputBackView()
+                
+                Text("MEMO")
+                    .exInputLabelView()
+                TextEditor(text: $memo)
+                    .frame(height: 100)
+                    .exInputBackView()
             }
-            
-            Text("アイテム名")
-                .exInputLabelView()
-            TextField("アイテム名", text: $name)
-                .exInputBackView()
-            
-            Text("MEMO")
-                .exInputLabelView()
-            TextEditor(text: $memo)
-                .frame(height: 100)
-                .exInputBackView()
             
             Spacer()
 
