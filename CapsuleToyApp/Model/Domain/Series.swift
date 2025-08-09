@@ -70,6 +70,7 @@ extension Series {
         amount: Int = 300,
         capsuleToyNames: [String] = ["黒猫", "白猫", "トラ猫", "三毛猫", "キジトラ"],
         categoryNames: [String] = ["鬼滅の刃"],
+        categoryColor: [String],
         memo: String = "お気に入りシリーズ"
     ) -> Series {
         let series = Series()
@@ -91,10 +92,11 @@ extension Series {
             series.capsuleToys.append(toy)
         }
         
-        for name in categoryNames {
+        for index in categoryNames.indices {
             let category = Category()
             category.id = ObjectId.generate()
-            category.name = name
+            category.name = categoryNames[index]
+            category.colorHex = categoryColor[index]
             series.categories.append(category)
         }
 
@@ -109,6 +111,7 @@ extension Series {
                 amount: 300,
                 capsuleToyNames: ["イルカ", "クジラ", "カクレクマノミ", "タツノオトシゴ", "カメ"],
                 categoryNames: ["海の生き物", "水族館"],
+                categoryColor: ["#1E90FF", "#00CED1"],
                 memo: "海モチーフのカプセルトイ"
             ),
             Series.mock(
@@ -117,6 +120,7 @@ extension Series {
                 amount: 500,
                 capsuleToyNames: ["ティラノサウルス", "トリケラトプス", "ステゴサウルス", "プテラノドン"],
                 categoryNames: ["恐竜", "古代生物"],
+                categoryColor: ["#8B4513", "#556B2F"],
                 memo: "恐竜好き必見"
             ),
             Series.mock(
@@ -125,8 +129,10 @@ extension Series {
                 amount: 300,
                 capsuleToyNames: ["ソファ", "ダイニングテーブル", "ランプ"],
                 categoryNames: ["家具", "インテリア"],
+                categoryColor: ["#CD853F", "#D2B48C"],
                 memo: "小物ディスプレイ用にも最適"
             )
+
 
         ]
     }
