@@ -102,7 +102,7 @@ struct CapsuleToyDetailScreen: View {
                 }.frame(width: 200, height: 50)
                     .fontM(bold: true)
                     .foregroundStyle(.exThema)
-                    .background(.white)
+                    .background(.exModeBase)
                     .overlay {
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(lineWidth: 3)
@@ -118,7 +118,7 @@ struct CapsuleToyDetailScreen: View {
         }.onDisappear { viewModel.onDisappear() }
             .navigationBarBackButtonHidden()
             .fontM()
-            .foregroundStyle(.exText)
+            .foregroundStyle(.exModeText)
             .background(.exFoundation)
             .navigationDestination(isPresented: $viewModel.presentEntryToyScreen) {
                 CapsuleToyEntryScreen(seriesId: seriesId, toy: toy)

@@ -231,11 +231,11 @@ struct SeriesDetailScreen: View {
                                             Spacer()
                                                 .frame(width: 30)
                                         } .frame(width: SeriesDetailScreen.itemWidth, height: 40)
-                                            .background(.white.opacity(0.6))
+                                            .background(.exModeBase.opacity(0.6))
                                        
                                            
                                     }.frame(width: SeriesDetailScreen.itemWidth, height: SeriesDetailScreen.itemWidth)
-                                        .background(.white)
+                                        .background(.exModeBase)
                                 }.zIndex(1)
                                     .clipShape(RoundedRectangle(cornerRadius: 10))
                                     .shadow(color: .black.opacity(0.2), radius: 5, x: 3, y: 3)
@@ -253,7 +253,7 @@ struct SeriesDetailScreen: View {
                     }.frame(width: 200, height: 50)
                         .fontM(bold: true)
                         .foregroundStyle(.exThema)
-                        .background(.white)
+                        .background(.exModeBase)
                         .overlay {
                             RoundedRectangle(cornerRadius: 10)
                                 .stroke(lineWidth: 3)
@@ -370,7 +370,7 @@ private struct SelectTabPickerView: View {
                     }
                 }
             }
-        }.background(.white)
+        }.background(.exModeBase)
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .shadow(color: .black.opacity(0.2), radius: 5, x: 3, y: 3)
             .animation(.easeInOut(duration: 0.5), value: selectTab)
