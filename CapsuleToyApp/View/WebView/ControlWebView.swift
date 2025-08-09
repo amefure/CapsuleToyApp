@@ -71,8 +71,8 @@ struct ControlWebView: View {
             }.padding(10)
                 .padding(.horizontal)
 
-        }.background(.white)
-            .foregroundStyle(.black)
+        }.background(.exModeBase)
+            .foregroundStyle(.exModeText)
             .navigationBarBackButtonHidden()
     }
 }

@@ -25,13 +25,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 @main
 struct CapsuleToyAppApp: App {
-    
+    @ObservedObject private var rootEnvironment = DIContainer.shared.resolve(RootEnvironment.self)
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     var body: some Scene {
         WindowGroup {
             NavigationStack {
                 RootView()
-            }
+                    .environmentObject(rootEnvironment)
+            }.preferredColorScheme(rootEnvironment.isDarkMode ? .dark : .light)
         }
     }
 }

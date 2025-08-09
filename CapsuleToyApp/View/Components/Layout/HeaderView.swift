@@ -69,7 +69,7 @@ struct HeaderView<Content: View>: View {
                     .frame(width: 40)
             }
         }.frame(height: 50)
-            .foregroundStyle(.exThema)
+            .foregroundStyle(.exModeText)
             .padding(.horizontal)
     }
 }

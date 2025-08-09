@@ -35,7 +35,6 @@ struct CapsuleToyDetailScreen: View {
                     Text(toy.name)
                         .fontM(bold: true)
                         .lineLimit(2)
-                        .foregroundStyle(.exText)
                 }
             )
             

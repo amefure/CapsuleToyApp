@@ -27,7 +27,6 @@ struct MyDataScreen: View {
                     content: {
                         Text("MyData")
                             .fontM(bold: true)
-                            .foregroundStyle(.exText)
                     }
                 )
                 
@@ -296,7 +295,7 @@ private struct ParametersView: View {
                         width: Swift.max(30, width * (min(now, max) / max) + 25),
                         alignment: target == 0 ? .leading : .trailing
                     )
-                    .foregroundStyle(target >= max ? fullColor : Asset.Colors.exText.swiftUIColor)
+                    .foregroundStyle(target >= max ? fullColor : .exModeText)
                     .opacity(showCapacity)
                 Spacer()
             }.frame(width: width + 20, height: 20)

@@ -8,6 +8,8 @@
 import UIKit
 
 class UserDefaultsKey {
+    /// ダークモード
+    static let IS_DARK_MODE = "IS_DARK_MODE"
     /// アプリ内課金：広告削除
     static let PURCHASED_REMOVE_ADS = "PURCHASE_REMOVE_ADS"
     /// アプリ内課金：機能解放
@@ -58,6 +60,17 @@ final class UserDefaultsRepository: @unchecked Sendable {
 }
 
 extension UserDefaultsRepository {
+    
+    /// `IS_DARK_MODE`
+    public func setIsDarkMode(_ isOn: Bool) {
+        setBoolData(key: UserDefaultsKey.IS_DARK_MODE, isOn: isOn)
+    }
+    
+    /// `IS_DARK_MODE`
+    public func getIsDarkMode() -> Bool {
+        getBoolData(key: UserDefaultsKey.IS_DARK_MODE)
+    }
+    
     /// `ACTIVE_TAB`
     public func setActiveTab(_ tab: AppTab) {
         setIntData(key: UserDefaultsKey.ACTIVE_TAB, value: tab.rawValue)

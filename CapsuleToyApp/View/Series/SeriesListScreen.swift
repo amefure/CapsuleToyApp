@@ -23,7 +23,6 @@ struct SeriesListScreen: View {
                 }, content: {
                     Text("ガチャガチャシリーズ一覧")
                         .fontM(bold: true)
-                        .foregroundStyle(.exText)
                 }
             )
             
@@ -91,7 +90,7 @@ struct SeriesListScreen: View {
         }.onAppear { viewModel.onAppear() }
             .onDisappear { viewModel.onDisappear() }
             .fontM()
-            .foregroundStyle(.exText)
+            .foregroundStyle(.exModeText)
             .background(.exFoundation)
             .fullScreenCover(isPresented: $presentEntryScreen) {
                 SeriesEntryScreen()

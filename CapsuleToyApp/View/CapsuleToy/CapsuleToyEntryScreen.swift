@@ -48,7 +48,6 @@ struct CapsuleToyEntryScreen: View {
                 }, content: {
                     Text("ガチャガチャアイテム登録")
                         .fontM(bold: true)
-                        .foregroundStyle(.exText)
                 }
             )
             

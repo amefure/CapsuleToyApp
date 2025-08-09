@@ -38,11 +38,11 @@ struct CustomTabBar: View {
                         
                         Image(systemName: tab.icon)
                             .fontM(bold: true)
-                            .foregroundStyle(rootEnvironment.selectedTab == tab ? .accent : .gray)
+                            .foregroundStyle(rootEnvironment.selectedTab == tab ? .accent : .exModeText)
                         
                         Text(tab.title)
                             .font(.caption)
-                            .foregroundStyle(rootEnvironment.selectedTab == tab ? .accent : .gray)
+                            .foregroundStyle(rootEnvironment.selectedTab == tab ? .accent : .exModeText)
                        
                     }.frame(maxWidth: .infinity)
                 }

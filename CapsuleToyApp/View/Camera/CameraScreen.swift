@@ -41,6 +41,17 @@ struct CameraScreen: View {
                     // disablePermissionはアラートフラグにしているためアラート閉じた後falseに戻ってしまう
                     // そのためここが拒否されていた場合に表示されるエリアになる
                     Spacer()
+                    
+                    VStack {
+                        Text("ERROR")
+                            .foregroundStyle(.exThema)
+                            .padding(.bottom)
+                        
+                        Text("カメラへのアクセスが有効にされていないためカメラの起動に失敗しました。\n設定よりアクセスを有効にしてから再度お試しください。")
+                            .fontS()
+                    }.exInputBackView(width: DeviceSizeUtility.deviceWidth - 60)
+                    
+                    Spacer()
                 }
             } else {
                 // 初期起動時スペーサー用

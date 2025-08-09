@@ -16,7 +16,7 @@ final class RootEnvironment: ObservableObject {
     @Published private(set) var selectedTab: AppTab = .series
     
     /// ダークモードフラグ
-    @Published private(set) var isDarkMode: Bool = false
+    @Published var isDarkMode: Bool = false
     /// 広告削除購入フラグ
     @Published private(set) var removeAds: Bool = false
     /// 機能解放購入フラグ
@@ -50,6 +50,8 @@ final class RootEnvironment: ObservableObject {
         setUpTab()
         // アプリ内課金情報を取得&反映
         setPurchasedFlag()
+        // ダークモード
+        setUpIsDarkMode()
     }
     
     @MainActor
@@ -66,6 +68,9 @@ final class RootEnvironment: ObservableObject {
         
         // 位置情報承認状況観測
         sinkLocationAuthorizationStatus()
+        
+        // ダークモード変化を観測
+        sinkIsDarkMode()
     }
 }
 
@@ -86,11 +91,24 @@ extension RootEnvironment {
         selectedTab = userDefaultsRepository.getActiveTab()
     }
     
+    /// ダークモードを反映
+    private func setUpIsDarkMode() {
+        // ダークモード
+        isDarkMode = userDefaultsRepository.getIsDarkMode()
+    }
     
     /// アプリ内課金情報を取得&反映
     public func setPurchasedFlag() {
         removeAds = userDefaultsRepository.getPurchasedRemoveAds()
         unlockFeature = userDefaultsRepository.getPurchasedUnlockFeature()
+    }
+    
+    /// ダークモード変化を観測/
+    private func sinkIsDarkMode() {
+        $isDarkMode
+            .sink { [weak self] flag in
+                self?.userDefaultsRepository.setIsDarkMode(flag)
+            }.store(in: &cancellables)
     }
     
     /// 位置情報承認状況観測

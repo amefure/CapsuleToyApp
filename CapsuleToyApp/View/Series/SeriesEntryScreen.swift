@@ -46,7 +46,6 @@ struct SeriesEntryScreen: View {
                 }, content: {
                     Text("シリーズ登録")
                         .fontM(bold: true)
-                        .foregroundStyle(.exText)
                 }
             )
             
@@ -214,7 +213,7 @@ struct SeriesEntryScreen: View {
         .onDisappear { viewModel.onDisappear() }
         .navigationBarBackButtonHidden()
         .fontM()
-        .foregroundStyle(.exText)
+        .foregroundStyle(.exModeText)
         .background(.exFoundation)
         .fullScreenCover(isPresented: $viewModel.showAddLocationScreen) {
             LocationInputScreen(locationDic: $viewModel.locationDic)

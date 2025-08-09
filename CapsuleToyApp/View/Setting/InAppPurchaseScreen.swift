@@ -24,7 +24,6 @@ struct InAppPurchaseScreen: View {
                 content: {
                     Text("広告削除 & 機能解放")
                         .fontL(bold: true)
-                        .foregroundStyle(.exText)
                         .padding(.vertical)
                 }
             )
@@ -32,7 +31,6 @@ struct InAppPurchaseScreen: View {
 
             Text("購入後のキャンセルは致しかねますのでご了承ください。")
                 .fontS()
-                .foregroundStyle(.exText)
                 .padding(.horizontal)
 
             if viewModel.fetchError {
@@ -52,7 +50,6 @@ struct InAppPurchaseScreen: View {
                         .fontM(bold: true)
 
                 }.frame(width: DeviceSizeUtility.deviceWidth)
-                    .foregroundStyle(.exText)
                     .padding(.bottom, 30)
 
                 Spacer()
@@ -107,7 +104,7 @@ struct InAppPurchaseScreen: View {
                                 .exThemaButtonView()
                         }.buttonStyle(.plain)
                     }
-                }.foregroundStyle(.exText)
+                }
             }
 
         }.onAppear { viewModel.onAppear() }
@@ -117,6 +114,7 @@ struct InAppPurchaseScreen: View {
             }
             .ignoresSafeArea(.keyboard)
             .fontM()
+            .foregroundStyle(.exModeText)
             .navigationBarBackButtonHidden()
             .alert(
                 isPresented: $viewModel.purchaseError,

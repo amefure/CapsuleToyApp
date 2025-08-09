@@ -42,7 +42,6 @@ struct SeriesDetailScreen: View {
                         Text(series.name)
                             .fontM(bold: true)
                             .lineLimit(2)
-                            .foregroundStyle(.exText)
                     }
                 )
                 
@@ -283,7 +282,7 @@ struct SeriesDetailScreen: View {
             .navigationBarBackButtonHidden()
             .navigationBarHidden(true) // Mapがある場合これを明示的に指定する必要がある
             .fontM()
-            .foregroundStyle(.exText)
+            .foregroundStyle(.exModeText)
             .background(.exFoundation)
             .navigationDestination(isPresented: $viewModel.presentDetailToyScreen) {
                 if let selectToy {

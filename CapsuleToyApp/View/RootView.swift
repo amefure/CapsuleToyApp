@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RootView: View {
-    @ObservedObject private var rootEnvironment = DIContainer.shared.resolve(RootEnvironment.self)
+    @EnvironmentObject private var rootEnvironment: RootEnvironment
     @Namespace private var tabAnimation
     var body: some View {
         ZStack(alignment: .bottom) {

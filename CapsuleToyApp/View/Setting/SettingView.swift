@@ -19,7 +19,6 @@ struct SettingView: View {
                 content: {
                     Text("設定")
                         .fontM(bold: true)
-                        .foregroundStyle(.exText)
                 }
             )
             
@@ -29,14 +28,14 @@ struct SettingView: View {
                     header: Text(L10n.settingSectionApp)
                 ) {
                     
-//                    HStack {
-//                        Image(systemName: "questionmark.app")
-//                            .settingIcon()
-//                        
-//                        Toggle(isOn: $rootEnvironment.isDarkMode) {
-//                            Text(L10n.settingSectionAppMode)
-//                        }.tint(.exThema)
-//                    }.listRowHeight()
+                    HStack {
+                        Image(systemName: "questionmark.app")
+                            .settingIcon()
+                        
+                        Toggle(isOn: $rootEnvironment.isDarkMode) {
+                            Text(L10n.settingSectionAppMode)
+                        }.tint(.exThema)
+                    }.listRowHeight()
                     
 //                    // よくある質問
 //                    NavigationLink {
@@ -72,30 +71,30 @@ struct SettingView: View {
                         .fontS(bold: true)
                 ) {
                     
-//                    if let url = URL(string: StaticUrls.APP_REVIEW_URL) {
-//                        // 1:レビューページ
-//                        Link(destination: url, label: {
-//                            HStack {
-//                                Image(systemName: "hand.thumbsup")
-//                                    .settingIcon()
-//                                Text(L10n.settingSectionLinkReview)
-//                                
-//                            }
-//                        }).listRowHeight()
-//                    }
-//                    // 2:シェアボタン
-//                    Button {
-//                        viewModel.shareApp(
-//                            shareText: L10n.settingSectionLinkShareText,
-//                            shareLink: StaticUrls.APP_URL
-//                        )
-//                    } label: {
-//                        HStack {
-//                            Image(systemName: "star.bubble")
-//                                .settingIcon()
-//                            Text(L10n.settingSectionLinkRecommend)
-//                        }
-//                    }.listRowHeight()
+                    if let url = URL(string: StaticUrls.APP_REVIEW_URL) {
+                        // 1:レビューページ
+                        Link(destination: url, label: {
+                            HStack {
+                                Image(systemName: "hand.thumbsup")
+                                    .settingIcon()
+                                Text(L10n.settingSectionLinkReview)
+                                
+                            }
+                        }).listRowHeight()
+                    }
+                    // 2:シェアボタン
+                    Button {
+                        viewModel.shareApp(
+                            shareText: L10n.settingSectionLinkShareText,
+                            shareLink: StaticUrls.APP_URL
+                        )
+                    } label: {
+                        HStack {
+                            Image(systemName: "star.bubble")
+                                .settingIcon()
+                            Text(L10n.settingSectionLinkRecommend)
+                        }
+                    }.listRowHeight()
                     
                     if let url = URL(string: StaticUrls.APP_CONTACT_URL) {
                         // 3:お問い合わせフォーム

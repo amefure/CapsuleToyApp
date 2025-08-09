@@ -20,7 +20,7 @@ struct DataEmptyView: View {
             
             Text(title)
                 .fontM(bold: true)
-                .foregroundStyle(.exText)
+                .foregroundStyle(.exModeText)
             Spacer()
         }
     }
