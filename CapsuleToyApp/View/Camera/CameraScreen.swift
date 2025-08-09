@@ -9,25 +9,27 @@ import UIKit
 import SwiftUI
 import Combine
 
-// Beforeカメラ画面
+/// カメラ撮影画面
 struct CameraScreen: View {
     
     @StateObject private var viewModel = DIContainer.shared.resolve(CameraScreenViewModel.self)
     @EnvironmentObject private var rootEnvironment: RootEnvironment
     
-    // MARK: - Receive
-    @Binding var isRegistering: Bool
-    @Binding var isShowCameraView: Bool
+    /// 撮影された画像をUIImageに変換して保持
+    @Binding var image: UIImage?
     
-    // MARK: - View
-    @State private var showOnceAgainDialog = false
+    /// 写真撮影中
     @State private var isTaking = false
-    @State private var publisher: AnyCancellable? = nil
+    /// 写真撮影完了変化観測
+    @State private var imageTakePublisher: AnyCancellable? = nil
+    
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         VStack(spacing: 0) {
             
-            if viewModel.enablePermission {
+            // カメラのパーミションが拒否されているかどうか
+            if !viewModel.disablePermission {
                 if let previewLayer = viewModel.previewLayer {
                     CALayerView(caLayer: previewLayer)
                         .onAppear {
@@ -44,13 +46,7 @@ struct CameraScreen: View {
             HStack {
                 
                 Button {
-                    if true {
-                        // 何も登録されなかったので画面を戻る
-                        isShowCameraView = false
-                    } else {
-                        // 登録終了
-                        isRegistering = false
-                    }
+                    dismiss()
                 } label: {
                     Image(systemName: "chevron.backward")
                         .foregroundStyle(isTaking ? .gray : .white)
@@ -63,6 +59,7 @@ struct CameraScreen: View {
                     isTaking = true
                     // 写真を撮影
                     viewModel.takePhoto()
+                    // 写真撮影用の遅延
                     sleep(1)
                 } label: {
                     Image(systemName: "circle.fill")
@@ -86,16 +83,23 @@ struct CameraScreen: View {
             .onAppear {
                 viewModel.onAppear()
                 
-                publisher = viewModel.$image
+                imageTakePublisher = viewModel.$image
                     .sink { image in
-                        guard let image = image else { return isTaking = false }
-                       
+                        isTaking = false
+                        guard let image else { return }
+                        if self.image != nil {
+                            // 元画像があるなら明示的に更新する
+                            rootEnvironment.redrawPhoto()
+                        }
+                        self.image = image
+                        dismiss()
                 }
             }.onDisappear {
                 viewModel.onDisappear()
-                publisher?.cancel()
+                imageTakePublisher?.cancel()
+                imageTakePublisher = nil
             }.alert(
-                isPresented: $viewModel.enablePermission,
+                isPresented: $viewModel.disablePermission,
                 title: L10n.dialogNoticeTitle,
                 message: L10n.dialogDeniedCameraMsg,
                 positiveButtonTitle: L10n.dialogOpenSettingTitle,

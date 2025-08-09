@@ -67,11 +67,6 @@ extension MyDataScreen {
         VStack {
             
             lockDotLineView()
-                .rotationEffect(Angle(degrees: 20))
-            
-            Spacer()
-            
-            lockDotLineView()
                 .rotationEffect(Angle(degrees: -15))
             
             Spacer()
@@ -132,10 +127,6 @@ extension MyDataScreen {
                 
             }
             
-            Spacer()
-            
-            lockDotLineView()
-                .rotationEffect(Angle(degrees: 20))
                 
             Spacer()
             

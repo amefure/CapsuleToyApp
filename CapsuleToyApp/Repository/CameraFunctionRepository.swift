@@ -11,7 +11,7 @@ import Combine
 
 final class CameraFunctionRepository: NSObject, @unchecked Sendable {
     
-    /// 撮影された写真
+    /// 撮影された写真画像
     public var image: AnyPublisher<UIImage, Never> {
         _image.eraseToAnyPublisher()
     }
@@ -38,10 +38,6 @@ final class CameraFunctionRepository: NSObject, @unchecked Sendable {
     private var avSession: AVCaptureSession = AVCaptureSession()
     private var avInput: AVCaptureDeviceInput!
     private var avOutput: AVCapturePhotoOutput!
-}
-
-extension CameraFunctionRepository {
-    
 }
 
 extension CameraFunctionRepository: AVCapturePhotoCaptureDelegate, AVCaptureMetadataOutputObjectsDelegate {
@@ -114,45 +110,45 @@ extension CameraFunctionRepository {
         //        }
     }
     
-    // セッションの開始
+    /// セッションの開始
     private func beginSession() {
         
-        self.avSession = AVCaptureSession()
+        avSession = AVCaptureSession()
         guard let videoDevice = AVCaptureDevice.default(for: .video) else { return }
         
         do {
             let deviceInput = try AVCaptureDeviceInput(device: videoDevice)
             
-            if self.avSession.canAddInput(deviceInput) {
-                self.avSession.addInput(deviceInput)
-                self.avInput = deviceInput
+            guard avSession.canAddInput(deviceInput) else { return }
                 
-                let photoOutput = AVCapturePhotoOutput()
-                if self.avSession.canAddOutput(photoOutput) {
-                    self.avSession.addOutput(photoOutput)
-                    self.avOutput = photoOutput
-                    
-                    let previewLayer = AVCaptureVideoPreviewLayer(session: self.avSession)
-                    previewLayer.videoGravity = .resize
-                    self._previewLayer.send(previewLayer)
-                    
-                    self.avSession.sessionPreset = AVCaptureSession.Preset.photo
-                }
-            }
+            avSession.addInput(deviceInput)
+            avInput = deviceInput
+            
+            let photoOutput = AVCapturePhotoOutput()
+            guard avSession.canAddOutput(photoOutput) else { return }
+                
+            avSession.addOutput(photoOutput)
+            avOutput = photoOutput
+            
+            let previewLayer = AVCaptureVideoPreviewLayer(session: avSession)
+            previewLayer.videoGravity = .resize
+            _previewLayer.send(previewLayer)
+            
+            avSession.sessionPreset = AVCaptureSession.Preset.photo
         } catch {
-            print(error.localizedDescription)
+            logger.debug("カメラセットアップ失敗：\(error.localizedDescription)")
         }
     }
-    // デリゲートメソッド
+    /// カメラ撮影完了した際のデータを取得
     func photoOutput(_ output: AVCapturePhotoOutput,
                      didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
-        if let imageData = photo.fileDataRepresentation() {
-            _image.send(UIImage(data: imageData)!)
-        }
+        guard let imageData = photo.fileDataRepresentation() else { return }
+        guard let uiImage = UIImage(data: imageData) else { return }
+        _image.send(uiImage)
     }
 }
 
-// カメラプレビュー
+/// カメラプレビュー
 struct CALayerView: UIViewControllerRepresentable {
     var caLayer: CALayer
     

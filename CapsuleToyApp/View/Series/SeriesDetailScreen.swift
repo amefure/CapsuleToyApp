@@ -57,6 +57,7 @@ struct SeriesDetailScreen: View {
                             isEnablePopup: true
                         ).shadow(color: .black.opacity(0.2), radius: 5, x: 3, y: 3)
                             .padding(.vertical)
+                            .id(rootEnvironment.isRedraw)
                         
                         VStack {
                             
@@ -174,7 +175,7 @@ struct SeriesDetailScreen: View {
                    
                     
                     HStack {
-                        Text("コレクション")
+                        Text("ガチャガチャアイテム一覧")
                         Spacer()
                         
                         BoingButton {

@@ -11,7 +11,7 @@ import SwiftUI
 
 struct ImagePickerDialog: UIViewControllerRepresentable {
     
-    // MARK: - Receive
+    /// 選択された画像をUIImageに変換して保持
     @Binding var image: UIImage?
 
     @Environment(\.presentationMode) var presentationMode

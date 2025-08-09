@@ -9,8 +9,8 @@ import SwiftUI
 
 /// ボタン押下時にボヨヨンとするアニメーションボタン
 struct BoingButton<Label: View>: View {
-    let action: () -> Void
-    let label: () -> Label
+    public let action: () -> Void
+    public let label: () -> Label
 
     @State private var isAnimating = false
 

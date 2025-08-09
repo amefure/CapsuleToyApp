@@ -113,8 +113,8 @@ internal enum L10n {
   internal static let settingSectionAppFaq = L10n.tr("Localizable", "setting_section_app_faq", fallback: "よくある質問")
   /// ダークモード
   internal static let settingSectionAppMode = L10n.tr("Localizable", "setting_section_app_mode", fallback: "ダークモード")
-  /// 広告削除
-  internal static let settingSectionAppPurchase = L10n.tr("Localizable", "setting_section_app_purchase", fallback: "広告削除")
+  /// 広告削除 & 機能解放
+  internal static let settingSectionAppPurchase = L10n.tr("Localizable", "setting_section_app_purchase", fallback: "広告削除 & 機能解放")
   /// アプリの不具合はこちら
   internal static let settingSectionLinkContact = L10n.tr("Localizable", "setting_section_link_contact", fallback: "アプリの不具合はこちら")
   /// ・アプリに不具合がございましたら「アプリの不具合はこちら」よりお問い合わせください。

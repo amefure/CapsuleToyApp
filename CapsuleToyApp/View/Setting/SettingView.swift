@@ -128,12 +128,11 @@ struct SettingView: View {
                     Spacer()
                     VStack(alignment: .center, spacing: 4) {
                         BoingButton {
-                            
+                            // 処理は特になし
                         } label: {
                             Asset.Images.appicon.swiftUIImage
                                 .resizable()
                                 .frame(width: 50, height: 50)
-                                .background(.exThema)
                                 .clipShape(RoundedRectangle(cornerRadius: 50))
                                 .shadow(color: .black.opacity(0.2), radius: 5, x: 3, y: 3)
                                 .padding(.bottom, 8)

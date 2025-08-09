@@ -20,6 +20,10 @@ struct SeriesListScreen: View {
                 trailingIcon: "plus",
                 trailingAction: {
                     presentEntryScreen = true
+                }, content: {
+                    Text("ガチャガチャシリーズ一覧")
+                        .fontM(bold: true)
+                        .foregroundStyle(.exText)
                 }
             )
             
@@ -46,7 +50,7 @@ struct SeriesListScreen: View {
                                         height: 60,
                                         isNotView: false,
                                         isEnablePopup: false
-                                    )
+                                    ).id(rootEnvironment.isRedraw)
                                     
                                     VStack(alignment: .leading, spacing: 5) {
                                         Text(series.name)

@@ -45,6 +45,10 @@ struct CapsuleToyEntryScreen: View {
                         // 所有フラグがONなら日付を登録
                         isGetAt: isOwned ? selectedDate : nil
                     )
+                }, content: {
+                    Text("ガチャガチャアイテム登録")
+                        .fontM(bold: true)
+                        .foregroundStyle(.exText)
                 }
             )
             

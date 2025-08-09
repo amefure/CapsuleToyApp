@@ -10,16 +10,12 @@ import Combine
 
 class CameraScreenViewModel: ObservableObject {
     
-    // MARK: - Utility
-    private let imageFileManager = ImageFileManager()
-    private let dateFormatUtility = DateFormatUtility(dateFormat: "yyyy-MM-dd HH:mm")
-    
     @Published var image: UIImage?
+    /// カメラプレビュー領域
     @Published private(set) var previewLayer: CALayer?
     /// カメラ利用許可状態観測(アラート発火)
-    @Published var enablePermission: Bool = false
+    @Published var disablePermission: Bool = false
     
-    // MARK: - Combine
     private var cancellables: Set<AnyCancellable> = Set()
     
     private var cameraRepository: CameraFunctionRepository
@@ -29,24 +25,8 @@ class CameraScreenViewModel: ObservableObject {
     }
     
     public func onAppear() {
-        cameraRepository.image
-            .sink { [weak self] image in
-                guard let self else { return }
-                self.image = image
-            }.store(in: &cancellables)
         
-        cameraRepository.previewLayer
-            .sink { [weak self] previewLayer in
-                guard let self else { return }
-                self.previewLayer = previewLayer
-            }.store(in: &cancellables)
-        
-        // カメラ利用許可状態観測
-        cameraRepository.authorizationStatus
-            .sink { [weak self] status in
-                guard let self else { return }
-                self.enablePermission = status == .authorized
-            }.store(in: &cancellables)
+        observeCameraFunction()
         
         cameraRepository.prepareSetting()
        
@@ -58,15 +38,41 @@ class CameraScreenViewModel: ObservableObject {
         previewLayer = nil
         endSession()
         
-        if cancellables.count != 0 {
-            cancellables.forEach { $0.cancel() }
-            cancellables.removeAll()
-        }
+        cancellables.forEach { $0.cancel() }
+        cancellables.removeAll()
     }
 }
 
 // MARK: - カメラ機能
 extension CameraScreenViewModel {
+
+    /// カメラ周りの観測処理
+    private func observeCameraFunction() {
+        // 撮影された画像
+        cameraRepository.image
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] image in
+                guard let self else { return }
+                self.image = image
+            }.store(in: &cancellables)
+        
+        // カメラプレビュー領域
+        cameraRepository.previewLayer
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] previewLayer in
+                guard let self else { return }
+                self.previewLayer = previewLayer
+            }.store(in: &cancellables)
+        
+        // カメラ利用許可状態観測
+        cameraRepository.authorizationStatus
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] status in
+                guard let self else { return }
+                self.disablePermission = status != .authorized
+            }.store(in: &cancellables)
+    }
+    
     /// 写真撮影
     public func takePhoto() {
         cameraRepository.takePhoto()

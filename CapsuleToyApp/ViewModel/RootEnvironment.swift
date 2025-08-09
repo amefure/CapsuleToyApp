@@ -22,9 +22,10 @@ final class RootEnvironment: ObservableObject {
     /// 機能解放購入フラグ
     /// 機能が購入済み or お試し無料解放で変化する
     @Published private(set) var unlockFeature: Bool = false
-    
     /// 位置情報許可否認状態アラート
     @Published var showLocationDeniedAlert: Bool = false
+    /// 写真リスト更新時に再描画用
+    @Published private(set) var isRedraw: UUID = UUID()
     
     /// 位置情報否認アラート表示フラグ(アプリ起動後一回しか表示させない)
     private var isShowDeniedAlert: Bool = false
@@ -154,6 +155,11 @@ extension RootEnvironment {
     public func setActiveTab(_ tab: AppTab) {
         selectedTab = tab
         userDefaultsRepository.setActiveTab(tab)
+    }
+    
+    /// 再描画
+    public func redrawPhoto() {
+        isRedraw = UUID()
     }
     
     /// アプリの設定画面を開く

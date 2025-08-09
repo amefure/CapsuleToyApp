@@ -20,51 +20,35 @@ struct ImageSelectView: View {
     
     @State private var showCropView: Bool = false
     @State private var showImagePicker: Bool = false
-    @State private var showCameraView: Bool = false
+    @State private var showCameraModal: Bool = false
     
-    @State private var isRegistering = false
     var body: some View {
         VStack {
-            if let image {
-                Menu {
-                    Button {
-                        isDisplayedCropView = false
-                        showImagePicker = true
-                    } label: {
-                        Text("写真から選択する")
-                    }
-                    
-                    Button {
-                        isDisplayedCropView = false
-                        showCameraView = true
-                    } label: {
-                        Text("カメラを起動する")
-                    }
-
-                   
+            
+            Menu {
+                Button {
+                    isDisplayedCropView = false
+                    showImagePicker = true
                 } label: {
+                    Label("写真から選択する", systemImage: "photo.stack.fill")
+                }
+                
+                Button {
+                    isDisplayedCropView = false
+                    showCameraModal = true
+                } label: {
+                    Label("カメラを起動する", systemImage: "camera.fill")
+                }
+
+               
+            } label: {
+                if let image {
                     Image(uiImage: image)
                         .resizable()
                         .scaledToFill()
                         .frame(width: width, height: height)
                         .clipped()
-                }
-            } else {
-                Menu {
-                    Button {
-                        isDisplayedCropView = false
-                        showImagePicker = true
-                    } label: {
-                        Text("写真から選択する")
-                    }
-                    
-                    Button {
-                        isDisplayedCropView = false
-                        showCameraView = true
-                    } label: {
-                        Text("カメラを起動する")
-                    }
-                } label: {
+                } else {
                     Image(systemName: "plus")
                         .fontM()
                         .foregroundStyle(.exGold)
@@ -75,10 +59,12 @@ struct ImageSelectView: View {
                         )
                 }
             }
+            
+
         }.sheet(isPresented: $showImagePicker) {
             ImagePickerDialog(image: $image)
-        }.fullScreenCover(isPresented: $showCameraView) {
-            CameraScreen(isRegistering: $isRegistering, isShowCameraView: $showCameraView)
+        }.fullScreenCover(isPresented: $showCameraModal) {
+            CameraScreen(image: $image)
                 .environmentObject(rootEnvironment)
         }.onChange(of: image) { _,  _ in
             // 1回目の画像の変化で切り取りモーダルを表示していれば2回目は表示しない

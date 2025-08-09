@@ -44,6 +44,10 @@ struct SeriesEntryScreen: View {
                         categories: viewModel.categoryDic.map { $0.value },
                         image: image
                     )
+                }, content: {
+                    Text("シリーズ登録")
+                        .fontM(bold: true)
+                        .foregroundStyle(.exText)
                 }
             )
             
