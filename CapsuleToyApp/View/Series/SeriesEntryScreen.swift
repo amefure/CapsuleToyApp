@@ -194,7 +194,7 @@ struct SeriesEntryScreen: View {
                     .padding(.bottom)
                 
                 if series == nil {
-                    Text("ガチャガチャのアイテムはシリーズを登録した後に、一覧からそのシリーズをタップすることで追加できます。")
+                    Text("※ ガチャガチャのアイテムはシリーズを登録した後に、一覧からそのシリーズをタップすることで追加できます。")
                         .exInputLabelView()
                         .padding(.bottom)
                 }

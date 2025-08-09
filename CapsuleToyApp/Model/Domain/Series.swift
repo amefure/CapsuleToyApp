@@ -104,29 +104,30 @@ extension Series {
     static func mockList() -> [Series] {
         return [
             Series.mock(
-                name: "猫フィギュアシリーズ",
+                name: "海の仲間シリーズ",
                 count: 5,
                 amount: 300,
-                capsuleToyNames: ["黒猫", "白猫", "三毛猫", "キジトラ", "シャム"],
-                categoryNames: ["なめ猫", "黒猫", "白猫"],
-                memo: "猫好き向け"
+                capsuleToyNames: ["イルカ", "クジラ", "カクレクマノミ", "タツノオトシゴ", "カメ"],
+                categoryNames: ["海の生き物", "水族館"],
+                memo: "海モチーフのカプセルトイ"
             ),
             Series.mock(
-                name: "恐竜フィギュアシリーズ",
+                name: "恐竜ザウルス Vol.1",
                 count: 4,
                 amount: 500,
-                capsuleToyNames: ["ティラノ", "トリケラ", "ステゴ", "プテラ"],
-                categoryNames: ["ダイナソー"],
-                memo: ""
+                capsuleToyNames: ["ティラノサウルス", "トリケラトプス", "ステゴサウルス", "プテラノドン"],
+                categoryNames: ["恐竜", "古代生物"],
+                memo: "恐竜好き必見"
             ),
             Series.mock(
-                name: "鳥シリーズ",
+                name: "ミニチュア家具シリーズ",
                 count: 3,
                 amount: 300,
-                capsuleToyNames: ["文鳥", "オカメ", "インコ"],
-                categoryNames: ["鳥鳥鳥"],
-                memo: "小鳥好きにおすすめ"
+                capsuleToyNames: ["ソファ", "ダイニングテーブル", "ランプ"],
+                categoryNames: ["家具", "インテリア"],
+                memo: "小物ディスプレイ用にも最適"
             )
+
         ]
     }
 }
