@@ -162,6 +162,7 @@
 		12A6E0C62E35040E00E72E20 /* MyDataScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDataScreen.swift; sourceTree = "<group>"; };
 		12A6E0C92E35042400E72E20 /* MyDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDataViewModel.swift; sourceTree = "<group>"; };
 		12A8CE632E4632C70068CCBF /* UnlockFeatureConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockFeatureConfig.swift; sourceTree = "<group>"; };
+		12A8CE6C2E46D5C20068CCBF /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		12B20FD82E3E3407003D60F5 /* InAppPurchaseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchaseRepository.swift; sourceTree = "<group>"; };
 		12B20FDA2E3E3427003D60F5 /* ProductItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItem.swift; sourceTree = "<group>"; };
 		12B20FDB2E3E3427003D60F5 /* SecretProductIdKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretProductIdKey.swift; sourceTree = "<group>"; };
@@ -511,6 +512,7 @@
 		12B8CE9C2E195BBD00B61EED /* CapsuleToyApp */ = {
 			isa = PBXGroup;
 			children = (
+				12A8CE6C2E46D5C20068CCBF /* PrivacyInfo.xcprivacy */,
 				12B20FE42E3F9554003D60F5 /* Info.plist */,
 				12B20FE52E3F978C003D60F5 /* AsyncProducts.storekit */,
 				12B8CEA12E195C4A00B61EED /* Generated */,
