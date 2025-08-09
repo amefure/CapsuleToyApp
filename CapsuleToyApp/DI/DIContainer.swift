@@ -28,6 +28,8 @@ final class DIContainer: @unchecked Sendable {
         
         c.register(InAppPurchaseRepository.self) { _ in InAppPurchaseRepository() }
         
+        c.register(CameraFunctionRepository.self) { _ in CameraFunctionRepository() }
+        
         
         // Add ViewModel
         c.register(SeriesListViewModel.self) { r in
@@ -80,6 +82,13 @@ final class DIContainer: @unchecked Sendable {
                 inAppPurchaseRepository: r.resolve(InAppPurchaseRepository.self)!                
             )
         }
+        
+        c.register(CameraScreenViewModel.self) { r in
+            CameraScreenViewModel(
+                cameraRepository: r.resolve(CameraFunctionRepository.self)!,
+            )
+        }
+        
     }
 
     public func resolve<T>(_ type: T.Type) -> T {

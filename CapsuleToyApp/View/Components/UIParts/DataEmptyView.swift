@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct DataEmptyView: View {
+    public let title: String = "データが存在しません"
+    
     var body: some View {
         VStack {
             Spacer()
@@ -16,7 +18,7 @@ struct DataEmptyView: View {
                 .resizable()
                 .frame(width: 180, height: 180)
             
-            Text("データが存在しません")
+            Text(title)
                 .fontM(bold: true)
                 .foregroundStyle(.exText)
             Spacer()

@@ -142,8 +142,8 @@ extension LocationRepository: CLLocationManagerDelegate {
     /// `delegate`の仕組みがメインスレッドを保証してないため
     nonisolated func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
-        print(location)
         logger.debug("現在位置更新")
+        logger.debug("\(location)")
         Task { @MainActor [weak self] in
             let geocoder = CLGeocoder()
             let placemarks = try? await geocoder.reverseGeocodeLocation(location)

@@ -40,6 +40,8 @@ internal enum L10n {
   internal static let dialogDeleteFailedMsg = L10n.tr("Localizable", "dialog_delete_failed_msg", fallback: "削除に失敗しました。時間を空けてから再度お試しください。")
   /// 削除しました。
   internal static let dialogDeleteMsg = L10n.tr("Localizable", "dialog_delete_msg", fallback: "削除しました。")
+  /// カメラへのアクセスが有効にされていないため撮影できません。
+  internal static let dialogDeniedCameraMsg = L10n.tr("Localizable", "dialog_denied_camera_msg", fallback: "カメラへのアクセスが有効にされていないため撮影できません。")
   /// 位置情報が有効にされていないため一部機能が使用できません。
   internal static let dialogDeniedLocationMsg = L10n.tr("Localizable", "dialog_denied_location_msg", fallback: "位置情報が有効にされていないため一部機能が使用できません。")
   /// 「%@」を登録しました。

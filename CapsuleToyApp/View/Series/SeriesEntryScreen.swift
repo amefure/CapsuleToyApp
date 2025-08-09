@@ -11,6 +11,7 @@ import MapKit
 struct SeriesEntryScreen: View {
     
     @StateObject private var viewModel = DIContainer.shared.resolve(SeriesEntryViewModel.self)
+    @EnvironmentObject private var rootEnvironment: RootEnvironment
     
     public var series: Series? = nil
     
@@ -50,6 +51,7 @@ struct SeriesEntryScreen: View {
                 
                 HStack(alignment: .top) {
                     ImageSelectView(image: $image, isDisplayedCropView: true)
+                        .environmentObject(rootEnvironment)
                         .padding(.vertical)
                     
                     VStack {
@@ -238,4 +240,5 @@ struct SeriesEntryScreen: View {
 
 #Preview {
     SeriesEntryScreen()
+        
 }

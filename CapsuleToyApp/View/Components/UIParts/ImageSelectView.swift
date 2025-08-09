@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ImageSelectView: View {
+    
+    @EnvironmentObject private var rootEnvironment: RootEnvironment
+    
     @Binding var image: UIImage?
     public let width: CGFloat = DeviceSizeUtility.deviceWidth / 2 - 20
     public let height: CGFloat = DeviceSizeUtility.deviceWidth / 2 - 20
@@ -17,12 +20,28 @@ struct ImageSelectView: View {
     
     @State private var showCropView: Bool = false
     @State private var showImagePicker: Bool = false
+    @State private var showCameraView: Bool = false
+    
+    @State private var isRegistering = false
     var body: some View {
         VStack {
             if let image {
-                Button {
-                    isDisplayedCropView = false
-                    showImagePicker = true
+                Menu {
+                    Button {
+                        isDisplayedCropView = false
+                        showImagePicker = true
+                    } label: {
+                        Text("写真から選択する")
+                    }
+                    
+                    Button {
+                        isDisplayedCropView = false
+                        showCameraView = true
+                    } label: {
+                        Text("カメラを起動する")
+                    }
+
+                   
                 } label: {
                     Image(uiImage: image)
                         .resizable()
@@ -31,9 +50,20 @@ struct ImageSelectView: View {
                         .clipped()
                 }
             } else {
-                Button {
-                    isDisplayedCropView = false
-                    showImagePicker = true
+                Menu {
+                    Button {
+                        isDisplayedCropView = false
+                        showImagePicker = true
+                    } label: {
+                        Text("写真から選択する")
+                    }
+                    
+                    Button {
+                        isDisplayedCropView = false
+                        showCameraView = true
+                    } label: {
+                        Text("カメラを起動する")
+                    }
                 } label: {
                     Image(systemName: "plus")
                         .fontM()
@@ -47,6 +77,9 @@ struct ImageSelectView: View {
             }
         }.sheet(isPresented: $showImagePicker) {
             ImagePickerDialog(image: $image)
+        }.fullScreenCover(isPresented: $showCameraView) {
+            CameraScreen(isRegistering: $isRegistering, isShowCameraView: $showCameraView)
+                .environmentObject(rootEnvironment)
         }.onChange(of: image) { _,  _ in
             // 1回目の画像の変化で切り取りモーダルを表示していれば2回目は表示しない
             guard !isDisplayedCropView else { return }

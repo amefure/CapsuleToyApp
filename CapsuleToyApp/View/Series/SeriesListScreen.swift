@@ -91,6 +91,7 @@ struct SeriesListScreen: View {
             .background(.exFoundation)
             .fullScreenCover(isPresented: $presentEntryScreen) {
                 SeriesEntryScreen()
+                    .environmentObject(rootEnvironment)
             }
     }
 }

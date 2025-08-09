@@ -268,6 +268,7 @@ struct SeriesDetailScreen: View {
                     
                 }.navigationDestination(isPresented: $presentEditView) {
                     SeriesEntryScreen(series: series)
+                        .environmentObject(rootEnvironment)
                 }
             }
             
@@ -289,6 +290,7 @@ struct SeriesDetailScreen: View {
                 }
             }.navigationDestination(isPresented: $viewModel.presentEntryToyScreen) {
                 CapsuleToyEntryScreen(seriesId: seriesId)
+                    .environmentObject(rootEnvironment)
             }
             .alert(
                 isPresented: $viewModel.showConfirmDeleteAlert,

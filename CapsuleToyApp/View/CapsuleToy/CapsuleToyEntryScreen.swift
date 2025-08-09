@@ -11,7 +11,7 @@ import RealmSwift
 struct CapsuleToyEntryScreen: View {
     
     @StateObject private var viewModel = DIContainer.shared.resolve(CapsuleToyEntryViewModel.self)
-    
+    @EnvironmentObject private var rootEnvironment: RootEnvironment
     public var seriesId: ObjectId
     public var toy: CapsuleToy?
     
@@ -50,6 +50,7 @@ struct CapsuleToyEntryScreen: View {
             
             HStack(alignment: .top) {
                 ImageSelectView(image: $image, isDisplayedCropView: true)
+                    .environmentObject(rootEnvironment)
                     .padding(.vertical)
                 
                 VStack {
