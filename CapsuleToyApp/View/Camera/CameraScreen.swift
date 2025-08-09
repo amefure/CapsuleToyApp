@@ -37,8 +37,13 @@ struct CameraScreen: View {
                         }.onDisappear {
                             viewModel.endSession()
                         }
+                } else {
+                    // disablePermissionはアラートフラグにしているためアラート閉じた後falseに戻ってしまう
+                    // そのためここが拒否されていた場合に表示されるエリアになる
+                    Spacer()
                 }
             } else {
+                // 初期起動時スペーサー用
                 Spacer()
             }
             
