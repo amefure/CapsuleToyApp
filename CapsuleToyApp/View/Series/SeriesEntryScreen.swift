@@ -26,7 +26,6 @@ struct SeriesEntryScreen: View {
     var body: some View {
         VStack {
             
-
             HeaderView(
                 leadingIcon: "chevron.backward",
                 trailingIcon: "checkmark",
@@ -150,8 +149,6 @@ struct SeriesEntryScreen: View {
                     }
                 }.padding()
                 
-   
-                
                 Text("ガチャガチャ設置場所")
                     .exInputLabelView()
                 
@@ -174,6 +171,7 @@ struct SeriesEntryScreen: View {
                         }
                     }.frame(width: DeviceSizeUtility.deviceWidth - 40, height: 35)
                 }
+                
                 Button {
                     viewModel.showAddLocationScreen = true
                 } label: {
@@ -189,9 +187,17 @@ struct SeriesEntryScreen: View {
                 
                 Text("MEMO")
                     .exInputLabelView()
+                
                 TextEditor(text: $memo)
                     .frame(height: 100)
                     .exInputBackView()
+                    .padding(.bottom)
+                
+                if series == nil {
+                    Text("ガチャガチャのアイテムはシリーズを登録した後に、一覧からそのシリーズをタップすることで追加できます。")
+                        .exInputLabelView()
+                        .padding(.bottom)
+                }
             }
 
         }.onAppear {
