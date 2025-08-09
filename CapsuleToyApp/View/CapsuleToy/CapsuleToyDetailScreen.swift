@@ -11,6 +11,7 @@ import RealmSwift
 struct CapsuleToyDetailScreen: View {
     
     @StateObject private var viewModel = DIContainer.shared.resolve(CapsuleToyDetailViewModel.self)
+    @EnvironmentObject private var rootEnvironment: RootEnvironment
     
     private let df = DateFormatUtility()
     
@@ -122,6 +123,7 @@ struct CapsuleToyDetailScreen: View {
             .background(.exFoundation)
             .navigationDestination(isPresented: $viewModel.presentEntryToyScreen) {
                 CapsuleToyEntryScreen(seriesId: seriesId, toy: toy)
+                    .environmentObject(rootEnvironment)
             }
             .alert(
                 isPresented: $viewModel.showConfirmDeleteAlert,

@@ -46,8 +46,8 @@ struct SeriesListScreen: View {
                                     
                                     ImagePreView(
                                         photoPath: series.imagePath,
-                                        width: 60,
-                                        height: 60,
+                                        width: 80,
+                                        height: 80,
                                         isNotView: false,
                                         isEnablePopup: false
                                     ).id(rootEnvironment.isRedraw)

@@ -288,6 +288,7 @@ struct SeriesDetailScreen: View {
             .navigationDestination(isPresented: $viewModel.presentDetailToyScreen) {
                 if let selectToy {
                     CapsuleToyDetailScreen(seriesId: seriesId, toy: selectToy)
+                        .environmentObject(rootEnvironment)
                 }
             }.navigationDestination(isPresented: $viewModel.presentEntryToyScreen) {
                 CapsuleToyEntryScreen(seriesId: seriesId)

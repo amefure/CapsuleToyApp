@@ -35,7 +35,7 @@
       "type" : "NonConsumable"
     },
     {
-      "displayPrice" : "500",
+      "displayPrice" : "300",
       "familyShareable" : false,
       "internalID" : "3006A518",
       "localizations" : [
