@@ -12,10 +12,10 @@ import Foundation
 internal enum L10n {
   /// Created by Shibuya
   internal static let appCopyright = L10n.tr("Localizable", "app_copyright", fallback: "Created by Shibuya")
-  /// 
-  internal static let appFeatures = L10n.tr("Localizable", "app_features", fallback: "")
-  /// ガチャガチャ
-  internal static let appName = L10n.tr("Localizable", "app_name", fallback: "ガチャガチャ")
+  /// 自分だけのガチャガチャコレクションを記録しよう！
+  internal static let appFeatures = L10n.tr("Localizable", "app_features", fallback: "自分だけのガチャガチャコレクションを記録しよう！")
+  /// ガチャコレ
+  internal static let appName = L10n.tr("Localizable", "app_name", fallback: "ガチャコレ")
   /// Ver %@
   internal static func appVersion(_ p1: Any) -> String {
     return L10n.tr("Localizable", "app_version_%@", String(describing: p1), fallback: "Ver %@")

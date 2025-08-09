@@ -11,9 +11,9 @@
 "date_timezone" = "Asia/Tokyo";
 
 // MARK: - App
-"app_name" = "ガチャガチャ";
+"app_name" = "ガチャコレ";
 "app_version_%@" = "Ver %@";
-"app_features" = "";
+"app_features" = "自分だけのガチャガチャコレクションを記録しよう！";
 "app_copyright" = "Created by Shibuya";
 
 
