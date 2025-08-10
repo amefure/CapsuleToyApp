@@ -23,8 +23,7 @@ struct InAppPurchaseScreen: View {
                 },
                 content: {
                     Text("広告削除 & 機能解放")
-                        .fontL(bold: true)
-                        .padding(.vertical)
+                        .fontM(bold: true)
                 }
             )
 

@@ -72,6 +72,8 @@
 		12A8CE7F2E476FD70068CCBF /* FirebasePerformance in Frameworks */ = {isa = PBXBuildFile; productRef = 12A8CE7E2E476FD70068CCBF /* FirebasePerformance */; };
 		12A8CE822E47705D0068CCBF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 12A8CE802E47705D0068CCBF /* GoogleService-Info.plist */; };
 		12A8CE832E47705D0068CCBF /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 12A8CE812E47705D0068CCBF /* PrivacyInfo.xcprivacy */; };
+		12A8CE852E482DC80068CCBF /* SelectAppIconScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A8CE842E482DBC0068CCBF /* SelectAppIconScreen.swift */; };
+		12A8CE872E482DFE0068CCBF /* AppIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A8CE862E482DFA0068CCBF /* AppIcon.swift */; };
 		12B20FD72E3D86FB003D60F5 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 12B20FD62E3D86FB003D60F5 /* GoogleMobileAds */; };
 		12B20FD92E3E3408003D60F5 /* InAppPurchaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B20FD82E3E3407003D60F5 /* InAppPurchaseRepository.swift */; };
 		12B20FDD2E3E3427003D60F5 /* ProductItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B20FDA2E3E3427003D60F5 /* ProductItem.swift */; };
@@ -179,6 +181,8 @@
 		12A8CE6A2E46D2590068CCBF /* CameraScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraScreen.swift; sourceTree = "<group>"; };
 		12A8CE802E47705D0068CCBF /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		12A8CE812E47705D0068CCBF /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		12A8CE842E482DBC0068CCBF /* SelectAppIconScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAppIconScreen.swift; sourceTree = "<group>"; };
+		12A8CE862E482DFA0068CCBF /* AppIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIcon.swift; sourceTree = "<group>"; };
 		12B20FD82E3E3407003D60F5 /* InAppPurchaseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchaseRepository.swift; sourceTree = "<group>"; };
 		12B20FDA2E3E3427003D60F5 /* ProductItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItem.swift; sourceTree = "<group>"; };
 		12B20FDB2E3E3427003D60F5 /* SecretProductIdKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretProductIdKey.swift; sourceTree = "<group>"; };
@@ -349,6 +353,7 @@
 			isa = PBXGroup;
 			children = (
 				122FFBFB2E1C0A2A00FA1A6C /* RealmConfig.swift */,
+				12A8CE862E482DFA0068CCBF /* AppIcon.swift */,
 				12B20FE82E3F9E75003D60F5 /* SecretAdMobConfig.swift */,
 				12A6E07A2E2A1D5000E72E20 /* StaticUrls.swift */,
 				12A8CE632E4632C70068CCBF /* UnlockFeatureConfig.swift */,
@@ -455,6 +460,7 @@
 			children = (
 				12A6E0782E2A1D1000E72E20 /* SettingView.swift */,
 				12B20FE12E3E34C4003D60F5 /* InAppPurchaseScreen.swift */,
+				12A8CE842E482DBC0068CCBF /* SelectAppIconScreen.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -766,6 +772,7 @@
 				12A8CE682E46AF320068CCBF /* CameraScreenViewModel.swift in Sources */,
 				122ECCCE2E1FFBE1000F757A /* ToysRatingListView.swift in Sources */,
 				122FFBF52E1C096200FA1A6C /* SeriesListScreen.swift in Sources */,
+				12A8CE852E482DC80068CCBF /* SelectAppIconScreen.swift in Sources */,
 				122FFC0B2E1C11DB00FA1A6C /* SeriesEntryScreen.swift in Sources */,
 				122FFC252E1C120D00FA1A6C /* DeviceSizeUtility.swift in Sources */,
 				12A8CE6B2E46D25B0068CCBF /* CameraScreen.swift in Sources */,
@@ -788,6 +795,7 @@
 				122FFC2C2E1C120D00FA1A6C /* DateFormatUtility.swift in Sources */,
 				12DF0C402E1D629D008D1A57 /* HeaderView.swift in Sources */,
 				122FFC2D2E1C120D00FA1A6C /* ExPublisher.swift in Sources */,
+				12A8CE872E482DFE0068CCBF /* AppIcon.swift in Sources */,
 				12DF0C452E1E5B03008D1A57 /* CapsuleToyEntryViewModel.swift in Sources */,
 				122FFC2E2E1C120D00FA1A6C /* ExBoingButton.swift in Sources */,
 				122FFC302E1C120D00FA1A6C /* ExCollection.swift in Sources */,
@@ -964,8 +972,9 @@
 		12B8CE972E195BAF00B61EED /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconRed;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = CGD79LB65H;
@@ -1000,8 +1009,9 @@
 		12B8CE982E195BAF00B61EED /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconRed;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = CGD79LB65H;

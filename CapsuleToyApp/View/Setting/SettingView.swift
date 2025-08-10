@@ -37,6 +37,17 @@ struct SettingView: View {
                         }.tint(.exThema)
                     }.listRowHeight()
                     
+                    NavigationLink {
+                        SelectAppIconScreen()
+                            .environmentObject(rootEnvironment)
+                    } label: {
+                        HStack {
+                            Image(systemName: "app.dashed")
+                                .settingIcon()
+                            Text("アプリアイコンを変更する")
+                        }
+                    }.listRowHeight()
+                    
 //                    // よくある質問
 //                    NavigationLink {
 //                        //FaqListView()
@@ -129,7 +140,7 @@ struct SettingView: View {
                         BoingButton {
                             // 処理は特になし
                         } label: {
-                            Asset.Images.appicon.swiftUIImage
+                            rootEnvironment.currentAppIcon.image
                                 .resizable()
                                 .frame(width: 50, height: 50)
                                 .clipShape(RoundedRectangle(cornerRadius: 50))

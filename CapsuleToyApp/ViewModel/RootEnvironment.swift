@@ -26,6 +26,8 @@ final class RootEnvironment: ObservableObject {
     @Published var showLocationDeniedAlert: Bool = false
     /// 写真リスト更新時に再描画用
     @Published private(set) var isRedraw: UUID = UUID()
+    /// アプリアイコン
+    @Published private(set) var currentAppIcon: AppIcon = .red
     
     /// 位置情報否認アラート表示フラグ(アプリ起動後一回しか表示させない)
     private var isShowDeniedAlert: Bool = false
@@ -52,6 +54,8 @@ final class RootEnvironment: ObservableObject {
         setPurchasedFlag()
         // ダークモード
         setUpIsDarkMode()
+        // アプリアイコン
+        setUpAppIcon()
     }
     
     @MainActor
@@ -103,7 +107,7 @@ extension RootEnvironment {
         unlockFeature = userDefaultsRepository.getPurchasedUnlockFeature()
     }
     
-    /// ダークモード変化を観測/
+    /// ダークモード変化を観測
     private func sinkIsDarkMode() {
         $isDarkMode
             .sink { [weak self] flag in
@@ -168,6 +172,23 @@ extension RootEnvironment {
 
 // MARK: Public Method
 extension RootEnvironment {
+    
+    /// アプリアイコン取得
+    private func setUpAppIcon() {
+        currentAppIcon = userDefaultsRepository.getAppIcon()
+    }
+
+    /// アプリアイコン登録
+    @MainActor
+    public func setAppIcon(_ icon: AppIcon) {
+        if icon == .red {
+            UIApplication.shared.setAlternateIconName(nil)
+        } else {
+            UIApplication.shared.setAlternateIconName(icon.rawValue)
+        }
+        currentAppIcon = icon
+        userDefaultsRepository.setAppIcon(icon)
+    }
   
     /// アクティブにしたタブを保存
     public func setActiveTab(_ tab: AppTab) {

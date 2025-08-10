@@ -8,6 +8,9 @@
 import UIKit
 
 class UserDefaultsKey {
+    
+    /// アプリアイコン
+    static let APP_ICON = "APP_ICON"
     /// ダークモード
     static let IS_DARK_MODE = "IS_DARK_MODE"
     /// アプリ内課金：広告削除
@@ -60,6 +63,18 @@ final class UserDefaultsRepository: @unchecked Sendable {
 }
 
 extension UserDefaultsRepository {
+    
+    /// `APP_ICON`
+    public func setAppIcon(_ icon: AppIcon) {
+        setStringData(key: UserDefaultsKey.APP_ICON, value: icon.rawValue)
+    }
+    
+    /// `APP_ICON`
+    public func getAppIcon() -> AppIcon {
+        let icon = getStringData(key: UserDefaultsKey.APP_ICON, initialValue: AppIcon.red.rawValue)
+        return AppIcon(rawValue: icon) ?? .red
+        
+    }
     
     /// `IS_DARK_MODE`
     public func setIsDarkMode(_ isOn: Bool) {
