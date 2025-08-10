@@ -187,7 +187,7 @@ extension MyDataScreen {
                     .annotation {
                         Text("\(dic[date]?.count ?? 0)")
                             .fontSS(bold: true)
-                            .foregroundStyle(.exText)
+                            .foregroundStyle(.exModeText)
                     }
             }
         }.frame(width: DeviceSizeUtility.deviceWidth - 60 , height: 110)
