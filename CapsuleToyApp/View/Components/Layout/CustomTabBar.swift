@@ -48,7 +48,7 @@ struct CustomTabBar: View {
                 }
             }
         }
-        .padding(.bottom, DeviceSizeUtility.isSESize ? 0 : 30)
+        .padding(.bottom, DeviceSizeUtility.isSESize ? 10 : 30)
         .background(.exModeBase)
         .clipped()
         .shadow(color: .black.opacity(0.2), radius: 5, x: -3, y: -3)

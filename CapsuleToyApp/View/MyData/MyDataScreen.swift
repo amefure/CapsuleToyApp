@@ -141,7 +141,7 @@ extension MyDataScreen {
     
     
     private func scrollMyDataView() -> some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             
             Text("直近6ヶ月の月別購入数")
                 .exInputLabelView()

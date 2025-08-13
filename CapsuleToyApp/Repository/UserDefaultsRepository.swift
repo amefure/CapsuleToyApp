@@ -115,6 +115,7 @@ extension UserDefaultsRepository {
     }
 
     /// 登録：アプリ内課金 / 容量解放
+    /// 一度`true`になったらアプリからは`false`に戻す処理はない
     public func setPurchasedUnlockFeature(_ flag: Bool) {
         setBoolData(key: UserDefaultsKey.PURCHASED_UNLOCK_FEATURE, isOn: flag)
     }

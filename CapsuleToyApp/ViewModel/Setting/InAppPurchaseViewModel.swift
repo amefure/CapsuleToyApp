@@ -60,9 +60,16 @@ final class InAppPurchaseViewModel: ObservableObject {
                 // 購入済みアイテム配列が変化した際に購入済みかどうか確認
                 let removeAds = inAppPurchaseRepository.isPurchased(ProductItem.removeAds.id)
                 let unlockFeature = inAppPurchaseRepository.isPurchased(ProductItem.unlockFeature.id)
-                // ローカルフラグを更新(購入済み or 未購入)
-                userDefaultsRepository.setPurchasedRemoveAds(removeAds)
-                userDefaultsRepository.setPurchasedUnlockFeature(unlockFeature)
+                // 購入済みの場合のみ更新する
+                if removeAds {
+                    // ローカルフラグを更新(購入済み or 未購入)
+                    userDefaultsRepository.setPurchasedRemoveAds(true)
+                }
+                // 購入済みの場合のみ更新する
+                if unlockFeature {
+                    // ローカルフラグを更新(購入済み or 未購入)
+                    userDefaultsRepository.setPurchasedUnlockFeature(true)
+                }
                 // 購入済みアイテムを取得してからViewを更新する
                 self.products = self.poolProducts
             }.store(in: &cancellables)
